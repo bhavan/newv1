@@ -1,0 +1,16 @@
+/** header icons **/
+div.header.icon-48-shines {
+	background-image: url(../images/logo.gif);
+	padding-left:265px!important;
+	line-height:48px;
+}
+
+/* Hide sub menu */
+ul#submenu {
+	display:none;
+}
+
+/* Keprhi */
+div#submenu-box {
+	display:none;
+}

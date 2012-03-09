@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<params addpath="/plugins/jevents/customfields/" >
+		<!-- Access levels 0=Public, 1=Registered, 2=Special //-->
+	
+		<!-- can have class attributes if required //-->
+		<param name="field1" type="jevrlist" default="-1" label="Select List" required="1" description="Select List tool tip" allowoverride="1"  filter="1" multifilter="1"  filtersize="3" access="0">
+		<!-- select lists  MUST have numeric values//-->
+			<option value="-1">Select One</option>
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+			<option value="2">Maybe</option>
+			<option value="3">Possibly</option>
+			<option value="4" archive="1">Probably</option>
+		</param>
+
+		<!-- new searchable atrribute if you want to include a field in the JEvents search fields //-->
+		<param name="field2" type="jevrtext" default="default text" size="20" maxlength="100" required="1" searchable="1" label="Text Field" description="Text field tooltip"  allowoverride="0"  filter="1"  access="0"/>
+		
+		<param name="field2.5" type="jevrinstruction" default="Information for the user/edit" label="Information Text" description="No input required from the event editor"  filter="0"  access="0" hiddenvalue=""/>
+		
+		<!-- new searchable atrribute if you want to include a field in the JEvents search fields //-->
+		<param name="field3" type="jevrtextarea" cols="40" rows="5" default="more default text" label="Textarea" searchable="1" description="Textarea tooltip"  allowoverride="1"  filter="1"  access="0" hiddenvalue=""/>
+
+		<param name="field4" type="jevrboolean" default="0" label="Boolean" required="1" requiredmessage="The field (Boolean) is required" description="Boolean tooltip"  allowoverride="0"  filter="1"  access="0"/>
+		
+		<param name="field5" type="jevrradio" default="0" label="Radio List" description="Radio List tooltip"  allowoverride="1"  filter="1"  access="0">
+		<!-- radio MUST have numeric values//-->
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+			<option value="2">Maybe</option>
+			<option value="3">Possibly</option>
+		</param>
+		
+		<param name="field6" type="jevrmultilist" default="-1" label="Multi Select List" required="1" description="Select List tool tip" allowoverride="1" filter="1"  access="0">
+		<!-- multiple select lists MUST have numeric values//-->
+			<option value="-1">Select One or more</option>
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+			<option value="2">Maybe</option>
+			<option value="3">Possibly</option>
+		</param>
+		
+		<param name="field7" type="jevrurl" default="http://www.google.com"  size="60" maxlength="255" required="0" requiredmessage="" label="URL (with http://)" description="Enter Full URL here"  allowoverride="0"  filter="0" />
+		
+		<param name="updatablefield1" type="jevrupdatable" default="updatable notes" rows="5" cols="30" required="0" append="1" requiredmessage="" label="Updatable Notes" buttonlabel="Update Field"  description="Notes that can up updated from the frontend of the site by event editors" updatedmessage="Field Updated" allowoverride="0" />
+		
+	</params>
+</config>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>RokSlideshow</name>
+	<author>RocketWerx</author>
+	<creationDate>June 2009</creationDate>
+	<copyright>(C) 2006-2009 RocketTheme.com - All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>support@rockettheme.com</authorEmail>
+	<authorUrl>www.rockettheme.com</authorUrl>
+	<version>4.1</version>
+	<description>
+	RokSlideshow...
+	</description>
+	<files>
+		<filename module="mod_rokslideshow">mod_rokslideshow.php</filename>
+		<filename>CHANGELOG.php</filename>
+		<filename>RT-LICENSE.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl/</folder>
+	</files>
+	<params>
+	  <param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
+	  <param name="@spacer" type="spacer" default="" label="" description="" />
+	  <param name="width" type="text" default="430" label="Width" description="Width of Slideshow in px" />
+	  <param name="height" type="text" default="300" label="Height" description="Height of Slideshow in px" />
+	  <param name="@spacer" type="spacer" default="" label="" description="" />
+	  <param name="imagePath" type="text" default="images/stories/fruit" label="Images Directory" description="Location of images to be used in the rotation" />
+	  <param name="loadingDiv" type="radio" default="1" label="Loading Progress Bar" description="Shows a visual loading progress bar of loading images">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	  <param name="externals" type="radio" default="0" label="Open links in new page" description="Open links in a new page.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	  <param name="showCaption" type="radio" default="1" label="Show Text Captions" description="Shows text captions if they are found.  See description above">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	  <param name="showTitleCaption" type="radio" default="1" label="Show Title Captions" description="Shows title captions if text captions are found. See description above">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="heightCaption" type="text" default="45" label="Caption Height" description="Height of Caption area in px" />
+		<param name="titleSize" type="text" default="13px" label="Title Size" description="Size of the title" />
+		<param name="titleColor" type="text" default="#fff" label="Title Color" description="Color of the title" />
+		<param name="descSize" type="text" default="11px" label="Descriptiojn Size" description="Size of the description" />
+		<param name="descColor" type="text" default="#ccc" label="Description Color" description="Color of the description" />
+		<param name="sortCriteria" type="list" default="0" label="Sort Criteria" description="The sort criteria of the images files">
+			<option value="0">Alphabetical</option>
+			<option value="1">Creation Date</option>
+		</param>
+		<param name="sortOrder" type="list" default="0" label="Sort Order" description="The sort order of the images files">
+			<option value="0">Ascending</option>
+			<option value="1">Descending</option>
+			<option value="2">Random</option>
+		</param>
+		<param name="sortOrderManual" type="text" default="" label="Manual Sort Order" description="Comma seperated list of images that describe the order - Example: image3.jpg,image2.jpg,image1.jpg - this will override Sort Criteria if set" />
+		<param name="imageResize" type="radio" default="1" label="Dynamic Image Resizing" description="If you are experiencing problems with zooming and other effects, try setting this to False">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="imageDuration" type="text" default="9000" label="Image Duration" description="Duration to stay on each image in ms" />
+		<param name="transDuration" type="text" default="2000" label="Transition Duration" description="Time it takes to transition between images in ms" />
+
+		<param name="transType" type="list" default="combo" label="Transition Type" description="Type of transition effect">
+		<option value="fade">Fading</option>
+			<option value="zoom">Zooming</option>
+			<option value="pan">Panning</option>
+			<option value="combo">Combo - Ken Burns Effect</option>
+			<option value="push">Pushing</option>
+			<option value="wipe">Wiping</option>
+		</param>
+		<param name="pan" type="text" default="50" label="Pan Percent" description="0 - 100% amount of panning for Panning or Combo type transitions" />
+		<param name="zoom" type="text" default="50" label="Zoom Percent" description="0 - 100% amount of zooming for Zooming or Combo type transitions" />
+		<param name="transition" type="list" default="Expo.easeOut" label="Transition for Push/Wipe" description="any of the available MooTools transitions.">
+			<option value="linear">linear</option>
+			<option value="Quad.easeOut">Quad.easeOut</option>
+			<option value="Quad.easeIn">Quad.easeIn</option>
+			<option value="Quad.easeInOut">Quad.easeInOut</option>
+			<option value="Cubic.easeOut">Cubic.easeOut</option>
+			<option value="Cubic.easeIn">Cubic.easeIn</option>
+			<option value="Cubic.easeInOut">Cubic.easeInOut</option>
+			<option value="Quart.easeOut">Quart.easeOut</option>
+			<option value="Quart.easeIn">Quart.easeIn</option>
+			<option value="Quart.easeInOut">Quart.easeInOut</option>
+			<option value="Quint.easeOut">Quint.easeOut</option>
+			<option value="Quint.easeIn">Quint.easeIn</option>
+			<option value="Quint.easeInOut">Quint.easeInOut</option>
+			<option value="Expo.easeOut">Expo.easeOut</option>
+			<option value="Expo.easeIn">Expo.easeIn</option>
+			<option value="Expo.easeInOut">Expo.easeInOut</option>
+			<option value="Circ.easeOut">Circ.easeOut</option>
+			<option value="Circ.easeIn">Circ.easeIn</option>
+			<option value="Circ.easeInOut">Circ.easeInOut</option>
+			<option value="Sine.easeOut">Sine.easeOut</option>
+			<option value="Sine.easeIn">Sine.easeIn</option>
+			<option value="Sine.easeInOut">Sine.easeInOut</option>
+			<option value="Back.easeOut">Back.easeOut</option>
+			<option value="Back.easeIn">Back.easeIn</option>
+			<option value="Back.easeInOut">Back.easeInOut</option>
+			<option value="Bounce.easeOut">Bounce.easeOut</option>
+			<option value="Bounce.easeIn">Bounce.easeIn</option>
+			<option value="Bounce.easeInOut">Bounce.easeInOut</option>
+			<option value="Elastic.easeOut">Elastic.easeOut</option>
+			<option value="Elastic.easeIn">Elastic.easeIn</option>
+			<option value="Elastic.easeInOut">Elastic.easeInOut</option>
+		</param>
+	</params>
+</install>

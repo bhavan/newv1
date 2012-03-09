@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install type="component" version="1.5.0" method="upgrade">
+	<name>Shines</name>
+	<creationDate>May 2010</creationDate>
+	<author>GWE Systems Ltd</author>
+	<copyright>(C) 2009-2010 GWE Systems Ltd</copyright>	  
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>	  
+	<authorEmail></authorEmail>
+	<authorUrl>http://www.gwesystems.com</authorUrl>
+	<version>1.0</version>
+	<description>Configuration and installation of the Shines addon</description>
+		
+    <files folder="site">
+		<filename>about.php</filename>
+		<filename>gmap.php</filename>
+		<filename>gmap1.php</filename>
+		<filename>google_map_direction.php</filename>
+		<filename>GoogleMap.php</filename>
+		<filename>iAd.php</filename>
+		<filename>iAdPage.php</filename>
+		<filename>iAllAds.php</filename>
+		<filename>iAllUserPhotos.php</filename>
+		<filename>iAllVideos.php</filename>
+		<filename>iEvent.php</filename>
+		<filename>iEventDetails.php</filename>
+		<filename>iHotSpot.php</filename>
+		<filename>iHotSpotCategory.php</filename>
+		<filename>index.html</filename>
+		<filename>iphone-30a-today.php</filename>
+		<filename>iRestaurantDetails.php</filename>
+		<filename>iRestaurantPage.php</filename>
+		<filename>iTownInfo.php</filename>
+		<filename>iuploadphoto.php</filename>
+		<filename>iWelcomeText.php</filename>
+		<filename>shines.php</filename>
+		<folder>ipodhtml</folder>
+    </files>
+    
+	<administration>
+		<menu>Shines</menu>
+
+	    <files folder="admin">
+		    <folder>assets</folder>
+		    <folder>controllers</folder>
+		    <folder>elements</folder>
+		    <folder>template</folder>
+			<folder>views</folder>
+			<filename>config.xml</filename>
+			<filename>index.html</filename>
+			<filename>shines.php</filename>
+	    </files>
+
+		<!-- Admin Language Files -->
+		<languages folder="admin/language">
+			<language tag="en-GB">en-GB.com_shines.ini</language>
+    	</languages>
+ 	</administration>
+
+	<params />
+
+</install>

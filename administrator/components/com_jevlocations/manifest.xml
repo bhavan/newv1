@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install type="component" version="1.5.0" method="upgrade">
+	<name>JEV Locations</name>
+	<creationDate>March 2011</creationDate>
+	<author>Geraint Edwards</author>
+	<copyright>(C) 2010-2011 GWE Systems Ltd</copyright>
+	<licence>To be Agreed</licence>
+	<authorEmail></authorEmail>
+	<authorUrl>www.gwesystems.com</authorUrl>
+	<version>1.3.11</version>
+	<description>Managed Locations for JEvents</description>
+	
+    <files folder="site">
+	    <folder>assets</folder>
+	    <folder>controllers</folder>
+		<folder>filters</folder>
+		<folder>views</folder>
+		<filename>router.php</filename>
+		<filename>jevlocations.php</filename>
+		<filename>metadata.xml</filename>
+    </files>
+    
+	<languages folder="site/language">
+		<language tag="en-GB">en-GB.com_jevlocations.ini</language>
+   	</languages>
+	<media />
+
+	<administration>
+		<menu>JEV Locations</menu>
+
+	    <files folder="admin">
+		    <folder>assets</folder>
+		    <folder>controllers</folder>
+			<folder>elements</folder>
+			<folder>libraries</folder>
+			<folder>models</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+						
+			<filename>config.xml</filename>
+			<filename>jevlocations.php</filename>
+	    </files>
+
+		<!-- Admin Language Files -->
+		<languages folder="admin/language">
+			<language tag="en-GB">en-GB.com_jevlocations.ini</language>
+    	</languages>
+ 	</administration>
+
+	<params />
+
+</install>

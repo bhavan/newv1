@@ -1,0 +1,141 @@
+/**
+* Author: Dioscouri Design - www.dioscouri.com
+* @package JUGA - Joomla User Group Access
+* @copyright Copyright (C) 2007 Dioscouri Design. All rights reserved.
+* @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
+*/
+table.adminlist th.title {
+	text-align: left;
+}
+table.adminheading th.juga {
+	/* from prev versions 
+	background: url(../../includes/images/juga.png) bottom no-repeat left;
+	padding-left: 110px;
+	*/
+	width: 99%;
+	font-size: 14px;
+	font-weight: bold;
+	color:#7b9f53;
+}
+table.adminheading td.right {
+	text-align: right;
+	white-space: nowrap;
+}
+table.adminheading {
+	background-color:#FFFFFF;
+	margin:0px;
+	padding: 2px;
+	padding-right: 0px;
+	width:100%;
+	border: none;
+	font-weight:bold;
+	text-align:left;
+}
+table.adminheading td {
+	color:#000000;
+}
+.note {
+	background-color: #FFFFDD;
+	margin: 5px;
+	margin-bottom: 10px;
+	padding: 10px;
+	font-size:12px;
+	text-align: justify;
+	border: 1px solid #DDDDBB;
+	border-spacing: 0px;
+	border-collapse: collapse;
+}
+.notepi {
+	background-color: #FDE8FD;
+	margin: 5px;
+	margin-bottom: 10px;
+	padding: 10px;
+	font-size:12px;
+	text-align: justify;
+	border: 1px solid #FFCCCC;
+	border-spacing: 0px;
+	border-collapse: collapse;
+}
+.noteg {
+	background-color: #EBF6DF;
+	margin: 5px;
+	margin-bottom: 10px;
+	padding: 10px;
+	font-size:12px;
+	text-align: justify;
+	border: 1px solid #289728;
+	border-spacing: 0px;
+	border-collapse: collapse;	
+}
+.clr { 
+	clear: both; overflow:hidden; 
+}
+/* submenu box */
+.submenu-box {
+	/*background: #f6f6f6;*/
+	padding: 5px 1px;
+}
+/* submenu styling */
+#submenu {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+#submenu li {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+#submenu li a,
+#submenu span.nolink {
+	cursor: pointer;
+	padding: 5px 10px;
+	font-weight: bold;
+	color: #0B55C4;
+}
+#submenu span.nolink {
+	color: #999;
+}
+#submenu a.active,
+#submenu span.nolink.active {
+	color: #000;
+	text-decoration: underline;
+}
+
+/** toolbar icons **/
+.icon-32-switch_f2 { 
+	background-image: url(../images/switch_f2.png); 
+}
+
+.icon-32-cut_f2	{ 
+	background-image: url(../images/cut_f2.png); 
+}
+
+.icon-32-go_f2 { 
+	background-image: url(../images/go_f2.png); 
+}
+
+.icon-32-move_f2 { 
+	background-image: url(../images/move_f2.png); 
+}
+
+.icon-32-folder_add_f2 { 
+	background-image: url(../images/folder_add_f2.png); 
+}
+
+.icon-32-file_f2 { 
+	background-image: url(../images/file_f2.png); 
+}
+
+.icon-32-groups_f2 { 
+	background-image: url(../images/groups_f2.png); 
+}
+
+.icon-32-reload_f2 { 
+	background-image: url(../images/reload_f2.png); 
+}
+
+.icon-48-juga_logo { 
+	background-image: url(../images/juga.png); 
+	padding-left:110px !important;
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Find Us on Facebook</name>
+	<author>River Media</author>
+	<creationDate>November 2009</creationDate>
+	<copyright>Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>joomladds@river-media.net</authorEmail>
+	<authorUrl>joomladds.com</authorUrl>
+	<version>1.1.2</version>
+	<description>This module will display a "Find Us On Facebook" link with your choice of 4 images.</description>
+	<files>
+		<filename module="mod_fuofb">mod_fuofb.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+        <filename>assets/en/find-us-on-facebook-1.png</filename>
+        <filename>assets/en/find-us-on-facebook-2.png</filename>
+        <filename>assets/en/find-us-on-facebook-3.png</filename>
+        <filename>assets/en/find-us-on-facebook-4.png</filename>
+        <filename>assets/it/find-us-on-facebook-1.png</filename>
+        <filename>assets/it/find-us-on-facebook-2.png</filename>
+        <filename>assets/it/find-us-on-facebook-3.png</filename>
+        <filename>assets/it/find-us-on-facebook-4.png</filename>
+	</files>
+	<params>
+		<param name="facebook_url" type="text" default="" label="Facebook URL" description="Enter the URL to your Facebook page." />
+		<param name="target" type="list" default="1" label="Target" description="Target window when the link is clicked">
+			<option value="0">Parent Window With Browser Navigation</option>
+			<option value="1">New Window With Browser Navigation</option>
+			<option value="2">New Window Without Browser Navigation</option>
+		</param>
+		<param name="title_text" type="text" default="Visit our Facebook page and become a fan." label="Title Text" description="Enter the text you want to show in the title pop up" />
+		<param name="image_choice" type="list" default="1" label="Image Choice" description="Select which image you would like">
+			<option value="1">Style 1</option>
+			<option value="2">Style 2</option>
+			<option value="3">Style 3</option>
+			<option value="4">Style 4</option>
+		</param>
+		<param name="image_align" type="list" default="center" label="Image Alignment" description="Choose image alignment, left, right or center">
+			<option value="left">Left</option>
+			<option value="right">Right</option>
+			<option value="center">Center</option>
+		</param>
+		<param name="language" type="list" default="center" label="Language" description="Choose a Language">
+			<option value="en">English</option>
+			<option value="it">Italian</option>
+		</param>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="" />
+	</params>
+	<params group="advanced">
+		<param name="cache" type="list" default="1" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+		<param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+	</params>
+</install>

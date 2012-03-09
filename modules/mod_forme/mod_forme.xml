@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install type="module" version="1.5.0">
+	<name>RSform!</name>
+	<author>www.rsjoomla.com</author>
+	<creationDate>May 2007</creationDate>
+	<copyright>(C) 2007 www.rsjoomla.com. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>alex@rsjoomla.com</authorEmail>
+	<authorUrl>www.rsjoomla.com</authorUrl>
+	<version>1.0.4</version>
+	<description>This module is used to display forms created with RSform!.</description>
+	<files>
+	<filename module="mod_forme">mod_forme.php</filename>
+	</files>
+	<params>
+		<param name="form_id" type="text" default="1" label="Form id #" description="The id of the Form. You can find it in your List Forms screen (the last column)." />
+	</params>
+</install>

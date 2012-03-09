@@ -1,0 +1,59 @@
+/* css for help.files of components
+ * last_edit: 2006.12.21
+ * (c) copyright 2006 www.joomx.com - All Rights Reserved
+ */
+body {
+	font-family		: verdana, arial, sans-serif;
+	font-size		: 76%;
+	color			: #333333;
+}
+
+img {
+	border			: none;
+}
+
+h1 {
+	color			: #30559C;
+	font-size		: 112%;
+	border-left		: 25px solid #30559C;
+	border-bottom	: 1px solid #30559C;
+	padding			: 0 0 2px 5px;
+}
+
+.header {
+	font-size		: 108%;
+	font-weight     : bold;
+}
+
+.close {
+	float           : right;
+	text-align		: right;
+}
+.warningHeader {
+	color			: #CC0000;
+	font-weight     : bold;
+}
+.warning {
+	margin			: 2px;
+	padding			: 3px;
+	border			: 1px solid #999999;
+	background  	: #FFDDDD;
+}
+.warning:hover {
+	border			: 1px solid #FF0000;
+	margin			: 2px;
+	padding			: 3px;
+}
+
+li {
+	font-weight     : bold;
+}
+.normal {
+	font-weight		: normal;
+}
+
+.clear {
+	clear			: both;
+	padding-top		: 10px;
+	padding-bottom	: 10px;
+}

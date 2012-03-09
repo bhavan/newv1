@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="system">
+	<name>System - Analytics Asynchronous</name>
+	<author>Anders Vinther</author>
+	<creationDate>March 2010</creationDate>
+	<authorEmail>anders.vinther@easy-email.net</authorEmail>
+	<authorUrl>www.Easy-Email.net</authorUrl>
+	<version>1.0</version>
+        <copyright>Copyright (c) 2010 Ayoro SAS. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<description>This plugin allows for insertion of Google Analytics Asynchronous tracking code to pages.</description>
+	<files>
+		<filename plugin="analyticsasynchronous">analyticsasynchronous.php</filename>
+	</files>
+	<params>
+		<param name="top_code" type="textarea" default="" label="Top" description="Top Code inserted just after the body start tag" cols="70" rows="10" />
+		<param name="bottom_code" type="textarea" default="" label="Bottom" description="Bottom Code inserted just before the body tag - Only needed for split code." cols="70" rows="15" />
+	</params>
+</install>

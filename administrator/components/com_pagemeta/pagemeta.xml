@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5.0">
+  <name>Pagemeta</name>
+  <author>Univex Solutions</author>
+  <creationDate>december 2010</creationDate>
+  <authorEmail>univexsolutions@gmail.com</authorEmail>
+  <authorUrl>www.univexsolutions.com</authorUrl>
+  <version>1.0.0</version>
+  <description>This component manages Page Meta entries</description>
+	
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">install.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file charset="utf8" driver="mysql">uninstall.sql</file>
+		</sql>
+	</uninstall>
+	
+	<administration>
+  <!-- Administration Menu Section -->
+  <menu>Page Meta</menu>
+ 
+  <!-- Administration Main File Copy Section -->
+  <files folder="admin">
+   <filename>admin.pagemeta.php</filename>
+   <filename>toolbar.pagemeta.php</filename>
+	 <filename>toolbar.pagemeta.html.php</filename>
+	 <filename>install.sql</filename>
+	 <filename>uninstall.sql</filename>
+  </files>
+ 
+ </administration>
+
+</install>

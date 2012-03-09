@@ -1,0 +1,32 @@
+Stps for Making v2 for client site.
+===================================
+
+1. Update php.ini file and change shot_open_tag = On
+
+2. Step for installing juga on another site.
+
+	a> import 6 tables(jos_juga, jos_juga_codes, jos_juga_g2i, jos_juga_groups, jos_juga_items, jos_juga_u2g) from masterdefault database.
+
+	b> Create entry of juga component in "jos_components" table as per masterdefault "jos_components" table.
+
+	c> Create entry of joga plugin in "jos_pugins" table as per masterdefault "jos_plugins" table.
+
+	d> MOST IMPORTANT: ** CHECK LEGACY PLUGIN IN JOS_PLUGINS MAKE IT ENABLE IN JOS_PLUGIN TABLE**
+
+
+3. Create "partnersite" name foler inside "partner" folder in ROOT. and put "images" folder in it.
+
+4. Make entry in "master" table for partnersite url.
+
+5. Modify jos_components table for newly created partner and change IMAGE PATH & FILE PATH in MEDIA MANAGER TYPE in table.
+
+6. COPY fine.png and calendar.jpg from ROOT->IMAGES folder to COMPONENTS/COM_SHINES/IMAGES &  ANDROID/IMAGES folder.
+
+# Things needs to do
+--------------------
+
+A. Need to remove unwanted images from image folder.
+
+B. No need for old files which are not we are using anymore now.
+
+C. Need to change the path for images/stories in global configuration.   DONE

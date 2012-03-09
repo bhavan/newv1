@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+
+body { font:normal 11px/18px Arial; background-color:#fff; margin:0; color:#4b4b4b; }
+div, img, p, a, ul, h1, h2, h3, h4, h5, h6, form, input, select, textarea, label { padding:0; margin:0; }
+h1, h2, h3, h4, h5, h6 { line-height:normal; }
+h3 { font-size:14px; font-weight:normal; }
+h4 { font-size:12px; color:#444444; padding:5px 0; }
+img { border:none; }
+ul { list-style-type:none; }
+a { color:#ff3300; text-decoration:none; }
+a:hover { text-decoration:underline; }
+clear { clear:both; margin:0; padding:0; font-size:0; }
+.marg-bot10 { margin-bottom:10px; }
+.hr-line { background-color:#6c6c6c; height:2px; margin:0; padding:0; font-size:0 }
+.main-con { width:400px; margin:0 auto; }
+.logo { background-image:url(../images/logo.png); width:60px; height:38px; float:left; }
+#header { overflow:hidden; padding:10px 0; display: block; }
+#nav { padding:12px 0 0 15px; overflow:hidden; display: block; }
+#nav ul { border-bottom:1px solid #e0dbdb; overflow:hidden; }
+#nav ul li { float:left; }
+#nav ul li a { font-size:13px; font-weight:bold; color:#b5b5b5; padding:1px 10px; text-decoration:none; float:left; }
+#nav ul li a:hover { color:#4b4b4b; background-image:-moz-linear-gradient( center bottom, rgb(225,220,220) 8%, rgb(204,204,204) 54% ); background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.08, rgb(225,220,220)), color-stop(0.54, rgb(204,204,204)) );background-image: -o-linear-gradient(rgb(225,220,220), rgb(204,204,204)); }
+#nav ul li.act a { color:#4b4b4b; background-image:-moz-linear-gradient( center bottom, rgb(225,220,220) 8%, rgb(204,204,204) 54% ); background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.08, rgb(225,220,220)), color-stop(0.54, rgb(204,204,204)) ); background-image: -o-linear-gradient(rgb(225,220,220), rgb(204,204,204)); }
+.sec { border:1px solid #f0ecec; background:#faf8f8; overflow:hidden; margin:0; padding:0 0 10px 0; margin-bottom:8px; width:100%; display:block; }
+.sec .prt-lft { padding-left:4px; width:90px; float:left }
+.sec .prt-rgt { float:left; padding-right:10px; width:295px;}
+h3.hd { background-image: -moz-linear-gradient( center bottom, rgb(225,220,220) 8%, rgb(204,204,204) 54% ); background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.08, rgb(225,220,220)), color-stop(0.54, rgb(204,204,204)) ); height:23px; color:4b4b4b; line-height:23px; text-indent:10px; background-image: -o-linear-gradient(rgb(225,220,220), rgb(204,204,204));  width:100%; float:left;}
+a.link { font-weight:bold; text-decoration:underline; color:#0c7daa; text-align:right;}
+.view{width:100%; text-align:right; float:left;}
+.listing { overflow:hidden; }
+.listing li { display:block; border-bottom:1px solid #f2f0f0; padding:0 5px; position:relative; }
+.listing li.even { background:#fff; }
+.listing li p.cont { color:#888; width: 76%;}
+.listing li p.date { color:#b5b5b5;  position:absolute; bottom:0px; right:5px;}
+footer { background:url(../images/footer-bg.png); height:48px; border-top:1px solid #c2b5b5; display:block; }
+.row { width:100%; overflow:hidden; }
+.pagination { float:right; padding:7px 5px 0 0; }
+.pagination li a { color:#077aa8; text-decoration:none; margin:0 1px; }
+.pagination li a:hover { color:#077aa8; text-decoration:underline; }
+.pagination li a.act { color:#077aa8; text-decoration:underline; font-weight:bold;	}
+.evt-btn { background-image: -moz-linear-gradient( center bottom, rgb(225,220,220) 8%, #c0b9b9 54% ); background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0.08, rgb(225,220,220)), color-stop(0.54, #c0b9b9) ); width:150px; height:24px; border:1px solid #c0b9b9; color:#4b4b4b; font-size:14px; margin-left:5px; padding: 0 0 3px;background-image: -o-linear-gradient(rgb(225,220,220), #c0b9b9);float: left; }
+footer .handler { width:390px; margin:0 auto; }
+footer nav { overflow:hidden; padding-top:16px; display:block; }
+footer nav li { float:left; margin-right:8px; color:#b5b5b5; font-weight:bold; }
+footer nav li a { margin-right:8px; color:#b5b5b5; }
+footer nav .copyright { float:right; color:#b5b5b5; }
+.left-fl{float:left;}

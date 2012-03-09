@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config menu="hide" >
+	<params addpath="/administrator/components/com_jevpeople/elements/" >
+		<param name="loc_own" type="usergroup" default="20" label="CREATE OWN PEOPLE" description="CREATE OWN PEOPLE TIP" />
+		<param name="max_art" type="text" size="20" default="5" label="JEV MAX NUMBER" description="JEV MAX NUMBER TIP" />
+		<param name="loc_global" type="usergroup" default="24" label="CREATE GLOBAL PEOPLE" description="CREATE GLOBAL PEOPLE TIP" />
+
+		<param name="commondefault" type="jevboolean" default="0" label="JEV GLOBAL BY DEFAULT" description="JEV GLOBAL BY DEFAULT TIP" />
+
+		<param name="linktouser" type="list" default="0" label="OFFER LINK TO USER" description="OFFER LINK TO USER TIP" >
+			<option value="0">JEV NO</option>
+			<option value="1">JEV ONE</option>
+			<option value="2">JEV ONE PER TYPE</option>
+			<option value="3">JEV MULTIPLE</option>
+		</param>
+		
+		<param name="upimageslevel" type="usergroup" default="24" label="JEV UPLOAD IMAGES" description="JEV UPLOAD IMAGES TIP" />
+				
+		<param name="maxupload" type="text" size="20" default="1000000" label="JEV UPLOAD MAX SIZE" description="JEV UPLOAD MAX SIZE TIP" />		
+		<param name="imagew" type="text" size="20" default="300" label="JEV SCALED WIDTH" description="JEV SCALED WIDTH TIP" />		
+		<param name="imageh" type="text" size="20" default="225" label="JEV SCALED HEIGHT" description="JEV SCALED HEIGHT TIP" />		
+		<param name="thumbw" type="text" size="20" default="120" label="Thumbnail Width" description="Thumbnail Width TIP" />		
+		<param name="thumbh" type="text" size="20" default="90" label="Thumbnail Height" description="Thumbnail HEIGHT TIP" />		
+		<param name="no_thumbanil" type="text" size="20" default="1500000" label="MAX SIZE FOR THUMBNAIL" description="MAX SIZE FOR THUMBNAIL TIP" />
+		
+		<param name="googlemaps" type="text" size="80" default="http://maps.google.com" label="GOOGLE MAPS URL" description="" />
+		<param name="googlemapskey" type="text" size="80" default="" label="GOOGLE MAPS API KEY" description="" />
+		<param name="long" type="text" size="20" default="" label="INITIAL LONGITUDE" description="" />
+		<param name="lat" type="text" size="20" default="" label="Initial Latitude" description="" />
+		<param name="zoom" type="text" size="20" default="10" label="Initial Zoom" description="" />
+		
+		<param name="presentation" type="list" default="0" label="LAYOUT IN EVENT DETAIL" description="LAYOUT IN EVENT DETAIL TIP">
+			<option value="0">JEV DIV LI</option>
+			<option value="1">JEV LI LI</option>
+			<option value="2">JEV DIV SEPARATOR</option>
+		</param>
+		<param name="separator" type="text" size="10" default="," label="Separator" description="SEPARATOR TIP" />				
+		
+		<param name="template" type="jevtemplate" default="0" label="JEV FIELD TEMPLATE" description="JEV FIELD TEMPLATE DESC" />
+
+		<param name="personselect" type="list" default="0" label="PERSON SELECT IN EDIT" description="PERSON SELECT IN EDIT TIP" >
+			<option value="0">SINGLE SELECT BUTTON</option>
+			<option value="1">SEPARATE BUTTONS PER TYPE</option>
+		</param>
+
+		<param name="jomsociallist" type="jevboolean" default="0" label="JEV JOMSOCIAL LINK" description="JEV JOMSOCIAL LINK DESC" />
+		<param name="cblist" type="jevboolean" default="0" label="JEV CB LINK" description="JEV CB LINK DESC" />
+		
+	</params>
+</config>

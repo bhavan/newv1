@@ -1,0 +1,63 @@
+Stps for Making V2 Instance for client site from "MASTERDEFAULT"
+=========================================================
+
+For Exmaple here I am going to write steps for www.mytest.com
+--------------------------------------------------------------------------------
+
+1. Make Directory "mytest" inside ROOT->PARTNER->MYTEST 
+
+2. Copy "Images" folder from  [ROOT->PARTNER->MASTERDEFAULT->IMAGES]  and Paste it inside [ROOT->PARTNER->MYTEST]
+
+3. Give Proper Folder PERMISSION to Image folder inside ROOT->PARTNER->MYTEST->IMAGES.
+
+4. Create new Database "MYTEST" in MYSql
+
+5. Copy All the Tables from "MASTERDEFAULT DATABASE" to "MYTEST DATABASE", both database and tables should looks identical now.
+
+6. Update "MASTER DATABASE" inside "MASTER TABLE" make new entry for "MYTEST" with following parameters:
+
+	[6.1] site_url  =  www.mytest.com
+
+	[6.2] db_name = mytest 
+
+	[6.3] db_user = root OR (Database User Name) 
+
+	[6.4] db_password =  (Database password)
+
+	[6.5] tpl_folder_name = default
+	Note: For all the New client the TPL folder will be default. 
+
+	[6.6] style_folder_name = default
+	Note: In style folder name specify the site Colour name here from following option and type in small letters. [red, green, blue, silver, default] 
+
+	[6.7] partner_folder_name = mytest
+	Note: partner_folder_name will be same as the site name. if site url is www.mytest.com then (partner_folder_name  = mytest)
+
+
+7. IMPORTANT: Modify "jos_components" table in "MYTEST" DATABASE, Do follwing chnages:
+
+	7.1 Change the row with ID=19 and make changes in "params" column, you will need to chnage 2 things:
+		a. file_path        = partner/mytest/images
+		b. image_path  = partner/mytest/images/stories
+
+	7.2 For your understaindg, belowe I have paste the value from "params" column. Just modify the "file_path" & "image_path" and ALL BANNER & MEDIA MANAGE WILL WORK FINE. 
+
+	This is the actual data inside "params" columns in JOS_COMPONENTS TABLE:
+	---------------------------------------------------------------------------------------------
+	upload_extensions=bmp,csv,doc,epg,gif,ico,jpg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,EPG,GIF,ICO,JPG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS,zip
+upload_maxsize=10000000
+file_path=partner/test2/images
+image_path=partner/test2/images/stories
+restrict_uploads=1
+allowed_media_usergroup=3
+check_mime=1
+image_extensions=bmp,gif,jpg,png
+ignore_extensions=
+upload_mime=image/jpeg,image/gif,image/png,image/bmp,application/x-shockwave-flash,application/msword,application/excel,application/pdf,application/powerpoint,text/plain,application/x-zip
+upload_mime_illegal=text/html
+enable_flash=0
+
+
+	
+
+-------------------------------------------------------------------------------------------------------------------------------xxxxxxxxxxxx-------------------------------------------------------------------------------------------------------------------

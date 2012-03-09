@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="jevents" method="upgrade">
+	<name>JEvents - Time Limits</name>
+	<author>Geraint Edwards</author>
+	<creationDate>January 2010</creationDate>
+	<copyright>(C) 2009-2010 GWE Systems Ltd. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail></authorEmail>
+	<authorUrl>www.gwesystems.com</authorUrl>
+	<version>1.1</version>
+	<description>Limits events displayed to a range of dates.  For example auto archiving expired events or blocking events more than a set time in the future.</description>
+	<files>
+		<filename plugin="jevtimelimit">jevtimelimit.php</filename>
+		<filename>filters/Timelimit.php</filename>
+	</files>
+	<params>
+		<param name="past" type="text" default="-1" label="Past Days" description="Hide events/repeats occuring before this many days in the past.  Use -1 to disable this restriction." />
+		<param name="future" type="text" default="-1" label="Future Days" description="Hide events/repeats occuring after this many days in the future.  Use -1 to disable this restriction." />
+		<param name="override" type="radio" default="0" label="Allow User Override?" description="Allow filter modules to override these constraints?" >
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>	
+</install>

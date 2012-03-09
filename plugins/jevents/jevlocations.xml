@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="jevents" method="upgrade">
+	<name>JEvents - Managed Locations</name>
+	<author>Geraint Edwards</author>
+	<creationDate>November 2010</creationDate>
+	<copyright>(C) 2010 GWE Systems Ltd. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail></authorEmail>
+	<authorUrl>www.gwesystems.com</authorUrl>
+	<version>1.2.2</version>
+	<description>Assign locations from a managed list of locations to event details.</description>
+	<files>
+		<filename plugin="jevlocations">jevlocations.php</filename>
+		<filename>jevlocation.js</filename>
+		<filename>filters/Locationsearch.php</filename>
+		<filename>filters/Locationlookup.php</filename>
+		<filename>filters/Geofilter.php</filename>
+		<filename>filters/Locationcategory.php</filename>
+		<filename>filters/Locationcity.php</filename>
+		<filename>filters/Locationstate.php</filename>
+	</files>
+	<languages folder="languages">
+		<language tag="en-GB">en-GB.plg_jevents_jevlocations.ini</language>
+	</languages>	
+	<params>
+		<param name="showdesc" type="radio" default="0" label="JEV SHOW DESC" description="JEV SHOW DESC TIP" >
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="gwidth" type="text" default="200" label="JEV GOOGLE MAP WIDTH" description="" />		
+		<param name="gheight" type="text" default="150" label="JEV GOOGLE MAP HEIGHT" description="" />
+		<param name="template" type="textarea" cols="40" rows="7" default="" label="JEV LOCATION LAYOUT" description="JEV LOCATION LAYOUT DESC"/>
+		<param name="pwidth" type="text" default="750" label="JEV POPUP WIDTH" description="" />		
+		<param name="pheight" type="text" default="500" label="JEV POPUP HEIGHT" description="" />
+
+		<param name="reducezoom" type="radio" default="3" label="JEV REDUCE ZOOM" description="JEV REDUCE ZOOM TIP" >
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+		</param>
+		
+		<param name="maptype" type="list" default="G_NORMAL_MAP" label="JEV MAP TYPE"  >
+			<option value="G_NORMAL_MAP">JEV GOOGLE ROAD</option>
+			<option value="G_HYBRID_MAP">JEV GOOGLE HYBRID</option>
+			<option value="G_SATELLITE_MAP">JEV GOOGLE SATELLITE</option>
+		</param>
+		<param name="detailpopup" type="radio" default="1" label="JEV DETAIL POPUP" description="JEV DETAIL POPUP TIP" >
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param name="alwayscatlink" type="radio" default="0" label="JEV ALWAYS LINK CATEGORY TABLE" description="JEV ALWAYS LINK CATEGORY TABLE TIP" >
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+
+		<param name="scale" type="radio" default="km" label="JEV DISTANCE SCALE" description="JEV DISTANCE SCALE TIP" >
+			<option value="km">Km</option>
+			<option value="miles">Miles</option>
+		</param>
+
+		<!--
+		<param name="inlists" type="radio" default="0" label="JEV AVAILABLE IN LISTS" description="JEV AVAILABLE IN LISTS DESC" >
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		//-->
+	</params>	
+</install>

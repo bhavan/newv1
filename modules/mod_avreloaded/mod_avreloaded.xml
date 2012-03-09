@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+    <name>AllVideos Reloaded</name>
+    <author>Fritz Elfert</author>
+    <creationDate>2009-05-05</creationDate>	
+    <copyright>Copyright 2007 by Fritz Elfert</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>fritz@fritz-elfert.de</authorEmail>
+    <authorUrl>http://www.fritz-elfert.de</authorUrl>
+    <version>1.2.6</version>
+    <description>See module parameter page for more info</description>
+    <files>
+        <filename module="mod_avreloaded">mod_avreloaded.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+    </files>
+    <params addpath="/administrator/components/com_avreloaded/elements">
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+        <param name="header_text" type="textarea" rows="3" cols="40" default="" label="LBL_HEADERTEXT" description="DSC_HEADERTEXT" />
+        <param name="mediacode" type="textarea" rows="3" cols="40" default="" label="LBL_MEDIACODE" description="DSC_MEDIACODE" />
+        <param type="insertbutton" buttonlabel="LBL_AVRMEDIA" textfield="mediacode" />
+        <param name="footer_text" type="textarea" rows="3" cols="40" default="" label="LBL_FOOTERTEXT" description="DSC_FOOTERTEXT" />
+        <param name="@spacer" type="spacer" default="" label="" description="" />
+        <param name="popup" type="list" default="0" label="LBL_POPUP" description="DSC_POPUP">
+            <option value="0">OPT_NO</option>
+            <option value="1">OPT_WINDOW</option>
+            <option value="2">OPT_LIGHTBOX</option>
+        </param>
+        <param name="pwidth" type="text" default="320" size="5" label="LBL_PWIDTH" description="DSC_PWIDTH" />
+        <param name="pheight" type="text" default="180" size="5" label="LBL_PHEIGHT" description="DSC_PHEIGHT" />
+        <param name="linktxt" type="textarea" rows="3" cols="40" default="" label="LBL_LINKTXT" description="DSC_LINKTXT" />
+    </params>
+    <!-- Language files -->
+    <languages folder="i18n">
+        <language tag="de-DE">de-DE.mod_avreloaded.ini</language>
+        <language tag="en-GB">en-GB.mod_avreloaded.ini</language>
+        <language tag="es-ES">es-ES.mod_avreloaded.ini</language>
+        <language tag="fr-FR">fr-FR.mod_avreloaded.ini</language>
+        <language tag="nl-NL">nl-NL.mod_avreloaded.ini</language>
+        <language tag="pl-PL">pl-PL.mod_avreloaded.ini</language>
+        <language tag="pt-BR">pt-BR.mod_avreloaded.ini</language>
+        <language tag="tr-TR">tr-TR.mod_avreloaded.ini</language>
+    </languages>
+</install>

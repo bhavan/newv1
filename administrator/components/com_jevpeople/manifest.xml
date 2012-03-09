@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install type="component" version="1.5.0" method="upgrade">
+	<name>JEV People</name>
+	<creationDate>October 2010</creationDate>
+	<author>Geraint Edwards</author>
+	<copyright>(C) 2009-2010 GWE Systems Ltd</copyright>
+	<licence>To be Agreed</licence>
+	<authorEmail></authorEmail>
+	<authorUrl>www.gwesystems.com</authorUrl>
+	<version>1.2.0</version>
+	<description>Managed People Extension for JEvents</description>
+
+	<installfile>install/install.php</installfile>
+
+    <files folder="site">
+	    <folder>assets</folder>
+	    <folder>controllers</folder>
+		<folder>filters</folder>
+		<folder>libraries</folder>
+		<folder>views</folder>
+		<filename>jevpeople.php</filename>
+		<filename>metadata.xml</filename>
+    </files>
+    
+	<languages folder="site/language">
+		<language tag="en-GB">en-GB.com_jevpeople.ini</language>
+   	</languages>
+	<media />
+
+	<administration>
+		<menu>JEV People</menu>
+
+	    <files folder="admin">
+		    <folder>assets</folder>
+		    <folder>controllers</folder>
+		    <folder>elements</folder>
+			<folder>install</folder>
+			<folder>libraries</folder>
+			<folder>models</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+						
+			<filename>config.xml</filename>
+			<filename>jevpeople.php</filename>
+	    </files>
+
+		<!-- Admin Language Files -->
+		<languages folder="admin/language">
+			<language tag="en-GB">en-GB.com_jevpeople.ini</language>
+    	</languages>
+ 	</administration>
+
+	<params />
+
+</install>

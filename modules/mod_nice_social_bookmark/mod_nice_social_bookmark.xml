@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/module-install.dtd">
+	<install type="module" version="1.5.0">
+    <name>Nice Social Bookmark</name>
+	<creationDate>18/11/2009</creationDate>
+    <author>Nikola Biškup</author>
+	<authorUrl>www.salamander-studios.com</authorUrl>
+	<license>GNU/GPL</license>
+	<authorEmail>nikola@salamander-studios.com</authorEmail>
+    <version>1.0</version>
+    <description>Joomla 1.5 module for displaying links to most common social sites</description>
+	<files>
+        <filename module="mod_nice_social_bookmark">icons/delicious_aqu_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_aqu_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_aqu_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_aqu_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_log_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_log_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_log_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_log_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_ora_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_ora_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_ora_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_ora_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_rou_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_rou_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_rou_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/delicious_rou_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_aqu_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_aqu_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_aqu_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_aqu_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_log_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_log_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_log_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_log_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_ora_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_ora_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_ora_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_ora_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_rou_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_rou_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_rou_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/digg_rou_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_aqu_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_aqu_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_aqu_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_aqu_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_log_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_log_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_log_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_log_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_ora_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_ora_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_ora_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_ora_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_rou_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_rou_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_rou_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/facebook_rou_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_aqu_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_aqu_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_aqu_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_aqu_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_log_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_log_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_log_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_log_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_ora_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_ora_32.png</filename>
+		<filename module="mod_nice_social_bookmark">icons/google_ora_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_ora_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_rou_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_rou_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_rou_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/google_rou_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_aqu_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_aqu_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_aqu_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_aqu_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_log_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_log_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_log_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_log_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_ora_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_ora_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_ora_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_ora_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_rou_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_rou_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_rou_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/myspace_rou_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_aqu_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_aqu_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_aqu_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_aqu_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_log_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_log_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_log_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_log_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_ora_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_ora_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_ora_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_ora_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_rou_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_rou_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_rou_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/rss_rou_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_aqu_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_aqu_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_aqu_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_aqu_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_log_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_log_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_log_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_log_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_ora_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_ora_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_ora_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_ora_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_rou_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_rou_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_rou_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/stumbleupon_rou_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_aqu_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_aqu_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_aqu_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_aqu_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_log_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_log_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_log_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_log_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_ora_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_ora_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_ora_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_ora_64.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_rou_24.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_rou_32.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_rou_48.png</filename>
+        <filename module="mod_nice_social_bookmark">icons/twitter_rou_64.png</filename>
+        <filename module="mod_nice_social_bookmark">mod_nice_social_bookmark.php</filename>
+    	<filename module="mod_nice_social_bookmark">css/nsb.css</filename>		
+    </files>
+	<params>
+        <param name="isize" type="radio" label="Icon Size" default="32" description="Size of icons to be displayed">
+		<option value="24">24px</option>
+		<option value="32">32px</option>
+		<option value="48">48px</option>
+		<option value="64">64px</option>
+   	</param>
+	<param name="iset" type="list" default="aqu" label="Icon Set" description="Set of icons to be desplayed, u can check icons on website">
+		<option value="aqu">Aquatic</option>
+		<option value="ora">Orange round</option>
+		<option value="log">Logorunner</option>
+		<option value="rou">White round</option>
+	</param>
+	<param name="iposition" type="list" default="center" label="Icon position" description="Set positioin of icons to be desplayed">
+		<option value="left">Left</option>
+		<option value="center">Center</option>
+		<option value="right">Right</option>
+	</param>
+	<param name="s1" type="radio" label="Facebook" default="yes" description="Display the icon of Facebook?">
+		<option value="yes">Yes</option>
+		<option value="no">No</option>
+   	</param>
+	<param name="s2" type="radio" label="MySpace" default="yes" description="Display the icon of MySpace?">
+		<option value="yes">Yes</option>
+		<option value="no">No</option>
+   	</param>
+	<param name="s3" type="radio" label="Twitter" default="yes" description="Display the icon of Twitter?">
+		<option value="yes">Yes</option>
+		<option value="no">No</option>
+   	</param>
+	<param name="s4" type="radio" label="Digg" default="yes" description="Display the icon of Digg?">
+		<option value="yes">Yes</option>
+		<option value="no">No</option>
+   	</param>
+	<param name="s5" type="radio" label="Delicious" default="yes" description="Display the icon of Delicious?">
+		<option value="yes">Yes</option>
+		<option value="no">No</option>
+   	</param>
+	<param name="s6" type="radio" label="Stumbleupon" default="yes" description="Display the icon of Stumbleupon?">
+		<option value="yes">Yes</option>
+		<option value="no">No</option>
+   	</param>
+	<param name="s7" type="radio" label="Google Bookmarks" default="yes" description="Display the icon of Google Bookmarks?">
+		<option value="yes">Yes</option>
+		<option value="no">No</option>
+   	</param>
+
+	<param name="s8" type="radio" label="RSS Feed" default="yes" description="Display the icon of RSS Feed?">
+		<option value="yes">Yes</option>
+		<option value="no">No</option>
+   	</param>	
+	<param name="@spacer" type="spacer" default="" label="" description="" />
+	<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />			
+    </params>
+</install>

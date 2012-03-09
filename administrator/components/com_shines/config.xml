@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<params addpath="/administrator/components/com_content/elements/" >
+		<!--<param name="greeting" type="textarea" rows="5" cols="40" default="Your Greeting" label="Your Greeting" description="Landing page greeting"/>//-->
+		<param name="phocaimagecat" type="text" default="1" label="Phoca gallery image category" description="Category to load images from"/>
+		<param name="phocavideocat" type="text" default="1" label="Phoca gallery video category" description="Category to load videos from"/>
+		<param name="phocauser" type="text" default="1" label="Phoca gallery userid" description="Phoca gallery userid"/>
+		<param name="todayarticle" type="article" default="1" label="Select article for today page" description="" />
+		<param name="aboutarticle" type="article" default="1" label="Select article for about page" description="" />
+		<param name="townname" type="text" default="" size="50" label="Town Name" description=""/>
+		<param name="zip" type="text" default="" size="10" label="Zip" description=""/>
+		<param name="email" type="text" default="" size="50" label="Contact Email" description=""/>
+	</params>	
+</config>

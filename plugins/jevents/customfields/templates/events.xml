@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<params addpath="/plugins/jevents/customfields/" >
+		<!-- Access levels 0=Public, 1=Registered, 2=Special //-->
+		<param name="field4" type="jevrboolean" default="0" label="Featured Event?" required="0" requiredmessage="This is required" description="Will this event be featured at the top of the web page?"  allowoverride="0"  filter="1"  access="0"/>
+	</params>
+</config>
+

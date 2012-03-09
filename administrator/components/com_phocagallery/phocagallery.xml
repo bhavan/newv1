@@ -1,0 +1,63 @@
+	<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install method="upgrade" type="component" version="1.5.0">
+	<name>PhocaGallery</name>
+	<creationDate>30/04/2010</creationDate>
+	<author>Jan Pavelka (www.phoca.cz)</author>
+	<authorEmail></authorEmail>
+	<authorUrl>www.phoca.cz</authorUrl>
+	<copyright>Jan Pavelka</copyright>
+	<license>GNU/GPL</license>
+	<!-- The version string is recorded in the components table -->
+	<version>2.7.0</version>
+	<!-- The description is optional and defaults to the name -->
+	<description>Phoca Gallery</description>
+	
+	
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">uninstall.sql</file>
+		</sql>
+	</uninstall>
+	<uninstallfile>uninstall.phocagallery.php</uninstallfile>
+	
+	
+	<!-- Site Main File Copy Section -->
+	<files folder="front">
+		<filename>views/categories/tmpl/default.php</filename>
+		<filename>views/categories/tmpl/default_map.php</filename>
+		<filename>views/category/tmpl/default.php</filename>
+		<filename>views/category/view.html.php</filename>
+		<filename>views/comment/tmpl/default.php</filename>
+		<filename>views/cooliris3dwall/tmpl/default.php</filename>
+		<filename>views/detail/tmpl/default.php</filename>
+		<filename>views/detail/tmpl/default_download.php</filename>
+		<filename>views/detail/tmpl/default_slideshow.php</filename>
+		<filename>views/detail/tmpl/default_video.php</filename>
+		<filename>views/info/tmpl/default.php</filename>
+		<filename>views/map/tmpl/default.php</filename>
+		<filename>views/user/tmpl/default.php</filename>
+	</files>
+	
+	<administration>
+		<menu img="components/com_phocagallery/assets/images/icon-16-pg-menu.png" link="option=com_phocagallery">Phoca Gallery</menu>
+		<submenu>
+			<menu img="components/com_phocagallery/assets/images/icon-16-pg-control-panel.png" link="option=com_phocagallery">Control Panel</menu>
+			<menu img="components/com_phocagallery/assets/images/icon-16-pg-menu-gal.png" link="option=com_phocagallery&amp;view=phocagallerys">Images</menu>
+			<menu img="components/com_phocagallery/assets/images/icon-16-pg-menu-cat.png" link="option=com_phocagallery&amp;view=phocagallerycs">Categories</menu>
+			<menu img="components/com_phocagallery/assets/images/icon-16-pg-menu-theme.png" link="option=com_phocagallery&amp;view=phocagalleryt">Themes</menu>
+			<menu img="components/com_phocagallery/assets/images/icon-16-pg-menu-vote.png" link="option=com_phocagallery&amp;view=phocagalleryra">Category Rating</menu>
+			<menu img="components/com_phocagallery/assets/images/icon-16-pg-menu-vote-img.png" link="option=com_phocagallery&amp;view=phocagalleryraimg">Image Rating</menu>
+			<menu img="components/com_phocagallery/assets/images/icon-16-pg-menu-comment.png" link="option=com_phocagallery&amp;view=phocagallerycos">Category Comments</menu>
+			<menu img="components/com_phocagallery/assets/images/icon-16-pg-menu-comment-img.png" link="option=com_phocagallery&amp;view=phocagallerycoimgs">Image Comments</menu>
+			<menu img="components/com_phocagallery/assets/images/icon-16-pg-menu-users.png" link="option=com_phocagallery&amp;view=phocagalleryusers">Users</menu>
+			<menu img="components/com_phocagallery/assets/images/icon-16-pg-menu-info.png" link="option=com_phocagallery&amp;view=phocagalleryin">Info</menu>
+		</submenu>
+		
+		<files>
+			<filename>phocagallery.xml</filename>
+			<filename>uninstall.phocagallery.php</filename>
+			<filename>uninstall.sql</filename>
+		</files>
+	</administration>
+</install>

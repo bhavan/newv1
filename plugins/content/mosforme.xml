@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install version="1.5" type="plugin" group="content">
+	<name>Content - mosforme</name>
+	<author>www.rsjoomla.com</author>
+	<creationDate>May 2007</creationDate>
+	<copyright>(C) 2007 www.rsjoomla.com</copyright>
+	<authorEmail>alex@rsjoomla.com</authorEmail>
+	<authorUrl>www.rsjoomla.com</authorUrl>
+	<version>1.0.4</version>
+	<description>Loads RSform! Forms within Content, Syntax: {mosforme 1}&lt;br/&gt;&lt;br/&gt;&lt;font color="red"&gt;&lt;strong&gt;Make sure you publish the mambot before you use it.&lt;/strong&gt;&lt;/font&gt;</description>
+	<files>
+		<filename plugin="mosforme">mosforme.php</filename>
+	</files>
+	<params>
+	</params>
+</install>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<params addpath="/plugins/jevents/customfields/" >
+		<!-- Access levels 0=Public, 1=Registered, 2=Special //-->
+
+
+		<param name="field5" type="jevrboolean" default="0" label="Featured Location?" required="1" requiredmessage="This is required" description="Checking YES will feature this location on the Visting Tallahasse page of the website."  allowoverride="0"  filter="1"  access="0"/>
+		
+	</params>
+</config>

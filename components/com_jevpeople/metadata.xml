@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<name>
+	JEvents
+	</name>
+	<menu>
+		<options var="task" >
+			<option value='people.overview' name="Manage People" msg="Manage People" />
+			<option value='people.people' name="List of People" msg="People List" />			
+		</options>
+	</menu>
+	<state>
+		<name>JEvents People Public LIST</name>
+		<params  addpath="/administrator/components/com_jevpeople/elements/">
+			<param name="@spacer" type="jevinfo" default="JEV PEOPLE PUBLIC LIST"   label="" description="" />	
+
+			<param name='checkevents' type='jevboolean' default="1" label="Check for events before offering link" description="Will check for available events based on days before and after below" />
+			<param name="checkeventbefore" type="text" size="3" default="30" label="Days before today to check for events" description="" />
+			<param name="checkeventafter" type="text" size="3" default="30" label="Days after today to check for events" description="" />
+			
+			<param name="targetmenu" type="jevmenu" default="" label="Target Menu Item" description="Menu item for target page" />
+
+			<param name="type" type="jevptype" default="" label="RESTRICT TO TYPE" description="" />
+			<param name="jevpcat" type="jevpcategory" default="" label="RESTRICT TO CATEGORY" description="" />
+			
+			<param name="view" type="list" default="month.calendar" label="JEvents view" description="If linking to events - which view?  Only used if target menu item is not set or is not a JEvents menu item">
+				<option value="month.calendar">Monthly Calendar</option>
+				<option value="year.listevents">Year List</option>
+				<option value="week.listevents">Week List</option>
+				<option value="day.listevents">Day List</option>
+			</param>
+		</params>
+	</state>
+</metadata>

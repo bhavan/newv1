@@ -1,0 +1,129 @@
+<?php
+
+//ini_set('error_reporting',1);
+//ini_set('display_errors',1);
+
+include("connection.php");
+
+
+$query = "select * from jos_phocagallery_categories where id<>2 and published=1 and approved=1 order by id desc";
+
+$rec=mysql_query($query) or die(mysql_error());
+
+//*********************************************
+
+
+  //$param = db_fetch("select * from `jos_phocagallery_categories` where id != 2 and `published` = 1 and `approved` = 1 order by ordering asc", true, true);
+  
+  $query = "select * from jos_phocagallery_categories where id<>2 and published=1 and approved=1 order by ordering";
+	$rec=mysql_query($query) or die(mysql_error());
+	
+	$param = array();
+	while($r=mysql_fetch_assoc($rec)) {
+		$param[] = $r;
+	}
+		
+	 foreach($param as $k => $v) {
+
+			$query1 = "select id, filename from `jos_phocagallery` where `published` = 1 and `approved` = 1 and `catid` = ".$v['id'] ." ORDER BY ordering"; 
+			$rec1=mysql_query($query1) or die(mysql_error());
+
+			$v['photos'] = array();
+			while($r1=mysql_fetch_assoc($rec1)) {
+				$v['photos'][] = $r1;
+			}
+			
+			$id = rand(0, (count($v['photos']) - 1));
+			
+			$tmp_arr = explode('/', $v['photos'][$id]['filename']);
+			$userfolder = '';
+			$filename = $v['photos'][$id]['filename'];
+			if(count($tmp_arr) > 1) {
+				$userfolder = $tmp_arr[0].'/';
+				$filename = $tmp_arr[1];
+			}
+			unset($tmp_arr);
+			if(trim($userfolder) == '' && trim($filename) == '')
+				$param[$k]['avatar'] = '';
+			else
+			$param[$k]['avatar'] = '/partner/'.$_SESSION["partner_folder_name"].'/images/phocagallery/'.$userfolder.'thumbs/phoca_thumb_s_'.$filename;
+      
+	 }
+	
+
+//*********************************************
+
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="index,follow" name="robots" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<link href="pics/homescreen.gif" rel="apple-touch-icon" />
+<meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
+<link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />
+<script src="javascript/functions.js" type="text/javascript"></script>
+<title><?=$site_name?>
+</title>
+<!--<link href="pics/startup.png" rel="apple-touch-startup-image" /> -->
+<meta content="destin, vacactions in destin florida, destin, florida, real estate, sandestin resort, beaches, destin fl, maps of florida, hotels, hotels in florida, destin fishing, destin hotels, best florida beaches, florida beach house rentals, destin vacation rentals for destin, destin real estate, best beaches in florida, condo rentals in destin, vacaction rentals, fort walton beach, destin fishing, fl hotels, destin restaurants, florida beach hotels, hotels in destin, beaches in florida, destin, destin fl" name="keywords" />
+<meta content="Destin Florida's FREE iPhone application and website guide to local events, live music, restaurants and attractions" name="description" />
+</head>
+
+<body>
+
+<div id="topbar">
+<div id="title">Galleries</div>
+</div>
+<div id="content">
+	
+
+	<ul class="pageitem">
+		
+    <?php 
+	  foreach($param as $v) 
+	  {
+	  	if(isset($v['avatar']) && trim($v['avatar']) != '') 
+	  	{
+	  	?>
+      <li class="textbox"  style="padding-bottom:0px;">
+     <table><tr><td>
+ <a href="photos.php?id=<?=$v['id']?>">   
+ <img class="photo_container" src="<?php echo $v['avatar']; ?>" alt="<?php echo $v['title']; ?>" title="<?php echo $v['title']; ?>" />
+</a>
+</td><td valign="middle;">
+&nbsp;&nbsp;
+     <font color="#999999">
+     <strong>
+     <a href="photos.php?id=<?=$v['id']?>"><?=$v['title']?></a>
+     </strong></font> 
+     </td></tr></table>
+
+     </li>
+		
+		<?php
+			}
+    }
+    ?>
+		
+	</ul>
+	
+	
+	
+	
+
+	
+	
+	
+</div>
+
+<div id="footer">
+
+	&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a></div></div>
+<div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteRule ^college_life.php$ events.php?catids=|81|82|83|84|88|89|42
+RewriteRule ^hs_life.php$ events.php?catids=|77|79|80
+RewriteRule ^leach.php$ events.php?catids=|85

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="jevents" method="upgrade">
+	<name>JEvents - Anonymous User Event Creation</name>
+	<author>Geraint Edwards</author>
+	<creationDate>April 2010</creationDate>
+	<copyright>(C) 2009-2010 GWE Systems Ltd. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail></authorEmail>
+	<authorUrl>www.gwesystems.com</authorUrl>
+	<version>1.3</version>
+	<description>Enables anonymous users to create events.</description>
+	<files>
+		<filename plugin="jevanonuser">jevanonuser.php</filename>
+		<folder>anonuserlib</folder>
+	</files>
+	<languages folder="languages">
+		<language tag="en-GB">en-GB.plg_jevents_jevanonuser.ini</language>
+   	</languages>	
+	<params>
+		<param name="recaptchapublic" type="text" default="" label="JEV RECAPTCHA PUBLIC KEY" description=""  />
+		<param name="recaptchaprivate" type="text" default="" label="JEV RECAPTCHA PRIVATE KEY" description=""  />
+		<param name="canpublishown" type="radio" default="0" label="JEV CAN PUBLISH" description=""  >
+			<option value='0'>JEV NO</option>
+			<option value='1'>JEV YES</option>
+		</param>
+	</params>		
+</install>

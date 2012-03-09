@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# rewrite _T files to thumbnails folder!
+RewriteRule ^(.*)_t\.(.*)$ /images/phocagallery/image_uploader/thumbs/phoca_thumb_s_$1.$2 [L]
+
+RewriteCond %{HTTP_USER_AGENT} thumbs! [NC]
+RewriteCond  %{REQUEST_URI} !thumbs\/phoca_thumb_[slm]_(.*)
+RewriteRule ^(.*)$ thumbs/phoca_thumb_l_$1 [L]

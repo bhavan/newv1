@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.5" method="upgrade">
+<name>RSform</name>
+<creationDate>27/01/2010</creationDate>
+<author>www.rsjoomla.com</author>
+<copyright>(C) 2007-2010 www.rsjoomla.com</copyright>
+<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license> 
+<authorEmail>support@rsjoomla.com</authorEmail>
+<authorUrl>www.rsjoomla.com</authorUrl>
+<version>1.2.0</version>
+<description>With RSForm!Pro you can quickly add forms to your Joomla! website.</description>
+
+<installfile>install.rsform.php</installfile>
+<uninstallfile>uninstall.rsform.php</uninstallfile>
+
+<install>
+	<sql>
+		<file driver="mysql" charset="utf8">install.rsform.utf8.sql</file>
+		<file driver="mysql" charset="utf8">sample.rsform.sql</file>
+		
+		<file driver="mysql">install.rsform.nonutf8.sql</file>
+		<file driver="mysql">sample.rsform.sql</file>
+	</sql>
+</install>
+
+<uninstall>
+	<sql>
+		<file driver="mysql" charset="utf8">uninstall.rsform.sql</file>
+		
+		<file driver="mysql">uninstall.rsform.sql</file>
+	</sql>
+</uninstall>
+
+<files folder="site">
+	<filename>captcha.class.php</filename>
+	<filename>front.css</filename>
+	<filename>index.html</filename>
+	<filename>router.php</filename>
+	<filename>rsform.class.php</filename>
+	<filename>rsform.html.php</filename>
+	<filename>rsform.php</filename>
+	<filename>submissions.class.php</filename>
+	<folder>calendar</folder>
+	<folder>controller</folder>
+	<folder>fonts</folder>
+	<folder>images</folder>
+	<folder>languages</folder>
+	<folder>uploads</folder>
+</files>
+
+<administration>
+	<menu img="../administrator/components/com_rsform/images/rsformpro.gif">RSform!Pro</menu>
+	<submenu>
+		  <menu task="forms.manage">Manage Forms</menu>
+		  <menu task="submissions.manage">Manage Submissions</menu>
+		  <menu task="configuration.edit">Configuration</menu>
+		  <menu task="backup.restore">Backup/Restore</menu>
+		  <menu task="updates.manage">Updates</menu>
+		  <menu task="goto.plugins">Plugins</menu>
+	</submenu>
+
+	<files>
+		<filename>install.rsform.php</filename>
+		<filename>uninstall.rsform.php</filename>
+		<filename>install.rsform.utf8.sql</filename>
+		<filename>install.rsform.nonutf8.sql</filename>
+		<filename>uninstall.rsform.sql</filename>
+		<filename>sample.rsform.sql</filename>
+	</files>
+	
+	<files folder="admin">
+		<filename>admin.rsform.html.php</filename>
+		<filename>admin.rsform.php</filename>
+		<filename>index.html</filename>
+		<filename>style.css</filename>
+		<filename>toolbar.rsform.html.php</filename>
+		<filename>toolbar.rsform.php</filename>
+		<folder>images</folder>
+		<folder>layouts</folder>
+	</files>
+</administration>
+
+<params>
+	<param name="formId" type="text" default="1" label="Form Id" description="The Id of the Form. You can find it in your Manage Forms screen (the last column)." /> 
+</params>
+
+</install>

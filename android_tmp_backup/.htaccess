@@ -1,0 +1,6 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^android.destinshines.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www.android.destinshines.com$
+RewriteRule ^/?$ "http\:\/\/market\.android\.com\/search\?q\=pname\:destinshines\.com" [R=301,L]
+

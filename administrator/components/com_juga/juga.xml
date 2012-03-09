@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall version="1.0.12" type="component">
+    <name>juga</name>
+    <version>1.5</version>
+    <creationDate>02/01/2008</creationDate>
+    <author>Dioscouri.com</author>
+    <authorEmail>info@dioscouri.com</authorEmail>
+    <authorUrl>http://www.dioscouri.com</authorUrl>
+    <copyright>2008 Dioscouri.com</copyright>
+    <license>GNU General Public License</license>
+    <description>JUGA allows finer control over which users can access items on your site.  Please be sure to check you JUGA installation (via JUGA -> Tools) if you are upgrading from a previous version.</description>
+    <files>
+        <filename>juga.html.php</filename>
+        <filename>juga.php</filename>
+		<filename>index.html</filename>
+    </files>
+    <install>
+        <queries>
+            <query id="6" table="#__juga">	
+				CREATE TABLE IF NOT EXISTS `#__juga` (
+				  `id` int(11) NOT NULL auto_increment,
+				  `title` varchar(255) NOT NULL,
+				  `description` text NOT NULL,
+				  `value` varchar(255) NOT NULL,
+				  `checked_out` int(11) unsigned NOT NULL default &apos;0&apos;,
+				  `checked_out_time` datetime NOT NULL,
+				  PRIMARY KEY  (`id`)
+				) TYPE=MyISAM;			
+			</query>
+            <query id="7" table="#__juga_g2i">				
+				CREATE TABLE IF NOT EXISTS `#__juga_g2i` (
+				  `group_id` int(11) NOT NULL,
+				  `item_id` int(11) NOT NULL,
+				  PRIMARY KEY  (`group_id`,`item_id`)
+				) TYPE=MyISAM;
+			</query>
+            <query id="8" table="#__juga_groups">				
+				CREATE TABLE IF NOT EXISTS `#__juga_groups` (
+				  `id` int(11) NOT NULL auto_increment,
+				  `title` varchar(255) NOT NULL,
+				  `description` text NOT NULL,
+				  `checked_out` int(11) unsigned NOT NULL default &apos;0&apos;,
+				  `checked_out_time` datetime NOT NULL,
+				  PRIMARY KEY  (`id`)
+				) TYPE=MyISAM;
+			</query>
+            <query id="9" table="#__juga_items">				
+				CREATE TABLE IF NOT EXISTS `#__juga_items` (
+				  `id` int(11) NOT NULL auto_increment,
+				  `title` varchar(255) NOT NULL,
+				  `site_option` varchar(255) NOT NULL,
+				  `site_section` varchar(255) NOT NULL,
+				  `site_view` varchar(255) NOT NULL,
+				  `site_task` varchar(255) NOT NULL,
+				  `type` varchar(255) NOT NULL,
+				  `type_id` int(11) NOT NULL,
+				  `error_url_published` tinyint(1) NOT NULL default &apos;0&apos;,
+				  `error_url` varchar(250) NOT NULL,
+				  `checked_out` int(11) unsigned NOT NULL default &apos;0&apos;,
+				  `checked_out_time` datetime NOT NULL,
+				  `option_exclude` tinyint(1) NOT NULL,
+				  PRIMARY KEY  (`id`)
+				) TYPE=MyISAM;
+			</query>
+            <query id="10" table="#__juga_u2g">				
+				CREATE TABLE IF NOT EXISTS `#__juga_u2g` (
+				  `user_id` int(11) NOT NULL,
+				  `group_id` int(11) NOT NULL,
+				  PRIMARY KEY  (`user_id`,`group_id`)
+				) TYPE=MyISAM;
+			</query>
+			<query>
+				CREATE TABLE IF NOT EXISTS `#__juga_codes` (
+				  `id` int(255) NOT NULL auto_increment,
+				  `title` varchar(255) NOT NULL,
+				  `description` text NOT NULL,
+				  `group_id` int(11) NOT NULL,
+				  `published` tinyint(1) NOT NULL,
+				  `publish_up` datetime NOT NULL default '0000-00-00 00:00:00',
+				  `publish_down` datetime NOT NULL default '0000-00-00 00:00:00',
+				  `times_allowed` int(11) unsigned NOT NULL default '0',
+				  `hits` int(11) unsigned NOT NULL default '0',
+				  `checked_out` int(11) unsigned NOT NULL,
+				  `checked_out_time` datetime NOT NULL,
+				  PRIMARY KEY  (`id`)
+				) TYPE=MyISAM ;
+			</query>	
+        </queries>
+    </install>
+    <administration>
+        <files>
+            <filename>admin.juga.html.php</filename>
+            <filename>admin.juga.php</filename>
+            <filename>help/index.html</filename>
+            <filename>help/help.css</filename>
+            <filename>help/screen.juga_english.html</filename>
+            <filename>includes/index.html</filename>
+            <filename>includes/css/index.html</filename>
+            <filename>includes/css/juga.css</filename>
+			<filename>includes/images/index.html</filename>
+            <filename>includes/images/juga.png</filename>
+            <filename>includes/images/site_items_01.png</filename>
+            <filename>includes/images/cut_f2.png</filename>
+            <filename>includes/images/file_f2.png</filename>
+            <filename>includes/images/folder_add_f2.png</filename>
+            <filename>includes/images/go_f2.png</filename>
+            <filename>includes/images/groups_f2.png</filename>
+            <filename>includes/images/move_f2.png</filename>
+            <filename>includes/images/reload_f2.png</filename>
+            <filename>includes/images/switch_f2.png</filename>			
+            <filename>juga.class.php</filename>
+            <filename>juga.xml</filename>
+            <filename>languages/index.html</filename>
+            <filename>languages/english.php</filename>
+            <filename>languages/german.php</filename>
+            <filename>languages/germanf.php</filename>
+            <filename>languages/germani.php</filename>
+            <filename>toolbar.juga.html.php</filename>
+            <filename>toolbar.juga.php</filename>
+        </files>
+        <menu link="option=com_juga">Juga</menu>
+    </administration>
+    <params />
+</mosinstall>

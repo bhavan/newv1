@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="jevents" method="upgrade">
+	<name>JEvents - Managed People</name>
+	<author>Geraint Edwards</author>
+	<creationDate>November 2010</creationDate>
+	<copyright>(C) 2009-2010 GWE Systems Ltd. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail></authorEmail>
+	<authorUrl>www.gwesystems.com</authorUrl>
+	<version>1.2.1</version>
+	<description>Assign People/Organisations from a managed list to event details.  Assign artists or booking agencies to an event.</description>
+	<files>
+		<filename plugin="jevpeople">jevpeople.php</filename>
+		<filename>filters/Peoplesearch.php</filename>
+		<filename>filters/Peoplelookup.php</filename>
+	</files>
+	<params>
+		<param name="searchtype" type="radio" default="0" label="Search Type?" description="" >
+			<option value="0">Free Text</option>
+			<option value="1">Select from List (not implemented yet)</option>
+		</param>
+		<param name="inlists" type="radio" default="0" label="JEV AVAILABLE IN LISTS" description="JEV AVAILABLE IN LISTS DESC" >
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>	
+</install>

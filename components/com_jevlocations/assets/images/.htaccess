@@ -1,0 +1,14 @@
+
+##  Can be commented out if causes errors, see notes above.
+Options +FollowSymLinks
+
+#
+#  mod_rewrite in use
+
+RewriteEngine On
+
+########## Begin - Joomla! core SEF Section
+#
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule (.*) image.php

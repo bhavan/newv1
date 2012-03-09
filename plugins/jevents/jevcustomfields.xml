@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="jevents" method="upgrade">
+	<name>JEvents - Custom Fields</name>
+	<author>Geraint Edwards</author>
+	<creationDate>November 2010</creationDate>
+	<copyright>(C) 2009-2010 GWE Systems Ltd. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail></authorEmail>
+	<authorUrl>www.gwesystems.com</authorUrl>
+	<version>0.8.2</version>
+	<description>Add Custom Fields to Event Descriptions.</description>
+	<files>
+		<filename plugin="jevcustomfields">jevcustomfields.php</filename>
+		<filename>filters/Customfield.php</filename>		
+		<folder>customfields</folder>
+	</files>
+	<languages folder="languages">
+		<language tag="en-GB">en-GB.plg_jevents_jevcustomfields.ini</language>
+   	</languages>	
+	<params addpath="/plugins/jevents/customfields/">
+		<param name="template" type="jevtemplate" default="0" label="JEV FIELD TEMPLATE" description="JEV FIELD TEMPLATE DESC" />
+		<param name="outputhtml" type="jevboolean" default="1" label="JEV OUTPUT HTML" description="JEV OUTPUT HTML DESC" />
+		<param name="inlists" type="jevboolean" default="0" label="JEV AVAILABLE IN LISTS" description="JEV AVAILABLE IN LISTS DESC" />
+		<param name="templatetop" type="text" default="&lt;table border='0'&gt;" label="JEV TEMPLATE TOP LABEL" description="JEV TEMPLATE TOP DESC" />
+		<param name="templatebody" type="textarea" default="&lt;tr&gt;&lt;td class='label'&gt;{LABEL}&lt;/td&gt;&lt;td&gt;{VALUE}&lt;/td&gt;&lt;/tr&gt;" cols="30" rows="3" label="JEV TEMPLATE BODY LABEL" description="JEV TEMPLATE BODY DESC" />
+		<param name="templatebottom" type="text" default="&lt;/table&gt;" label="JEV TEMPLATE BOTTOM LABEL" description="JEV TEMPLATE BOTTOM DESC" />
+		<param name="" type="spacer" />
+	</params>	
+</install>

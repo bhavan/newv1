@@ -1,0 +1,8 @@
+[26-May-2011 01:51:33] PHP Warning:  require_once(/home/tapdesti/public_html/android/includes/defines.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/tapdesti/public_html/android/event.php on line 21
+[26-May-2011 01:51:33] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/home/tapdesti/public_html/android/includes/defines.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/tapdesti/public_html/android/event.php on line 21
+[22-Jun-2011 11:30:34] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/tapdesti/public_html/android/deals.php on line 47
+[22-Jun-2011 11:30:34] PHP Parse error:  syntax error, unexpected '"' in /home/tapdesti/public_html/android/deals.php on line 47
+[22-Jun-2011 11:34:26] PHP Warning:  require_once(/home/tapdesti/public_html/android/includes/defines.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/tapdesti/public_html/android/event.php on line 21
+[22-Jun-2011 11:34:26] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '/home/tapdesti/public_html/android/includes/defines.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/tapdesti/public_html/android/event.php on line 21
+[22-Jun-2011 11:47:13] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/tapdesti/public_html/android/deals.php on line 47
+[22-Jun-2011 11:47:13] PHP Parse error:  syntax error, unexpected '"' in /home/tapdesti/public_html/android/deals.php on line 47
