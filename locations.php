@@ -18,7 +18,7 @@ if($_POST['search_rcd']=="Search Places") {
 <html>
 <head>
 <title><?php echo $var->site_name.' | '.$var->page_title; ?></title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
 <meta name="description" content="<?php echo $var->extra_meta; ?>" />
@@ -44,7 +44,7 @@ if($_POST['search_rcd']=="Search Places") {
     <?php m_aside(); ?>
 	</aside> <!-- left Column -->
 	<section>
-    <h2><?php echo $var->site_name; ?> Places</h2>
+    <h2><?php echo $var->site_name; ?> <?php echo $var->page_title; ?></h2>
     <div style="width:350px;display:block;float:left;">
       <p>
         <?php m_dining_intro(); ?>

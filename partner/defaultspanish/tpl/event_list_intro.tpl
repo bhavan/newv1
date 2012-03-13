@@ -1,5 +1,5 @@
 <div class="infoBox">
-  <h2>Event Calendar</h2>
+  <h2>CALENDARIO DE EVENTOS</h2>
   <div style="width:350px;display:block;float:left;margin-bottom:20px;">
     <?php echo $intro; ?>
   </div>

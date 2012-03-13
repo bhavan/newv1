@@ -7,7 +7,6 @@ include("indexiphone.php");
 exit;
 }
 
-
 require('jevents.php');
 
 if (isset($_SESSION['__default']['application.queue'][0]['message']))
@@ -25,7 +24,7 @@ _init();
 $web_root = 'http';
 if(isset($_SERVER['HTTPS']))
 {
-$web_root .= ($_SERVER['HTTPS'] == 'on' ? 's' : '');
+ $web_root .= ($_SERVER['HTTPS'] == 'on' ? 's' : '');
 }
 $web_root .= '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'];
 preg_match('/https?:\/\/.*\//i', $web_root, $matches);
@@ -38,7 +37,7 @@ $web_root = $matches[0];
 <html>
 <head>
 <title><?php echo $var->site_name.' | '.$var->page_title; ?></title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
 <meta name="description" content="<?php echo $var->extra_meta; ?>" />

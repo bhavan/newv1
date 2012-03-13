@@ -262,6 +262,10 @@ text-shadow: 1px 1px 0px #fff;
 
 #weather img{position: relative; top: 4px;}
 
+.spanish_icon{width:441px !important;}
+
+
+
 #download{
 
 display: block;
@@ -630,7 +634,7 @@ display: block;
 
 position: absolute;
 
-top: 180px;
+top: 192px;
 
 left: 375px;
 
@@ -708,7 +712,7 @@ background: #555 url(../images/navBg.png);
 
 #footerWrap{
 
-width: 810px;
+width: 878px;
 
 padding-top: 16px;
 

@@ -11,7 +11,7 @@ _init();
 <html>
 <head>
 <title><?php echo $var->site_name.' | '.$var->page_title; ?></title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
 <meta name="description" content="<?php echo $var->extra_meta; ?>" />
@@ -38,7 +38,7 @@ _init();
     <?php m_aside(); ?>
 	</aside> <!-- left Column -->
 	<section>
-    <h2>Contact Us</h2>
+    <h2><?php echo $var->page_title; ?></h2>
 	<br />
 	<!-- 	// In line Number 44 ; for different form you can change just form id.   Example : http://www.destinshines.com/index.php?option=com_rsform&formId=(Here_Your_form_Id)&tmpl=component -->
 	<div id="my_area" style="padding:15px; width:680px;"><p>

@@ -147,8 +147,13 @@ font-size: 22px;
 text-shadow: 1px 1px 0px #fff;
 }
 #weather img{position: relative; top: 4px;}
+
+.spanish_icon{width:360px !important;}
+
+.spanish_nav {width:663px !important;}
+
 #download{
-display: block;
+display: block;color:#fff;
 width: 336px;
 height: 41px;
 position: absolute;
@@ -352,24 +357,37 @@ display: block;
 height: 32px;
 width: 87px;
 position: absolute;
-top: 180px;
+top: 192px;
 left: 375px;
 text-indent: -999em;
 background: url(../images/photoNav.png);
 }
-#prevPhoto:hover{background-position: 0 bottom;}
+
+.sp_but{
+display: block;
+height: 32px;
+width: 87px;
+position: absolute;
+top: 194px;
+left: 375px;
+text-indent: -999em;
+background: url(../images/photoNav_sp.png) !important;
+
+}
+
+#prevPhoto:hover{background-position: 0 bottom !important;}
 #randomPhoto{
 left: 477px;
 width: 107px;
-background-position: -87px 0;
+background-position: -87px 0 !important;
 }
-#randomPhoto:hover{background-position: -87px bottom;}
+#randomPhoto:hover{background-position: -87px bottom !important;}
 #nextPhoto{
 left: 600px;
 width: 87px;
-background-position: -194px 0;
+background-position: -194px 0 !important;
 }
-#nextPhoto:hover{background-position: -194px bottom;}
+#nextPhoto:hover{background-position: -194px bottom !important;}
 .adTwoThirtyFour, .adTwoThirtyFourSecond{
 width: 241px;
 height: 67px;
@@ -388,7 +406,7 @@ height: 230px;
 background: #555 url(../images/footerBg.png) repeat-x;
 }
 #footerWrap{
-width: 810px;
+width: 878px;
 padding-top: 16px;
 margin: 0 auto;
 color: #b5b5b5;

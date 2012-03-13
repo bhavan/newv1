@@ -18,7 +18,7 @@ if($_POST['search_rcd']=="Search Restaurants") {
 <html>
 <head>
 <title><?php echo $var->site_name.' | '.$var->page_title; ?></title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
 <meta name="description" content="<?php echo $var->extra_meta; ?>" />
@@ -44,7 +44,7 @@ if($_POST['search_rcd']=="Search Restaurants") {
     <?php m_aside(); ?>
 	</aside> <!-- left Column -->
 	<section>
-    <h2><?php echo $var->site_name; ?> Restaurants</h2>
+    <h2><?php echo $var->site_name; ?> <?php echo $var->page_title; ?></h2>
     <div style="width:350px;display:block;float:left;">
       <p>
         <?php m_dining_intro(); ?>
@@ -77,7 +77,7 @@ if($_POST['search_rcd']=="Search Restaurants") {
 
 
     <?php
-	$rec=mysql_query("select * from jos_categories where 	(parent_id=152 OR id=152) AND section='com_jevlocations2' and published=1 order by `ordering`") or die(mysql_error());
+	$rec=mysql_query("select * from jos_categories where (parent_id=152 OR id=152) AND section='com_jevlocations2' and published=1 order by `ordering`") or die(mysql_error());
 	while($row=mysql_fetch_array($rec))
 	{
 		if (m_location_count($row['title'],false, $searchdata))

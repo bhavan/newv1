@@ -80,8 +80,8 @@ zoom: 1;
 }
 nav ul li a, nav ul li a:visited{
 display: block;
-padding: 14px 10px 9px;
-margin-left: 10px;
+padding: 14px 8px 9px;
+margin-left: 8px;
 font-size: 18px;
 text-transform: uppercase;
 color: #fff;
@@ -124,6 +124,11 @@ font-size: 22px;
 text-shadow: 1px 1px 0px #fff;
 }
 #weather img{position: relative; top: 4px;}
+
+.spanish_icon{width:418px !important;}
+
+.spanish_nav {width:710px !important;}
+
 #download {
     bottom: 6px;
     color: #666666;
@@ -133,7 +138,7 @@ text-shadow: 1px 1px 0px #fff;
     height: 41px;
     position: absolute;
     right: 0;
-    width: 345px;
+    width: 336px;
 }
 
 #download p {
@@ -326,29 +331,49 @@ font-size: 13px;
 font-weight: bold;
 }
 #photos a{color: #fff;}
+
 #prevPhoto, #nextPhoto, #randomPhoto{
 display: block;
 height: 32px;
 width: 87px;
 position: absolute;
-top: 180px;
+top: 194px;
 left: 375px;
 text-indent: -999em;
 background: url(../images/photoNav.png);
+
 }
-#prevPhoto:hover{background-position: 0 bottom;}
+
+.sp_but{
+display: block;
+height: 32px;
+width: 87px;
+position: absolute;
+top: 194px;
+left: 375px;
+text-indent: -999em;
+background: url(../images/photoNav_sp.png) !important;
+
+}
+
+
+#prevPhoto:hover{background-position: 0 bottom !important;}
+
 #randomPhoto{
 left: 477px;
 width: 107px;
-background-position: -87px 0;
+background-position: -87px 0 !important;
 }
-#randomPhoto:hover{background-position: -87px bottom;}
+
+#randomPhoto:hover{background-position: -87px bottom !important;}
+
 #nextPhoto{
 left: 600px;
 width: 87px;
-background-position: -194px 0;
+background-position: -194px 0 !important;
 }
-#nextPhoto:hover{background-position: -194px bottom;}
+#nextPhoto:hover{background-position: -194px bottom !important;}
+
 .adTwoThirtyFour, .adTwoThirtyFourSecond{
 width: 241px;
 height: 67px;
@@ -367,7 +392,7 @@ height: 230px;
 background: #68d2f9 url(../images/footerBg.png) repeat-x;
 }
 #footerWrap{
-width: 810px;
+width: 878px;
 padding-top: 16px;
 margin: 0 auto;
 color: #096e97;
