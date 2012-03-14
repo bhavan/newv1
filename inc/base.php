@@ -308,9 +308,22 @@ function id_from_phoca_cat($cat) {
 
 /***************** [START]  module functions  [START] ******************/
 
+/***************** [START]  module functions  [START] ******************/
+/* ORIGINAL V1 FUNCTION */
+/*
 function m_header() {
-  global $var;
-  require($var->tpl_path."header.tpl");
+	global $var;
+	require($var->tpl_path."header.tpl");
+}
+*/
+
+function m_header() {
+	global $var;
+	if($_SESSION['tpl_menu_folder_name'] == "default" || $_SESSION['tpl_menu_folder_name'] == "defaultspanish" ) {
+		require($var->tpl_path."header.tpl");
+	} else {
+		require("partner/".$_SESSION['tpl_menu_folder_name']."/tpl/header.tpl");
+	}
 }
 
 function m_footer() {
@@ -359,7 +372,7 @@ function m_featured_event() {
 
 function m_event_list_intro() {
   global $var;
-  $header = "Event Calendar";
+  // $header = "Event Calendar";
   $intro = db_fetch("select introtext from `jos_content` where `title` = 'Events Page Introduction'");
   require($var->tpl_path."event_list_intro.tpl");
 }

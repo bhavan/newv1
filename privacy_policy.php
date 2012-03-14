@@ -11,7 +11,7 @@ _init();
 <html>
 <head>
 <title><?php echo $var->site_name.' | '.$var->page_title; ?></title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
 <meta name="description" content="<?php echo $var->extra_meta; ?>" />
@@ -37,7 +37,7 @@ _init();
     <?php m_aside(); ?>
 	</aside> <!-- left Column -->
 	<section>
-    <h2>Privacy Policy</h2>
+    <h2><?php echo $var->page_title; ?></h2>
     <?php m_article('Privacy Policy'); ?>
 	</section> <!-- rightColumn -->
 </div> <!-- wrapper -->

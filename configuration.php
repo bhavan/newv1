@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors",0);
 class JConfig {
 	var $offline = '0';
 	var $editor = 'jce';
@@ -92,6 +93,7 @@ class JConfig {
 		// Assign Partner Site folder Name and Style Folder Name for Common Folder
 		
 		$_SESSION['tpl_folder_name'] 	    = $row['tpl_folder_name'];
+		$_SESSION['tpl_menu_folder_name'] 	= $row['tpl_menu_folder_name'];
 		$_SESSION['style_folder_name'] 		= $row['style_folder_name'];
 		$_SESSION['partner_folder_name'] 	= $row['partner_folder_name'];
 		$this->sitename 					= ucfirst($_SESSION['partner_folder_name']);
