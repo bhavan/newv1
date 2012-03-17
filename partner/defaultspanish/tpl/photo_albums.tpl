@@ -34,7 +34,7 @@
   </tbody>
 </table>
 <br clear="all" />
-<a href="upload_photo.php" class="button" style="float:left;margin-top:20px;margin-bottom:20px;">SUBE TUS PROPIAS PHOTOS</a>
+<a href="upload_photo.php" class="button" style="float:left;margin-top:20px;margin-bottom:20px;">Cargue su propia foto</a>
 
 <!--div class="adThreeHunderd" style="margin-top:-20px;">
   <?php m_show_banner('Website Front Page Feature'); ?>

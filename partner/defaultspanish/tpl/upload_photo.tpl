@@ -1,4 +1,4 @@
-<h2>SUBE TUS PROPIAS PHOTOS</h2>
+<h2>SUBE TUS PROPIAS FOTOS</h2>
 <form id="uploadForm" action="" method="post" enctype="multipart/form-data">
   <div class="no-margin-top no-margin-bottom">
 	<input type="hidden" name="MAX_FILE_SIZE" value="2000000">

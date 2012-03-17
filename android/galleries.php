@@ -61,7 +61,7 @@ $rec=mysql_query($query) or die(mysql_error());
 <head>
 <meta content="yes" name="apple-mobile-web-app-capable" />
 <meta content="index,follow" name="robots" />
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
 <link href="pics/homescreen.gif" rel="apple-touch-icon" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
 <link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />
@@ -75,55 +75,11 @@ $rec=mysql_query($query) or die(mysql_error());
 
 <body>
 
-<div id="topbar">
-<div id="title">Galleries</div>
-</div>
-<div id="content">
+<?php
+	/* Code added for android_galleries.tpl */
 	
-
-	<ul class="pageitem">
-		
-    <?php 
-	  foreach($param as $v) 
-	  {
-	  	if(isset($v['avatar']) && trim($v['avatar']) != '') 
-	  	{
-	  	?>
-      <li class="textbox"  style="padding-bottom:0px;">
-     <table><tr><td>
- <a href="photos.php?id=<?=$v['id']?>">   
- <img class="photo_container" src="<?php echo $v['avatar']; ?>" alt="<?php echo $v['title']; ?>" title="<?php echo $v['title']; ?>" />
-</a>
-</td><td valign="middle;">
-&nbsp;&nbsp;
-     <font color="#999999">
-     <strong>
-     <a href="photos.php?id=<?=$v['id']?>"><?=$v['title']?></a>
-     </strong></font> 
-     </td></tr></table>
-
-     </li>
-		
-		<?php
-			}
-    }
-    ?>
-		
-	</ul>
-	
-	
-	
-	
-
-	
-	
-	
-</div>
-
-<div id="footer">
-
-	&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a></div></div>
-<div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
+	require("../partner/".$_SESSION['tpl_folder_name']."/tpl/android_galleries.tpl");
+	?>
 </body>
 
 </html>

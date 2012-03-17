@@ -9,7 +9,7 @@
         </tr>
         <tr height="40">
           <td valign="top"><font color="#666666"><strong>Date:</strong></font>&nbsp;</td>
-          <td valign="top"><?php setlocale(LC_TIME,"spanish");echo ucwords(strftime ('%A, %B %d',strtotime($var->get['date']))); /*echo date("l, F d", strtotime($var->get['date']));*/  ?></td>
+          <td valign="top"><?php echo date("l, F d", strtotime($var->get['date']));  ?></td>
         </tr>
         <tr height="40">
         	<td valign="top"><font color="#666666"><strong>Time:</strong></font>&nbsp;</td>

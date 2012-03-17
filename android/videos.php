@@ -49,10 +49,11 @@ $rec=mysql_query($query) or die(mysql_error());
 	</ul>
 </div>
 
-<div id="footer">
+<?php
+	/* Code added for videos.tpl */
+	
+	require("../partner/".$_SESSION['tpl_folder_name']."/tpl/android_videos.tpl");
+	?>
 
-	&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a></div></div>
-<div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
-</body>
 
 </html>

@@ -16,6 +16,7 @@
     <!--<li><a href="contact_us.php">Contact</a></li>-->
   </ul>
 </nav>
+<?php /*?>
 <?php require ("./inc/config.php"); 
 $handle = fopen($query, "r");
 $xml = '';
@@ -30,7 +31,8 @@ $data = XML_unserialize($xml);
 echo str_replace('N/A','--',$data[weather][cc][tmp]) . "&#176; ";
 echo " <a href='http://www.weather.com/weather/today/$var->location_code' target='_blank'><IMG SRC='common/images/weather/" . $data[weather][cc][icon] . ".png' height='27' border='0'></a>";
 ?>
-</div> <!-- weather -->
+</div>  
+ <?php */?>
 <a id="facebook" href="<?php echo $var->facebook?>" target="_blank">Become a fan</a>
 <!--<a id="download" href="<?php echo $var->iphone?>" target="_blank">Download our FREE iPhone App!</a> -->
 

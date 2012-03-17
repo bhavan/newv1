@@ -4,7 +4,7 @@ if($msg!='') {?>
 <table cellpadding="0" cellspacing="0" width="100%" style="border: 2px solid rgb(255, 0, 0); height:40px;margin-bottom">
 	<tr>
 		<td style="padding:8px">
-			<font color="#FF0000"><b><?php echo $msg;?></b></font>
+			<font color="#FF0000"><b>Thank you for submitting your event. Our team will review and promote your information as soon as possible! Please complete this form again to submit other events.</b></font>
 		</td>
 	</tr>
 </table>

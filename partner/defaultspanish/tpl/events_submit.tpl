@@ -4,7 +4,7 @@ if($msg!='') {?>
 <table cellpadding="0" cellspacing="0" width="100%" style="border: 2px solid rgb(255, 0, 0); height:40px;margin-bottom">
 	<tr>
 		<td style="padding:8px">
-			<font color="#FF0000"><b><?php echo $msg;?></b></font>
+			<font color="#FF0000"><b>Gracias por enviar su evento. Nuestro equipo revisará y promover su información tan pronto como sea posible! Por favor, rellene este formulario una vez más a presentar otros eventos.</b></font>
 		</td>
 	</tr>
 </table>
@@ -208,11 +208,11 @@ if($msg!='') {?>
 <table align="left" style="" width="30%" cellpadding="0" cellspacing="0">
 <tbody><tr>
 		<td id="toolbar-save" valign="top"style="padding-right:3px">
-			<a style="cursor:pointer;height:21px;"><input src="images/save-btn.gif" type="submit" name="action" value="Save" class="button"/></a>
+			<a style="cursor:pointer;height:21px;"><input src="images/save-btn.gif" type="submit" name="action" value="Ahorrar" class="button"/></a>
 		</td>
 		<td id="toolbar-save" valign="top"style="padding-right:3px">
 			<a style="cursor:pointer;height:21px;">
-			<input type="button" name="can" id="can" value="Cancel" class="button" onClick="gotoindex(this.id)"/></a>
+			<input type="button" name="can" id="can" value="Cancelar" class="button" onClick="gotoindex(this.id)"/></a>
 		</td>
 
 	</tr></tbody>

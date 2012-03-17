@@ -1,4 +1,4 @@
-<h2><?php echo $var->site_name; ?> Photos</h2><br />
+<h2><?php echo $var->site_name; ?> Fotos</h2><br />
 <table cellspacing="5">
   <tbody>
     <?php
@@ -44,4 +44,4 @@
     ?>
   </tbody>
 </table>
-<a href="upload_photo.php" class="button" style="float:left;margin-top:20px;">Upload your own photo</a>
+<a href="upload_photo.php" class="button" style="float:left;margin-top:20px;">Cargue su propia foto</a>

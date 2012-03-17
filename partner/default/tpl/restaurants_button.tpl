@@ -1,0 +1,1 @@
+<input type="submit" name="search_rcd" value="Search Restaurants" style="margin-top:20px;" />
