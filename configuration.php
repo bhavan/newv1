@@ -67,7 +67,7 @@ class JConfig {
 		$pageURL        = str_replace ('www.','',$pageURL_actual); 
 		
 		// Connetion with Master DB to retrive Slave DB informaiton
- 		$link = mysql_pconnect("localhost","root","");
+ 		$link = mysql_pconnect("localhost","root","bitnami");
 		
 		$dblink = mysql_select_db("master");
 		
