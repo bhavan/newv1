@@ -15,12 +15,21 @@ require_once ( JPATH_BASE .DS.'components'.DS.'com_jevents'.DS.'libraries'.DS.'c
 require_once ( JPATH_BASE .DS.'administrator'.DS.'components'.DS.'com_jevents'.DS.'libraries'.DS.'categoryClass.php');
 require_once("configuration.php");
 
+
+
 //#DD# 
 //session_start();  // Start the session where the code will be stored.
 include("securimage/securimage.php");
 $img = new Securimage();
 $validCode = $img->check($_POST['code']);
 //#DD# 
+
+// move global var here for v2
+global $var;
+include_once('./inc/var.php');
+include_once($var->inc_path.'base.php');
+_init();
+// end v2 code
 
 
 $mainframe =& JFactory::getApplication('site');
@@ -42,7 +51,7 @@ $ics=$ics_res['ics_id'];
 
 $msg="";
 
-if($_POST['action']=='Save' && $validCode){
+if($_POST['action']=='Save' || $_POST['action']=='Ahorrar' && $validCode){
 
 $title=$_POST['title'];
 $allDayEvent=$_POST['allDayEvent'];
@@ -141,12 +150,12 @@ $cat = new JEventsCategory($db);
 $cat->load($vevent->catid);
 
 	if(!empty($last_id) && (!empty($last_id1))) {
-		$msg='Thank you for submitting your event. Our team will review and promote your information as soon as possible! Please complete this form again to submit other events.';
+		require_once($var->tpl_path."events_submit_mail.tpl");
 		$adminuser = $cat->getAdminUser();
 		$adminEmail	= $adminuser->email;
 		//$adminEmail	= 'rinkal.gandhi@aaditsoftware.com';
 		$sitename =  $jconfig->sitename;
-		$subject= 'New Event Submission ';
+		
 		$message = '
 		<table width="100%" cellpadding="0" cellspacing="0">
 		<tr>
@@ -189,7 +198,7 @@ $cat->load($vevent->catid);
 #DD#
 if(!$validCode){
 	$postValues = $_POST;
-	if($_POST['action']=='Save')
+	if($_POST['action']=='Save' || $_POST['action']=='Ahorrar')
 	{
 		$msg="Invalid varification code.";
 	}	
@@ -210,10 +219,7 @@ if(!$validCode){
 }
 #DD#
 
-global $var;
-include_once('./inc/var.php');
-include_once($var->inc_path.'base.php');
-_init();
+
 
 ?>
 <!DOCTYPE HTML>

@@ -37,7 +37,7 @@ $rec=mysql_query($query) or die(mysql_error());
 <head>
 <meta content="yes" name="apple-mobile-web-app-capable" />
 <meta content="index,follow" name="robots" />
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
 <link href="pics/homescreen.gif" rel="apple-touch-icon" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
 <link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />
@@ -51,53 +51,11 @@ $rec=mysql_query($query) or die(mysql_error());
 
 <body>
 
-<div id="topbar">
-<div id="title">Place Info</div>
-<!--<div id="leftnav"><a href="dining.php?lat=<?=$lat1?>&lon=<?=$lon1?>" >Back</a></div>-->
-<div id="leftnav"><a href="javascript:history.go(-1)" onMouseOver="self.status=document.referrer;return true">Back</a></div>
-        
-        
-<div id="rightnav"></div>
-</div>
-
-<div id="content">
-	<ul class="pageitem">
-      <?php 
-	  while($row=mysql_fetch_array($rec))
-	  {
-		  
-			
-			$lat2=$row['geolat'];
-			$lon2=$row['geolon'];
-			
-			
-	  ?>
-      <li class="textbox">
-      <div style="width:100%"><strong><?=$row['title']?></strong>
-      <br /><br />
-      <div style="width:100%">
-        <div style="width:10%;float:left;padding-right:50px;">Address:</div><div style="width:100%"><a href="map.php?lat=<?=$lat2?>&long=<?=$lon2?>"><?=$row['street']?></a></div></div><br />
-     <div style="width:100%">
-       <div style="width:10%;float:left;padding-right:50px;">Phone:</div>
-       <div style="width:90%"><a href="tel:<?=$row[phone]?>"><?=$row[phone]?></a></div></div><br />
-       <div style="width:100%"><div style="width:10%;float:left;padding-right:50px;">Distance:</div><div style="width:100%"> <?=round(distance($lat1, $lon1, $lat2, $lon2, "m"),'1').' miles'?></div></div><br />
-	<?php if ($row['url']!=''){ ?>
-       <div style="width:100%"><div style="width:10%;float:left;padding-right:50px;">Website:</div><div style="width:90%"><a href="http://<?php echo str_replace('http://','',$row['url']); ?>" target="_blank"><?php echo str_replace('http://','',$row['url']); ?></a></div></div><br />
-	<?php } ?>
-       <div style="width:100%"><div style="width:10%;float:left;padding-right:50px;">Description:</div><div style="width:100%"><?=$row['description']?></div></div><br />
-      </div>
-      </li>
-      <?php
-	  }
-	  ?>
-		
-	</ul>
-</div>
-
-<div id="footer">
-
-	&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a></div></div>
-<div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
+<?php
+	/* Code added for android_dining_details.tpl */
+	
+	require("../partner/".$_SESSION['tpl_folder_name']."/tpl/android_dining_details.tpl");
+	?>
 </body>
 
 </html>

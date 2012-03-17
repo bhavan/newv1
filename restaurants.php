@@ -7,7 +7,7 @@ _init();
 
 //#DD#
 $searchdata = '';
-if($_POST['search_rcd']=="Search Restaurants") {
+if($_POST['search_rcd']=="Search Restaurants" || $_POST['search_rcd']=="Buscar Restaurantes") {
 	$searchdata = trim($_POST['searchvalue']);
 }
 
@@ -70,7 +70,10 @@ if($_POST['search_rcd']=="Search Restaurants") {
     <div style="text-align:center;">
     <form action="" method="post" name="location_form">
     <input type="text" name="searchvalue" value="<?php echo $searchdata; ?>" size="35" style="margin-top:20px;" />
-    <input type="submit" name="search_rcd" value="Search Restaurants" style="margin-top:20px;" />
+     <?php
+	/* Code added for restaurants_button.tpl */
+	require($var->tpl_path."restaurants_button.tpl");
+	?>
     </form>
     </div>
     <!--#DD#--> 

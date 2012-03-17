@@ -115,7 +115,7 @@ include("connection.php");
 <head>
 <meta content="yes" name="apple-mobile-web-app-capable" />
 <meta content="index,follow" name="robots" />
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
 <link href="pics/homescreen.gif" rel="apple-touch-icon" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
 <link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />
@@ -139,10 +139,11 @@ include("connection.php");
 	</ul>
 </div>
 
-<div id="footer">
-
-	&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a></div></div>
-<div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
+<?php
+	/* Code added for news.tpl */
+	
+	require("../partner/".$_SESSION['tpl_folder_name']."/tpl/android_news.tpl");
+	?>
 </body>
 
 </html>
