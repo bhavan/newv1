@@ -1,1 +1,0 @@
-<input type="submit" name="search_rcd" value="Search Places" style="margin-top:20px;" />
