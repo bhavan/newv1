@@ -31,7 +31,7 @@ echo str_replace('N/A','--',$data[weather][cc][tmp]) . "&#176; ";
 echo " <a href='http://www.weather.com/weather/today/$var->location_code' target='_blank'><IMG SRC='common/images/weather/" . $data[weather][cc][icon] . ".png' height='27' border='0'></a>";
 ?>
 </div>   
-<a id="facebook" href="<?php echo $var->facebook?>" target="_blank">Become a fan</a>
+<a id="facebook" href="<?php echo $var->facebook?>" target="_blank" class="facebook_sp">Become a fan</a>
 <!--<a id="download" href="<?php echo $var->iphone?>" target="_blank">Download our FREE iPhone App!</a> -->
 
 <div id="download" class="spanish_icon">
