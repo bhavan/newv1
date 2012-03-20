@@ -130,6 +130,19 @@ text-indent: -999em;
 background: url(../images/facebook.png) no-repeat;
 }
 #facebook:hover{background-position: 0 bottom;}
+
+.facebook_sp{
+position: absolute;
+bottom: 12px;
+left: 104px;
+display: block;
+width: 137px;
+height: 30px;
+text-indent: -999em;
+background: url(../images/facebook_s.png) no-repeat !important;
+}
+.facebook_sp:hover{background-position: 0 bottom !important;}
+
 #weather{
 position: absolute;
 bottom: 12px;

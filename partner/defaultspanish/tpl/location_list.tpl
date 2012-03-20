@@ -1,8 +1,8 @@
 <table width='720' id='large' class='tablesorter enableSearch'>
   <thead>
     <th align='left' style='background-color:#FFF;padding-top:5px;border-bottom:#000 1px dashed;' width="240"><strong><?php echo $title; ?></strong></th>
-    <th align='left' style='background-color:#FFF;padding-top:5px;border-bottom:#000 1px dashed;' width="240"><strong>Street</strong></th>
-    <th align='left' style='background-color:#FFF;padding-top:5px;border-bottom:#000 1px dashed;width:110px;' width="240"><strong>Phone</strong></th>
+    <th align='left' style='background-color:#FFF;padding-top:5px;border-bottom:#000 1px dashed;' width="240"><strong>Calle</strong></th>
+    <th align='left' style='background-color:#FFF;padding-top:5px;border-bottom:#000 1px dashed;width:110px;' width="240"><strong>Teléfono</strong></th>
   </thead>
   <tbody>
   <?php if($data) { foreach($data as $v) { ?>
