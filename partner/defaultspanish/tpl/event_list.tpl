@@ -11,7 +11,7 @@
 	<form id="frmEventDateSubmit" action='' method='post'>
 	<input type="text" size="22" id="inputField" name='searchdate' value='<?php echo $DisplaySearchdate;?>' onMouseOver="setBlank(this);" onChange="subForm();" />
 		<!--<input type='submit' name='subDate' value='Select a Date'>-->
-		<input type='submit' name='subClear' value='Reset' >
+		<input type='submit' name='subClear' value='Reajustar' >
 	</form>
 </div>
 
