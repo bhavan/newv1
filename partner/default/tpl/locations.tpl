@@ -1,6 +1,6 @@
 <div style="width:350px;display:block;float:left;">
       <p>
-        <?php m_dining_intro(); ?>
+        <?php m_places_intro(); ?>
       </p>
       <br /><br />
 		<div style="padding-left: 2px; float: left; width: 63px;">
