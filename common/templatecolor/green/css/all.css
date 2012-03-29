@@ -224,8 +224,9 @@ line-height: 1.5;
 letter-spacing: -.03em;
 margin: 5px 0 20px 3px;
 padding: 0 14px 20px 13px;
-border-bottom: 1px solid #ebebeb;
+border-bottom: 0px solid #ebebeb;
 }
+aside hr{border: 1px solid #EBEBEB;width: 95%;}
 aside p:last-child{
 border-bottom: 0px;
 display: none;
