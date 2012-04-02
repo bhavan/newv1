@@ -205,7 +205,7 @@ $query_featured .= " ORDER BY distance ASC ";
 		<ul class="pageitem" style="width:85%; margin-bottom:5px;">
 			<li class="select">
 
-			<?php
+			<?php 
 				$recsub=mysql_query("select * from jos_categories where (parent_id=151 OR id=151) AND section='com_jevlocations2' and published=1 order by `ordering`") or die(mysql_error());
 			?>
 
