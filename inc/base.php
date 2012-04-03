@@ -452,7 +452,12 @@ function m_dining_intro() {
   $text = db_fetch("select `introtext` from `jos_content` where `title` = 'Dining Page Introduction'");
   echo $text;
 }
-
+// Created for Places intro text V2
+function m_places_intro() {
+  global $var;
+  $text = db_fetch("select `introtext` from `jos_content` where `title` = 'Places Page Introduction'");
+  echo $text;
+}
 function m_location_list($cat, $featured = true, $searchedText='') {
   global $var;
   $title = '';

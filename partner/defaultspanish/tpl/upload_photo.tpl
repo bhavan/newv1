@@ -2,7 +2,7 @@
 <form id="uploadForm" action="" method="post" enctype="multipart/form-data">
   <div class="no-margin-top no-margin-bottom">
 	<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-    <?php if(isset($var->photo_uploaded) && $var->photo_uploaded) echo "<h4>¡Gracias! La foto se ha cargado con éxito, en espera de aprobación de administrador.</h4><br />"; ?>
+    <?php if(isset($var->photo_uploaded) && $var->photo_uploaded) echo "<h4>Gracias! Su foto ha sido cargado con éxito, en espera de aprobación de administrador.</h4><br />"; ?>
     <h3>Elegir una imagen</h3><br />
     <label class="no-margin-top" accesskey="f" for="userfile">Nombre de archivo (límite de tamaño de 2 MB) :</label>
     <input class="no-margin-top" id="image" name="image" value="Vali fail" type="file" />

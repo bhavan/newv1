@@ -25,13 +25,17 @@
     <img src="common/images/gray-app-store-logo-200.gif" alt="iPhone App Store" title="iPhone App Store" style="margin-bottom:30px;" />
   	</a>-->
 
-  <a href="<?php echo $var->iphone?>" target="_blank">
-    <img src="common/images/appleStore_spanish.png" alt="iPhone App Store" title="iPhone App Store" style="margin-bottom:15px;" />
-  </a>
-
-  <a href="<?php echo $var->android?>" target="_blank">
-   <img src="common/images/androidMarket_spanish.png" alt="Android Market" title="Android Market" style="margin-bottom:15px;" />
- </a>
+    <?php if($var->iphone && $var->iphone != ""):?>
+	  <a href="<?php echo $var->iphone?>" target="_blank">
+	    <img src="common/images/appleStore.png" alt="iPhone App Store" title="iPhone App Store" style="margin-bottom:15px;" />
+	  </a>
+  <?php endif;?>
+  
+  <?php if($var->android && $var->android != ""):?>	
+	  <a href="<?php echo $var->android?>" target="_blank">
+	   <img src="common/images/androidMarket.png" alt="Android Market" title="Android Market" style="margin-bottom:15px;" />
+	 </a>
+  <?php endif;?>
 
   </span>
 </div> <!-- leftColContent -->

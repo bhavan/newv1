@@ -38,7 +38,13 @@ echo " <a href='http://www.weather.com/weather/today/$var->location_code' target
 <!--<a id="download" href="<?php echo $var->iphone?>" target="_blank">Download our FREE iPhone App!</a> -->
 
 <div id="download">
-		<p>Download our FREE mobile App!</p>
-		<a href="<?php echo $var->iphone?>" target="_blank" id="iPhone" title="Download our FREE iPhone app">iPhone</a>
-		<!--<a href="<?php echo $var->android?>" target="_blank" id="android" title="Download our FREE Android app">Android</a> -->
+		<?php if($var->iphone != "" || $var->android != ""):?>
+				<p>Download our FREE mobile App!</p>
+		<?php endif;?>		
+		<?php if($var->iphone && $var->iphone != ""):?>
+				<a href="<?php echo $var->iphone?>" target="_blank" id="iPhone" title="Download our FREE iPhone app">iPhone</a>
+		<?php endif;?>
+		<?php if($var->android && $var->android != ""):?>
+				<a href="<?php echo $var->android?>" target="_blank" id="android" title="Download our FREE Android app">Android</a>
+		<?php endif;?>
 </div>

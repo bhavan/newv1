@@ -29,8 +29,8 @@ if ($_REQUEST['lat']!="")
 $lat1=$_REQUEST['lat'];
 else
 $lat1=0;
-//$lat1=30.393534;
 
+//$lat1=30.393534;
 if ($_REQUEST['lon']!="")
 $lon1=$_REQUEST['lon'];
 else
@@ -38,10 +38,19 @@ $lon1=0;
 
 //$lon1=-86.495783;
 
-if ($_REQUEST['filter_loccat']!="")
+if (isset($_REQUEST['filter_loccat']) && $_REQUEST['filter_loccat']!="")
 	$loccat = $_REQUEST['filter_loccat'];
-//else
-//	$loccat = 0;
+else
+	$loccat = 0;
+
+if(!empty($loccat) && $loccat == 'Featured')
+{
+	$customfields3_table = ", `jos_jev_customfields3` ";
+}
+else
+{
+	$customfields3_table = "";
+}
 
 /*
 global $var;
@@ -64,35 +73,27 @@ $allCatIds[] = 151;
 
 if(!empty($searchdata)){
 	//$query= 'SELECT *,((ACOS(SIN('.$lat1.' * PI() / 180) * SIN(`geolat` * PI() / 180) + COS('.$lat1.' * PI() / 180) * COS(`geolat` * PI() / 180) * COS(('.$lon1.' - `geolon`) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) AS distance FROM jos_jev_locations WHERE published=1 AND global=1 AND title like "%'.$searchdata.'%"';
-	$query= 'SELECT *,((ACOS(SIN('.$lat1.' * PI() / 180) * SIN(`geolat` * PI() / 180) + COS('.$lat1.' * PI() / 180) * COS(`geolat` * PI() / 180) * COS(('.$lon1.' - `geolon`) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) AS distance FROM jos_jev_locations WHERE loccat IN ('.implode(',',$allCatIds).') AND published=1 AND global=1 AND title like "%'.$searchdata.'%"';
+	$query= 'SELECT *,((ACOS(SIN('.$lat1.' * PI() / 180) * SIN(`geolat` * PI() / 180) + COS('.$lat1.' * PI() / 180) * COS(`geolat` * PI() / 180) * COS(('.$lon1.' - `geolon`) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) AS distance FROM jos_jev_locations ' . $customfields3_table . ' WHERE loccat IN ('.implode(',',$allCatIds).') AND published=1 AND global=1 AND title like "%'.$searchdata.'%"';
 }else{
-	$query= 'SELECT *,((ACOS(SIN('.$lat1.' * PI() / 180) * SIN(`geolat` * PI() / 180) + COS('.$lat1.' * PI() / 180) * COS(`geolat` * PI() / 180) * COS(('.$lon1.' - `geolon`) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) AS distance FROM jos_jev_locations WHERE loccat IN ('.implode(',',$allCatIds).') AND published=1 AND global=1 ';
+	$query= 'SELECT *,((ACOS(SIN('.$lat1.' * PI() / 180) * SIN(`geolat` * PI() / 180) + COS('.$lat1.' * PI() / 180) * COS(`geolat` * PI() / 180) * COS(('.$lon1.' - `geolon`) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) AS distance FROM jos_jev_locations ' . $customfields3_table . ' WHERE loccat IN ('.implode(',',$allCatIds).') AND published=1 AND global=1 ';
 }
 
 
 if(!empty($loccat))
 {
-	if($loccat > 0){
+	if($loccat == 'Featured')
+		$query .= " AND (jos_jev_locations.loc_id = jos_jev_customfields3.target_id AND jos_jev_customfields3.value = 1 ) ";
+	else
 		$query .= " AND loccat = $loccat ";
-	}	
 }
-
-//$query .= ' ORDER BY distance ASC ';
-#DD#
-if($loccat==-2){
-	$query .= " ORDER BY title ASC";
-}else{
-	$query .= " ORDER BY distance ASC";
-}	
-#DD#
-
+$query .= ' ORDER BY distance ASC ';
 
 //$rec=mysql_query($query) or die(mysql_error());
 
  $mydb=new pagination(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 	$mydb->connection();
 
- $num_rec=20;
+ $num_rec=25;
 
 		 $mydb->set_qry($query);
 		 $mydb->set_record_per_sheet($num_rec);
@@ -114,6 +115,9 @@ $cleanedString = preg_replace("/\s+/"," ",$cleanedString);
 return $cleanedString; 
 }
 
+$query_featured = "SELECT *,((ACOS(SIN('.$lat1.' * PI() / 180) * SIN(`geolat` * PI() / 180) + COS('.$lat1.' * PI() / 180) * COS(`geolat` * PI() / 180) * COS(('.$lon1.' - `geolon`) * PI() / 180)) * 180 / PI()) * 60 * 1.1515) AS distance FROM jos_jev_locations, jos_jev_customfields3 WHERE loccat IN (".implode(',',$allCatIds).") AND published=1 AND global=1 ";
+$query_featured .= " AND (jos_jev_locations.loc_id = jos_jev_customfields3.target_id AND jos_jev_customfields3.value = 1 ) ";
+$query_featured .= " ORDER BY distance ASC ";
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -137,7 +141,34 @@ return $cleanedString;
 <!--Google Adsense -->
 
 
-<div id="content" style="min-height:0px;margin-top:0px;width:310px;">
+<?php /*?>
+<div id="topbar">
+<div id="title">Places</div>
+	<div id="leftnav">   
+            <?php 
+         if ($current_page!=0)
+				  			{
+							 $st1=($current_page*$num_rec)-$num_rec;	
+						?>
+    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?start=<?=$st1?>&lat=<?=$lat1?>&lon=<?=$lon1?>&filter_loccat=<?=$loccat?>">&nbsp;</a>
+    <?php }?>
+
+        </div>
+        
+        
+	<div id="rightnav">
+		    <?php
+					  if (($current_page+1)<$num_pages)
+				 		 {
+					  $st1=($current_page*$num_rec)+$num_rec;
+					  ?>
+    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?start=<?=$st1?>&lat=<?=$lat1?>&lon=<?=$lon1?>&filter_loccat=<?=$loccat?>">&nbsp;</a>
+    <?php }?>
+    
+</div></div>
+<?php */?>
+
+<div id="content" style="width:310px;">
 
 	<script type="text/javascript">
 		function redirecturl(val)
@@ -145,9 +176,9 @@ return $cleanedString;
 			url="<?php echo $_SERVER['PHP_SELF']; ?>?lat=<?php echo $_REQUEST['lat'];?>&lon=<?php echo $_REQUEST['lon'];?>&filter_loccat="+val;
 			window.location=url;
 		}
-	
-	function linkClicked(link) { document.location = link; }
-	
+		
+		function linkClicked(link) { document.location = link; }
+		
 		function divopen(str) {
 
 			if(document.getElementById(str).style.display=="none") {
@@ -167,32 +198,31 @@ return $cleanedString;
 		.graytext { color: #777777; font-size: 14px; }
 		.graytextSmall { color: #777777; font-size: 13px; }
 		.linktext { color: #0000ff; font-size: 14px; text-decoration: underline; } 
+		.pageitem {margin: 3px 3px 17px;font-size: 13px;}
 	</style>
 
 
-		<ul class="pageitem" style="width:260px; margin:5px;">
+		<ul class="pageitem" style="width:85%; margin-bottom:5px;">
 			<li class="select">
 
-			<?php
-		$recsub=mysql_query("select * from jos_categories where (parent_id=151 OR id=151) AND section='com_jevlocations2' and published=1 order by `ordering`") or die(mysql_error());
+			<?php 
+				$recsub=mysql_query("select * from jos_categories where (parent_id=151 OR id=151) AND section='com_jevlocations2' and published=1 order by `ordering`") or die(mysql_error());
 			?>
 
-			<select name="d" onChange="redirecturl(this.value)"  >
-			<option value="0" <?php if ($_REQUEST['filter_loccat']==0) {?> selected <?php }?>>Select a Category</option>
-			<option value="-1" <?php if ($_REQUEST['filter_loccat']==-1) {?> selected <?php }?>>Near Me</option>
-			<option value="-2" <?php if ($_REQUEST['filter_loccat']==-2) {?> selected <?php }?>>Alphabetic</option>
-		<?php
-	  while($rowsub=mysql_fetch_array($recsub))
+			<select name="d" onChange="redirecturl(this.value)" style="width:100%; height:40px;border: 0pt none;font-weight:bold;font-size:17px;border: 1px solid #878787;" >
+			<option value="0">Select a Category</option>
+			<option value="0">All</option>
+	  <?php	  
+		while($rowsub=mysql_fetch_array($recsub))
 		{
 		$querycount = "SELECT * FROM jos_jev_locations WHERE published=1 and loccat=".$rowsub['id'];
 			$reccount=mysql_query($querycount) or die(mysql_error());	
-		if (mysql_num_rows($reccount))
-		{
+			if (mysql_num_rows($reccount))
+			{
 	  ?>
-	  <option value="<?=$rowsub['id'];?>" <?php if ($_REQUEST['filter_loccat']==$rowsub['id']) {?> selected <?php }?>><?=$rowsub['title'];?></option>
-
+			  <option value="<?=$rowsub['id'];?>" <?php if ($_REQUEST['filter_loccat']==$rowsub['id']) {?> selected <?php }?>><?=$rowsub['title'];?></option>
 	 <?php
-		}
+			}
 		}
 	 ?>
 	 </select>
@@ -205,28 +235,77 @@ return $cleanedString;
 	<div onclick="divopen('q1')" style="padding-top:5px;width:25px; height:25px;float:right;cursor:pointer"><img src="../../images/find.png" height="25px" width="25px"/></div>
 </div>
 
-	<ul class="pageitem" style='border:0px;'><li>
-	<div id="q1" style="display:none;cursor:pointer;text-align:center;margin-top:15px"><form action="" method="post" name="location_form"><input type="text" name="searchvalue" value="" size="25"/><input type="submit" name="search_rcd" value="Search"/></form></div>
+	<ul class="pageitem" style='border:0px; margin-bottom:5px;'><li>
+	<div id="q1" style="display:none;cursor:pointer;text-align:center;margin-top:5px"><form action="" method="post" name="location_form"><input type="text" name="searchvalue" value="" size="25"/><input type="submit" name="search_rcd" value="Search"/></form></div>
 	</li></ul>
-	
 
+<?php	
+	$featuredListingSQL = " SELECT jjl.loc_id, jjc.target_id, jjl.title, jjl.street, jjl.phone, jjl.loccat, jjc.name, jjc.value, jc.id, jc.parent_id
+							FROM `jos_jev_locations` jjl, `jos_categories` jc, `jos_jev_customfields3` jjc
+							WHERE jjl.published =1
+							AND (jjl.loccat = jc.id AND (jc.parent_id =151 OR jc.id =151) AND jc.section = 'com_jevlocations2' AND jc.published =1 )
+							AND (jjl.loc_id = jjc.target_id AND jjc.value = 1 )
+							ORDER BY jjl.title ";
 
-	<ul class="pageitem" style="width:300px;margin-bottom:3px">
+	$featuredListing_rec = mysql_query($featuredListingSQL) or die(mysql_error());
+	if (mysql_num_rows($featuredListing_rec))
+	{
+?>
+	<span style="padding-left:5px;"><b>Featured</b></span>
+	<div style="background-color:#F0F0F0;margin-left:5px;">
+	<ul class="pageitem" style="margin: 3px 3px 17px 0px;">
+<?php 
+		$rec_featured = mysql_query($query_featured) or die(mysql_error());
+		while($row_featured=mysql_fetch_assoc($rec_featured))
+		{
+			$lat2_featured = $row_featured['geolat'];
+			$lon2_featured = $row_featured['geolon'];
+			$distance_featured = distance($lat1, $lon1, $row_featured['geolat'],  $row_featured['geolon'], "m");
+?>
+		  <li class="textbox" style="background-color:#F0F0F0;">
+		  <div style="float:left;width:80%;padding-right:5px;background-color:#F0F0F0;">
+			<strong><?=$row_featured['title']?></strong><br />
+			<span class="grayplain"><?php echo stripJunk(showBrief(strip_tags($row_featured['description']),30)); ?></span><br /> 
+			<div class="gray">
+				<a href="tel:<?=$row['phone']?>">call</a> | 
+				<a class="linktext" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $row_featured[geolat]; ?>:<?php echo $row_featured[geolon]; ?>')">check in</a> | 
+				<a class="linktext" href="placedetails.php?did=<?=$row_featured[loc_id]?>&<?=round($distance_featured,1)?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a> 
+				<a class="linktext" href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $row_featured[geolon]; ?>:<?php echo $row_featured[geolat]; ?>')"></a> 
+				<!--<a href="dining_details.php?did=<?=$row['loc_id']?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a> -->
+			</div>
+		  </div>
+		  <div style="float:right;width:15%;vertical-align:top;padding-top:0px;background-color:#F0F0F0;"><?=round(distance($lat1, $lon1, $lat2_featured, $lon2_featured, "m"),'1').' mi'?></div>
+
+		  </li>
+<?php
+		}
+?>
+	</ul>
+	</div>
+<?php
+	}
+?>
+
+	<ul class="pageitem">
       <?php 
 	  while($row=mysql_fetch_array($rec))
 	  {
 		  $lat2=$row[geolat];
 			$lon2=$row[geolon];
 	  ?>
-      <li class="textbox" ><div style="float:left;padding-right:5px;width:80%;border:0px solid;">
-      <strong><?=$row['title']?></strong><br /><span class="grayplain"><?php echo stripJunk(showBrief(strip_tags($row['description']),30)); ?></span>
-        <br /> 
-        <div class="gray"><a href="tel:<?=$row['phone']?>"><?=$row['phone']?></a>
-        <!--| <a href="dining_details.php?did=<?=$row['loc_id']?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a></div></div>-->
-        
-        | <a href="javascript:linkClicked('APP30A:SHOWDETAILS:<?php echo $row['loc_id']; ?>:<?=round(distance($lat1, $lon1, $lat2, $lon2, "m"),'1')?>')">more info</a></div></div>
-        
-        <div style="float:right;width:15%;vertical-align:top;padding-top:0px;border:0px solid;margin-right:5px;"><?=round(distance($lat1, $lon1, $lat2, $lon2, "m"),'1').' mi'?></div>
+      <li class="textbox">
+      <div style="float:left;width:80%;padding-right:5px;">
+		<strong><?=$row['title']?></strong><br />
+		<span class="grayplain"><?php echo stripJunk(showBrief(strip_tags($row['description']),30)); ?></span><br /> 
+        <div class="gray">
+        	<a href="tel:<?=$row['phone']?>"><?=$row['phone']?></a> | 
+			<a class="linktext" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $row[geolat]; ?>:<?php echo $row[geolon]; ?>')">check in</a> | 
+			<a class="linktext" href="diningdetails.php?did=<?=$row['loc_id']?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a> 
+			<a class="linktext" href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $row[geolon]; ?>:<?php echo $row[geolat]; ?>')"></a> 
+	        <!--<a href="dining_details.php?did=<?=$row['loc_id']?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a> -->
+        </div>
+      </div>
+      <div style="float:right;width:15%;vertical-align:top;padding-top:0px;"><?=round(distance($lat1, $lon1, $lat2, $lon2, "m"),'1').' mi'?></div>
   
       </li>
       <?php
@@ -235,31 +314,8 @@ return $cleanedString;
 		
 	</ul>
 
-	<div id="topbar" style='margin-bottom:2px;'>
-		<div id="leftnav">   
-	            <?php 
-	         if ($current_page!=0)
-					  			{
-								 $st1=($current_page*$num_rec)-$num_rec;	
-							?>
-	    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?start=<?=$st1?>&lat=<?=$lat1?>&lon=<?=$lon1?>&filter_loccat=<?=$loccat?>">Back</a>
-	    <?php }?>
-	
-	        </div>
-	        
-	        
-		<div id="rightnav">
-			    <?php
-						  if (($current_page+1)<$num_pages)
-					 		 {
-						  $st1=($current_page*$num_rec)+$num_rec;
-						  ?>
-	    <a href="<?php echo $_SERVER['PHP_SELF']; ?>?start=<?=$st1?>&lat=<?=$lat1?>&lon=<?=$lon1?>&filter_loccat=<?=$loccat?>">More</a>
-	    <?php }?>
-	    
-</div></div>
-
-<!--<div id="footer">&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a></div></div>-->
+<div id="footer">&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a></div></div>
+<div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
 </body>
 
 </html>
