@@ -39,7 +39,7 @@ $rec=mysql_query($query) or die(mysql_error());
 		  $arr2[0]='http://www.youtube.com/watch?v='.$arr2[0];
 	  ?>
       <li class="textbox"  style="padding-bottom:20px;">
-     <a href="<?=$arr2[0]?>"><img src="http://www.destinshines.com/images/phocagallery/<?=$row['filename']?>" border="0" align="left" style="padding-right:10px;" /></a><font color="#999999"><strong><a href="<?=$arr2[0]?>"><img src="images/next-videos.gif" align="right" style="padding-top:20px;"  border="0"/></a>
+     <a href="<?=$arr2[0]?>"><img src="/partner/<?=$_SESSION['partner_folder_name']?>/images/phocagallery/<?=$row['filename']?>" border="0" align="left" style="padding-right:10px;" /></a><font color="#999999"><strong><a href="<?=$arr2[0]?>"><img src="images/next-videos.gif" align="right" style="padding-top:20px;"  border="0"/></a>
      <a href="<?=$arr2[0]?>"><?=$row['title']?></a>
      </strong></font> </li>
 			<?php
@@ -49,8 +49,8 @@ $rec=mysql_query($query) or die(mysql_error());
 	</ul>
 </div>
 
-<div id="footer">
-	<a href="http://www.destinshines.com">&copy; 2010 Destin Shines, Inc.</a> | <a href="mailto:info@destinshines.com?subject=Attractions Feedback">Contact Us</a>  &nbsp;&nbsp;&nbsp; <a href="<?=$pageglobal['facebook']?>"><img src="images/icon_facebook_16x16.gif" alt="facebook_icon" width="16" height="16" /></a> &nbsp;&nbsp;&nbsp; </div>
+<!-- <div id="footer">
+	<a href="http://www.destinshines.com">&copy; 2010 Destin Shines, Inc.</a> | <a href="mailto:info@destinshines.com?subject=Attractions Feedback">Contact Us</a>  &nbsp;&nbsp;&nbsp; <a href="<?=$pageglobal['facebook']?>"><img src="images/icon_facebook_16x16.gif" alt="facebook_icon" width="16" height="16" /></a> &nbsp;&nbsp;&nbsp; </div> -->
 <div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
 </body>
 
