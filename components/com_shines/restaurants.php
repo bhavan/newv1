@@ -210,7 +210,7 @@ function divopen(str) {
 				$recsub=mysql_query($recsubsql) or die(mysql_error());
 			?>
 
-			<select name="d" onChange="redirecturl(this.value)" style="width:100%; height:40px;border: 0pt none;font-weight:bold;font-size:17px;border: 1px solid #878787;">
+			<select name="d" onChange="redirecturl(this.value)" style="width:100%; height:45px;border: 0pt none;font-weight:bold;font-size:17px;">
 				<option value="0">Select a Category</option>
 				<option value="0">All</option>
 				<option value="alp" <?php if ($_REQUEST['filter_loccat']=='alp') {?> selected <?php }?>>Alphabetic</option>
@@ -454,7 +454,7 @@ echo get_paginate_links($total_rows,$entries_per_page,$current_page,$link_to);}?
 include("connection.php");
 ?>	
 
-<div id="footer">&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a></div>
+
 <div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
 </body>
 </html>

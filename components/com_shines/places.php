@@ -209,7 +209,7 @@ $query_featured .= " ORDER BY distance ASC ";
 				$recsub=mysql_query("select * from jos_categories where (parent_id=151 OR id=151) AND section='com_jevlocations2' and published=1 order by `ordering`") or die(mysql_error());
 			?>
 
-			<select name="d" onChange="redirecturl(this.value)" style="width:100%; height:40px;border: 0pt none;font-weight:bold;font-size:17px;border: 1px solid #878787;" >
+			<select name="d" onChange="redirecturl(this.value)" style="width:100%; height:45px;border: 0pt none;font-weight:bold;font-size:17px;" >
 			<option value="0">Select a Category</option>
 			<option value="0">All</option>
 	  <?php	  
@@ -314,7 +314,7 @@ $query_featured .= " ORDER BY distance ASC ";
 		
 	</ul>
 
-<div id="footer">&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a></div></div>
+<!-- <div id="footer">&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a></div> --> </div> 
 <div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
 </body>
 

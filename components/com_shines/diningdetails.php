@@ -60,14 +60,6 @@ return $cleanedString;
 
 <body>
 
-<div id="topbar">
-<div id="title">Place Info</div>
-<!-- <div id="leftnav"><a href="dining.php?lat=<?=$lat1?>&lon=<?=$lon1?>" >&nbsp;</a></div>-->
-        
-        
-<div id="rightnav"></div>
-</div>
-
 <div id="content">
 	<ul class="pageitem">
       <?php 
@@ -104,9 +96,7 @@ return $cleanedString;
 	</ul>
 </div>
 
-<div id="footer">
-
-	&copy; <?=date('Y');?> <?=$site_name?>, Inc. | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a>  &nbsp;&nbsp;&nbsp; <a href="<?=$pageglobal['facebook']?>"><img src="images/icon_facebook_16x16.gif" alt="facebook_icon" width="16" height="16" /></a> &nbsp;&nbsp;&nbsp; </div></div>
+<!-- <div id="footer">&copy; <?=date('Y');?> <?=$site_name?>, Inc. | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a>  &nbsp;&nbsp;&nbsp; <a href="<?=$pageglobal['facebook']?>"><img src="images/icon_facebook_16x16.gif" alt="facebook_icon" width="16" height="16" /></a> &nbsp;&nbsp;&nbsp; </div> --> </div>
 <div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
 </body>
 
