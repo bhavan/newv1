@@ -36,54 +36,6 @@
 	<div id="q1" style="display:none;cursor:pointer;text-align:center;margin-top:5px"><form action="" method="post" name="location_form"><input type="text" name="searchvalue" value="" size="25"/><input type="submit" name="search_rcd" value="Buscar"/></form></div>
 	</li></ul>
 
-<?php	
-	$featuredListingSQL = " SELECT jjl.loc_id, jjc.target_id, jjl.title, jjl.street, jjl.phone, jjl.loccat, jjc.name, jjc.value, jc.id, jc.parent_id
-							FROM `jos_jev_locations` jjl, `jos_categories` jc, `jos_jev_customfields3` jjc
-							WHERE jjl.published =1
-							AND (jjl.loccat = jc.id AND (jc.parent_id =151 OR jc.id =151) AND jc.section = 'com_jevlocations2' AND jc.published =1 )
-							AND (jjl.loc_id = jjc.target_id AND jjc.value = 1 )
-							ORDER BY jjl.title ";
-
-	$featuredListing_rec = mysql_query($featuredListingSQL) or die(mysql_error());
-	if (mysql_num_rows($featuredListing_rec))
-	{
-?>
-	<span style="padding-left:5px;"><b>Destacados</b></span>
-	<div style="background-color:#F0F0F0;margin-left:5px;">
-	<ul class="pageitem" style="margin: 3px 3px 17px 0px;">
-<?php 
-		$rec_featured = mysql_query($query_featured) or die(mysql_error());
-		while($row_featured=mysql_fetch_assoc($rec_featured))
-		{
-			$lat2_featured = $row_featured['geolat'];
-			$lon2_featured = $row_featured['geolon'];
-			$distance_featured = distance($lat1, $lon1, $row_featured['geolat'],  $row_featured['geolon'], "m");
-?>
-		  <li class="textbox" style="background-color:#F0F0F0;">
-		  <div style="float:left;width:80%;padding-right:5px;background-color:#F0F0F0;">
-			<strong><?=$row_featured['title']?></strong><br />
-			<span class="grayplain"><?php echo stripJunk(showBrief(strip_tags($row_featured['description']),30)); ?></span><br /> 
-			<div class="gray">
-				<a href="tel:<?=$row['phone']?>">llamar</a> | 
-				<a class="linktext" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $row_featured[geolat]; ?>:<?php echo $row_featured[geolon]; ?>')">facturar</a> | 
-				<a class="linktext" href="placedetails.php?did=<?=$row_featured[loc_id]?>&<?=round($distance_featured,1)?>&lat=<?=$lat1?>&lon=<?=$lon1?>">m&#225;s info</a> 
-				<a class="linktext" href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $row_featured[geolon]; ?>:<?php echo $row_featured[geolat]; ?>')"></a> 
-				<!--<a href="dining_details.php?did=<?=$row['loc_id']?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a> -->
-			</div>
-		  </div>
-		  <div style="float:right;width:15%;vertical-align:top;padding-top:0px;background-color:#F0F0F0;"><?=round(distance($lat1, $lon1, $lat2_featured, $lon2_featured, "m"),'1').' mi'?></div>
-
-		  </li>
-<?php
-		}
-?>
-	</ul>
-	</div>
-<?php
-	}
-?>
-
-
 	<ul class="pageitem">
       <?php 
 	  while($row=mysql_fetch_array($rec))
