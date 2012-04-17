@@ -4,7 +4,9 @@
  * @license		By negoriation with author via http://www.gwesystems.com
 */
 //ini_set("display_errors",0);
+
 require_once("../../configuration.php");
+
 $jconfig = new JConfig();
 
 define(DB_HOST, $jconfig->host);
@@ -82,7 +84,7 @@ if (!file_exists($x.DS.'includes'.DS.'defines.php')){
 }
 define( 'JPATH_BASE', $x );
 
-ini_set("display_errors",0);
+ini_set("display_errors",1);
 
 require_once JPATH_BASE.DS.'includes'.DS.'defines.php';
 require_once JPATH_BASE.DS.'includes'.DS.'framework.php';
@@ -124,6 +126,9 @@ $sql = "select jc.* from `jos_content` jc, `jos_categories` jcs where jcs.title 
 		$c++;
   } }
 header('Content-type: text/html;charset=utf-8', true);
+include("connection.php");
+
+
 ?>
 <html>
 <head>
@@ -141,9 +146,14 @@ header('Content-type: text/html;charset=utf-8', true);
 text-align: justify;
 margin-bottom: 14px;
 }
+a{ color: #333;
+    font-size: 9pt;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #FFFFFF;}
 	</style>
 </head>
 <body>
+
   <table align="center" width="300">
     <tr>
       <td style="text-align:justify;">
@@ -152,16 +162,15 @@ echo $data ;
 ?>
 	</td>
     </tr>
+    <tr>
+    	<td style="text-align:center;">
+         <?php
+	/* Code added for iphone-30a-today.tpl */
+	require("../../partner/".$_SESSION['tpl_folder_name']."/tpl/iphone-30a-today.tpl");
+	?>
+        </td>
+    </tr>
   </table>
+ 
 </body>
 </html>
-<?php
-/*
-$redirect = "/indexiphone.php?option=com_content&view=article&tmpl=component&id=".);
-
-$redirect .= "&iphoneapp=1";
-
-header( 'HTTP/1.1 303 Temporary Redirect' );
-header( 'Location: ' . $redirect );
-*/
-?>

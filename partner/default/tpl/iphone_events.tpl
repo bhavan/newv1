@@ -82,7 +82,7 @@
       <div style="float:left;width:55%;text-align:left;">
       	<strong><?=$rowvevdetail['summary']?></strong><br />
       	<span class="grayplan"><?=$rowlocdetail['title']?></span><br />
-      	<a href="tel:<?=$rowlocdetail['phone']?>">call</a> |
+      	<a href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$rowlocdetail['phone'])?>">call</a> |
       	<a href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $lat2; ?>:<?php echo $lon2; ?>')">check in</a> | 
       	<a href="events_details.php?eid=<?=$row['rp_id']?>&d=<?=$today?>&m=<?=$tomonth?>&Y=<?=$toyear?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a>  
       </div>
@@ -108,3 +108,6 @@
              </div>
        </div>
 </div>
+
+<div id="footer">&copy; <?=date('Y');?> <?=$site_name?>, Inc. | <a href="mailto:<?=$email?>?subject=App Feedback">Contact Us</a> </div>
+<div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>

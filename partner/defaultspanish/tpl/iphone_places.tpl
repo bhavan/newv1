@@ -48,7 +48,7 @@
 		<strong><?=$row['title']?></strong><br />
 		<span class="grayplain"><?php echo stripJunk(showBrief(strip_tags($row['description']),30)); ?></span><br /> 
         <div class="gray">
-        	<a href="tel:<?=$row['phone']?>"><?=$row['phone']?></a> | 
+        	<a href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$row['phone'])?>"><?=$row['phone']?></a> | 
 			<a class="linktext" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $row[geolat]; ?>:<?php echo $row[geolon]; ?>')">facturar</a> | 
 			<a class="linktext" href="diningdetails.php?did=<?=$row['loc_id']?>&lat=<?=$lat1?>&lon=<?=$lon1?>">m&#225;s info</a> 
 			<a class="linktext" href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $row[geolon]; ?>:<?php echo $row[geolat]; ?>')"></a> 
@@ -64,5 +64,5 @@
 		
 	</ul>
 
-<!-- <div id="footer">&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a></div> --> </div> 
+ <div id="footer" style="margin:0px;">&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=App Feedback">Contacte con nosotros</a></div> </div> 
 <div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>

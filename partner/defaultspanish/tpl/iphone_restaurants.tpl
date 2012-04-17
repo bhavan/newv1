@@ -250,5 +250,5 @@ echo get_paginate_links($total_rows,$entries_per_page,$current_page,$link_to);}?
 include("connection.php");
 ?>	
 
-
+<div id="footer">&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=App Feedback">Contacte con nosotros</a></div>
 <div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
