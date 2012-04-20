@@ -13,31 +13,39 @@ function m_show_banner($cat) {
 	$d = array();
 
 	//Coundition for the Count the Data array to check the Banner add
-	if(count($data) > 1) {
-		$d = $data[rand(0, (count($data) - 1))];
-	} elseif(count($data) == 1){
-		$d = $data[0];
+	$showad = true;
+	if($data != null){
+		if(count($data) > 1) {
+			$d = $data[rand(0, (count($data) - 1))];
+		} elseif(count($data) == 1){
+			$d = $data[0];
+		} else {
+			$showad = false;
+		}
 	} else {
-		exit();
-	}
-   
-	//fprint($d); _x();  
-	  if ($d['custombannercode'] != "")
-		echo $d['custombannercode'];
-	  else{
-		  $url=$d['clickurl'];
-
-	// strpos() is just to check weather, is there email id or telephone no in URL or not ?
-
-	if (strpos($url,'mailto:') || strpos($url,'tel:'))
-		echo '<a href="/adsclick.php?option=com_banners&task=click&bid='.$d['bid'].'" target="_blank"><img src="/partner/'.$partnerBannerImg.'/images/banners/'.$d['imageurl'].'" alt="'.$d['name'].'" title="'.$d['name'].'" width="320px" height="50px"  /></a>';
-	else
-		echo '<a href="/adsclick.php?option=com_banners&task=click&bid='.$d['bid'].'" target="_blank"><img src="/partner/'.$partnerBannerImg.'/images/banners/'.$d['imageurl'].'" alt="'.$d['name'].'" title="'.$d['name'].'" width="320px" height="50px" /></a>';
+		$showad = false;	
 	}
 	
-	// for Impressions: track the number of times the banner is displayed to web site visitors.
-	$sql = 'UPDATE jos_banner SET impmade = impmade + 1 WHERE bid =' .$d['bid'];
-	db_update($sql); 
+	if($showad == true) {
+		
+		//fprint($d); _x();  
+		  if ($d['custombannercode'] != "")
+			echo $d['custombannercode'];
+		  else{
+			  $url=$d['clickurl'];
+
+		// strpos() is just to check weather, is there email id or telephone no in URL or not ?
+
+		if (strpos($url,'mailto:') || strpos($url,'tel:'))
+			echo '<a href="/adsclick.php?option=com_banners&task=click&bid='.$d['bid'].'" target="_blank"><img src="/partner/'.$partnerBannerImg.'/images/banners/'.$d['imageurl'].'" alt="'.$d['name'].'" title="'.$d['name'].'" width="320px" height="50px"  /></a>';
+		else
+			echo '<a href="/adsclick.php?option=com_banners&task=click&bid='.$d['bid'].'" target="_blank"><img src="/partner/'.$partnerBannerImg.'/images/banners/'.$d['imageurl'].'" alt="'.$d['name'].'" title="'.$d['name'].'" width="320px" height="50px" /></a>';
+		}
+		
+		// for Impressions: track the number of times the banner is displayed to web site visitors.
+		$sql = 'UPDATE jos_banner SET impmade = impmade + 1 WHERE bid =' .$d['bid'];
+		db_update($sql); 
+	} 
 }
 
 
