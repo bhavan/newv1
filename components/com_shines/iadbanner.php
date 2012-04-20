@@ -6,41 +6,40 @@
 
 function m_show_banner($cat) {  
 	
-  global $var;
-  $partnerBannerImg = $_SESSION["partner_folder_name"];
-  $sql = "select b.* from `jos_banner` b, `jos_categories` c where c.title = '".$cat."' and c.id = b.catid and b.showBanner = 1";
-  $data = db_fetch12($sql, true, true);
-  $d = array();
-  if(count($data) > 1) {
-    $d = $data[rand(0, (count($data) - 1))];
-  } else {
-    $d = $data[0];
-  }
+	global $var;
+	$partnerBannerImg = $_SESSION["partner_folder_name"];
+	$sql = "select b.* from `jos_banner` b, `jos_categories` c where c.title = '".$cat."' and c.id = b.catid and b.showBanner = 1";
+	$data = db_fetch12($sql, true, true);
+	$d = array();
 
-if ($d['imageurl'] == ""){
-$cat = "iphone-news-screen";
-m_show_banner($cat);}
-else{
+	//Coundition for the Count the Data array to check the Banner add
+	if(count($data) > 1) {
+		$d = $data[rand(0, (count($data) - 1))];
+	} elseif(count($data) == 1){
+		$d = $data[0];
+	} else {
+		exit();
+	}
+   
+	//fprint($d); _x();  
+	  if ($d['custombannercode'] != "")
+		echo $d['custombannercode'];
+	  else{
+		  $url=$d['clickurl'];
+
+	// strpos() is just to check weather, is there email id or telephone no in URL or not ?
+
+	if (strpos($url,'mailto:') || strpos($url,'tel:'))
+		echo '<a href="/adsclick.php?option=com_banners&task=click&bid='.$d['bid'].'" target="_blank"><img src="/partner/'.$partnerBannerImg.'/images/banners/'.$d['imageurl'].'" alt="'.$d['name'].'" title="'.$d['name'].'" width="320px" height="50px"  /></a>';
+	else
+		echo '<a href="/adsclick.php?option=com_banners&task=click&bid='.$d['bid'].'" target="_blank"><img src="/partner/'.$partnerBannerImg.'/images/banners/'.$d['imageurl'].'" alt="'.$d['name'].'" title="'.$d['name'].'" width="320px" height="50px" /></a>';
+	}
 	
-
-     
-//fprint($d); _x();  
-  if ($d['custombannercode'] != "")
-    echo $d['custombannercode'];
-  else{
-	  $url=$d['clickurl'];
-
-// strpos() is just to check weather, is there email id or telephone no in URL or not ?
-
-    if (strpos($url,'mailto:') || strpos($url,'tel:'))
-	 echo '<a href="/adsclick.php?option=com_banners&task=click&bid='.$d['bid'].'" target="_blank"><img src="/partner/'.$partnerBannerImg.'/images/banners/'.$d['imageurl'].'" alt="'.$d['name'].'" title="'.$d['name'].'" width="320px" height="50px"  /></a>';
-    else
-         echo '<a href="/adsclick.php?option=com_banners&task=click&bid='.$d['bid'].'" target="_blank"><img src="/partner/'.$partnerBannerImg.'/images/banners/'.$d['imageurl'].'" alt="'.$d['name'].'" title="'.$d['name'].'" width="320px" height="50px" /></a>';
+	// for Impressions: track the number of times the banner is displayed to web site visitors.
+	$sql = 'UPDATE jos_banner SET impmade = impmade + 1 WHERE bid =' .$d['bid'];
+	db_update($sql); 
 }
-// for Impressions: track the number of times the banner is displayed to web site visitors.
-  $sql = 'UPDATE jos_banner SET impmade = impmade + 1 WHERE bid =' .$d['bid'];
-  db_update($sql); 
-}}
+
 
 function db_fetch12($sql, $list = false, $all = false) {
   global $var;
