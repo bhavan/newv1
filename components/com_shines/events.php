@@ -1,6 +1,8 @@
 <?php
 include("connection.php");
+include("iadbanner.php");
 function distance($lat1, $lon1, $lat2, $lon2, $unit) { 
+
 
 
   $theta = $lon1 - $lon2; 
@@ -172,13 +174,16 @@ $rec=mysql_query($query) or die(mysql_error());
 </head>
 
 <body>
-
+  <div class="iphoneads" style=" vertical-align:top">
+    <?php m_show_banner('iphone-events-screen'); ?>
+  </div>
 <?php
 	/* Code added for iphone_places.tpl */
-	
 	require("../../partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_events.tpl");
 	?>
-
-
+<!--
+<div id="footer">&copy; <?=date('Y');?> <?=$site_name?>, Inc. | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a> &nbsp;&nbsp;&nbsp; <a href="<?=$pageglobal['facebook']?>"><img src="images/icon_facebook_16x16.gif" alt="facebook_icon" width="16" height="16" /></a> &nbsp;&nbsp;&nbsp; </div>
+<div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
+-->
 </body>
 </html>

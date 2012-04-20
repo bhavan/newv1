@@ -1,7 +1,7 @@
 <?php
 include("connection.php");
 include("class.paggination.php");
-
+include("iadbanner.php");
 //#DD#
 //$select_query = "select * from jos_phocagallery where catid<>2 and published=1 and approved=1 order by id desc";
 $CatId = isset($_GET['id']) ? $_GET['id'] : 0 ;
@@ -66,6 +66,9 @@ float: left;
 </head>
 
 <body>
+  <div class="iphoneads" style=" vertical-align:top">
+    <?php m_show_banner('iphone-photos-screen'); ?>
+  </div>
 <!--Google Adsense -->
 
 
@@ -74,6 +77,8 @@ float: left;
 	/* Code added for iphone_photos.tpl */
 	require("../../partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_photos.tpl");
 	?>
+
+
 </body>
 
 </html>

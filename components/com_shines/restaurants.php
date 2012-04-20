@@ -15,6 +15,7 @@ ini_set("display_errors",0);
 require_once JPATH_BASE.DS.'includes'.DS.'defines.php';
 require_once JPATH_BASE.DS.'includes'.DS.'framework.php';
 include("../../pagination.php");
+include("iadbanner.php");
 require_once("../../configuration.php");
 $jconfig = new JConfig();
 				 
@@ -201,11 +202,14 @@ function divopen(str) {
 
 </head>
 <body>
-
+ <div class="iphoneads" style="vertical-align:top">
+    <?php m_show_banner('iphone-restaurants-screen'); ?>
+  </div>
 <?php
 	/* Code added for iphone_restaurants.tpl */
 	require("../../partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_restaurants.tpl");
 	?>
+
 </body>
 </html>
 <?php

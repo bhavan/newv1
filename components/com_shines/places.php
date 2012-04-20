@@ -1,5 +1,6 @@
 <?php
 include("connection.php");
+include("iadbanner.php");
 include("class.paggination.php");
 function distance($lat1, $lon1, $lat2, $lon2, $unit) { 
 
@@ -169,6 +170,9 @@ $query_featured .= " ORDER BY distance ASC ";
 </head>
 
 <body>
+  <div class="iphoneads" style=" vertical-align:top">
+    <?php m_show_banner('iphone-places-screen'); ?>
+  </div>
 <!--Google Adsense -->
 
 
@@ -203,6 +207,7 @@ $query_featured .= " ORDER BY distance ASC ";
 	/* Code added for iphone_places.tpl */
 	require("../../partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_places.tpl");
 	?>
+
 </body>
 
 </html>

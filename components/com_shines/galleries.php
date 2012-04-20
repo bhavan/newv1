@@ -2,7 +2,7 @@
 
 //ini_set('error_reporting',1);
 //ini_set('display_errors',1);
-
+include("iadbanner.php");
 include("connection.php");
 
 
@@ -73,7 +73,9 @@ $rec=mysql_query($query) or die(mysql_error());
 </head>
 
 <body>
-
+  <div class="iphoneads" style=" vertical-align:top">
+    <?php m_show_banner('iphone-photos-screen'); ?>
+  </div>
 <!-- <div id="topbar">
 <div id="title">Galleries</div>
 </div>--> 
