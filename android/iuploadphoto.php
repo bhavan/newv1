@@ -81,13 +81,13 @@ function _clean($param) {
 
 if(($image = file_upload(array(
   'name'      => 'userphoto',
-  'path'      => ABS_SRV_PATH.'images'.DS.'phocagallery'.DS.'thumbs'.DS,
+  'path'      => ABS_SRV_PATH.'partner/'.$_SESSION["partner_folder_name"].'/images'.DS.'phocagallery'.DS.'thumbs'.DS,
   'savename'  => $_FILES['userphoto']['name']
 ))) != false) {
   //fprint($image);
   //echo ABS_SRV_PATH.'images'.DS.'phocagallery'.DS.'thumbs'.DS;
   image_convert(array(
-    'path'  => ABS_SRV_PATH.'images'.DS.'phocagallery'.DS.'thumbs'.DS,
+    'path'  => ABS_SRV_PATH.'partner/'.$_SESSION["partner_folder_name"].'/images'.DS.'phocagallery'.DS.'thumbs'.DS,
     'name'  => $image,
     'size'  => array(
       'phoca_thumb_l_' => '600px',
@@ -110,8 +110,8 @@ if(($image = file_upload(array(
       `metadesc` = '".serialize($metadesc)."'";
   //fprint($sql);
   mysql_query($sql);
-  @copy(ABS_SRV_PATH.'images'.DS.'phocagallery'.DS.'thumbs'.DS.$image, ABS_SRV_PATH.'images'.DS.'phocagallery'.DS.$image1);
-  @unlink(ABS_SRV_PATH.'images'.DS.'phocagallery'.DS.'thumbs'.DS.$image);
+  @copy(ABS_SRV_PATH.'partner/'.$_SESSION["partner_folder_name"].'/images'.DS.'phocagallery'.DS.'thumbs'.DS.$image, ABS_SRV_PATH.'partner/'.$_SESSION["partner_folder_name"].'/images'.DS.'phocagallery'.DS.$image1);
+  @unlink(ABS_SRV_PATH.'partner/'.$_SESSION["partner_folder_name"].'/images'.DS.'phocagallery'.DS.'thumbs'.DS.$image);
   echo '1';
 } else {
   echo '0';

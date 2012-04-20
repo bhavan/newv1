@@ -4,15 +4,16 @@
  * @license		By negoriation with author via http://www.gwesystems.com
 */
 //ini_set("display_errors",0);
+
 require_once("../../configuration.php");
 $jconfig = new JConfig();
 
-define(DB_HOST, $jconfig->host);
+/* define(DB_HOST, $jconfig->host);
 define(DB_USER,$jconfig->user);
 define(DB_PASSWORD,$jconfig->password);
 define(DB_NAME,$jconfig->db);
 $conn=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die(mysql_error());
-$db=mysql_select_db(DB_NAME) or die(mysql_error());
+$db=mysql_select_db(DB_NAME) or die(mysql_error());*/ 
 
 function db_fetch($sql, $list = false, $all = false) {
   global $var;
@@ -86,7 +87,7 @@ ini_set("display_errors",0);
 
 require_once JPATH_BASE.DS.'includes'.DS.'defines.php';
 require_once JPATH_BASE.DS.'includes'.DS.'framework.php';
-
+ 
 global $mainframe;
 $mainframe =& JFactory::getApplication('site');
 $mainframe->initialise();
@@ -124,6 +125,8 @@ $sql = "select jc.* from `jos_content` jc, `jos_categories` jcs where jcs.title 
 		$c++;
   } }
 header('Content-type: text/html;charset=utf-8', true);
+include("iadbanner.php"); 
+include("connection.php");
 ?>
 <html>
 <head>
@@ -144,6 +147,9 @@ margin-bottom: 14px;
 	</style>
 </head>
 <body>
+  <div class="iphoneads" style=" vertical-align:top">
+    <?php m_show_banner('iphone-news-screen'); ?>
+  </div>
   <table align="center" width="300">
     <tr>
       <td style="text-align:justify;">

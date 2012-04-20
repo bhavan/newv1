@@ -80,7 +80,7 @@
 		<table valign="top" style="width:350px;float:left;margin-right:15px;" cellpadding="0" cellspacing="0">
 			<tbody>
 			<tr>
-				<td colspan="2" valign="top" style="font-size:18px;color:#666666;font-weight:bold;line-height:20px;">Este evento ya no existe<br /><br /></td>
+				<td colspan="2" valign="top" style="font-size:18px;color:#666666;font-weight:bold;line-height:20px;">This event no longer exists<br /><br /></td>
 			</tr>
 		 </tbody>
 	 </table>      
