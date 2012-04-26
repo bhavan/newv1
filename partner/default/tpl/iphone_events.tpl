@@ -1,7 +1,7 @@
 <div id="topbar" style="height:40px; margin-top:5px; width:100%;">
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 	<tr>
-		<td width="50" height="50" valign="top" align="left">
+		<td width="40" height="50" valign="top" align="right">
 			<a href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>">
 				<img src="images/navlinkleft.png" alt="navlinkleft" width="37" height="37" />
 			</a> 
@@ -9,8 +9,8 @@
 		<td width="200" height="50" valign="top" align="center">
 			<table cellpadding="0" cellspacing="0" border="0" width="200">
 				<tr>
-					<td width="150" height="50" valign="top" align="right">
-						<div style="width:150px;text-align:right;font-size:16pt;color:#333333; font-weight:bold;"><?=$todaestring?></div>
+					<td width="138" height="50" valign="top" align="right">
+						<div style="width:138px;text-align:right;font-size:16pt;color:#333333; font-weight:bold;"><?=$todaestring?></div>
 					</td>
 					<td width="50" height="50" valign="top" align="left">
 						<div style="width:50px;text-align:left;">
@@ -23,7 +23,7 @@
 				</tr>
 			</table>
 		</td>
-		<td width="50" height="50" valign="top" align="right">
+		<td width="40" height="50" valign="top" align="left">
 			<a href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>">
 				<img src="images/navlinkright.png" alt="navlinkright" width="37" height="37" />
 			</a>
@@ -99,15 +99,15 @@
 <!-- Bottom Nav -->
 <div id="tributton2">
 	<div class="links" style="width:100%;">
-	     <div id="leftnav" style="left:0px;">   
+	     <div id="leftnav" style="left:15px;">   
                  <a href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>">&nbsp;</a>
              </div>
                  <a id="pressed" href="#"><?=$todaestring?></a>
-             <div id="rightnav" style="right:0px;">
+             <div id="rightnav" style="right:10px;">
                  <a href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>">&nbsp;</a>   
              </div>
        </div>
 </div>
 
-<div id="footer">&copy; <?=date('Y');?> <?=$site_name?>, Inc. | <a href="mailto:<?=$email?>?subject=App Feedback">Contact Us</a> </div>
+<div id="footer">&copy; <?=date('Y');?> <?=$site_name?>, Inc. <!-- | <a href="mailto:<?=$email?>?subject=App Feedback">Contact Us</a>--> </div>
 <div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>

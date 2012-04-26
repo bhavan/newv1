@@ -87,12 +87,12 @@
 
 <!-- #DD# -->
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <a style="outline: medium none;margin-left:-15px;margin-top:-5px;" href="mailto:?body=<?=$mailContent;?>&subject=Check Out This Event!" rel="nofollow">
+ <!--<a style="outline: medium none;margin-left:-15px;margin-top:-5px;" href="mailto:?body=<?=$mailContent;?>&subject=Check Out This Event!" rel="nofollow">
  	<img src="../../common/images/btn_email.gif" border="0" />
- </a>		
+ </a>-->		
 <!-- #DD# -->
 		
 	</ul>
 </div>
 
-<div id="footer">&copy; <?=date('Y');?> <?=$site_name?>, Inc. | <a href="mailto:<?=$email?>?subject=App Feedback">Contact Us</a></div></div>
+<div id="footer">&copy; <?=date('Y');?> <?=$site_name?>, Inc.<!-- | <a href="mailto:<?=$email?>?subject=App Feedback">Contact Us</a>--></div></div>
