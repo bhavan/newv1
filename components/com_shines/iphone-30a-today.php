@@ -130,10 +130,11 @@ include("connection.php");
 ?>
 <html>
 <head>
-	<base href="<?php echo $root;?>" />
 	
 	<title>30A today</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />
+	
 	<style>
 		html, body, td {
 			font-family:verdana, Helvetica, sans-serif;
