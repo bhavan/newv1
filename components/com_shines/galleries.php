@@ -46,7 +46,7 @@ $rec=mysql_query($query) or die(mysql_error());
 			if(trim($userfolder) == '' && trim($filename) == '')
 				$param[$k]['avatar'] = '';
 			else
-			$param[$k]['avatar'] = '/images/phocagallery/'.$userfolder.'thumbs/phoca_thumb_s_'.$filename;
+			$param[$k]['avatar'] = '/partner/'.$_SESSION['partner_folder_name'].'/images/phocagallery/'.$userfolder.'thumbs/phoca_thumb_s_'.$filename;
       
 	 }
 	
