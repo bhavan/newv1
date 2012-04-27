@@ -133,13 +133,13 @@ include("connection.php");
 	
 	<title>30A today</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />
-	
+   	
 	<style>
 		html, body, td {
 			font-family:verdana, Helvetica, sans-serif;
 			font-size:12px;
 			color:#333333;
+			margin:0;
 		}
 		p{
 text-align: justify;

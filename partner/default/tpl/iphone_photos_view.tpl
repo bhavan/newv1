@@ -34,11 +34,11 @@
 			if (count($file)>=2)
 			{
 			?>
-     <a href="photos_view.php?start=<?=$photoindent+$j?>"><img src="/images/phocagallery/<?=$file[0]?>/thumbs/phoca_thumb_l_<?=$file[1]?>"  border="0" /></a>
+     <a href="photos_view.php?start=<?=$photoindent+$j?>"><img src="/partner/<?=$_SESSION['partner_folder_name']?>/images/phocagallery/<?=$file[0]?>/thumbs/phoca_thumb_l_<?=$file[1]?>"  border="0" /></a>
       <?php }
 			else {
 			?>
-      <a href="photos_view.php?start=<?=$photoindent+$j?>"><img src="/images/phocagallery/thumbs/phoca_thumb_l_<?=$row['filename']?>"  border="0"/></a>
+      <a href="photos_view.php?start=<?=$photoindent+$j?>"><img src="/partner/<?=$_SESSION['partner_folder_name']?>/images/phocagallery/thumbs/phoca_thumb_l_<?=$row['filename']?>"  border="0"/></a>
       <?php
 			}
 			echo '<div>'.$row[title].'</div>';
