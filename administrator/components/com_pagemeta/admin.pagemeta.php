@@ -147,7 +147,9 @@ function globalseting(){
   </tr>
   <tr>
     <td width="20%" class="key"><label>GOOGLE ANALITICS CODE:</label></td>
-    <td width="80%"><textarea name="googgle_map_api_keys" class="inputbox" rows="10" cols="80" ><?=$row['googgle_map_api_keys']?></textarea></td>
+    <td width="80%"><input type="text" name="googgle_map_api_keys" class="inputbox" size="50" maxlength="25" value="<?=$row['googgle_map_api_keys']?>" />
+    <img src="../partner/<?php echo $_SESSION['partner_folder_name'];?>/images/edit_f2.png" height="18" title="Enter Only UA code in the box, Example: UA-29293639-3" />
+    </td>
   </tr>
   <tr>
     <td width="20%" class="key"><label>LOCATION CODE:</label></td>
@@ -202,7 +204,7 @@ function save(){
 		}	
 	}
 	elseif(isset($_POST['global'])){
-		$query = "UPDATE #__pageglobal SET site_name ='".$_POST['site_name']."', email ='".$_POST['email']."', googgle_map_api_keys ='".$_POST['googgle_map_api_keys']."', location_code ='".$_POST['location_code']."', beach ='".$_POST['beach']."', photo_mini_slider_cat ='".$_POST['photo_mini_slider_cat']."', photo_upload_cat ='".$_POST['photo_upload_cat']."', facebook ='".$_POST['facebook']."', iphone ='".$_POST['iphone']."', android ='".$_POST['android']."' WHERE id='1'";
+		$query = "UPDATE #__pageglobal SET site_name ='".$_POST['site_name']."', email ='".$_POST['email']."', googgle_map_api_keys ='".addslashes($_POST['googgle_map_api_keys'])."', location_code ='".$_POST['location_code']."', beach ='".$_POST['beach']."', photo_mini_slider_cat ='".$_POST['photo_mini_slider_cat']."', photo_upload_cat ='".$_POST['photo_upload_cat']."', facebook ='".$_POST['facebook']."', iphone ='".$_POST['iphone']."', android ='".$_POST['android']."' WHERE id='1'";
 		
 		$db->setQuery( $query );
 		
