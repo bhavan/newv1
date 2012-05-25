@@ -42,7 +42,7 @@ $toyear=$_REQUEST['Y'];
 
 $todaestring=date('D, M j', mktime(0, 0, 0, $tomonth, $today, $toyear));
 
-$query="select *,DATE_FORMAT(`startrepeat`,'%h:%i %p') as timestart  from jos_jevents_repetition where rp_id=$eid";
+$query="select *,DATE_FORMAT(`startrepeat`,'%h:%i %p') as timestart, DATE_FORMAT(`endrepeat`,'%h:%i%p') as timeend from jos_jevents_repetition where rp_id=$eid";
 $rec=mysql_query($query) or die(mysql_error());
 
 ?>
