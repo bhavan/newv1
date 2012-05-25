@@ -20,8 +20,11 @@
 <?php require ("./inc/config.php"); 
 $handle = fopen($query, "r");
 $xml = '';
-while (!feof($handle)) {
-  $xml.= fread($handle, 8192);
+// Applying condition for $handle variable to check weather it is null or not
+if($handle != null || !empty($handle)){
+	while (!feof($handle)) {
+  		$xml.= fread($handle, 8192);
+	}
 }
 fclose($handle);
 $data = XML_unserialize($xml);
@@ -48,3 +51,21 @@ echo " <a href='http://www.weather.com/weather/today/$var->location_code' target
 				<a href="<?php echo $var->android?>" target="_blank" id="android" title="Download our FREE Android app">Android</a>
 		<?php endif;?>
 </div>
+
+<!--  Town wizard Google Analytic code -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31932515-1']);
+  _gaq.push(['_setDomainName', 'auto']);
+  _gaq.push(['_trackPageview']);
+
+  <?php if($var->googgle_analytics != null && !empty($var->googgle_analytics)): ?>
+  _gaq.push(['t2._setAccount', '<?php echo $var->googgle_analytics;?>']);  
+  _gaq.push(['t2._trackPageview']);
+  <?php endif;?>  
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>

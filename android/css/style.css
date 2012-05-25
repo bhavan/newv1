@@ -46,7 +46,7 @@
 
 #footer a,#footer{text-decoration:none;font-size:9pt;color:#4C4C4C;text-shadow:#FFF 0 1px 0}
 
-.pageitem{-webkit-border-radius:8px;background-color:#fff;border:#878787 solid 1px;font-size:10pt;overflow:hidden;padding:0;position:relative;display:block;height:auto;width:auto;margin:3px 9px 17px;list-style:none;text-align: justify;}
+.pageitem{-webkit-border-radius:8px;background-color:#fff;border:#878787 solid 1px;font-size:10pt;overflow:hidden;padding:0;position:relative;display:block;height:auto;width:auto;margin:3px 9px 17px;list-style:none;text-align: left;}
 
 .textbox{padding:5px 4px;position:relative;overflow:hidden;border-top:1px solid #878787}
 
