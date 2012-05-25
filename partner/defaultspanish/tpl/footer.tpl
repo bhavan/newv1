@@ -18,6 +18,3 @@
     <li id="partner"><a href="http://www.townwizard.com/" target="_blank">Town Wizard Socio</a></li>
   </ul>
 </div> <!-- footerWrap -->
-<?php
-echo $var->googgle_analytics;
-?>

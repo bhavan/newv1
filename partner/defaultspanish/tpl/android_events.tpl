@@ -25,6 +25,11 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
       <?php 
 	  while($row=mysql_fetch_array($rec))
 	  {
+		   //#DD#
+		  $ev=mysql_query("select *  from jos_jevents_vevent where ev_id=".$row['eventid']) or die(mysql_error());
+		  $evDetails=mysql_fetch_array($ev);
+		  $evrawdata = unserialize($evDetails['rawdata']);
+		  //#DD#	
 		  
 			//$queryvevdetail="select *  from jos_jevents_vevdetail where evdet_id=".$row['eventid'];
 			$queryvevdetail="select *  from jos_jevents_vevdetail where evdet_id=".$row['eventdetail_id'];
@@ -39,9 +44,24 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 			$lon2=$rowlocdetail[geolon];
 			
 			}
+			
+			#DD#
+			$displayTime = '';
+			if($evrawdata['allDayEvent']=='on')
+			{
+				$displayTime.='All Day Event';
+			}
+			else
+			{
+				$displayTime.= ltrim($row[timestart], "0");
+				if($evrawdata['NOENDTIME']!=1){
+					$displayTime.='-'.ltrim($row[timeend], "0");
+				}
+			}	
+			#DD#
 	  ?>
       <li class="textbox">
-      <div  style="float:left;padding-right:10px;width:20%" class="small"><?=ltrim($row[timestart], "0")?></div><div style="float:left;width:55%"><strong><?=$rowvevdetail['summary']?></strong><br /><span class="grayplan"><?=$rowlocdetail['title']?></span><br /><a href="tel:<?=$rowlocdetail['phone']?>"><?=$rowlocdetail['phone']?></a> | <a href="events_details.php?eid=<?=$row['rp_id']?>&d=<?=$today?>&m=<?=$tomonth?>&Y=<?=$toyear?>&lat=<?=$lat1?>&lon=<?=$lon1?>">más información</a></div><div style="float:right;width:15%"><?=round(distance($lat1, $lon1, $lat2, $lon2, "m"),'1').' mi'?></div>
+      <div  style="float:left;padding-right:10px;width:20%" class="small"><?=$displayTime?></div><div style="float:left;width:55%"><strong><?=$rowvevdetail['summary']?></strong><br /><span class="grayplan"><?=$rowlocdetail['title']?></span><br /><a href="tel:<?=$rowlocdetail['phone']?>"><?=$rowlocdetail['phone']?></a> | <a href="events_details.php?eid=<?=$row['rp_id']?>&d=<?=$today?>&m=<?=$tomonth?>&Y=<?=$toyear?>&lat=<?=$lat1?>&lon=<?=$lon1?>">más información</a></div><div style="float:right;width:15%"><?=round(distance($lat1, $lon1, $lat2, $lon2, "m"),'1').' mi'?></div>
   
       </li>
       <?php

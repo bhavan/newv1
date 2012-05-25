@@ -42,7 +42,11 @@
 				if($evrawdata['allDayEvent']=='on'){
 					echo 'All Day Event';
 				}else{
-					echo ltrim($row[timestart], "0");
+						$displayTime.= ltrim($row[timestart], "0");
+						if($evrawdata['NOENDTIME']!=1){
+						$displayTime.='-'.ltrim($row[timeend], "0");
+						}
+						echo $displayTime;
 				}
 				//#DD#
 			?>      	
@@ -87,9 +91,9 @@
 
 <!-- #DD# -->
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <!--<a style="outline: medium none;margin-left:-15px;margin-top:-5px;" href="mailto:?body=<?=$mailContent;?>&subject=Check Out This Event!" rel="nofollow">
+<a style="outline: medium none;margin-left:-15px;margin-top:-5px;" href="mailto:?body=<?=$mailContent;?>&subject=Check Out This Event!" rel="nofollow">
  	<img src="../../common/images/btn_email.gif" border="0" />
- </a>-->		
+ </a>		
 <!-- #DD# -->
 		
 	</ul>
