@@ -31,7 +31,7 @@ $query="select * from jos_jev_locations where loc_id=$did";
 $rec=mysql_query($query) or die(mysql_error());
 
 function stripJunk($string) { 
-$cleanedString = preg_replace("/[^A-Za-z0-9\s\.\-\/+\!;\n\t\r\(\)\'\"._\?>,~\*<}{\[\]\=\&\@\#\$\%\^` ]/","", $string); 
+$cleanedString = preg_replace("/[^A-Za-z0-9\s\.\-\/+\!;\n\t\r\(\)\'\"._\?>,~\*<}{\[\]\=\&\@\#\$\%\^` ]:/","", $string); 
 $cleanedString = preg_replace("/\s+/"," ",$cleanedString); 
 return $cleanedString; 
 }
