@@ -34,6 +34,7 @@ $(document).ready(function() {
   $("embed").attr("height", "200px");
 });
 </script>
+<?php include("ga.php"); ?>
 </head>
 
 <body>

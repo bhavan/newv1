@@ -77,7 +77,7 @@ _init();
 	}
 
 </script>
-
+<?php include("ga.php"); ?>
 </head>
 
 <body>

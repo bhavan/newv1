@@ -397,6 +397,7 @@ function form_validation() {
 	}
 }
 </script>
+<?php include("ga.php"); ?>
 </head>
 <body>
 <header>
