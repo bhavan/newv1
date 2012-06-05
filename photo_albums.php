@@ -29,6 +29,7 @@ _init();
 <script type="text/javascript" src="common/js/jquery.min.js"></script>
 <script type="text/javascript" src="common/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="common/js/default.js"></script>
+<?php include("ga.php"); ?>
 </head>
 
 <body>

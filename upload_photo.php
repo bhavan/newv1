@@ -24,6 +24,7 @@ _init();
   document.createElement('footer');
 </script>
 <link rel="stylesheet" type="text/css" href="common/templatecolor/<?php echo $_SESSION['style_folder_name'];?>/css/all.css" media="screen" />
+<?php include("ga.php"); ?>
 </head>
 
 <body>

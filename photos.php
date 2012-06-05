@@ -41,6 +41,7 @@ $(document).ready(function() {
 	});
 });
 </script>
+<?php include("ga.php"); ?>
 </head>
 
 <body>

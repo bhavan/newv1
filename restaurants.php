@@ -32,6 +32,7 @@ if($_POST['search_rcd']=="Search Restaurants" || $_POST['search_rcd']=="Buscar R
 </script>
 <link rel="stylesheet" type="text/css" href="common/templatecolor/<?php echo $_SESSION['style_folder_name'];?>/css/all.css" media="screen" />
 <!--[if IE 7]><link rel="stylesheet" type="text/css" href="common/templatecolor/<?php echo $_SESSION['style_folder_name'];?>/css/ie7.css" media="screen" /><![endif]-->
+<?php include("ga.php"); ?>
 </head>
 
 <body>
