@@ -179,6 +179,38 @@ function globalseting(){
     <td width="20%" class="key"><label>ANDROID DOWNLOAD LINK:</label></td>
     <td width="80%"><input type="text" name="android" class="inputbox" size="50" value="<?=$row['android']?>" /></td>
   </tr>
+  <tr>
+    <td width="20%" class="key"><label>DISTANCE UNIT:</label></td>
+    <td width="80%">
+      <?php
+      if ($row['distance_unit'] == 'Kms') { ?>
+      <input name="dunit" type="radio" value="Kms" checked />Kms&nbsp;<input name="dunit" type="radio" value="Miles" />Miles
+      <?php } ?> 
+      <?php
+      if ($row['distance_unit'] == 'Miles') { ?>
+      <input name="dunit" type="radio" value="Kms"/>Kms&nbsp;<input name="dunit" type="radio" value="Miles" checked />Miles
+      <?php } ?>
+      <?php if ($row['distance_unit'] == '') { ?>
+      <input name="dunit" type="radio" value="Kms"/>Kms&nbsp;<input name="dunit" type="radio" value="Miles" checked />Miles
+      <?php } ?>
+    <td>
+  </tr>
+    <tr>
+    <td width="20%" class="key"><label>WEATHER UNIT:</label></td>
+    <td width="80%">
+      <?php
+      if ($row['weather_unit'] == 'm') { ?>
+      <input name="wunit" type="radio" value="m" checked />C&nbsp;<input name="wunit" type="radio" value="s" />F
+      <?php } ?> 
+      <?php
+      if ($row['weather_unit'] == 's') { ?>
+      <input name="wunit" type="radio" value="m"/>C&nbsp;<input name="wunit" type="radio" value="s" checked />F
+      <?php } ?>
+      <?php if ($row['weather_unit'] == '') { ?>
+      <input name="wunit" type="radio" value="m"/>C&nbsp;<input name="wunit" type="radio" value="s" checked />F
+      <?php } ?>
+   <td>
+  </tr>
 </table>
 </form>
 <?
@@ -193,7 +225,7 @@ function save(){
 	
 	if(isset($_POST['mid'])){
 		
-		$query = "UPDATE #__pagemeta SET uri ='".$_POST['url']."', title ='".$_POST['title']."', metadesc ='".$_POST['metadesc']."', keywords ='".$_POST['keywords']."', extra_meta ='".$_POST['extra_meta']."' WHERE id='".$_POST['mid']."'";
+		$query = "UPDATE #__pagemeta SET uri ='".$_POST['url']."', title ='".$_POST['title']."', metadesc ='".addslashes($_POST['metadesc'])."', keywords ='".addslashes($_POST['keywords'])."', extra_meta ='".addslashes($_POST['extra_meta'])."' WHERE id='".$_POST['mid']."'";
 		
 		$db->setQuery( $query );
 		
@@ -204,7 +236,7 @@ function save(){
 		}	
 	}
 	elseif(isset($_POST['global'])){
-		$query = "UPDATE #__pageglobal SET site_name ='".$_POST['site_name']."', email ='".$_POST['email']."', googgle_map_api_keys ='".addslashes($_POST['googgle_map_api_keys'])."', location_code ='".$_POST['location_code']."', beach ='".$_POST['beach']."', photo_mini_slider_cat ='".$_POST['photo_mini_slider_cat']."', photo_upload_cat ='".$_POST['photo_upload_cat']."', facebook ='".$_POST['facebook']."', iphone ='".$_POST['iphone']."', android ='".$_POST['android']."' WHERE id='1'";
+		$query = "UPDATE #__pageglobal SET site_name ='".$_POST['site_name']."', email ='".$_POST['email']."', googgle_map_api_keys ='".addslashes($_POST['googgle_map_api_keys'])."', location_code ='".$_POST['location_code']."', beach ='".$_POST['beach']."', photo_mini_slider_cat ='".$_POST['photo_mini_slider_cat']."', photo_upload_cat ='".$_POST['photo_upload_cat']."', facebook ='".$_POST['facebook']."', iphone ='".$_POST['iphone']."', android ='".$_POST['android']."', distance_unit ='".$_POST['dunit']."', weather_unit ='".$_POST['wunit']."' WHERE id='1'";
 		
 		$db->setQuery( $query );
 		
@@ -215,7 +247,7 @@ function save(){
 		}	
 	}
 	else{	
-		$query = "INSERT INTO #__pagemeta (`id`, `uri`, `title`, `metadesc`, `keywords`, `extra_meta`) VALUES (NULL, '".$_POST['url']."', '".$_POST['title']."', '".$_POST['metadesc']."', '".$_POST['keywords']."', '".$_POST['extra_meta']."')";
+		$query = "INSERT INTO #__pagemeta (`id`, `uri`, `title`, `metadesc`, `keywords`, `extra_meta`) VALUES (NULL, '".$_POST['url']."', '".$_POST['title']."', '".addslashes($_POST['metadesc'])."', '".addslashes($_POST['keywords'])."', '".addslashes($_POST['extra_meta'])."')";
 		
 		$db->setQuery( $query );
 		if (! $db->query()) {
