@@ -9,7 +9,7 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
   $miles = $dist * 60 * 1.1515;
   $unit = strtoupper($unit);
 
-  if ($unit == "K") {
+  if ($unit == "KMS") {
     return ($miles * 1.609344); 
   } else if ($unit == "N") {
       return ($miles * 0.8684);
@@ -60,7 +60,7 @@ if (count($arr_rr_id))
 $strchk=implode(',',$arr_rr_id);
 else
 $strchk=0;
-$query="select *,DATE_FORMAT(`startrepeat`,'%h:%i %p') as timestart, DATE_FORMAT(`endrepeat`,'%h:%i%p') as timeend from jos_jevents_repetition where rp_id in ($strchk) ORDER BY  DATE_FORMAT(`startrepeat`,'%H%i') ASC ";
+$query="select *,DATE_FORMAT(`startrepeat`,'%h:%i %p') as timestart from jos_jevents_repetition where rp_id in ($strchk) ORDER BY  DATE_FORMAT(`startrepeat`,'%H%i') ASC ";
 $rec=mysql_query($query) or die(mysql_error());
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -78,6 +78,7 @@ $rec=mysql_query($query) or die(mysql_error());
 <script src="javascript/functions.js" type="text/javascript"></script>
 <title><?=$site_name?></title>
 <link href="pics/startup.png" rel="apple-touch-startup-image" />
+<?php include("ga.php"); ?>
 </head>
 
 <body>

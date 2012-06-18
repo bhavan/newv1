@@ -10,7 +10,7 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
   $miles = $dist * 60 * 1.1515;
   $unit = strtoupper($unit);
 
-  if ($unit == "K") {
+  if ($unit == "KMS") {
     return ($miles * 1.609344); 
   } else if ($unit == "N") {
       return ($miles * 0.8684);
@@ -116,6 +116,7 @@ return $cleanedString;
 <!--<link href="pics/startup.png" rel="apple-touch-startup-image" /> -->
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
 <meta name="description" content="<?php echo $var->extra_meta; ?>" />
+<?php include("ga.php"); ?>
 </head>
 
 <body>
