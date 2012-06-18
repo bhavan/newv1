@@ -15,8 +15,9 @@ ini_set("display_errors",0);
 require_once JPATH_BASE.DS.'includes'.DS.'defines.php';
 require_once JPATH_BASE.DS.'includes'.DS.'framework.php';
 include("../../pagination.php");
-include("iadbanner.php");
 require_once("../../configuration.php");
+include("connection.php");
+include("iadbanner.php");
 $jconfig = new JConfig();
 				 
 $link = @mysql_pconnect($jconfig->host,  $jconfig->user, $jconfig->password);
@@ -35,7 +36,7 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
   $miles = $dist * 60 * 1.1515;
   $unit = strtoupper($unit);
 
-  if ($unit == "K") {
+  if ($unit == "KMS") {
     return ($miles * 1.609344); 
   } else if ($unit == "N") {
       return ($miles * 0.8684);
@@ -199,7 +200,7 @@ function divopen(str) {
 	}
 }
 </script>
-
+<?php include("ga.php"); ?>
 </head>
 <body>
  <div class="iphoneads" style="vertical-align:top">
@@ -209,7 +210,6 @@ function divopen(str) {
 	/* Code added for iphone_restaurants.tpl */
 	require("../../partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_restaurants.tpl");
 	?>
-
 </body>
 </html>
 <?php

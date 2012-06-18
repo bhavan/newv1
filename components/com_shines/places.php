@@ -1,7 +1,7 @@
 <?php
-include("connection.php");
 include("iadbanner.php");
 include("class.paggination.php");
+include("connection.php");
 function distance($lat1, $lon1, $lat2, $lon2, $unit) { 
 
   $theta = $lon1 - $lon2; 
@@ -11,7 +11,7 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
   $miles = $dist * 60 * 1.1515;
   $unit = strtoupper($unit);
 
-  if ($unit == "K") {
+  if ($unit == "KMS") {
     return ($miles * 1.609344); 
   } else if ($unit == "N") {
       return ($miles * 0.8684);
@@ -91,6 +91,7 @@ $query .= ' ORDER BY distance ASC ';
 
 //$rec=mysql_query($query) or die(mysql_error());
 
+
  $mydb=new pagination(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 	$mydb->connection();
 
@@ -166,13 +167,10 @@ $query_featured .= " ORDER BY distance ASC ";
 		.linktext { color: #0000ff; font-size: 14px; text-decoration: underline; } 
 		.pageitem {margin: 3px 3px 17px;font-size: 13px;}
 	</style>
-
+<?php include("ga.php"); ?>
 </head>
 
 <body>
-  <div class="iphoneads" style=" vertical-align:top">
-    <?php m_show_banner('iphone-places-screen'); ?>
-  </div>
 <!--Google Adsense -->
 
 
@@ -207,7 +205,6 @@ $query_featured .= " ORDER BY distance ASC ";
 	/* Code added for iphone_places.tpl */
 	require("../../partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_places.tpl");
 	?>
-
 </body>
 
 </html>
