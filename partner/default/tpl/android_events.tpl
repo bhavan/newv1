@@ -15,7 +15,7 @@
   <ul class="pageitem">
 	<li class="textbox">
 
-    <div style="float:right;width:18%">distance</div>
+    <div style="float:right;width:18%">Distance</div>
     </li>	
       <?php 
 	  while($row=mysql_fetch_array($rec))
@@ -57,8 +57,9 @@
 			#DD#
 	  ?>
       <li class="textbox">
-      <div  style="float:left;padding-right:10px;width:20%" class="small"><?=$displayTime?></div>
-      <div style="float:left;width:55%"><strong><?=$rowvevdetail['summary']?></strong><br /><span class="grayplan"><?=$rowlocdetail['title']?></span><br /><a href="tel:<?=$rowlocdetail['phone']?>"><?=$rowlocdetail['phone']?></a> | <a href="events_details.php?eid=<?=$row['rp_id']?>&d=<?=$today?>&m=<?=$tomonth?>&Y=<?=$toyear?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a></div><div style="float:right;width:15%"><?=round(distance($lat1, $lon1, $lat2, $lon2, "m"),'1').' mi'?></div>
+      <div  style="float:left;padding-right:7px;width:18%;font-size: 12px;" class="small"><?=$displayTime?></div>
+<div style="float:left;width:54%"><strong><?=$rowvevdetail['summary']?></strong><br /><span class="grayplan"><?=$rowlocdetail['title']?></span><br /><a href="tel:<?=$rowlocdetail['phone']?>"><?=$rowlocdetail['phone']?></a> | <a href="events_details.php?eid=<?=$row['rp_id']?>&d=<?=$today?>&m=<?=$tomonth?>&Y=<?=$toyear?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a></div>
+<div style="float:right;width:25%;text-align:right"><?=round(distance($lat1, $lon1, $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></div>
   
       </li>
       <?php

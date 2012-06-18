@@ -12,7 +12,7 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
   $miles = $dist * 60 * 1.1515;
   $unit = strtoupper($unit);
 
-  if ($unit == "K") {
+  if ($unit == "KMS") {
     return ($miles * 1.609344); 
   } else if ($unit == "N") {
       return ($miles * 0.8684);
@@ -170,7 +170,7 @@ $rec=mysql_query($query) or die(mysql_error());
 		});
 	});
 </script>
-    
+    <?php include("ga.php"); ?>
 </head>
 
 <body>

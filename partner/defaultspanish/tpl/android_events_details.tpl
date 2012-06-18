@@ -58,7 +58,7 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
      <div style="width:100%"><div class="gray" style="width:10%;float:left;padding-right:50px;">Ubicación:</div><div style="width:100%"><?=$rowlocdetail['title']?></div></div><br />
      <div style="width:100%"><div class="gray" style="width:10%;float:left;padding-right:50px;">Dirección:</div><div style="width:100%"><a href="map.php?lat=<?=$lat2?>&long=<?=$lon2?>"><?=$rowlocdetail['street']?></a></div></div><br />
      <div style="width:100%"><div class="gray" style="width:10%;float:left;padding-right:50px;">Teléfono:</div><div style="width:100%"><a href="tel:<?=$rowlocdetail['phone']?>"><?=$rowlocdetail['phone']?></a></div></div><br />
-     <div style="width:100%"><div class="gray" style="width:10%;float:left;padding-right:50px;">Distancia:</div><div style="width:100%"> <?=round(distance($lat1, $lon1, $lat2, $lon2, "m"),'1').' miles'?></div></div><br />
+     <div style="width:100%"><div class="gray" style="width:10%;float:left;padding-right:50px;">Distancia:</div><div style="width:100%"> <?=round(distance($lat1, $lon1, $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></div></div><br />
 	<?php if(trim($rowlocdetail['url']) != '') { ?>
      <div style="width:100%"><div class="gray" style="width:10%;float:left;padding-right:50px;">Sitio Web:</div><div style="width:100%"><a href="http://<?php echo str_replace('http://','',$rowlocdetail['url']); ?>" target="_blank"><?php echo str_replace('http://','',$rowlocdetail['url']); ?></a></div></div><br />
 	<?php } ?>

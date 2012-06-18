@@ -62,14 +62,15 @@ $rec=mysql_query($query) or die(mysql_error());
 <meta content="yes" name="apple-mobile-web-app-capable" />
 <meta content="index,follow" name="robots" />
 <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
-<link href="pics/homescreen.gif" rel="apple-touch-icon" />
+<link href="file:///E|/wamp/www/v2/components/com_shines/pics/homescreen.gif" rel="apple-touch-icon" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
-<link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />
-<script src="javascript/functions.js" type="text/javascript"></script>
+<link href="file:///E|/wamp/www/v2/components/com_shines/css/style.css" rel="stylesheet" media="screen" type="text/css" />
+<script src="file:///E|/wamp/www/v2/components/com_shines/javascript/functions.js" type="text/javascript"></script>
 <title><?=$site_name?></title>
 <!--<link href="pics/startup.png" rel="apple-touch-startup-image" /> -->
 <meta content="destin, vacactions in destin florida, destin, florida, real estate, sandestin resort, beaches, destin fl, maps of florida, hotels, hotels in florida, destin fishing, destin hotels, best florida beaches, florida beach house rentals, destin vacation rentals for destin, destin real estate, best beaches in florida, condo rentals in destin, vacaction rentals, fort walton beach, destin fishing, fl hotels, destin restaurants, florida beach hotels, hotels in destin, beaches in florida, destin, destin fl" name="keywords" />
 <meta content="Destin Florida's FREE iPhone application and website guide to local events, live music, restaurants and attractions" name="description" />
+<?php include("ga.php"); ?>
 </head>
 
 <body>
@@ -92,14 +93,14 @@ $rec=mysql_query($query) or die(mysql_error());
 	  	?>
       <li class="textbox"  style="padding-bottom:0px;">
      <table><tr><td>
- <a href="galleries.php?id=<?=$v['id']?>">   
- <img class="photo_container" src="<?php echo $v['avatar']; ?>" alt="<?php echo $v['title']; ?>" title="<?php echo $v['title']; ?>" />
+ <a href="file:///E|/wamp/www/v2/components/com_shines/galleries.php?id=<?=$v['id']?>">   
+ <img class="photo_container" src="<?php echo $v['file:///E|/wamp/www/v2/components/com_shines/avatar']; ?>" alt="<?php echo $v['title']; ?>" title="<?php echo $v['title']; ?>" />
 </a>
 </td><td valign="middle;">
 &nbsp;&nbsp;
      <font color="#999999">
      <strong>
-     <a href="photos.php?id=<?=$v['id']?>"><?=$v['title']?></a>
+     <a href="file:///E|/wamp/www/v2/components/com_shines/photos.php?id=<?=$v['id']?>"><?=$v['title']?></a>
      </strong></font> 
      </td></tr></table>
 

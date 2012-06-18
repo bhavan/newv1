@@ -102,12 +102,12 @@
 		  $lat2=$row[geolat];
 			$lon2=$row[geolon];
 	  ?>
-      <li class="textbox"><div style="float:left;width:80%;padding-right:5px;">
+      <li class="textbox"><div style="float:left;width:73%;padding-right:5px;">
       <strong><?=$row['title']?></strong><br /><span class="grayplain"><?php echo stripJunk(showBrief(strip_tags($row['description']),30)); ?></span>
         <br /> 
         <div class="gray"><a href="tel:<?=$row['phone']?>"><?=$row['phone']?></a>
         | <a href="dining_details.php?did=<?=$row['loc_id']?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a></div></div>
-        <div style="float:right;width:15%;vertical-align:top;padding-top:0px;"><?=round(distance($lat1, $lon1, $lat2, $lon2, "m"),'1').' mi'?></div>
+        <div style="float:right;width:25%;vertical-align:top;padding-top:0px;"><?=round(distance($lat1, $lon1, $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></div>
   
       </li>
       <?php

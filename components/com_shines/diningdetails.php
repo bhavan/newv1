@@ -9,7 +9,7 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
   $miles = $dist * 60 * 1.1515;
   $unit = strtoupper($unit);
 
-  if ($unit == "K") {
+  if ($unit == "KMS") {
     return ($miles * 1.609344); 
   } else if ($unit == "N") {
       return ($miles * 0.8684);
@@ -56,6 +56,7 @@ return $cleanedString;
 <!--<link href="pics/startup.png" rel="apple-touch-startup-image" /> -->
 <meta content="destin, vacactions in destin florida, destin, florida, real estate, sandestin resort, beaches, destin fl, maps of florida, hotels, hotels in florida, destin fishing, destin hotels, best florida beaches, florida beach house rentals, destin vacation rentals for destin, destin real estate, best beaches in florida, condo rentals in destin, vacaction rentals, fort walton beach, destin fishing, fl hotels, destin restaurants, florida beach hotels, hotels in destin, beaches in florida, destin, destin fl" name="keywords" />
 <meta content="Destin Florida's FREE iPhone application and website guide to local events, live music, restaurants and attractions" name="description" />
+<?php include("ga.php"); ?>
 </head>
 
 <body>
@@ -64,6 +65,8 @@ return $cleanedString;
 	/* Code added for iphone_diningdetails.tpl */
 	require("../../partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_diningdetails.tpl");
 	?>
+
+<!-- AddThis Button END -->
 </body>
 
 </html>

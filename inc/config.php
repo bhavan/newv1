@@ -24,8 +24,25 @@ $code = $var->location_code;
 ###################################################################################
 $cc = "*";
 ###################################################################################
+
+#This code Will get information from configuration and and get data from table
+#Fahrenheit - s,Celsius - m
+
+include("../configuration.php");
+$jconfig = new JConfig();
+define(DB_HOST,$jconfig->host);
+define(DB_USER,$jconfig->user);
+define(DB_PASSWORD,$jconfig->password);
+define(DB_NAME,$jconfig->db);
+	$conn=mysql_connect(DB_HOST,DB_USER,DB_PASSWORD) or die(mysql_error());
+	$db=mysql_select_db(DB_NAME) or die(mysql_error());
+	$rec = mysql_query("select * from `jos_pageglobal`");
+	$pageglobal=mysql_fetch_array($rec); 
+	$wunit= $pageglobal['weather_unit'];
+	//echo $wunit; 
 # You can change units from Metric "m" to Standard "s":
-$unit = "s";
+	$unit = $wunit;
+
 ###################################################################################
 # You can change number of days:
 $dayf = "5";
