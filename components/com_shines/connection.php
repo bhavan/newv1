@@ -26,5 +26,5 @@ $beach = $pageglobal['beach'];
 $email = $pageglobal['email'];
 $googgle_map_api_keys = $gmapkeys1[0];
 $location_code = $pageglobal['location_code'];
-
+$dunit= $pageglobal['distance_unit'];
 ?>

@@ -20,4 +20,5 @@ $db=mysql_select_db(DB_NAME) or die(mysql_error());
  $email = $pageglobal['email'];
  $googgle_map_api_keys = $gmapkeys1[0];
  $location_code = $pageglobal['location_code'];
+ $dunit= $pageglobal['distance_unit'];
 ?>
