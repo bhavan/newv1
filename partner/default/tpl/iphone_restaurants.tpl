@@ -71,7 +71,7 @@
 		$rec_featured = mysql_query($query_featured) or die(mysql_error());
 		while($row_featured=mysql_fetch_assoc($rec_featured))
 		{
-			$distance_featured = distance($lat1, $lon1, $row_featured['geolat'],  $row_featured['geolon'], "m");
+			$distance_featured = distance($lat1, $lon1, $row_featured['geolat'],  $row_featured['geolon'], $dunit);
 ?>
 		<tr>
 			<td style="width:260px;border-bottom:solid 1px #777777;padding:3px;">
@@ -93,10 +93,10 @@
 				<a class="linktext" href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $row_featured[geolon]; ?>:<?php echo $row_featured[geolat]; ?>')"></a> 
 				</td>
 			</tr>
-			<tr><td style="height:5px"></td></tr>
+			
 			</table>
 			</td>
-			<td class="graytext" width="40px" style="border-bottom:solid 1px #777777;padding:3px;" valign="middle" align="center"><?php echo round($distance_featured,1); ?> miles</td>			
+			<td class="graytext" width="40px" style="border-bottom:solid 1px #777777;padding:3px;text-align:right;" valign="middle" align="center"><?php echo round($distance_featured,1); ?> miles</td>			
 		</tr>			
 <?php
 		}
@@ -137,7 +137,7 @@
 	$rec=mysql_query($query) or die(mysql_error());
 	while($row=mysql_fetch_assoc($rec))
 	{
-		$distance = distance($lat1, $lon1, $row[geolat],  $row[geolon], "m");
+		$distance = distance($lat1, $lon1, $row[geolat],  $row[geolon], $dunit);
 					
 ?>		
 	<tr>
@@ -163,10 +163,10 @@
 			<a class="linktext" href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $row[geolon]; ?>:<?php echo $row[geolat]; ?>')"></a> 
 			</td>
 		</tr>
-		<tr><td style="height:5px"></td></tr>
+		
 		</table>
 		</td>
-		<td class="graytext" width="40px" style="border-bottom:solid 1px #777777;padding:3px;" valign="middle" align="center"><?php echo round($distance,1); ?> miles</td>			
+		<td class="graytext" width="40px" style="border-bottom:solid 1px #777777;padding:3px;text-align:right;" valign="middle" align="center"><?php echo round($distance,1); ?>&nbsp;<?=$dunit?></td>			
 	</tr>			
 	<?php } ?>
 </table>
@@ -207,7 +207,9 @@ if (($filter_loccat==0) || ($_REQUEST['filter_loccat']=='alp') && ($_POST['searc
 		$lon=JRequest::getFloat("lon",999);
 		$km=JRequest::getInt("km",0)?1.609344:1;
 	
-		$dist = (((acos(sin(($lat*pi()/180)) * sin(($lat2 * pi()/180)) + cos(($lat * pi() / 180)) * cos(($lat2 * pi() / 180)) * cos((($lon - $lon2) * pi() / 180)))))*180/pi())*60*1.1515*$km;
+		//$dist = (((acos(sin(($lat*pi()/180)) * sin(($lat2 * pi()/180)) + cos(($lat * pi() / 180)) * cos(($lat2 * pi() / 180)) * cos((($lon - $lon2) * pi() / 180)))))*180/pi())*60*1.1515*$km;
+		
+		$dist = distance($lat, $lon, lat2, $lon2, $dunit);
 		}
 ?>
 <tr>
@@ -233,10 +235,10 @@ if (($filter_loccat==0) || ($_REQUEST['filter_loccat']=='alp') && ($_POST['searc
 	<a class="linktext" href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $data['geolon']; ?>:<?php echo $data['geolat']; ?>')"></a>  
 	</td>
 	</tr>
-	<tr><td style="height:5px"></td></tr>
+	
 </table>
 </td>
-<td class="graytext" width="40px" style="border-bottom:solid 1px #777777;padding:3px;" valign="middle" align="center"><?php echo round($dist,1); ?> miles</td>			
+<td class="graytext" width="40px" style="border-bottom:solid 1px #777777;padding:3px;text-align:right;" valign="middle" align="center"><?php echo round($dist,1); ?>&nbsp;<?=$dunit?></td>			
 </tr>				
 	
 <?php } ?>
