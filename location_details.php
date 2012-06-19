@@ -6,11 +6,25 @@ include_once('./inc/var.php');
 include_once($var->inc_path.'base.php');
 _init();
 
+//Fetching key from database
+  $pageglobal = db_fetch("select * from `jos_pageglobal`");
+  $pagemeta = db_fetch("select * from `jos_pagemeta` where `uri` = '".$var->request_uri."'");
+  $pagejevent = db_fetch("select * from `jos_components` where `option`='com_jevlocations'");
+ 
+  	$gmapkeys=explode('googlemapskey=',$pagejevent['params']);
+  	$gmapkeys1=explode("\n",$gmapkeys[1]);  
+  
+  $data = db_fetch("select * from `jos_jev_locations` where `loc_id` = ".$var->get['id']);
+  $data['q'] = str_replace(' ', '+', ($data['title'].' '.$data['street'].' '.$data['city'].' '.$data['state'].' '.$data['postcode']));
+  	
+	/*query to get lon and lat from database*/
+	$queryx =  mysql_query("SELECT geolat FROM jos_jev_locations where loc_id = $data[loc_id]");	
+	$queryy = mysql_query("SELECT geolon FROM jos_jev_locations where loc_id = $data[loc_id]");
 
-$data = db_fetch("select * from `jos_jev_locations` where `loc_id` = ".$var->get['id']);
-$data['q'] = str_replace(' ', '+', ($data['title'].' '.$data['street'].' '.$data['city'].' '.$data['state'].' '.$data['postcode']));
-//fprint($data); _x();
-
+	/*fetching x and y coordinate*/
+	$x = mysql_result($queryx,0);/*Latitude*/	
+  	$y = mysql_result($queryy,0);/*Longitude*/
+  	
 ?>
 
 <!DOCTYPE HTML>
@@ -30,12 +44,46 @@ $data['q'] = str_replace(' ', '+', ($data['title'].' '.$data['street'].' '.$data
   document.createElement('aside');
   document.createElement('footer');
 </script>
+
+<!--MAP DATA 
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height:100%; margin: 0; padding: 0 }
+      #map_canvas { height: 50%; }
+    </style>-->
+
+
+    <!--
+    The URL contained in the script tag is the location of a JavaScript file that loads all of the symbols and definitions we need for using the Google
+&nbsp;Maps API The sensor parameter of the URL must be included, and indicates whether this application uses a sensor (such as a GPS locator) to 
+determine the user's locationKey   -->
+
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?<?php if ($gmapkeys1[0]!= ""){echo "key=".$gmapkeys1[0]."&";} ?>sensor=false">
+    </script>
+    
+    <script type="text/javascript">
+      function initialize() {
+        var myOptions = {
+          center:new google.maps.LatLng(<?php echo $x; ?>,<?php echo $y; ?>),
+          zoom: 10,
+		  <!--ROADMAP/SATELLITE/HYBRID/TERRAIN-->
+          mapTypeId: google.maps.MapTypeId.ROADMAP 
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    	var marker = new google.maps.Marker({position:new google.maps.LatLng(<?php echo $x; ?>,<?php echo $y; ?>),map:map,draggable:true,icon:'marker.png'})
+      }
+    </script>
+
+<!--MAP DATA -->
+
 <link rel="stylesheet" type="text/css" href="common/templatecolor/<?php echo $_SESSION['style_folder_name'];?>/css/all.css" media="screen" />
 <!--[if IE 7]><link rel="stylesheet" type="text/css" href="common/templatecolor/<?php echo $_SESSION['style_folder_name'];?>/css/ie7.css" media="screen" /><![endif]-->
 <?php include("ga.php"); ?>
 </head>
 
-<body>
+<body onLoad="initialize()">
 
 <header>
 	<?php m_header(); ?> <!-- header -->

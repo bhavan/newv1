@@ -507,7 +507,8 @@ function submitbutton(pressbutton) {
 		
 		<tr>
 			<td colspan="2">
-				<div id="gmap" style="width: 550px; height: 350px"></div>
+				<iframe src="http://www.gorissen.info/Pierre/maps/googleMapLocation.php?lat=<?php echo $this->location->geolat;?>&lon=<?php echo $this->location->geolon;?>" width="980px" height="375px" style="overflow-x: hidden;" frameborder="0"></iframe>
+				<!--  <div id="gmap" style="width: 550px; height: 350px"></div> -->
 				<div style="clear:both;"></div>
 			</td>
 		</tr>
