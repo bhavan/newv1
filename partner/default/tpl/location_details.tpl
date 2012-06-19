@@ -43,7 +43,7 @@
         </tr>
       </tbody>
     </table>
-    <iframe class="map_container" width="300" height="220" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="showmap.php?lat=<?=$data['geolat']?>&long=<?=$data['geolon']?>&zoom=<?=$data['geozoom']?>" style="margin-left:20px;"></iframe>
+<div id="map_canvas" style="width:300px; height:220px;margin: auto;" class="map_container"></div>
     <div class="adThreeHunderd" style="margin-left:0px;margin-right:20px;">
       <?php m_show_banner('Website Front Page Feature'); ?>
     </div> <!-- adThreeHunderd -->
