@@ -146,6 +146,7 @@ text-align: justify;
 margin-bottom: 14px;
 }
 	</style>
+    <?php include("../../ga.php"); ?>
 </head>
 <body>
   <div class="iphoneads" style=" vertical-align:top">

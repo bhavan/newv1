@@ -40,10 +40,10 @@ if($CatId>0){
 <meta content="yes" name="apple-mobile-web-app-capable" />
 <meta content="index,follow" name="robots" />
 <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
-<link href="file:///E|/wamp/www/v2/components/com_shines/pics/homescreen.gif" rel="apple-touch-icon" />
+<link href="pics/homescreen.gif" rel="apple-touch-icon" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
-<link href="file:///E|/wamp/www/v2/components/com_shines/css/style.css" rel="stylesheet" media="screen" type="text/css" />
-<script src="file:///E|/wamp/www/v2/components/com_shines/javascript/functions.js" type="text/javascript"></script>
+<link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />
+<script src="javascript/functions.js" type="text/javascript"></script>
 <title><?=$site_name?>
 </title>
 <!--<link href="pics/startup.png" rel="apple-touch-startup-image" /> -->
@@ -51,7 +51,7 @@ if($CatId>0){
 <meta content="Destin Florida's FREE iPhone application and website guide to local events, live music, restaurants and attractions" name="description" />
 <style>
 #leftnav a {
--webkit-border-image: url("file:///E|/wamp/www/v2/components/com_shines/images/navleft.png") 0 5 0 13  !important;
+-webkit-border-image: url("images/navleft.png") 0 5 0 13  !important;
 z-index: 3;
 margin-left: -4px;
 border-width: 0 5px 0 13px;
@@ -63,7 +63,7 @@ padding-right: 4px;
 float: left;
 }
 </style>
-<?php include("ga.php"); ?>
+<?php include("../../ga.php"); ?>
 </head>
 
 <body>

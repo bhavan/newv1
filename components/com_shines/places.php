@@ -167,7 +167,7 @@ $query_featured .= " ORDER BY distance ASC ";
 		.linktext { color: #0000ff; font-size: 14px; text-decoration: underline; } 
 		.pageitem {margin: 3px 3px 17px;font-size: 13px;}
 	</style>
-<?php include("ga.php"); ?>
+<?php include("../../ga.php"); ?>
 </head>
 
 <body>
