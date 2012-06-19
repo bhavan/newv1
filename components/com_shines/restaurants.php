@@ -200,7 +200,7 @@ function divopen(str) {
 	}
 }
 </script>
-<?php include("ga.php"); ?>
+<?php include("../../ga.php"); ?>
 </head>
 <body>
  <div class="iphoneads" style="vertical-align:top">

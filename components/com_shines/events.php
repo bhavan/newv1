@@ -174,7 +174,7 @@ $rec=mysql_query($query) or die(mysql_error());
 </head>
 
 <body>
-  <div class="iphoneads" style=" vertical-align:top">
+<div class="iphoneads" style=" vertical-align:top">
     <?php m_show_banner('iphone-events-screen'); ?>
   </div>
 <?php

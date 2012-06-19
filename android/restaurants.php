@@ -116,7 +116,7 @@ return $cleanedString;
 <!--<link href="pics/startup.png" rel="apple-touch-startup-image" /> -->
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
 <meta name="description" content="<?php echo $var->extra_meta; ?>" />
-<?php include("ga.php"); ?>
+<?php include("../ga.php"); ?>
 </head>
 
 <body>
