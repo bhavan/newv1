@@ -78,7 +78,8 @@ $rec=mysql_query($query) or die(mysql_error());
 <script src="javascript/functions.js" type="text/javascript"></script>
 <title><?=$site_name?></title>
 <link href="pics/startup.png" rel="apple-touch-startup-image" />
-<?php include("ga.php"); ?>
+
+<?php include("../ga.php"); ?>
 </head>
 
 <body>

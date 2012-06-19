@@ -27,4 +27,5 @@ $email = $pageglobal['email'];
 $googgle_map_api_keys = $gmapkeys1[0];
 $location_code = $pageglobal['location_code'];
 $dunit= $pageglobal['distance_unit'];
+$var->googgle_analytics = $pageglobal['googgle_map_api_keys'];
 ?>

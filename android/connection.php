@@ -1,6 +1,6 @@
 <?php
-	  require_once("../configuration.php");
-	 $jconfig = new JConfig();
+require_once("../configuration.php");
+$jconfig = new JConfig();
 define(DB_HOST,$jconfig->host);
 define(DB_USER,$jconfig->user);
 define(DB_PASSWORD,$jconfig->password);
@@ -21,4 +21,5 @@ $db=mysql_select_db(DB_NAME) or die(mysql_error());
  $googgle_map_api_keys = $gmapkeys1[0];
  $location_code = $pageglobal['location_code'];
  $dunit= $pageglobal['distance_unit'];
-?>
+ $var->googgle_analytics = $pageglobal['googgle_map_api_keys'];
+ ?>

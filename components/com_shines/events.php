@@ -170,7 +170,7 @@ $rec=mysql_query($query) or die(mysql_error());
 		});
 	});
 </script>
-    <?php include("ga.php"); ?>
+    <?php include("../../ga.php"); ?>
 </head>
 
 <body>
