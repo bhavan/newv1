@@ -52,149 +52,149 @@ $ics=$ics_res['ics_id'];
 $msg="";
 
 if($_POST['action']=='Save' || $_POST['action']=='Ahorrar' && $validCode){
-
-$title=$_POST['title'];
-$allDayEvent=$_POST['allDayEvent'];
-$custom_field4=$_POST['custom_field4'];
-$publish_up=$_POST['publish_up'];
-$publish_down=$_POST['publish_down'];
-
-	if($_POST['allDayEvent']=='on') {
-		$datem=$publish_up." ".'00:00:00';
-		$datee=$publish_down." ".'23:59:59';
-		$start_12h=strtotime($publish_up.'00:00:00');
-		$end_12h=strtotime($publish_down.'23:59:59');
-		$noend=0;
-
-	} else if($_POST['noendtime']!='') {
-		$start_12h=strtotime($_POST['publish_up'].$_POST['start_12h'].$_POST['start_ampm']);
-		$end_12h=strtotime($_POST['publish_down'].$_POST['start_12h'].$_POST['start_ampm']);
-		$datem=$publish_up." ".date("H:i:s",$start_12h);
-		$datee=$publish_down." ".'23:59:59';
-		$noend=1;
+	if($_POST['catid'] != 0){
 	
-	} else {
-		$start_12h=strtotime($_POST['publish_up'].$_POST['start_12h'].$_POST['start_ampm']);
-		$end_12h=strtotime($_POST['publish_down'].$_POST['end_12h'].$_POST['end_ampm']);
-		$datem=$publish_up." ".date("H:i:s",$start_12h);
-		$datee=$publish_down." ".date("H:i:s",$end_12h);
-		$noend=0;
-	}
-$day = date('l',strtotime($publish_up));
-$weekday=strtoupper(substr($day,0,2));
-$cat_id=$_POST['catid'];
-if($cat_id == 0){
-	$cat_id = 34;
-}
-$ics_id=$_POST['ics_id'];
-$jevcontent=$_POST['jevcontent'];
-$location=$_POST['location'];
-$custom_anonusername=$_POST['custom_anonusername'];
-$custom_anonemail=$_POST['custom_anonemail'];
-$uid=$_SESSION['__default']['user']->id;
-
-$userid=md5(uniqid(rand(),true));
-$duplicate_value=md5(uniqid(rand(),true));
-$data=array(dtstart =>$start_12h,
-	    UID=>$userid,
-	    dtend=>$end_12h,
-	    description=>$jevcontent,
-	    allDayEvent=>$allDayEvent,
-	    publish_down=>$publish_down,
-	    location=>$location,
-	    publish_up=>$publish_up,
-	    summary=>$title,
-	    createdby=>$uid,
-	    Customfield=>$custom_field4,
-	    multiday=>1,
-	    lockevent=>0,
-	    FREQ=>None,
-	    Category=>$cat_id,
-	    Username=>$custom_anonusername,
-	    UserEmail=>$custom_anonemail,
-	    noendtime=>0);
-$rawdata=serialize($data);
-
-// Data insertion in event detail table  // 
-$ins_query=mysql_query("insert into jos_jevents_vevdetail(dtstart,duration,dtend,description,geolon,geolat,location,priority,summary,sequence,state,multiday,hits,noendtime,modified) values('".$start_12h."','0','".$end_12h."','".$jevcontent."','0','0','".$location."','0','".$title."','0','".$custom_field4."','1','0','".$noend."',now())");
-
-// Query for last record id of detail table
-$last_id_query=mysql_query("SELECT LAST_INSERT_ID() as last_id");
-$result_lastid=mysql_fetch_array($last_id_query);
-$last_id=$result_lastid['last_id'];
-
-
-// Data insertion in event table
-$ins_query1=mysql_query("insert into jos_jevents_vevent(icsid,catid,uid,created,created_by,rawdata,detail_id,state,access,lockevent,author_notified) values('".$ics_id."','".$cat_id."','".$userid."',now(),'".$uid."','".$rawdata."','".$last_id."','".$custom_field4."','0','0','0')");
-
-
-// Query for last record id of event table
-$last_id_query1=mysql_query("SELECT LAST_INSERT_ID() as last_id1");
-$result_lastid1=mysql_fetch_array($last_id_query1);
-$last_id1=$result_lastid1['last_id1'];
-
-//#DD#
-if($last_id1>0){
-	$ins_query0=mysql_query("insert into jos_jev_anoncreator(ev_id ,name,email) values('".$last_id1."','".$custom_anonusername."','".$custom_anonemail."')"); 
-}
-//#DD#
-
-// Data insertion in event rrule table 
-$ins_query2=mysql_query("insert into jos_jevents_rrule(eventid,freq,until,count,rinterval,byday) values('".$last_id1."','none','0','1','1','".$weekday."')");
-
-// Data insertion in event repetition table 
-$ins_query3=mysql_query("insert into jos_jevents_repetition(eventid,eventdetail_id,duplicatecheck,startrepeat,endrepeat) values('".$last_id1."','".$last_id."','".$duplicate_value."','".$datem."','".$datee."')");
-
-
-$db =& JFactory::getDBO();
-$vevent->icsid = $ics_id;
-$abc=JLoader::register('JEventsCategory',JEV_ADMINPATH."/libraries/categoryClass.php");
-$cat = new JEventsCategory($db);
-$cat->load($vevent->catid);
-
-	if(!empty($last_id) && (!empty($last_id1))) {
-		require_once($var->tpl_path."events_submit_mail.tpl");
-		$adminuser = $cat->getAdminUser();
-		$adminEmail	= $adminuser->email;
-		//$adminEmail	= 'rinkal.gandhi@aaditsoftware.com';
-		$sitename =  $jconfig->sitename;
+		$title=$_POST['title'];
+		$allDayEvent=$_POST['allDayEvent'];
+		$custom_field4=$_POST['custom_field4'];
+		$publish_up=$_POST['publish_up'];
+		$publish_down=$_POST['publish_down'];
 		
-		$message = '
-		<table width="100%" cellpadding="0" cellspacing="0">
-		<tr>
-		<td colspan="2" align="left">Title : '.$title.'</td>
+			if($_POST['allDayEvent']=='on') {
+				$datem=$publish_up." ".'00:00:00';
+				$datee=$publish_down." ".'23:59:59';
+				$start_12h=strtotime($publish_up.'00:00:00');
+				$end_12h=strtotime($publish_down.'23:59:59');
+				$noend=0;
 		
-		</tr>
-		<tr><td style="padding:15px">&nbsp;</td></tr>
-		<tr>
-		<td colspan="2">'.$jevcontent.'</td>
-		</tr>
-		<tr>
-		<td align="left" colspan="2" style="padding-top:25px">Event Submitted from
-		['.$sitename.'] by ['.$custom_anonusername.'('.$custom_anonemail.')]</td>
-		</tr>
-		</table>';
+			} else if($_POST['noendtime']!='') {
+				$start_12h=strtotime($_POST['publish_up'].$_POST['start_12h'].$_POST['start_ampm']);
+				$end_12h=strtotime($_POST['publish_down'].$_POST['start_12h'].$_POST['start_ampm']);
+				$datem=$publish_up." ".date("H:i:s",$start_12h);
+				$datee=$publish_down." ".'23:59:59';
+				$noend=1;
+			
+			} else {
+				$start_12h=strtotime($_POST['publish_up'].$_POST['start_12h'].$_POST['start_ampm']);
+				$end_12h=strtotime($_POST['publish_down'].$_POST['end_12h'].$_POST['end_ampm']);
+				$datem=$publish_up." ".date("H:i:s",$start_12h);
+				$datee=$publish_down." ".date("H:i:s",$end_12h);
+				$noend=0;
+			}
+		$day = date('l',strtotime($publish_up));
+		$weekday=strtoupper(substr($day,0,2));
+		$cat_id=$_POST['catid'];
 		
-		$ack_message = '
-		<table width="100%" cellpadding="0" cellspacing="0">
-		<tr>
-		<td colspan="2" align="left">Title : '.$title.'</td>
+		$ics_id=$_POST['ics_id'];
+		$jevcontent=$_POST['jevcontent'];
+		$location=$_POST['location'];
+		$custom_anonusername=$_POST['custom_anonusername'];
+		$custom_anonemail=$_POST['custom_anonemail'];
+		$uid=$_SESSION['__default']['user']->id;
 		
-		</tr>
-		<tr><td style="padding:15px">&nbsp;</td></tr>
-		<tr>
-		<td colspan="2">'.$msg.'</td>
-		</tr>
-		</table>';
-		$headers = 'MIME-Version: 1.0' . "\r\n";
-		$headers .= 'Content-type:text/html;charset=iso-8859-1' . "\r\n";
-		$headers .= 'From: NO-REPLY <admin@domainname.com>' . "\r\n";
-		$headers .= 'X-Mailer: PHP/' . phpversion() . "\r\n";
-		// Email Notification to Administrator
-		mail($adminEmail,$subject,$message,$headers);
+		$userid=md5(uniqid(rand(),true));
+		$duplicate_value=md5(uniqid(rand(),true));
+		$data=array(dtstart =>$start_12h,
+			    UID=>$userid,
+			    dtend=>$end_12h,
+			    description=>$jevcontent,
+			    allDayEvent=>$allDayEvent,
+			    publish_down=>$publish_down,
+			    location=>$location,
+			    publish_up=>$publish_up,
+			    summary=>$title,
+			    createdby=>$uid,
+			    Customfield=>$custom_field4,
+			    multiday=>1,
+			    lockevent=>0,
+			    FREQ=>None,
+			    Category=>$cat_id,
+			    Username=>$custom_anonusername,
+			    UserEmail=>$custom_anonemail,
+			    noendtime=>0);
+		$rawdata=serialize($data);
 		
-		// Acknowledgement Email to the Event Creator. 
-		mail($custom_anonemail,$subject,$ack_message,$headers);
+		// Data insertion in event detail table  // 
+		$ins_query=mysql_query("insert into jos_jevents_vevdetail(dtstart,duration,dtend,description,geolon,geolat,location,priority,summary,sequence,state,multiday,hits,noendtime,modified) values('".$start_12h."','0','".$end_12h."','".$jevcontent."','0','0','".$location."','0','".$title."','0','".$custom_field4."','1','0','".$noend."',now())");
+		
+		// Query for last record id of detail table
+		$last_id_query=mysql_query("SELECT LAST_INSERT_ID() as last_id");
+		$result_lastid=mysql_fetch_array($last_id_query);
+		$last_id=$result_lastid['last_id'];
+		
+		
+		// Data insertion in event table
+		$ins_query1=mysql_query("insert into jos_jevents_vevent(icsid,catid,uid,created,created_by,rawdata,detail_id,state,access,lockevent,author_notified) values('".$ics_id."','".$cat_id."','".$userid."',now(),'".$uid."','".$rawdata."','".$last_id."','".$custom_field4."','0','0','0')");
+		
+		
+		// Query for last record id of event table
+		$last_id_query1=mysql_query("SELECT LAST_INSERT_ID() as last_id1");
+		$result_lastid1=mysql_fetch_array($last_id_query1);
+		$last_id1=$result_lastid1['last_id1'];
+		
+		//#DD#
+		if($last_id1>0){
+			$ins_query0=mysql_query("insert into jos_jev_anoncreator(ev_id ,name,email) values('".$last_id1."','".$custom_anonusername."','".$custom_anonemail."')"); 
+		}
+		//#DD#
+		
+		// Data insertion in event rrule table 
+		$ins_query2=mysql_query("insert into jos_jevents_rrule(eventid,freq,until,count,rinterval,byday) values('".$last_id1."','none','0','1','1','".$weekday."')");
+		
+		// Data insertion in event repetition table 
+		$ins_query3=mysql_query("insert into jos_jevents_repetition(eventid,eventdetail_id,duplicatecheck,startrepeat,endrepeat) values('".$last_id1."','".$last_id."','".$duplicate_value."','".$datem."','".$datee."')");
+		
+		
+		$db =& JFactory::getDBO();
+		$vevent->icsid = $ics_id;
+		$abc=JLoader::register('JEventsCategory',JEV_ADMINPATH."/libraries/categoryClass.php");
+		$cat = new JEventsCategory($db);
+		$cat->load($vevent->catid);
+		
+			if(!empty($last_id) && (!empty($last_id1))) {
+				require_once($var->tpl_path."events_submit_mail.tpl");
+				$adminuser = $cat->getAdminUser();
+				$adminEmail	= $adminuser->email;
+				//$adminEmail	= 'rinkal.gandhi@aaditsoftware.com';
+				$sitename =  $jconfig->sitename;
+				
+				$message = '
+				<table width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+				<td colspan="2" align="left">Title : '.$title.'</td>
+				
+				</tr>
+				<tr><td style="padding:15px">&nbsp;</td></tr>
+				<tr>
+				<td colspan="2">'.$jevcontent.'</td>
+				</tr>
+				<tr>
+				<td align="left" colspan="2" style="padding-top:25px">Event Submitted from
+				['.$sitename.'] by ['.$custom_anonusername.'('.$custom_anonemail.')]</td>
+				</tr>
+				</table>';
+				
+				$ack_message = '
+				<table width="100%" cellpadding="0" cellspacing="0">
+				<tr>
+				<td colspan="2" align="left">Title : '.$title.'</td>
+				
+				</tr>
+				<tr><td style="padding:15px">&nbsp;</td></tr>
+				<tr>
+				<td colspan="2">'.$msg.'</td>
+				</tr>
+				</table>';
+				$headers = 'MIME-Version: 1.0' . "\r\n";
+				$headers .= 'Content-type:text/html;charset=iso-8859-1' . "\r\n";
+				$headers .= 'From: NO-REPLY <admin@domainname.com>' . "\r\n";
+				$headers .= 'X-Mailer: PHP/' . phpversion() . "\r\n";
+				// Email Notification to Administrator
+				mail($adminEmail,$subject,$message,$headers);
+				
+				// Acknowledgement Email to the Event Creator. 
+				mail($custom_anonemail,$subject,$ack_message,$headers);
+			}
 	}
 }
 
