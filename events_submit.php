@@ -83,6 +83,9 @@ $publish_down=$_POST['publish_down'];
 $day = date('l',strtotime($publish_up));
 $weekday=strtoupper(substr($day,0,2));
 $cat_id=$_POST['catid'];
+if($cat_id == 0){
+	$cat_id = 34;
+}
 $ics_id=$_POST['ics_id'];
 $jevcontent=$_POST['jevcontent'];
 $location=$_POST['location'];
