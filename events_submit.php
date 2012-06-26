@@ -113,7 +113,7 @@ $data=array(dtstart =>$start_12h,
 $rawdata=serialize($data);
 
 // Data insertion in event detail table  // 
-$ins_query=mysql_query("insert into jos_jevents_vevdetail(dtstart,duration,dtend,description,geolon,geolat,location,priority,summary,sequence,state,multiday,hits,noendtime,modified) values('".$start_12h."','0','".$end_12h."','".$jevcontent."','0','0','".$location."','0','".$title."','0','1','1','0','".$noend."',now())");
+$ins_query=mysql_query("insert into jos_jevents_vevdetail(dtstart,duration,dtend,description,geolon,geolat,location,priority,summary,sequence,state,multiday,hits,noendtime,modified) values('".$start_12h."','0','".$end_12h."','".$jevcontent."','0','0','".$location."','0','".$title."','0','".$custom_field4."','1','0','".$noend."',now())");
 
 // Query for last record id of detail table
 $last_id_query=mysql_query("SELECT LAST_INSERT_ID() as last_id");
