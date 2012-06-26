@@ -697,11 +697,22 @@ class AdminIcaleventController extends JController {
 			$sql = "UPDATE #__jevents_vevent SET state=$newstate where ev_id='".$id."'";
 			$db->setQuery($sql);
 			$db->query();
+			
+			$detail_id="select detail_id from #__jevents_vevent where ev_id='".$id."'";
+			$db->setQuery($detail_id);
+			$did = $db->loadResult();
+					
+			
+			$sql1 ="UPDATE #__jevents_vevdetail SET state=$newstate where evdet_id='".$did."'";
+			$db->setQuery($sql1);
+			$db->query();
 
 			$params = JComponentHelper::getParams(JEV_COM_COMPONENT);
 			if ($newstate==1 && $params->get("com_notifyauthor",0) && !$event->_author_notified) {
 				$sql = "UPDATE #__jevents_vevent SET author_notified=1 where ev_id='".$id."'";
+				
 				$db->setQuery($sql);
+			
 				$db->query();
 
 				JEV_CommonFunctions::notifyAuthorPublished( $event );
