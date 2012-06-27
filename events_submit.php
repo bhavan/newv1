@@ -51,9 +51,11 @@ $ics=$ics_res['ics_id'];
 
 $msg="";
 
-if($_POST['action']=='Save' || $_POST['action']=='Ahorrar' && $validCode){
-	if($_POST['catid'] != 0){
+if($_POST['action']=='Save' || $_POST['action']=='Ahorrar'){
 	
+	$postRecheck = checkPostParameter($_POST,$validCode);
+
+	if($postRecheck){
 		$title=$_POST['title'];
 		$allDayEvent=$_POST['allDayEvent'];
 		$custom_field4=$_POST['custom_field4'];
@@ -195,9 +197,54 @@ if($_POST['action']=='Save' || $_POST['action']=='Ahorrar' && $validCode){
 				// Acknowledgement Email to the Event Creator. 
 				mail($custom_anonemail,$subject,$ack_message,$headers);
 			}
+	}else{
+		$postValues = $_POST;
 	}
 }
 
+
+/*
+#Function name : "checkPostParameter()"
+#Parameter     : $_POST array variable 
+#Return value  : True or False
+#Created by    : Yogi
+#Date          : 27-06-2012
+#Version       : 1.0
+*/
+
+function checkPostParameter($postValue,$validCode){
+global $msg;
+
+	if(empty($postValue['title']) || $postValue['title'] == ""){
+		$msg="Event Name can not be blank !<br/>";
+		return false;
+	}
+	if(empty($postValue['catid']) || $postValue['catid']=="0"){
+		$msg="Please Select the Category!<br/>";
+		return false;
+	}
+	if(empty($postValue['custom_anonusername']) || $postValue['custom_anonusername'] == ""){
+		$msg="User Name can not be blank !<br/>";
+		return false;
+	}
+	if(empty($postValue['custom_anonemail']) || $postValue['custom_anonemail'] == ""){
+		$msg="Email Address can not be blank !<br/>";
+		return false;
+	}
+	if(!eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $postValue['custom_anonemail'])){ 
+		$msg="Invalid Email Address!<br/>";
+		return false;
+	}
+	if(!$validCode){
+		$msg="Invalid varification code.";
+		return false;
+	}
+
+	
+	return true;
+}
+
+/*
 #DD#
 if(!$validCode){
 	$postValues = $_POST;
@@ -221,7 +268,7 @@ if(!$validCode){
 	$postValue['custom_anonemail'] = '';
 }
 #DD#
-
+*/
 
 
 ?>
@@ -368,6 +415,7 @@ if(noendchecked) {
 }
 
 function form_validation() {
+
 	if (document.adminForm.title.value=="")
 	{
 		alert ("Title can not be blank !");
