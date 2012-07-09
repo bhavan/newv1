@@ -105,10 +105,6 @@ $gurl = urlencode("http://$host/event_details.php?event_id=$ev_detail_id&title=$
 <!-- Added by yogi for Facebook Share feature End -->
 
 <!-- #DD# -->
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <a style="outline: medium none;margin-left:-15px;margin-top:-5px;" href="mailto:?body=<?=$mailContent;?>&subject=Check Out This Event!" rel="nofollow">
- 	<img src="../../common/images/btn_email.gif" border="0" />
- </a>
 
  <div style='float:left;padding:3px 3px 3px 8px;'>
 		<a expr:share_url='data:post.url' href='http://www.facebook.com/share.php?u=<?php echo $eurl ?>' name='fb_share' type='box_count'><img src="images/facebook_share_icon.png"/></a>
