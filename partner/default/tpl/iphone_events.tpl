@@ -2,9 +2,9 @@
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 	<tr>
 		<td width="50" height="50" valign="top" align="left">
-			<a href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>">
-				<img src="images/navlinkleft.png" alt="navlinkleft" width="37" height="37" />
-			</a> 
+		<div id="leftnav" style="left:15px;"> 
+			<a href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>"></a> 
+		</div>
 		</td>
 		<td width="200" height="50" valign="top" align="center">
 			<table cellpadding="0" cellspacing="0" border="0" width="200">
@@ -24,9 +24,9 @@
 			</table>
 		</td>
 		<td width="50" height="50" valign="top" align="right">
-			<a href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>">
-				<img src="images/navlinkright.png" alt="navlinkright" width="37" height="37" />
-			</a>
+		<div id="rightnav" style="right: 15px;">
+			<a href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>"></a>
+		</div>	
 		</td>
 	</tr>
 </table>
