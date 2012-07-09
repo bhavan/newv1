@@ -50,6 +50,7 @@ $rec=mysql_query($query) or die(mysql_error());
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+<meta property="og:image" content="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png"/>
 <meta content="yes" name="apple-mobile-web-app-capable" />
 <meta content="index,follow" name="robots" />
 <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />

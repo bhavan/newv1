@@ -74,7 +74,7 @@ $ev_detail_id = $rowvevdetail['evdet_id'];
 $host = $_SERVER[HTTP_HOST];
 
 $eurl = rawurlencode("http://$host/event_details.php?event_id=$ev_detail_id&title=$ev_detail_title&date=$ev_detail_date&rp_id=$eid");
-$egurl = "http://$host/event_details.php?event_id=$ev_detail_id&title=$ev_detail_title&date=$ev_detail_date&rp_id=$eid";
+$egurl = str_replace('%20','%2B',$eurl);
 ?>
 <!-- Added by yogi for Facebook Share feature End -->
 
@@ -83,7 +83,11 @@ $egurl = "http://$host/event_details.php?event_id=$ev_detail_id&title=$ev_detail
 		<!-- <script src='http://static.ak.fbcdn.net/connect.php/js/FB.Share' type='text/javascript'></script> -->		
 </div>
 
-
+<div style='float:left;padding:3px 3px 3px 8px;'>
+	<a href="https://plus.google.com/share?url=<?php echo $egurl ?>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+		<img src="images/google-share-button.jpg" alt="Share on Google+"/>
+	</a>
+</div>
 
 		
 	</ul>
