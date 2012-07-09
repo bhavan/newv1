@@ -89,14 +89,39 @@
 	  }
 	  ?>
 
+<!-- Added by yogi for Facebook Share feature Begin -->
+<?php 
+$eddate_array = explode(" ",$rowvevdetail['modified']);
+$ev_detail_date = $eddate_array[0];
+$ev_detail_title = $rowvevdetail['summary'];
+$ev_detail_id = $rowvevdetail['evdet_id'];
+$host = $_SERVER[HTTP_HOST];
+
+$eurl = rawurlencode("http://$host/event_details.php?event_id=$ev_detail_id&title=$ev_detail_title&date=$ev_detail_date&rp_id=$eid");
+$egurl = "http://$host/event_details.php?event_id=$ev_detail_id&title=$ev_detail_title&date=$ev_detail_date&rp_id=$eid";
+$gurl = urlencode("http://$host/event_details.php?event_id=$ev_detail_id&title=$ev_detail_title&date=$ev_detail_date&rp_id=$eid");
+
+?>
+<!-- Added by yogi for Facebook Share feature End -->
+
 <!-- #DD# -->
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  <a style="outline: medium none;margin-left:-15px;margin-top:-5px;" href="mailto:?body=<?=$mailContent;?>&subject=Check Out This Event!" rel="nofollow">
  	<img src="../../common/images/btn_email.gif" border="0" />
- </a>		
+ </a>
+
+ <div style='float:left;padding:3px 3px 3px 8px;'>
+		<a expr:share_url='data:post.url' href='http://www.facebook.com/share.php?u=<?php echo $eurl ?>' name='fb_share' type='box_count'><img src="images/facebook_share_icon.png"/></a>
+		<!-- <script src='http://static.ak.fbcdn.net/connect.php/js/FB.Share' type='text/javascript'></script> -->		
+</div>	
+
+
 <!-- #DD# -->
 		
 	</ul>
 </div>
 
 <div id="footer">&copy; <?=date('Y');?> <?=$site_name?>, Inc.<!-- | <a href="mailto:<?=$email?>?subject=App Feedback">Contact Us</a>--></div></div>
+
+
+
