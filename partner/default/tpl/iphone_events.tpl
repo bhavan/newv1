@@ -99,11 +99,11 @@
 <!-- Bottom Nav -->
 <div id="tributton2">
 	<div class="links" style="width:100%;">
-	     <div id="leftnav" style="left:4px;">   
+	     <div id="leftnav" style="left:15px;">   
                  <a href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>">&nbsp;</a>
              </div>
                  <a id="pressed" href="#"><?=$todaestring?></a>
-             <div id="rightnav" style="right:0px;">
+             <div id="rightnav" style="right:15px;">
                  <a href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>">&nbsp;</a>   
              </div>
        </div>
