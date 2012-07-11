@@ -1,5 +1,63 @@
 <?php defined('_JEXEC') or die('Restricted access'); ?>
 
+<html>
+<head>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+  
+  var geocoder;
+  var map;
+  var marker;
+  
+  function initialize() {
+     
+  geocoder = new google.maps.Geocoder();
+  
+  var myLatlng = new google.maps.LatLng(<?php echo $this->location->geolat;?>,<?php echo $this->location->geolon;?>);
+  
+
+  var myOptions = {zoom:<?php echo $this->location->geozoom;?>,center: myLatlng, mapTypeId: google.maps.MapTypeId.ROADMAP}
+  
+  	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions); 
+	
+	marker = new google.maps.Marker({draggable: true, position: myLatlng,  map: map, title: "Your location" });
+
+	resetLatLngTxtFields(<?php echo $this->location->geolat;?>,<?php echo $this->location->geolon;?>);
+
+    google.maps.event.addListener(marker, 'drag', function (event) {
+		resetLatLngTxtFields(this.getPosition().lat(), this.getPosition().lng());
+	});
+	
+}
+
+function resetLatLngTxtFields(lat, lng){
+	document.getElementById("latbox").value = lat;
+    document.getElementById("lngbox").value = lng;
+}
+
+
+  function codeAddress() {
+ 
+    street = document.getElementById("street").value;	
+	city = document.getElementById("city").value;	
+	state = document.getElementById("state").value;	
+	country = document.getElementById("country").value;	
+	postcode = document.getElementById("postcode").value;	
+	var address = street+","+city+","+state+","+country+","+postcode;
+
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+    	marker.setPosition(results[0].geometry.location);
+		resetLatLngTxtFields(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+
+	
+  }
+</script> 
 <?php JHTML::_('behavior.tooltip'); 
 
 $editor = &JFactory::getEditor();
@@ -154,6 +212,8 @@ function submitbutton(pressbutton) {
 	}
 </style>
 
+</head>
+<body onload="initialize()">
 <form action="index.php" method="post" name="adminForm" id="adminForm" enctype='multipart/form-data'>
 <div class="col">
 	<fieldset class="adminform">
@@ -491,7 +551,7 @@ function submitbutton(pressbutton) {
 			</td>
 			<td>
     	    	<input type="text" size="20" name="googlecountry" id="googlecountry" value="" />
-	    	    <input type="button" name='findaddress' onclick="findAddress();" value="<?php echo JText::_("Find Address");?>" />
+	    	    <input type="button" name='findaddress' onclick="codeAddress();" value="<?php echo JText::_("Find Address");?>" />
 			</td>
 		</tr>
 		<?php } 
@@ -499,7 +559,7 @@ function submitbutton(pressbutton) {
 		?>
 		<tr	>
 			<td colspan="2">
-	    	    <input type="button" name='findaddress' onclick="findAddress();" value="<?php echo JText::_("Find Address");?>" />
+	    	    <input type="button" name='findaddress' onclick="codeAddress();" value="<?php echo JText::_("Find Address");?>" />
 			</td>
 		</tr>
 
@@ -507,8 +567,7 @@ function submitbutton(pressbutton) {
 		
 		<tr>
 			<td colspan="2">
-				<iframe src="http://www.gorissen.info/Pierre/maps/googleMapLocation.php?lat=<?php echo $this->location->geolat;?>&lon=<?php echo $this->location->geolon;?>" width="980px" height="375px" style="overflow-x: hidden;" frameborder="0"></iframe>
-				<!--  <div id="gmap" style="width: 550px; height: 350px"></div> -->
+				<div id="map_canvas" style="width: 590px; height: 350px"></div>
 				<div style="clear:both;"></div>
 			</td>
 		</tr>
@@ -517,7 +576,7 @@ function submitbutton(pressbutton) {
 				<label for="geolat">
 					<?php echo JText::_( 'Geo Lat' ); ?>:
 				</label>
-				<input class="text_area" type="text" name="geolat" id="geolat" size="32" maxlength="250" value="<?php echo $this->location->geolat;?>" />
+				<input class="text_area" type="text" name="geolat" id="latbox" size="32" maxlength="250" value="<?php echo $this->location->geolat;?>" />
 			</td>
 		</tr>
 		<tr>
@@ -525,7 +584,7 @@ function submitbutton(pressbutton) {
 				<label for="geolong">
 					<?php echo JText::_( 'Geo Long' ); ?>:
 				</label>
-				<input class="text_area" type="text" name="geolon" id="geolon" size="32" maxlength="250" value="<?php echo $this->location->geolon;?>" />
+				<input class="text_area" type="text" name="geolon" id="lngbox" size="32" maxlength="250" value="<?php echo $this->location->geolon;?>" />
 			</td>
 		</tr>
 		<tr>
@@ -578,3 +637,5 @@ function submitbutton(pressbutton) {
 	<?php } ?>
 	<?php echo JHTML::_( 'form.token' ); ?>
 </form>
+</body>
+</html>

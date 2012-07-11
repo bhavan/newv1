@@ -146,11 +146,12 @@
 		<tr><td style="height:3px"></td></tr>
 		<tr><td class="headertext"><?php echo $row[title]; ?></td></tr>
 		<tr><td class="graytext"><?php
-		$words = str_word_count(strip_tags($row[description]),1);
+		$words = explode(' ',strip_tags($row[description]));
 		$desc = htmlspecialchars(implode(" ",array_slice($words,0,30)));
-		//$desc = str_word_count(strip_tags($row[description]),1);
-		//echo htmlspecialchars(implode(" ",array_slice($desc,0,30)));
-		if(!empty($desc)){ echo $desc .' ...' ;}?></td></tr>
+		if(!empty($desc)){
+				echo (count($words)>30)?$desc .' ...' :$desc;	
+		}?>
+		</td></tr>
 		<tr><td class="graytext">
 		<?php if ($_REQUEST['bIPhone']=='0'){?>
 			<a class="linktext" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $row[phone]); ?>">call</a> |     

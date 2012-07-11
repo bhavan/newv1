@@ -101,7 +101,7 @@ if(($image = file_upload(array(
   );
 	$image1=rand().$image;
  $sql = "insert into `jos_phocagallery` set 
-      `catid` = 8, 
+      `catid` = 1, 
       `title` = '"._clean($_POST['caption'])."', 
       `alias` = '"._clean(str_replace(' ', '-', strtolower(trim($_POST['caption']))))."', 
       `filename` = '".$image1."', 
