@@ -67,12 +67,12 @@ determine the user's locationKey   -->
       function initialize() {
         var myOptions = {
           center:new google.maps.LatLng(<?php echo $x; ?>,<?php echo $y; ?>),
-          zoom: 10,
+          zoom: 15,
 		  <!--ROADMAP/SATELLITE/HYBRID/TERRAIN-->
           mapTypeId: google.maps.MapTypeId.ROADMAP 
         };
         var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-    	var marker = new google.maps.Marker({position:new google.maps.LatLng(<?php echo $x; ?>,<?php echo $y; ?>),map:map,draggable:true,icon:'marker.png'})
+    	var marker = new google.maps.Marker({position:new google.maps.LatLng(<?php echo $x; ?>,<?php echo $y; ?>),map:map})
       }
     </script>
 
