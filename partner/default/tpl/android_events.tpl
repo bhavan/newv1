@@ -13,13 +13,17 @@
 
 <div id="content">
   <ul class="pageitem">
-	<li class="textbox">
+	 <li class="textbox">
 
-    <div style="float:right;width:18%">Distance</div>
-    </li>	
-      <?php 
+     	<div style="float:right;width:18%" class="dist">Distance</div>
+      </li>
+      
+	  <?php 
+	  
+	 $n = 0;
 	  while($row=mysql_fetch_array($rec))
 	  {
+		 
 		  
 		  //#DD#
 		  $ev=mysql_query("select *  from jos_jevents_vevent where ev_id=".$row['eventid']) or die(mysql_error());
@@ -56,14 +60,26 @@
 			}	
 			#DD#
 	  ?>
+	  	
+	  
       <li class="textbox">
       <div  style="float:left;padding-right:7px;width:18%;font-size: 12px;" class="small"><?=$displayTime?></div>
 <div style="float:left;width:54%"><strong><?=$rowvevdetail['summary']?></strong><br /><span class="grayplan"><?=$rowlocdetail['title']?></span><br /><a href="tel:<?=$rowlocdetail['phone']?>"><?=$rowlocdetail['phone']?></a> | <a href="events_details.php?eid=<?=$row['rp_id']?>&d=<?=$today?>&m=<?=$tomonth?>&Y=<?=$toyear?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a></div>
 <div style="float:right;width:25%;text-align:right"><?=round(distance($lat1, $lon1, $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></div>
   
       </li>
+	
       <?php
+	  $rowlocdetail['title']="";
+	  ++$n;
 	  }
+	  
+	  if(0 == $n)
+	  {
+	  	
+     	echo '<style>.dist{display:none;}</style><div style="padding-bottom: 10px;text-align:center;font-size: 15px;">No Events Today</div>';
+     
+	  }  
 	  ?>
 		
 	</ul>

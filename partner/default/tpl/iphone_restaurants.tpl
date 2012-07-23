@@ -79,7 +79,7 @@
 			<tr><td style="height:3px"></td></tr>
 			<tr><td class="headertext"><?php echo $row_featured['title']; ?></td></tr>
 			<tr><td class="graytext"><?php
-			$words = str_word_count(strip_tags($row_featured['description']),1);
+			$words = explode(' ',strip_tags($row_featured['description']));
 			$desc = htmlspecialchars(implode(" ",array_slice($words,0,30)));
 			if(!empty($desc)){ echo $desc .' ...' ;}?></td></tr>
 			<tr><td class="graytext">
@@ -219,7 +219,7 @@ if (($filter_loccat==0) || ($_REQUEST['filter_loccat']=='alp') && ($_POST['searc
 	<tr><td style="height:3px"></td></tr>
 	<tr><td class="headertext"><?php echo $title ?></td></tr>	
 	<tr><td class="graytext"><?php 
-	$words = str_word_count(strip_tags($data[description]),1);
+	$words = explode(' ',strip_tags($data[description]));
 	$desc = htmlspecialchars(implode(" ",array_slice($words,0,30)));
 	if(!empty($desc)){ echo $desc .' ...' ;}?></td></tr>
 	<tr><td class="graytext">

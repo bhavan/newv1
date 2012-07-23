@@ -17,7 +17,7 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 						<div style="width:138px;text-align:right;font-size:16pt;color:#333333; font-weight:bold;"><?=$todaestring?></div>
 					</td>
 					<td width="50" height="50" valign="top" align="left">
-						<div style="width:50px;text-align:left;">
+						<div style="width:70px;text-align:left;">
 							<form name='events' id='events' action='events.php' method='post'>
 								<input type="text" value="" class="mobiscroll ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-d scroller" id="date1" name="eventdate" style="width:0px;height:0px;border:0px;">
 								<button data-theme="a" style='background: url("images/calendar.jpg") no-repeat center;width: 25px;height: 25px;margin-top:0px;border:0px solid blue;margin:0px;padding:0px;' id="show" class="ui-btn-hidden" aria-disabled="false"></button>
@@ -41,9 +41,10 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
   <ul class="pageitem">
 	<li class="textbox">
 
-    <div style="float:right;width:18%">Distancia</div>
+    <div style="float:right;width:18%" class="dist">Distancia</div>
     </li>	
       <?php 
+	  $n = 0;
 	  while($row=mysql_fetch_array($rec))
 	  {
 	  	//#DD#
@@ -94,7 +95,17 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
   
       </li>
       <?php
+	  $rowlocdetail['title']="";
+	  ++$n;
 	  }
+	  
+	  if(0 == $n)
+	  {
+	  	
+
+     	echo '<style>.dist{display:none;}</style><div style="padding-top: 10px; border: 1px solid #878787;padding-bottom: 10px;text-align:center;font-size: 15px;">Hoy No Hay Eventos</div>';
+     
+	  }  
 	  ?>
 		
 	</ul>
