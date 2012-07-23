@@ -1,5 +1,6 @@
 <h2>Upload your own photo</h2>
-<form id="uploadForm" action="" method="post" enctype="multipart/form-data">
+ 
+<form id="uploadForm" name="uploadForm" action="" method="post" enctype="multipart/form-data" onSubmit="return form_validation()">
   <div class="no-margin-top no-margin-bottom">
 	<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
     <?php if(isset($var->photo_uploaded) && $var->photo_uploaded) echo "<h4>Thank you! Your photo has successfully been uploaded, waiting for admin approval.</h4><br />"; ?>
@@ -25,4 +26,5 @@
   </div><!-- /no-margin-top no-margin-bottom -->
   <br /><br />
   <h3><a href="<?php echo $var->http_referer; ?>" style=":left;">&laquo;&nbsp;Back</a></h3>
+ 
 </form>

@@ -9,11 +9,11 @@
 		<td width="200" height="50" valign="top" align="center">
 			<table cellpadding="0" cellspacing="0" border="0" width="200">
 				<tr>
-					<td width="150" height="50" valign="top" align="right">
-						<div style="width:150px;text-align:right;font-size:16pt;color:#333333; font-weight:bold;"><?=$todaestring?></div>
+					<td width="150" height="50" valign="top" align="center">
+						<div style="width:120px;text-align:right;font-size:16pt;color:#333333; font-weight:bold;"><?=$todaestring?></div>
 					</td>
 					<td width="50" height="50" valign="top" align="left">
-						<div style="width:50px;text-align:left;">
+						<div style="width:60px;text-align:left;">
 							<form name='events' id='events' action='events.php' method='post'>
 								<input type="text" value="" class="mobiscroll ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-d scroller" id="date1" name="eventdate" style="width:0px;height:0px;border:0px;">
 								<button data-theme="a" style='background: url("images/calendar.jpg") no-repeat center;width: 25px;height: 25px;margin-top:0px;border:0px solid blue;margin:0px;padding:0px;' id="show" class="ui-btn-hidden" aria-disabled="false"></button>
@@ -37,9 +37,10 @@
   <ul class="pageitem">
 	<li class="textbox">
 
-    <div style="float:right;width:18%">Distance</div>
+   	 <div style="float:right;width:18%" class="dist">Distance</div>
     </li>	
       <?php 
+	  $n = 0;
 	  while($row=mysql_fetch_array($rec))
 	  {
 	  	//#DD#
@@ -77,6 +78,7 @@
 			}	
 			#DD#
 	  ?>
+	  
       <li class="textbox">
       <div style="float:left;padding-right:7px;width:18%;font-size:11px;" class="small"><?=$displayTime?></div>
       <div style="float:left;width:54%;text-align:left;">
@@ -90,7 +92,17 @@
   
       </li>
       <?php
+	  $rowlocdetail['title']="";
+	  ++$n;
 	  }
+	  
+	  if(0 == $n)
+	  {
+	  	
+
+     	echo '<style>.dist{display:none;}</style><div style="padding-top: 10px; border: 1px solid #878787;padding-bottom: 10px;text-align:center;font-size: 15px;">No Events Today</div>';
+     
+	  }  
 	  ?>
 		
 	</ul>

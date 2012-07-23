@@ -1,5 +1,6 @@
 <h2>SUBE TUS PROPIAS FOTOS</h2>
-<form id="uploadForm" action="" method="post" enctype="multipart/form-data">
+
+<form id="uploadForm" name="uploadForm" action="" method="post" enctype="multipart/form-data" onSubmit="return form_validation()">
   <div class="no-margin-top no-margin-bottom">
 	<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
     <?php if(isset($var->photo_uploaded) && $var->photo_uploaded) echo "<h4>Gracias! Su foto ha sido cargado con éxito, en espera de aprobación de administrador.</h4><br />"; ?>
