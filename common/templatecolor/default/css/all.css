@@ -818,3 +818,7 @@ color: #666666;
 text-decoration: none;
 background-position: top;
 }
+/****SOCIAL SHARING CSS****/
+.fb-share-button{float: left; padding-right: 2px;}
+.twitter-share-button{width: 84px !important;}
+/****END SOCIAL SHARING CSS****/

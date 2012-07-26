@@ -20,7 +20,14 @@
   </tr>
 
   <tr>
-    <td><p>Hello and thanks for visiting! The TownWizard site that you are looking for is currently unavailable. If you are a current partner, please feel free to contact TownWizard Support <a style="color:#EE3F43;" href="http://townwizard.zendesk.com" target="_blank">here</a>. If you are not a current TownWizard partner and would like to be your own TownWizard, please visit <a href="http://www.townwizard.com" target="_blank">http://www.townwizard.com</a></p>
+    <td>
+		<p>
+			Hello and thanks for visiting! The TownWizard site that you are looking for is currently unavailable.<br />
+			If you are a current partner, please feel free to contact TownWizard Support <a style="color:#EE3F43;" href="http://townwizard.zendesk.com" target="_blank">here</a>.
+		</p>
+		<p>
+			<br />If you are not a current TownWizard partner and would like to be your own TownWizard, please visit <a href="http://www.townwizard.com" target="_blank">http://www.townwizard.com</a>
+		</p>
     <p>Thank You!</p></td>
   </tr>
 
