@@ -450,3 +450,7 @@ width:315px;
     width: 315px;
 	height: 250px;
 }
+/****SOCIAL SHARING CSS****/
+.fb-share-button{float: left; padding-right: 2px;}
+.twitter-share-button{width: 84px !important;}
+/****END SOCIAL SHARING CSS****/
