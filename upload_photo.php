@@ -25,7 +25,6 @@ _init();
   
   function form_validation() 
   {
-
 	var filename=document.uploadForm.image.value;
 	var ext = filename.substring(filename.lastIndexOf('.') + 1);
 	
@@ -33,17 +32,14 @@ _init();
 	  alert ("Choose image for upload!");
 	  document.uploadForm.image.focus();
 	  return false;
- 	}else if(ext == "gif" || ext == "GIF" || ext == "JPEG" || ext == "jpeg" || ext == "jpg" || ext == "JPG" || ext == "PNG" || ext == "png")
-	{
+ 	}else if(ext == "gif" || ext == "GIF" || ext == "JPEG" || ext == "jpeg" || ext == "jpg" || ext == "JPG" || ext == "PNG" || ext == "png"){
 		return true;
-	} 
-	else
-	{
+	}else{
 		alert ("File Type must be GIF or JPG or PNG images only!");
+		document.uploadForm.image.value="";
 		document.uploadForm.image.focus();
 		return false;
 	}
-	
 }
 
 </script>
