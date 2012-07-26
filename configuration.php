@@ -75,72 +75,35 @@ class JConfig {
 		
 		$result = mysql_query($queryMaster);
 		
-		$row = mysql_fetch_array($result);
-		//echo "<pre>";
-		//print_r($row);
-		// Assigning the Slave DB information to PHP SESSION variable 	
-
-		$_SESSION['c_db_name']     = $row['db_name'];
-		$_SESSION['c_db_user']     = $row['db_user'];
-		$_SESSION['c_db_password'] = $row['db_password'];
-		
-		// Assigning the DB credintial to Class data member.
-		
-		$this->db       					= $_SESSION['c_db_name'];
-		$this->user     					= $_SESSION['c_db_user'];
-		$this->password 					= $_SESSION['c_db_password'];
-		
-		// Assign Partner Site folder Name and Style Folder Name for Common Folder
-		
-		$_SESSION['tpl_folder_name'] 	    = $row['tpl_folder_name'];
-		$_SESSION['tpl_menu_folder_name'] 	= $row['tpl_menu_folder_name'];
-		$_SESSION['style_folder_name'] 		= $row['style_folder_name'];
-		$_SESSION['partner_folder_name'] 	= $row['partner_folder_name'];
-		$this->sitename 					= ucfirst($_SESSION['partner_folder_name']);
-		
-		mysql_close($link);
-	}
-
-/*	
-	function __construct() {
-		$this->db       					= 'v2';
-		$this->user     					= 'root';
-		$this->password 					= 'bitnami';
-
-		//echo $pageURL = $_SERVER["HTTP_HOST"]; 
-
-		// Connetion with Master DB to retrive Slave DB informaiton
-               	//$link_org = $link;
-		//$dblink_org = $dblink;
-
-		$link = mysql_pconnect("localhost","root","bitnami");
-               
-		//$dblink = null;
- 
-                //$dblink = mysql_select_db('newmasterconfig');
-                $bhavan = mysql_select_db('master',$link);
-                
-				if($bhavan){
-					echo "connnected";
-				} else {
-					echo "not connected";
-				}
-		//$bhavan2 = mysql_select_db('newmasterconfig',$link);
-		//$dblink = mysql_select_db('v2terconfig);
-                //$dblink = dblink_org;
-		//$dblink_org = null;
+		if (mysql_num_rows($result)>0) {
+			$row = mysql_fetch_array($result);
+			
+			// Assigning the Slave DB information to PHP SESSION variable 	
 	
-		mysql_close($link);	
-		//$queryMaster = "SELECT * FROM master WHERE site_url LIKE '$pageURL'";
-                
-                //$result = mysql_query($queryMaster);
-                
-                //$row = mysql_fetch_array($result);
-                //echo "<pre>";
-                //print_r($row);
-
+			$_SESSION['c_db_name']     = $row['db_name'];
+			$_SESSION['c_db_user']     = $row['db_user'];
+			$_SESSION['c_db_password'] = $row['db_password'];
+			
+			// Assigning the DB credintial to Class data member.
+			
+			$this->db       					= $_SESSION['c_db_name'];
+			$this->user     					= $_SESSION['c_db_user'];
+			$this->password 					= $_SESSION['c_db_password'];
+			
+			// Assign Partner Site folder Name and Style Folder Name for Common Folder
+			
+			$_SESSION['tpl_folder_name'] 	    = $row['tpl_folder_name'];
+			$_SESSION['tpl_menu_folder_name'] 	= $row['tpl_menu_folder_name'];
+			$_SESSION['style_folder_name'] 		= $row['style_folder_name'];
+			$_SESSION['partner_folder_name'] 	= $row['partner_folder_name'];
+			$this->sitename 					= ucfirst($_SESSION['partner_folder_name']);
+			
+			mysql_close($link);
+		}else{
+			header("location:thanks.php");
+			exit;
+		}
 	}
-*/
 
 }
 ?>

@@ -22,9 +22,13 @@ a:hover .arrow{background-position:0 -13px!important}@media screen and (max-widt
 
 #tributton2 a:last-child,#duobutton2 a:last-child{width:101px}
 
-#tributton a{width:106px}#duobutton .links{width:195px}
+#tributton a{width:106px}
 
-#tributton2 a{width:106px}#duobutton2 .links{width:195px}
+#duobutton .links{width:195px}
+
+#tributton2 a{width:106px;height:38px !important; line-height:52px !important; font-size: 12pt;}
+
+#duobutton2 .links{width:195px}
 
 #tributton .links{width:302px}
 
@@ -32,17 +36,52 @@ a:hover .arrow{background-position:0 -13px!important}@media screen and (max-widt
 
 #doublead{width:300px!important}
 
-#duoselectionbuttons{width:191px;height:30px;top:7px}#triselectionbuttons{width:290px;height:30px;top:7px}#triselectionbuttons a:first-child,#duoselectionbuttons a:first-child{width:99px;height:28px;line-height:28px}#triselectionbuttons a{width:98px;height:28px;line-height:28px}#triselectionbuttons a:last-child,#duoselectionbuttons a:last-child{width:99px;height:28px;line-height:28px}.searchbox form{width:272px}.searchbox input[type="text"]{width:275px}.menu .name{max-width:77%}.checkbox .name{max-width:190px}.radiobutton .name{max-width:190px}
+#duoselectionbuttons{width:191px;height:30px;top:7px}
+
+#triselectionbuttons{width:290px;height:30px;top:7px}
+
+#triselectionbuttons a:first-child,#duoselectionbuttons a:first-child{width:99px;height:28px;line-height:28px}
+
+#triselectionbuttons a{width:98px;height:28px;line-height:28px}
+
+#triselectionbuttons a:last-child,#duoselectionbuttons a:last-child{width:99px;height:28px;line-height:28px}
+
+.searchbox form{width:272px}
+
+.searchbox input[type="text"]{width:275px}
+
+.menu .name{max-width:77%}
+
+.checkbox .name{max-width:190px}
+
+.radiobutton .name{max-width:190px}
+
 #leftnav a,#rightnav a,#leftbutton a,#rightbutton a,#blueleftbutton a,#bluerightbutton a{line-height:30px;height:30px}
+
 #leftnav img,#rightnav img{margin-top:4px}
+
 #leftnav,#leftbutton,#blueleftbutton{top:7px}#rightnav,#rightbutton,#bluerightbutton{top:7px}.musiclist .name{max-width:55%}
 
 .textbox textarea{width:280px}
 
-.bigfield input{width:295px}}@media screen and (min-width:321px){#topbar{height:32px}#title{line-height:32px;height:32px;font-size:10pt}.menu .name{max-width:85%}.checkbox .name{max-width:75%}.radiobutton .name{max-width:75%}
+.bigfield input{width:295px}}@media screen and (min-width:321px){#topbar{height:32px}
+
+#title{line-height:32px;height:32px;font-size:10pt}
+
+.menu .name{max-width:85%}
+
+.checkbox .name{max-width:75%}
+
+.radiobutton .name{max-width:75%}
 #leftnav a,#rightnav a,#leftbutton a,#rightbutton a,#blueleftbutton a,#bluerightbutton a{line-height:24px;height:24px}
+
 #leftnav img,#rightnav img{margin-top:4px;height:70%}
-#leftnav,#leftbutton,#blueleftbutton{top:4px}#rightnav,#rightbutton,#bluerightbutton{top:4px}.musiclist .name{max-width:70%}
+
+#leftnav,#leftbutton,#blueleftbutton{top:4px}
+
+#rightnav,#rightbutton,#bluerightbutton{top:4px}
+
+.musiclist .name{max-width:70%}
 
 .textbox textarea{width:440px}
 

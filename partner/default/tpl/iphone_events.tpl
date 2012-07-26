@@ -7,10 +7,10 @@
 		</div>
 		</td>
 		<td width="200" height="50" valign="top" align="center">
-			<table cellpadding="0" cellspacing="0" border="0" width="200">
+			<table cellpadding="0" cellspacing="0" border="0" width="200" style="padding-top: 10px;">
 				<tr>
 					<td width="150" height="50" valign="top" align="center">
-						<div style="width:120px;text-align:right;font-size:16pt;color:#333333; font-weight:bold;"><?=$todaestring?></div>
+						<div style="width:128px;text-align:right;font-size:16pt;color:#333333; font-weight:bold;"><?=$todaestring?></div>
 					</td>
 					<td width="50" height="50" valign="top" align="left">
 						<div style="width:60px;text-align:left;">
