@@ -14,16 +14,16 @@
     <input class="no-margin-top" id="image" name="image" value="Vali fail" type="file" />
     <br /><br />
     <label accesskey="t" for="caption">Pie de foto (opcional):</label>
-    <input class="no-margin-top" name="caption" id="caption" style="width: 90%;" />
+    <input class="no-margin-top" name="caption" id="caption" style="width: 90%;" value="<?php echo $_POST['caption'];?>" />
     <br /><br />
     <label accesskey="c" for="description">Descripción de la foto (opcional):</label>
     <textarea class="no-margin-top" name="description" id="description" style="width: 90%;" cols="43" rows="6"></textarea>
     <br /><br />
     <label accesskey="n" for="username">Su nombre (opcional):</label>
-    <input class="no-margin-top" name="username" id="username" style="width: 90%;" />
+    <input class="no-margin-top" name="username" id="username" style="width: 90%;" value="<?php echo $_POST['username'];?>" />
     <br /><br />
     <label accesskey="h" for="location">Su origen (opcional):</label>
-    <input class="no-margin-top" name="location" id="location" style="width: 90%;" />
+    <input class="no-margin-top" name="location" id="location" style="width: 90%;"  value="<?php echo $_POST['location'];?>" />
     <br /><br />
     <input type="hidden" name="backurl" value="<?php echo $var->http_referer; ?>" />
     <input type="hidden" name="formname" value="upload.event.photo" />
