@@ -11,7 +11,7 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 			</a> 
 		</td>
 		<td width="200" height="50" valign="top" align="center">
-			<table cellpadding="0" cellspacing="0" border="0" width="200">
+			<table cellpadding="0" cellspacing="0" border="0" width="200" style="padding-top: 4px;">
 				<tr>
 					<td width="138" height="50" valign="top" align="right">
 						<div style="width:138px;text-align:right;font-size:16pt;color:#333333; font-weight:bold;"><?=$todaestring?></div>

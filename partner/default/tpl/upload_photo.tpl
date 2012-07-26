@@ -1,9 +1,14 @@
 <h2>Upload your own photo</h2>
- 
-<form id="uploadForm" name="uploadForm" action="" method="post" enctype="multipart/form-data" onSubmit="return form_validation()">
+
+<form id="uploadForm" name="uploadForm" action="" method="post" enctype='multipart/form-data' onSubmit="return form_validation()">
   <div class="no-margin-top no-margin-bottom">
 	<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-    <?php if(isset($var->photo_uploaded) && $var->photo_uploaded) echo "<h4>Thank you! Your photo has successfully been uploaded, waiting for admin approval.</h4><br />"; ?>
+    <?php 
+	if($msg!='')
+	{
+		echo '<div style="color:#FF0000;font-size: 14px;">'.$msg.'</div>';
+	}
+	if(isset($var->photo_uploaded) && $var->photo_uploaded) echo "<h4>Thank you! Your photo has successfully been uploaded, waiting for admin approval.</h4><br />"; ?>
     <h3>Choose an Image</h3><br />
     <label class="no-margin-top" accesskey="f" for="userfile">Filename (2MB Size Limit) :</label>
     <input class="no-margin-top" id="image" name="image" value="Vali fail" type="file" />
