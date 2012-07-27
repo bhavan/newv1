@@ -45,12 +45,25 @@ $toyear=$_REQUEST['Y'];
 
 //#DD#
 $_REQUEST['eventdate'] = trim($_REQUEST['eventdate']);
+
 if(!empty($_REQUEST['eventdate'])){
+
 	$today = date('d',strtotime($_REQUEST['eventdate']));
 	$tomonth = date('m',strtotime($_REQUEST['eventdate']));
 	$toyear = date('Y',strtotime($_REQUEST['eventdate']));
 }
 //#DD#
+
+
+$_REQUEST['eventdate1'] = trim($_REQUEST['eventdate1']);
+
+if(!empty($_REQUEST['eventdate1'])){
+
+	$today = date('d',strtotime($_REQUEST['eventdate1']));
+	$tomonth = date('m',strtotime($_REQUEST['eventdate1']));
+	$toyear = date('Y',strtotime($_REQUEST['eventdate1']));
+}
+
 
 $todaestring=date('D, M j', mktime(0, 0, 0, $tomonth, $today, $toyear));
 
@@ -98,6 +111,7 @@ $rec=mysql_query($query) or die(mysql_error());
 <script src="../../mobiscroll/js/mobiscroll-1.5.1.js" type="text/javascript"></script>
 <link href="../../mobiscroll/css/mobiscroll-1.5.1.css" rel="stylesheet" type="text/css" />
 
+
 <style type="text/css">
 	body {
 		font-family: arial, verdana, sans-serif;
@@ -113,62 +127,58 @@ $rec=mysql_query($query) or die(mysql_error());
 <script type="text/javascript">
 
 			function submitForm() {
-				document.events.submit(); //#DD#
+				if(document.getElementById('date3').value != ''){
+					document.events1.submit(); //#DD#
+				}else{
+					document.events.submit(); //#DD#
+				}	
 			}
+
+			
 
 	$(document).ready(function () {
-		// Date with external button
-		$('#date1').scroller({ showOnFocus: false });
-		$('#show').click(function() { $('#date1').scroller('show'); return false; });
-		// Time
-		$('#date2').scroller({ preset: 'time' });
-		// Datetime
-		$('#date3').scroller({ preset: 'datetime' });
+            // Date with external button
+            $('#date1').scroller({ showOnFocus: false });
+            $('#show').click(function() { $('#date1').scroller('show'); return false; });
+            // Time
+            $('#date2').scroller({ preset: 'time' });
+            // Datetime
+			 $('#date3').scroller({ preset: 'date' });
 
-		$('#custom').scroller({
-			width: 90,
-			wheels: wheels,
-			parseValue: function (s) {
-				if (s !== '') {
-					var d = s.split(' ');
-				}
-				else {
-					var d = [1,1,1];
-				}
-				return d;
-			}
-		});
-		$('#custom').click(function() { $(this).scroller('show'); });
+            
+            $('#custom').scroller({ showOnFocus: false });
+        	$('#custom').click(function() { $(this).scroller('show'); });
 
-		$('#disable').click(function() {
-			$('#date1').scroller('disable');
-			return false;
-		});
+            $('#disable').click(function() {
+                $('#date1').scroller('disable');
+                return false;
+            });
 
-		$('#enable').click(function() {
-			$('#date1').scroller('enable');
-			return false;
-		});
+            $('#enable').click(function() {
+                $('#date1').scroller('enable');
+                return false;
+            });
 
-		$('#get').click(function() {
-			alert($('#date1').scroller('getDate'));
-			return false;
-		});
+            $('#get').click(function() {
+                alert($('#date1').scroller('getDate'));
+                return false;
+            });
 
-		$('#set').click(function() {
-			$('#date1').scroller('setDate', new Date(), true);
-			return false;
-		});
+            $('#set').click(function() {
+                $('#date1').scroller('setDate', new Date(), true);
+                return false;
+            });
 
-		$('#theme, #mode').change(function() {
-			var t = $('#theme').val();
-			var m = $('#mode').val();
-			$('#date1').scroller('destroy').scroller({ showOnFocus: false, theme: t, mode: m });
-			$('#date2').scroller('destroy').scroller({ preset: 'time', theme: t, mode: m });
-			$('#date3').scroller('destroy').scroller({ preset: 'datetime', theme: t, mode: m });
-			$('#custom').scroller('option', { theme: t, mode: m });
-		});
-	});
+
+            $('#theme, #mode').change(function() {
+                var t = $('#theme').val();
+                var m = $('#mode').val();
+                $('#date1').scroller('destroy').scroller({ showOnFocus: false, theme: t, mode: m });
+                $('#date2').scroller('destroy').scroller({ preset: 'time', theme: t, mode: m });
+               $('#date3').scroller('destroy').scroller({ preset: 'date', theme: t, mode: m });
+                $('#custom').scroller('destroy').scroller({ showOnFocus: false, theme: t, mode: m });
+            });
+        });
 </script>
     <?php include("../../ga.php"); ?>
 </head>
