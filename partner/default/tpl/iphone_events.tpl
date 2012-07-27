@@ -7,13 +7,13 @@
 		</div>
 		</td>
 		<td width="200" height="50" valign="top" align="center">
-			<table cellpadding="0" cellspacing="0" border="0" width="200" style="padding-top: 10px;">
+			<table cellpadding="0" cellspacing="0" border="0" width="200" style="padding-top: 12px;">
 				<tr>
 					<td width="150" height="50" valign="top" align="center">
-						<div style="width:128px;text-align:right;font-size:16pt;color:#333333; font-weight:bold;"><?=$todaestring?></div>
+						<div style="width:130px;text-align:right;font-size:16pt;color:#333333; font-weight:bold;"><?=$todaestring?></div>
 					</td>
 					<td width="50" height="50" valign="top" align="left">
-						<div style="width:60px;text-align:left;">
+						<div style="width:68px;text-align:left;">
 							<form name='events' id='events' action='events.php' method='post'>
 								<input type="text" value="" class="mobiscroll ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-d scroller" id="date1" name="eventdate" style="width:0px;height:0px;border:0px;">
 								<button data-theme="a" style='background: url("images/calendar.jpg") no-repeat center;width: 25px;height: 25px;margin-top:0px;border:0px solid blue;margin:0px;padding:0px;' id="show" class="ui-btn-hidden" aria-disabled="false"></button>
@@ -112,17 +112,17 @@
 <!-- Bottom Nav -->
 <div id="tributton2">
 	<div class="links" style="width:100%;">
-	     <div id="leftnav" style="left:15px;">   
+	     <div id="leftnav" style="left:22px;">   
                  <a href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>">&nbsp;</a>
              </div>
              
 			<table align="center" cellpadding="0" cellspacing="0" border="0" width="200" style="padding-top: 12px;">
 				<tr>
 					<td width="150" height="50" valign="top" align="center">
-						<div style="width:128px;text-align:right;font-size:16pt;color:#333333; font-weight:bold;"><?=$todaestring?></div>
+						<div style="width:125px;text-align:right;font-size:16pt;color:#333333; font-weight:bold;"><?=$todaestring?></div>
 					</td>
 					<td width="50" height="50" valign="top" align="left">
-						<div style="width:52px;text-align:left;">
+						<div style="width:54px;text-align:left;">
 							<form name='events1' id='events' action='events.php' method='post'>
 								<input type="text" value="" class="mobiscroll ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-d scroller" id="date3" name="eventdate1" style='background: url("images/calendar.jpg") no-repeat center;width: 25px;height: 25px;margin-top:0px;border:0px solid blue;margin:0px;padding:0px;cursor: default; font-size:0px;' >
 								
@@ -132,7 +132,7 @@
 				</tr>
 			</table>
 		
-             <div id="rightnav" style="right:15px;">
+             <div id="rightnav" style="right:22px;">
                  <a href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>">&nbsp;</a>   
              </div>
        </div>
