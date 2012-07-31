@@ -1,4 +1,4 @@
-<div id="topbar">
+<?php /*?><div id="topbar">
 <div id="title">Fotos</div>
 <div id="leftnav">
 <!--<a href="/android/photos.php"><img alt="home" src="images/camera.png" /></a>-->
@@ -28,7 +28,7 @@
     <?php }?>
     
 </div></div>
-
+<?php */?>
 <div id="content" style="text-align:center;">
   <ul class="pageitem">
     <li class="textbox">
