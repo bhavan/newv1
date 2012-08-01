@@ -1,27 +1,23 @@
+<!--
 <div id="topbar">
-<div id="title">Fotos</div>
-<div id="leftnav">
-<!--<a href="/android/photos.php"><img alt="home" src="images/camera.png" /></a>-->
-<a href="/components/com_shines/galleries.php">Casa</a>
-
-  <?php 
-	if ($current_page!=0)
-				  			{
-							 $st1=($current_page*$num_rec)-$num_rec;	
-						?> <a href="photos_view.php?start=<?=$st1?><?=$paginationstr?>&backstart=<?=$_REQUEST[backstart]?>&id=<?=$CatId ?>" style="margin-left:6px;">Anterior</a> <?php }?>
-        </div>
-        
-        
-<div id="rightnav">
-	<?php
-					  if (($current_page+1)<$num_pages)
-				 		 {
-					  $st1=($current_page*$num_rec)+$num_rec;
-					  ?>
-                    	<a href="photos_view.php?start=<?=$st1?><?=$paginationstr?>&backstart=<?=$_REQUEST[backstart]?>&id=<?=$CatId ?>">Próximo</a><?php }?>
-
-
-</div></div>
+	<div id="title">Fotos</div>
+		<div id="leftnav">
+			<a href="/components/com_shines/galleries.php">Casa</a>
+			  <?php 
+				if($current_page!=0){
+					$st1=($current_page*$num_rec)-$num_rec;?>
+					<a href="photos_view.php?start=<?=$st1?><?=$paginationstr?>&backstart=<?=$_REQUEST[backstart]?>&id=<?=$CatId ?>" style="margin-left:6px;">Anterior</a>
+			 <?php }?>
+	    </div>
+		<div id="rightnav">
+			<?php
+			  if(($current_page+1)<$num_pages){
+			 	$st1=($current_page*$num_rec)+$num_rec;?>
+            	<a href="photos_view.php?start=<?=$st1?><?=$paginationstr?>&backstart=<?=$_REQUEST[backstart]?>&id=<?=$CatId ?>">Próximo</a>
+			<?php }?>
+		</div>
+</div>
+-->
 
 <div id="content">
           <!--<div align="center"><a href="photos.php?start=<?=$_REQUEST[backstart]?>" >BACK</a></div> -->
