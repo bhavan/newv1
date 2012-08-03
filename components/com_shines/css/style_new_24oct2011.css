@@ -1,7 +1,5 @@
 /*iWebKit css 5.04 by Christopher Plieger*/
 
-body{position:absolute;margin:0;-webkit-text-size-adjust:none;min-height:416px;min-width:320px;font-family:helvetica,sans-serif;}
-
 .center{margin:auto;display:block;text-align:center!important}
 
 img{border:0}
@@ -119,10 +117,7 @@ a:hover .arrow{background-position:0 -13px!important}@media screen and (max-widt
 a,#footer{text-decoration:none;font-size:9pt;color:#4C4C4C;text-shadow:#FFF
  0 1px 0}
 
-.pageitem{/*-webkit-border-radius:8px;*/background-color:#fff;/*border:#878787
- solid 
-1px;*/font-size:10pt;overflow:hidden;padding:0;position:relative;display:block;height:auto;width:auto;margin:3px
- 9px 17px;list-style:none;text-align: justify;}
+
 
 .textbox{padding:5px 4px;position:relative;overflow:hidden;border-top:1px solid #878787; text-align:center;}
 
@@ -375,7 +370,7 @@ img{width:90px;height:90px;position:absolute;left:0;top:0}.list
 #leftnav,#leftbutton,#blueleftbutton{position:absolute;font-size:12px;left:9px;font-weight:bold}
 
 #leftnav_g {font-size:12px;font-weight:bold;left:55px;position:absolute;top:8px;}
-#leftnav_g a { background: url("../images/navlinkleft.png") no-repeat scroll 0 0 transparent;;height: 38px;width: 39px !important;z-index:3;color:#FFF;margin-right:2px;float:left;}
+#leftnav_g a { background: url("../images/leftArrow.png") no-repeat scroll 0 0 transparent;;height: 38px;width: 39px !important;z-index:3;color:#FFF;margin-right:2px;float:left;}
 
 #leftnav_u {position:absolute;left:9px;top:9px; }
 
@@ -404,16 +399,16 @@ a:first-child{z-index:2;/*-webkit-border-image:url("../images/navleft.png")
 13px;-webkit-border-top-left-radius:16px;-webkit-border-bottom-left-radius:16px;-webkit-border-top-right-radius:6px;-webkit-border-bottom-right-radius:6px;*/width:auto;}
  
 
-#leftnav a{background: url("../images/navlinkleft.png") no-repeat scroll 0 0 transparent;height: 37px;
+#leftnav a{background: url("../images/leftArrow.png") no-repeat scroll 0 0 transparent;height: 37px;
 width: 37px !important; z-index:3;font-size:25px; color:#000;margin-left:2px;padding-right:4px;float:left}
 
-#leftnav_u a{background: url("../images/navlinkleft.png") no-repeat scroll 0 0 transparent;height: 37px;
+#leftnav_u a{background: url("../images/leftArrow.png") no-repeat scroll 0 0 transparent;height: 37px;
 width: 37px !important; z-index:3;font-size:25px; color:#000;margin-left:2px;padding-right:4px;float:left}
 
 
 #rightnav,#rightbutton,#bluerightbutton{position:absolute;font-size:12px;right:9px;font-weight:bold}
 
-#rightnav a{background: url("../images/navlinkright.png") no-repeat scroll 0 0 transparent;height: 37px;width: 37px !important;z-index:3;font-size:25px;color:#000;margin-right:2px;padding-left:4px;}
+#rightnav a{background: url("../images/rightArrow.png") no-repeat scroll 0 0 transparent;height: 37px;width: 37px !important;z-index:3;font-size:25px;color:#000;margin-right:2px;padding-left:4px;}
 
 #home{font-size:12px;font-weight:bold;left:9px;position:absolute;top:9px;} 
 #home a{background: url("../images/home_g.png") no-repeat scroll 0 0 transparent;height: 38px;width: 39px !important;z-index:3;color:#FFF;margin-right:2px;float:left;}
@@ -456,3 +451,68 @@ input{-webkit-appearance:none;border:0;height:100%;padding:0;-webkit-border-radi
 input{width:50%;position:absolute;right:0;height:44px;-webkit-appearance:none;border:none;padding:0;background:transparent;-webkit-border-radius:0;font-weight:bold;font-size:17px}.smallfield:first-child
  input{-webkit-border-top-right-radius:8px}.smallfield:last-child 
 input{-webkit-border-bottom-right-radius:8px}
+
+/**********************/
+
+.pageitem{padding:0;list-style:none;}
+
+#menu {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.28);
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
+    height: 39px;
+    margin: 5px;
+    position: relative;
+    text-align: center;
+}
+
+#menu #calPrev, #menu #calNext {
+    background: url("../images/leftArrow.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 27px;
+    left: 10px;
+    position: absolute;
+    text-indent: -999em;
+    top: 7px;
+    width: 24px;
+}
+
+#menu h1 {font-family:"Century Gothic",Arial,sans-serif; color: #FFFFFF; display: inline-block; line-height: 1; margin: 5px 0 0; padding-right: 40px; text-shadow: 0 1px 2px #000000;}
+
+#menu form{height: 27px; position: absolute; right: 55px; top: 7px; width: 32px;}
+
+#menu #calNext { background: url("../images/rightArrow.png") no-repeat scroll 0 0 transparent; left: auto; right: 10px;}
+
+body { background: url("../images/irongrip.png") repeat scroll 0 0 #333333; font-family: "Century Gothic",Arial,sans-serif !important; margin:0px;min-height:416px; font-size: 13px  !important;line-height: 1.231;color: #222222;width: 100% !important;}
+
+#list { background: url("../images/groovepaper.png") repeat scroll 0 0 #FFFFFF; border: 1px solid #FFFFFF; border-radius: 10px 10px 10px 10px; box-shadow: 0 2px 6px #000000; margin:5px; padding:3px;}
+
+th.one, th.two, th.three {border-top: 0 none;}
+
+.one, .two { border-right: 1px solid #C5C5C5;border-top: 1px solid #C5C5C5;}
+
+.one {text-align: right;width: 20%;}
+
+.two {width: 60%;}
+
+th {font-size: 0.8em;padding: 6px;text-align: left;}
+
+.three {border-top: 1px solid #C5C5C5;width: 20%;}
+
+#list table {width: 100%;border-collapse: collapse;border-spacing: 0;}
+
+#list table td {font-size: 0.85em;padding: 4px;vertical-align: top;}
+
+.two ul {background: none repeat scroll 0 0 red;margin: 10px 0 0;padding: 0;}
+
+ul, ol { margin: 1em 0;padding: 0 0 0 40px;}
+
+.two ul li {float: left;list-style: none outside none;margin: 0;}
+
+.call, .checkin, .info { background: url("../images/call.png") no-repeat scroll 0 0 transparent; display: block; height: 15px; margin: 0 3px 0 0; text-indent: -999em; width: 34px;}
+
+a {color: #222222; font-weight:bold;}
+
+.checkin { background: url("../images/checkin.png") no-repeat scroll 0 0 transparent; width: 58px;}
+
+.info { background: url("../images/moreinfo.png") no-repeat scroll 0 0 transparent; margin: 0; width: 63px;}
