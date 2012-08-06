@@ -84,7 +84,7 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 	  {
 	  	
 
-     	echo '<style>#list table{display:none;}</style><div style="padding-top: 10px; border: 1px solid #878787;padding-bottom: 10px;text-align:center;font-size: 15px;">Hoy No Hay Eventos</div>';
+     	echo '<style>#list table{display:none;}</style><div style="padding-top: 40px; border: 1px solid #878787;padding-bottom: 40px;text-align:center;font-size: 15px;">Hoy No Hay Eventos</div>';
      
 	  }  
 	  ?>

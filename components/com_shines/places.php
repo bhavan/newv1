@@ -171,6 +171,9 @@ $query_featured .= " ORDER BY distance ASC ";
 </head>
 
 <body>
+<div class="iphoneads" style="vertical-align:top">
+    <?php m_show_banner('iphone-places-screen'); ?>
+  </div>
 <!--Google Adsense -->
 
 
