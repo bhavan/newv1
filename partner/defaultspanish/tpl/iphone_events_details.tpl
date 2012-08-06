@@ -2,16 +2,12 @@
 setlocale(LC_TIME,"spanish");
 $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $toyear)));
 ?>
-<div id="topbar">
-<div id="title">Info del Evento</div>
-<div id="leftnav">   
-<a href="events.php?d=<?=$today?>&m=<?=$tomonth?>&Y=<?=$toyear?>&lat=<?=$lat1?>&lon=<?=$lon1?>" ><img src="images/navlinkleft.png" alt="navlinkleft" width="37" height="37" style="margin-top:0px;" /></a></div>
-        
-        
-<div id="rightnav"></div>
+<div id="menu">
+	<h1>Info del Evento</h1>   
+	<a id="calPrev" href="events.php?d=<?=$today?>&m=<?=$tomonth?>&Y=<?=$toyear?>&lat=<?=$lat1?>&lon=<?=$lon1?>" ></a>
 </div>
 
-<div id="content">
+<div id="list">
 	<ul class="pageitem">	
       <?php 
 	  while($row=mysql_fetch_array($rec))
@@ -103,5 +99,5 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 	</ul>
 </div>
 
-<div id="footer">&copy; <?=date('Y');?> <?=$site_name?>, Inc.<!-- | <a href="mailto:<?=$email?>?subject=App Feedback">Contacte con nosotros</a>--></div>
+<div id="footer">&copy; <?=date('Y');?> <?=$site_name?>, Inc. | <a href="mailto:<?=$email?>?subject=App Feedback">Contacte con nosotros</a></div>
 </div>
