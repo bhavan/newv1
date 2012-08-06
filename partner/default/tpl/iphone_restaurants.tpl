@@ -77,11 +77,15 @@
 			<td style="width:260px;border-bottom:solid 1px #777777;padding:3px;">
 			<table cellpadding="1" cellspacing="0" border=0>
 			<tr><td style="height:3px"></td></tr>
-			<tr><td class="headertext"><?php echo $row_featured['title']; ?></td></tr>
+			<tr><td class="headertext"><?php echo utf8_encode($row_featured['title']); ?></td></tr>
 			<tr><td class="graytext"><?php
-			$words = explode(' ',strip_tags($row_featured['description']));
-			$desc = htmlspecialchars(implode(" ",array_slice($words,0,30)));
-			if(!empty($desc)){ echo $desc .' ...' ;}?></td></tr>
+			$words = explode(' ',$row_featured['description']);
+			$desc = implode(" ",array_slice($words,0,30));
+			if(!empty($desc)){
+				echo (count($words)>30)?stripJunk($desc) .' ...' :stripJunk($desc);		
+		     }
+			 ?>
+			 </td></tr>
 			<tr><td class="graytext">
 			<?php if ($_REQUEST['bIPhone']=='0'){?>
 				<a class="linktext" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $row_featured[phone]); ?>">call</a> |     
@@ -144,13 +148,15 @@
 		<td style="width:260px;border-bottom:solid 1px #777777;padding:3px;">
 		<table cellpadding="1" cellspacing="0" border=0>
 		<tr><td style="height:3px"></td></tr>
-		<tr><td class="headertext"><?php echo $row[title]; ?></td></tr>
+		<tr><td class="headertext"><?php echo utf8_encode($row[title]); ?></td></tr>
 		<tr><td class="graytext"><?php
-		$words = explode(' ',strip_tags($row[description]));
-		$desc = htmlspecialchars(implode(" ",array_slice($words,0,30)));
+		$words = explode(' ',$row[description]);
+		$desc = implode(" ",array_slice($words,0,30));
 		if(!empty($desc)){
-				echo (count($words)>30)?$desc .' ...' :$desc;	
-		}?>
+				echo (count($words)>30)?stripJunk($desc) .' ...' :stripJunk($desc);	
+				
+		}
+		?>
 		</td></tr>
 		<tr><td class="graytext">
 		<?php if ($_REQUEST['bIPhone']=='0'){?>
@@ -217,11 +223,15 @@ if (($filter_loccat==0) || ($_REQUEST['filter_loccat']=='alp') && ($_POST['searc
 	<td style="width:260px;border-bottom:solid 1px #777777;padding:3px;">
 	<table cellpadding="1" cellspacing="0" border=0>
 	<tr><td style="height:3px"></td></tr>
-	<tr><td class="headertext"><?php echo $title ?></td></tr>	
+	<tr><td class="headertext"><?php echo utf8_encode($row[title]); ?></td></tr>	
 	<tr><td class="graytext"><?php 
-	$words = explode(' ',strip_tags($data[description]));
-	$desc = htmlspecialchars(implode(" ",array_slice($words,0,30)));
-	if(!empty($desc)){ echo $desc .' ...' ;}?></td></tr>
+	$words = explode(' ',$data[description]);
+	$desc = implode(" ",array_slice($words,0,30));
+	if(!empty($desc)){
+				echo (count($words)>30)?stripJunk($desc) .' ...' :stripJunk($desc);		
+		     }
+			 ?>
+	</td></tr>
 	<tr><td class="graytext">
 	<?php if ($_REQUEST['bIPhone']=='0'){?>
 	<a class="linktext" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $data[phone]); ?>">call</a> |     

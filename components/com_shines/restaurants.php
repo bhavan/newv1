@@ -27,6 +27,12 @@ mysql_select_db($jconfig->db);
 $rec01 = mysql_query("select * from `jos_pageglobal`");
 $pageglobal=mysql_fetch_array($rec01);
  
+function stripJunk($string) { 
+$cleanedString = preg_replace("/[^A-Za-z0-9\s\.\-\/+\!;\n\t\r\(\)\'\"._\?>,~\*<}{\[\]\=\&\@\#\$\%\^` ]:/","", $string); 
+$cleanedString = preg_replace("/\s+/"," ",$cleanedString); 
+return $cleanedString; 
+}
+ 
 function distance($lat1, $lon1, $lat2, $lon2, $unit) { 
 
   $theta = $lon1 - $lon2; 
@@ -123,6 +129,8 @@ else
 $query_featured = "SELECT *,(((acos(sin(($lat1 * pi() / 180)) * sin((geolat * pi() / 180)) + cos(($lat1 * pi() / 180)) * cos((geolat * pi() / 180)) * cos((($lon1 - geolon) * pi() / 180)))) * 180 / pi()) * 60 * 1.1515) as dist FROM jos_jev_locations, jos_jev_customfields3 WHERE loccat IN (".implode(',',$allCatIds).") AND published=1 ";
 $query_featured .= " AND (jos_jev_locations.loc_id = jos_jev_customfields3.target_id AND jos_jev_customfields3.value = 1 ) ";
 $query_featured .= " ORDER BY dist ASC";
+
+
 
 //ob_end_clean();
 header( 'Content-Type:text/html;charset=utf-8');
