@@ -149,14 +149,8 @@
 		<table cellpadding="1" cellspacing="0" border=0>
 		<tr><td style="height:3px"></td></tr>
 		<tr><td class="headertext"><?php echo utf8_encode($row[title]); ?></td></tr>
-		<tr><td class="graytext"><?php
-		$words = explode(' ',$row[description]);
-		$desc = implode(" ",array_slice($words,0,30));
-		if(!empty($desc)){
-				echo (count($words)>30)?stripJunk($desc) .' ...' :stripJunk($desc);	
-				
-		}
-		?>
+		<tr><td class="graytext">
+		<?php echo stripJunk(showBrief(strip_tags($row['description']),30)); ?>
 		</td></tr>
 		<tr><td class="graytext">
 		<?php if ($_REQUEST['bIPhone']=='0'){?>
