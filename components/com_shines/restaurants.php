@@ -26,6 +26,12 @@ mysql_select_db($jconfig->db);
 
 $rec01 = mysql_query("select * from `jos_pageglobal`");
 $pageglobal=mysql_fetch_array($rec01);
+
+function showBrief($str, $length) {
+  $str = strip_tags($str);
+  $str = explode(" ", $str);
+  return implode(" " , array_slice($str, 0, $length));
+}
  
 function stripJunk($string) { 
 $cleanedString = preg_replace("/[^A-Za-z0-9\s\.\-\/+\!;\n\t\r\(\)\'\"._\?>,~\*<}{\[\]\=\&\@\#\$\%\^` ]:/","", $string); 

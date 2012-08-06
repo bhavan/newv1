@@ -11,7 +11,7 @@
 			
 	  ?>
       <li class="textbox">
-      <div style="width:100%"><strong><?=$row['title']?></strong>
+      <div style="width:100%"><strong><?php echo utf8_encode($row['title']);?></strong>
       <br /><br />
       <div style="width:100%">
         <div style="width:10%;float:left;padding-right:50px;">Address:</div><div style="width:100%"><a href="javascript:linkClicked('APP30A:SHOWMAP:<?=$lat2?>:<?=$lon2?>')"><?=$row['street']?></a></div></div><br />
