@@ -34,7 +34,7 @@
 </form>
 
 <div id="search"><div onclick="divopen('q1')"><img width="37px" height="31px" src="./images/searchIcon.png"></div></div>
-<div id="q1" style="display:none;"><form action="" method="post" name="location_form"><input type="text" name="searchvalue" value="" size="25"/><input type="submit" name="search_rcd" value="Buscar"/></form></div>
+<div id="q1" style="display:none;"><form action="" method="post" name="location_form"><input type="text" name="searchvalue" value="" size="15"/><input type="submit" name="search_rcd" value="Buscar"/></form></div>
 	
 <div id="list">
 	<table>
