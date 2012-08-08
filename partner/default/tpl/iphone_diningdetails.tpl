@@ -1,5 +1,5 @@
-<div id="content">
-	<ul class="pageitem">
+<div id="list">
+	
       <?php 
 	  while($row=mysql_fetch_array($rec))
 	  {
@@ -10,7 +10,7 @@
 			
 			
 	  ?>
-      <li class="textbox">
+      
       <div style="width:100%"><strong><?php echo utf8_encode($row['title']);?></strong>
       <br /><br />
       <div style="width:100%">
@@ -26,13 +26,14 @@
        <div style="width:100%"><div style="width:10%;float:left;padding-right:50px;">Description:</div><div style="width:100%"><?php echo stripJunk($row['description']); ?></div></div><br />
 	<?php } ?>
       </div>
-      </li>
+     
       <?php
 	  }
 	  ?>
 <?php
 $host = $_SERVER[HTTP_HOST];
-?>		
+?>
+<div style="clear:both; overflow:hidden;">		
 <div style='float:left;padding:3px 3px 3px 8px;'>
 		<a expr:share_url='data:post.url' href='http://www.facebook.com/sharer.php?u=http://<?php echo $host; ?>/location_details.php?id=<?php echo $did; ?>' name='fb_share' type='box_count'><img src="images/facebook_share_icon.png"/></a>
 		<!-- <script src='http://static.ak.fbcdn.net/connect.php/js/FB.Share' type='text/javascript'></script> -->		
@@ -43,8 +44,8 @@ $host = $_SERVER[HTTP_HOST];
 	<img src="images/google-share-button.jpg" alt="Share on Google+"/>
 </a>
 </div>	
-		
-	</ul>
+	</div>	
+	
 </div>
 
 <div id="footer">&copy; <?=date('Y');?> <?=$site_name?>, Inc. <!-- | <a href="mailto:<?=$email?>?subject=App Feedback">Contact Us</a>--> </div> </div>

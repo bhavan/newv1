@@ -1,68 +1,66 @@
-<div id="content" style="width:310px;">
-		<ul class="pageitem" style="width:85%; margin-bottom:5px;">
-			<li class="select">
+<form id="placeForm">
 
-			<?php 
-				$recsub=mysql_query("select * from jos_categories where (parent_id=151 OR id=151) AND section='com_jevlocations2' and published=1 order by `ordering`") or die(mysql_error());
-			?>
+	<?php 
+		$recsub=mysql_query("select * from jos_categories where (parent_id=151 OR id=151) AND section='com_jevlocations2' and published=1 order by `ordering`") or die(mysql_error());
+	?>
 
-			<select name="d" onChange="redirecturl(this.value)" style="width:100%; height:45px;border: 0pt none;font-weight:bold;font-size:17px;" >
-			<option value="0">Seleccione una categor&#237;a</option>
-			<option value="0">Todo</option>
-	  <?php	  
+	<select name="d" onChange="redirecturl(this.value)" >
+	<option value="0">Seleccione una categor&#237;a</option>
+	<option value="0">Todo</option>
+	 	<?php	  
 		while($rowsub=mysql_fetch_array($recsub))
 		{
 		$querycount = "SELECT * FROM jos_jev_locations WHERE published=1 and loccat=".$rowsub['id'];
 			$reccount=mysql_query($querycount) or die(mysql_error());	
 			if (mysql_num_rows($reccount))
 			{
-	  ?>
-			  <option value="<?=$rowsub['id'];?>" <?php if ($_REQUEST['filter_loccat']==$rowsub['id']) {?> selected <?php }?>><?=$rowsub['title'];?></option>
-	 <?php
-			}
+		?>
+	<option value="<?=$rowsub['id'];?>" <?php if ($_REQUEST['filter_loccat']==$rowsub['id']) {?> selected <?php }?>><?=$rowsub['title'];?></option>
+		<?php
 		}
-	 ?>
-	 </select>
-	 <span class="arrow"></span>
-	 </li>
+		}
+		?>
+			</select>
 	
-	</ul>
+</form>
 	
-	<div style="border:0px solid;width:30px;height:25px;margin-top:-50px;margin-right:10px;float:right;">
-	<div onclick="divopen('q1')" style="padding-top:5px;width:25px; height:25px;float:right;cursor:pointer"><img src="../../images/find.png" height="25px" width="25px"/></div>
+<div id="search"><div onclick="divopen('q1')"><img width="37px" height="31px" src="./images/searchIcon.png"></div></div>
+<div id="q1" style="display:none;"><form action="" method="post" name="location_form"><input type="text" name="searchvalue" value="" size="25"/><input type="submit" name="search_rcd" value="Buscar"/></form></div>
+	
+<div id="list">
+	<table>
+		<thead>
+			<tr>
+				<th class="two"></th>
+				<th class="three">Distance</th>
+			</tr>
+		</thead>
+		<tbody>
+
+    <?php 
+	while($row=mysql_fetch_array($rec))
+	{
+	$lat2=$row[geolat];
+	$lon2=$row[geolon];
+	?>
+		<tr>
+		 	<td class="two">
+				<strong><?=utf8_encode($row['title'])?></strong><br />
+				<span ><?php echo stripJunk(showBrief(strip_tags($row['description']),30)); ?></span><br /> 
+		       	<ul>
+        			<li><a class="grayplain" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$row['phone'])?>">llamar</a> |</li>
+					<li><a class="grayplain" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $row[geolat]; ?>:<?php echo $row[geolon]; ?>')">facturar</a> |</li>
+					<li><a class="grayplain" href="diningdetails.php?did=<?=$row['loc_id']?>&lat=<?=$lat1?>&lon=<?=$lon1?>">m&#225;s info</a></li>
+					<li><a class="grayplain" href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $row[geolon]; ?>:<?php echo $row[geolat]; ?>')"></a></li> 
+		        </ul>
+		    </td>
+		    <td class="three"><?=round(distance($lat1, $lon1, $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></td>  
+		</tr>
+    <?php
+	}
+	?>
+		</tbody>
+	</table>
 </div>
-
-	<ul class="pageitem" style='border:0px; margin-bottom:5px;'><li>
-	<div id="q1" style="display:none;cursor:pointer;text-align:center;margin-top:5px"><form action="" method="post" name="location_form"><input type="text" name="searchvalue" value="" size="25"/><input type="submit" name="search_rcd" value="Buscar"/></form></div>
-	</li></ul>
-
-	<ul class="pageitem">
-      <?php 
-	  while($row=mysql_fetch_array($rec))
-	  {
-		  $lat2=$row[geolat];
-			$lon2=$row[geolon];
-	  ?>
-      <li class="textbox">
-      <div style="float:left;width:80%;padding-right:5px;">
-		<strong><?=$row['title']?></strong><br />
-		<span class="grayplain"><?php echo stripJunk(showBrief(strip_tags($row['description']),30)); ?></span><br /> 
-        <div class="gray">
-        	<a href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$row['phone'])?>">llamar</a> | 
-			<a class="linktext" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $row[geolat]; ?>:<?php echo $row[geolon]; ?>')">facturar</a> | 
-			<a class="linktext" href="diningdetails.php?did=<?=$row['loc_id']?>&lat=<?=$lat1?>&lon=<?=$lon1?>">m&#225;s info</a> 
-			<a class="linktext" href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $row[geolon]; ?>:<?php echo $row[geolat]; ?>')"></a> 
-	        <!--<a href="dining_details.php?did=<?=$row['loc_id']?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a> -->
-        </div>
-      </div>
-      <div style="float:right;width:15%;vertical-align:top;padding-top:0px;"><?=round(distance($lat1, $lon1, $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></div>
-  
-      </li>
-      <?php
-	  }
-	  ?>
-		
-	</ul>
-
- <div id="footer" style="margin:0px;">&copy; <?=date('Y');?> <?=$site_name?> <!-- | <a href="mailto:<?=$email?>?subject=App Feedback">Contacte con nosotros</a>--></div> </div> 
+<div id="footer">&copy; <?=date('Y');?> <?=$site_name?><!-- | <a href="mailto:<?=$email?>?subject=App Feedback">Contact Us</a>--></div> </div> 
 <div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
