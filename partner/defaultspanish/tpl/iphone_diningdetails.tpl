@@ -1,5 +1,5 @@
-<div id="content">
-	<ul class="pageitem">
+<div id="list">
+	
       <?php 
 	  while($row=mysql_fetch_array($rec))
 	  {
@@ -10,8 +10,8 @@
 			
 			
 	  ?>
-      <li class="textbox">
-      <div style="width:100%"><strong><?=$row['title']?></strong>
+      
+      <div style="width:100%"><strong><?=utf8_encode($row['title'])?></strong>
       <br /><br />
       <div style="width:100%">
         <div style="width:10%;float:left;padding-right:50px;">Direcci&#243;n:</div><div style="width:100%"><a href="javascript:linkClicked('APP30A:SHOWMAP:<?=$lat2?>:<?=$lon2?>')"><?=$row['street']?></a></div></div><br />
@@ -20,18 +20,18 @@
        <div style="width:90%"><a href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$row[phone])?>"><?=$row[phone]?></a></div></div><br />
        <div style="width:100%"><div style="width:10%;float:left;padding-right:50px;">Distancia:</div><div style="width:100%"> <?=round(distance($lat1, $lon1, $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></div></div><br />
 	<?php if ($row['url']!=''){ ?>
-       <div style="width:100%"><div style="width:21%;float:left;padding-right:18px;">Sitio Web:</div><div style="width:90%"><a href="http://<?php echo str_replace('http://','',$row['url']); ?>" target="_blank"><?php echo str_replace('http://','',$row['url']); ?></a></div></div><br />
+       <div style="width:100%"><div style="width:12.5%;float:left;padding-right:18px;">Sitio Web:</div><div style="width:90%"><a href="http://<?php echo str_replace('http://','',$row['url']); ?>" target="_blank"><?php echo str_replace('http://','',$row['url']); ?></a></div></div><br />
 	<?php } ?>
 	<?php if ($row['description']!=''){ ?>
        <div style="width:100%"><div style="width:10%;float:left;padding-right:50px;">Descripci&#243;n:</div><div style="width:100%"><?php echo stripJunk($row['description']); ?></div></div><br />
 	<?php } ?>
       </div>
-      </li>
+     
       <?php
 	  }
 	  ?>
 		
-	</ul>
+	
 </div>
 
 <div id="footer">&copy; <?=date('Y');?> <?=$site_name?>, Inc. <!-- | <a href="mailto:<?=$email?>?subject=App Feedback">Contacte con nosotros</a>--></div> </div>

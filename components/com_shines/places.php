@@ -131,7 +131,7 @@ $query_featured .= " ORDER BY distance ASC ";
 <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
 <link href="pics/homescreen.gif" rel="apple-touch-icon" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
-<link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="css/style_new_24oct2011.css" rel="stylesheet" media="screen" type="text/css" />
 <script src="javascript/functions.js" type="text/javascript"></script>
 <title><?=$site_name?></title>
 <!--<link href="pics/startup.png" rel="apple-touch-startup-image" /> -->
