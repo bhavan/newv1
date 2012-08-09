@@ -74,7 +74,7 @@
 				$words = explode(' ',$row_featured['description']);
 				$desc = implode(" ",array_slice($words,0,30));
 				if(!empty($desc)){
-					echo (count($words)>30)?stripJunk($desc) .' ...' :stripJunk($desc);		
+					echo (count($words)>30)?stripJunk(utf8_encode($desc)) .' ...' :stripJunk(utf8_encode($desc));		
 		 		}
 		?>
 			 	</span><br /> 
@@ -123,7 +123,7 @@
 			<tr>
 				<td class="two">
 				<strong><?=utf8_encode($row['title'])?></strong><br />
-				<span class="grayplain"><?php echo stripJunk(showBrief(strip_tags($row['description']),30)); ?></span><br /> 
+				<span class="grayplain"><?php echo stripJunk(showBrief(strip_tags(utf8_encode($row['description'])),30)); ?></span><br /> 
 				<ul>
 					<?php if ($_REQUEST['bIPhone']=='0'){?>
 					<li><a class="call" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $row[phone]); ?>">call</a></li>   
@@ -173,7 +173,7 @@ if($total_rows>50) { echo get_paginate_links($total_rows,$entries_per_page,$curr
 			$words = explode(' ',$data[description]);
 			$desc = implode(" ",array_slice($words,0,30));
 			if(!empty($desc)){
-				echo (count($words)>30)?stripJunk($desc) .' ...' :stripJunk($desc);		
+				echo (count($words)>30)?stripJunk(utf8_encode($desc)) .' ...' :stripJunk(utf8_encode($desc));		
 			}
 			?>
 			</span><br/>

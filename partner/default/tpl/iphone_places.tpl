@@ -45,7 +45,7 @@
 	?>
 		<tr>
 		 	<td class="two">
-				<strong><?=utf8_encode($row['title'])?></strong><br />
+				<strong><?php echo $row['title'];?></strong><br />
 				<span class="grayplain"><?php echo stripJunk(showBrief(strip_tags($row['description']),30)); ?></span><br /> 
 		       	<ul>
         			<li><a class="call" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$row['phone'])?>">call</a></li>
