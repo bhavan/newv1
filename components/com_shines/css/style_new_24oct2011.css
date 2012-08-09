@@ -502,7 +502,7 @@ a {color: #222222; font-weight:bold;}
 
 #search { display: block; float: left; height: 31px; margin: 26px 10px 0 0; width: 37px; cursor:pointer;}
 
-#placeForm select { background: none repeat scroll 0 0 #111111; border: 0 none; color: #FFFFFF; font-family: 'Century Gothic',Arial,sans-serif; font-size: 1.2em; margin: 8px 0 0; padding: 5px; width: 100%;}
+#placeForm select { background: url("../images/droparrow.png") no-repeat scroll 98% 49% #111111; border: 0 none; color: #FFFFFF; font-family: 'Century Gothic',Arial,sans-serif; font-size: 1.2em; margin: 8px 0 0; padding: 5px; width: 100%;}
 
 #placeForm { float: left; margin: 15px 5px 10px; overflow: hidden; width: 74%;}
 
