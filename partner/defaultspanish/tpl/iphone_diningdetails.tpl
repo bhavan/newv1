@@ -23,7 +23,7 @@
        <div style="width:100%"><div style="width:12.5%;float:left;padding-right:18px;">Sitio Web:</div><div style="width:90%"><a href="http://<?php echo str_replace('http://','',$row['url']); ?>" target="_blank"><?php echo str_replace('http://','',$row['url']); ?></a></div></div><br />
 	<?php } ?>
 	<?php if ($row['description']!=''){ ?>
-       <div style="width:100%"><div style="width:10%;float:left;padding-right:50px;">Descripci&#243;n:</div><div style="width:100%"><?php echo stripJunk($row['description']); ?></div></div><br />
+       <div style="width:100%"><div style="width:10%;float:left;padding-right:50px;">Descripci&#243;n:</div><div style="width:100%"><?php echo stripJunk(utf8_encode($row['description'])); ?></div></div><br />
 	<?php } ?>
       </div>
      
