@@ -70,13 +70,7 @@
 				<td class="two" style="background:#EFEFEF;">			
 				<strong><?php echo utf8_encode($row_featured['title']); ?></strong><br />
 				<span class="grayplain">
-		<?php
-				$words = explode(' ',$row_featured['description']);
-				$desc = implode(" ",array_slice($words,0,30));
-				if(!empty($desc)){
-					echo (count($words)>30)?stripJunk(utf8_encode($desc)) .' ...' :stripJunk(utf8_encode($desc));		
-		 		}
-		?>
+				<?php echo stripJunk(showBrief(strip_tags(utf8_encode($row_featured['description'])),30)); ?>
 			 	</span><br /> 
 			 	<ul>
 		<?php if ($_REQUEST['bIPhone']=='0'){?>
@@ -169,13 +163,8 @@ if($total_rows>50) { echo get_paginate_links($total_rows,$entries_per_page,$curr
 		<tr>
 			<td class="two">
 			<strong><?php echo utf8_encode($data[title]); ?></strong><br/>	
-			<span class="grayplain"><?php 
-			$words = explode(' ',$data[description]);
-			$desc = implode(" ",array_slice($words,0,30));
-			if(!empty($desc)){
-				echo (count($words)>30)?stripJunk(utf8_encode($desc)) .' ...' :stripJunk(utf8_encode($desc));		
-			}
-			?>
+			<span class="grayplain">
+			<?php echo stripJunk(showBrief(strip_tags(utf8_encode($data['description'])),30)); ?>
 			</span><br/>
 	 		<ul>
 				<?php if ($_REQUEST['bIPhone']=='0'){?>
