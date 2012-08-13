@@ -14,7 +14,7 @@
   <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
   &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a>
   <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-  <a href="mailto:?body=Check%20this%20out:%20<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" rel="nofollow">
+  <a href="mailto:?body=Te recomiendo esta p&#225;gina:<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" rel="nofollow">
     <img src="common/images/btn_email.gif" border="0" />
   </a><br /><br />
   <!--a class="btn" href="#" onclick="return false;">list my events&nbsp&raquo;</a-->

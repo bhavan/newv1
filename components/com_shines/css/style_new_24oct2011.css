@@ -1,5 +1,11 @@
 /*iWebKit css 5.04 by Christopher Plieger*/
 
+
+
+button, input[type="button"], input[type="reset"], input[type="submit"], [role="button"] { cursor: pointer; -webkit-appearance: button; }
+
+
+
 .center{margin:auto;display:block;text-align:center!important}
 
 img{border:0}
@@ -234,13 +240,12 @@ p{margin-top:2px;color:#000;margin-bottom:2px;text-align:justify}
 
 .pageitem li:first-child,.pageitem li.form:first-child{border-top:0}
 
-.menu,.checkbox,.radiobutton,.select,li.button,li.bigfield,li.smallfield{position:relative;list-style-type:none;display:block;height:43px;overflow:hidden;border-top:1px
+.menu,.checkbox,.radiobutton,li.button,li.bigfield,li.smallfield{position:relative;list-style-type:none;display:block;height:43px;overflow:hidden;border-top:1px
  solid #878787;width:auto}.pageitem li:first-child:hover,.pageitem 
-li:first-child a,.radiobutton:first-child input,.select:first-child 
-select,li.button:first-child input,.bigfield:first-child 
+li:first-child a,.radiobutton:first-child input,.select:first-child,li.button:first-child input,.bigfield:first-child 
 input{-webkit-border-top-left-radius:8px;-webkit-border-top-right-radius:8px}.pageitem
  li:last-child:hover,.pageitem li:last-child a,.radiobutton:last-child 
-input,.select:last-child select,li.button:last-child 
+input,.select:last-child,li.button:last-child 
 input,.bigfield:last-child 
 input{-webkit-border-bottom-left-radius:8px;-webkit-border-bottom-right-radius:8px}.menu:hover,.store:hover,.list
  #content li a:hover,.list .withimage:hover,.applist 
@@ -432,13 +437,7 @@ a{-webkit-border-image:url("../images/navbuttonblue.png") 0 5 0
  4px 0 0}input[type="checkbox"]:checked{background-position:0 
 27px}input[type="radio"]{-webkit-appearance:none;border:0;width:100%;height:100%;z-index:2;position:absolute;left:0;margin:0;-webkit-border-radius:0}input[type="radio"]:checked{background:url('../images/radiobutton.png')
  no-repeat;background-position:right center}.radiobutton 
-.name{z-index:1}select{-webkit-appearance:none;height:100%;width:100%;border:0;padding-left:
- 10px;}.select 
-select{-webkit-border-radius:0;color:#000;font-weight:bold;font-size:17px}.select
- option{max-width:90%;padding-left:10px;}.select 
-.arrow{background:url('../images/arrow.png');width:8px;height:13px;display:block;-webkit-transform:rotate(90deg);position:absolute;right:10px;top:18px}.button
- 
-input{width:100%;height:100%;-webkit-appearance:none;border:0;-webkit-border-radius:0;font-weight:bold;font-size:17px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;background:none}
+.name{z-index:1}
 
 .textbox
  textarea{padding:0;margin-top:5px;font-size:medium}
@@ -502,7 +501,18 @@ a {color: #222222; font-weight:bold;}
 
 #search { display: block; float: left; height: 31px; margin: 10px 10px 0 0; width: 37px; cursor:pointer;}
 
-#placeForm select { background: url("../images/droparrow.png") no-repeat scroll 98% 49% #111111; border: 0 none; color: #FFFFFF; font-family: 'Century Gothic',Arial,sans-serif; font-size: 1.2em; margin: 8px 0 0; padding: 5px; width: 100%;}
+fieldset { border: 0; margin: 0; padding: 0; }
+
+#placeForm select {
+    background: none repeat scroll 0 0 #111111;
+    border: 0 none;
+    color: #FFFFFF;
+    font-family: 'Century Gothic',Arial,sans-serif;
+    font-size: 1.2em;
+    margin: 8px 0 0;
+    padding: 5px;
+    width: 100%;
+}
 
 #placeForm { float: left; margin: 0px 5px 10px; overflow: hidden; width: 74%;}
 
@@ -510,4 +520,7 @@ a {color: #222222; font-weight:bold;}
 
 #q1{cursor:pointer;text-align:center;margin-bottom:10px; clear:both;height: 25px;padding-left: 5px;}
 
-#q1 input[type="submit"] { background: none repeat scroll 0 0 #D90000; border: 0 none; border-radius: 6px 6px 6px 6px; color: #FFFFFF; float: left; font-family: 'Century Gothic',Arial,sans-serif; font-size: 12px; font-weight: bold; height: 20px; margin-left: 10px; text-transform: uppercase; padding-bottom: 2px;}
+#q1 input[type="submit"] { background: none repeat scroll 0 0 #D90000; border: 0 none; border-radius: 6px 6px 6px 6px; color: #FFFFFF; float: left; font-family: 'Century Gothic',Arial,sans-serif; font-size: 12px; font-weight: bold; height: 20px; margin-left: 10px; text-transform: uppercase; padding-top: 2px;}
+
+*/
+
