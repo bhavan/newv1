@@ -522,5 +522,7 @@ fieldset { border: 0; margin: 0; padding: 0; }
 
 #q1 input[type="submit"] { background: none repeat scroll 0 0 #D90000; border: 0 none; border-radius: 6px 6px 6px 6px; color: #FFFFFF; float: left; font-family: 'Century Gothic',Arial,sans-serif; font-size: 12px; font-weight: bold; height: 20px; margin-left: 10px; text-transform: uppercase; padding-top: 2px;}
 
-*/
-
+.iphoneads img {
+	box-shadow: 0 2px 8px #000000;
+	margin: 0 auto;
+}
