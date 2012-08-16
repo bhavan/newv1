@@ -40,8 +40,16 @@
 			<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 			<g:plusone size="medium" width: 65px;></g:plusone>
 		</div>
-        <a name="fb_share" type="button" href="http://www.facebook.com/sharer.php"></a>
+        <!--
+		<a name="fb_share" type="button" href="http://www.facebook.com/sharer.php"></a>
         <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+		-->
+		
+		<!-- FB share button Code Begin -->
+		<?php $shareUrl = rawurlencode($_SERVER[SERVER_NAME].$_SERVER['REQUEST_URI']); ?>
+		<a expr:share_url='data:post.url' target="_blank" href='http://www.facebook.com/share.php?u=<?php echo $shareUrl ?>' name='fb_share' type='box_count'><img src="common/images/facebook_share_icon.png"/></a>
+		<!-- FB share button Code Begin -->
+		
         &nbsp;&nbsp;<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a>
         <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
         <a  href="mailto:?body=Check%20this%20out:%20<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?>" rel="nofollow">
