@@ -56,7 +56,7 @@
 
 	  ?>
 
-		<div style="padding-top: 5px;"><strong><?=$rowvevdetail['summary']?></strong></div>
+		<div style="padding-top: 5px;font-size:15px;"><strong><?=$rowvevdetail['summary']?></strong></div>
 
       <br />
 
