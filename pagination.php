@@ -134,24 +134,20 @@ function get_paginate_links($total_rows,$entries_per_page,$current_page,$link_to
 {
 	$total_page=ceil($total_rows/$entries_per_page);
 	$str_page=(strpos($link_to,"?")===false)? "?page" : "&amp;page";
-	$paginate_links='<ul style="margin:0; padding:10px;text-align:center; float:left; width:300px">';
+	$paginate_links='<div id="menu">';
 		if($current_page==1) {
-			$paginate_links.="<li class=\"pre\" style='margin:0; padding:0; display:inline; list-style-type:none; width:24px;text-decoration:none;color: #379E1E;'></li>&nbsp;&nbsp;&nbsp;";
+			$paginate_links.="<div class=\"pre\" style='margin:0; padding:0; display:inline; list-style-type:none; width:24px;text-decoration:none;color: #379E1E;'></div>&nbsp;&nbsp;&nbsp;";
 		} else {
-			$paginate_links.="<li class=\"pre\" style='margin:0; padding:0; display:inline; list-style-type:none; width:24px;text-decoration:none;'><a href=\"$link_to$str_page=".($current_page-1)."\">Back</a></li>&nbsp;&nbsp;&nbsp;";
+			$paginate_links.="<div class=\"pre\" style='margin:0; padding:0; display:inline; list-style-type:none; width:24px;text-decoration:none;'><a id=\"calPrev\" href=\"$link_to$str_page=".($current_page-1)."\">Back</a></div>&nbsp;&nbsp;&nbsp;";
 			
 		}
 		if($current_page==$total_page) {
-			$paginate_links .="<li class=\"Next\" style='margin:0; padding:0; display:inline; list-style-type:none; width:24px;text-decoration:none;'></li>&nbsp;&nbsp;&nbsp;";
+			$paginate_links .="<div class=\"Next\" style='margin:0; padding:0; display:inline; list-style-type:none; width:24px;text-decoration:none;'></div>&nbsp;&nbsp;&nbsp;";
 		} else {
-			$paginate_links .="<li class=\"Next\" style='margin:0; padding:0; display:inline; list-style-type:none; width:24px;text-decoration:none;'><a href=\"$link_to$str_page=".($current_page+1)."\">Next</a></li>&nbsp;&nbsp;&nbsp;";
+			$paginate_links .="<div class=\"Next\" style='margin:0; padding:0; display:inline; list-style-type:none; width:24px;text-decoration:none;'><a id=\"calNext\"  href=\"$link_to$str_page=".($current_page+1)."\">Next</a></div>&nbsp;&nbsp;&nbsp;";
 			
 		}
-	$paginate_links .='</ul>';
+	$paginate_links .='</div>';
 	echo $paginate_links;
-		
-	
-	
 }
-
 ?>
