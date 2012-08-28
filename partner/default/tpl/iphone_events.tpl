@@ -73,7 +73,7 @@
 
       		</td>
 	  
-			<td class="three"><?=round(distance($lat1, $lon1, $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></td>
+			<td class="three"><?=round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></td>
 
       </tr>
 
