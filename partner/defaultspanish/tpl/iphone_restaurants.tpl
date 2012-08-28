@@ -108,6 +108,7 @@
 		$query .= " ORDER BY dist ASC LIMIT " .$start_at.','.$entries_per_page;
 	
 	$rec=mysql_query($query) or die(mysql_error());
+	$n=0;
 	while($row=mysql_fetch_assoc($rec))
 	{
 		$distance = distance($lat1, $lon1, $row[geolat],  $row[geolon], $dunit);
@@ -131,12 +132,12 @@
 				<td class="three"><?php echo round($distance,1); ?>&nbsp;<?=$dunit?></td>
 			</tr>
 <?php
+++$n;
 }
 ?>
 
-<?php 
-if($total_rows>50) { echo get_paginate_links($total_rows,$entries_per_page,$current_page,$link_to);}?>	
 <?php } ?>
+
 <?php
 	if($_POST['search_rcd']=="Buscar") {$searchdata=$_POST['searchvalue'];
 ?>
@@ -181,9 +182,6 @@ if($total_rows>50) { echo get_paginate_links($total_rows,$entries_per_page,$curr
 	
 <?php } ?>
 
-<?php if($total_rows >'50') {
-echo get_paginate_links($total_rows,$entries_per_page,$current_page,$link_to);}?>
-
 <?php } 
 
 include("connection.php");
@@ -191,6 +189,9 @@ include("connection.php");
 		 </tbody>
 	</table>
 </div>
-<!-- <div id="footer">&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=App Feedback">Contacte con nosotros</a></div>-->
+<?php 
+if($n =='50') {
+echo get_paginate_links($total_rows,$entries_per_page,$current_page,$link_to);
+}?>
 
 <div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
