@@ -45,51 +45,6 @@
 			</tr>
 		</thead>
 		<tbody>
-	<?php
-	$featuredListingSQL = " SELECT jjl.loc_id, jjc.target_id, jjl.title, jjl.street, jjl.phone, jjl.loccat, jjc.name, jjc.value, jc.id, jc.parent_id
-							FROM `jos_jev_locations` jjl, `jos_categories` jc, `jos_jev_customfields3` jjc
-							WHERE jjl.published =1
-							AND (jjl.loccat = jc.id AND (jc.parent_id =152 OR jc.id =152) AND jc.section = 'com_jevlocations2' AND jc.published =1 )
-							AND (jjl.loc_id = jjc.target_id AND jjc.value = 1 )
-							ORDER BY jjl.title ";
-
-	$featuredListing_rec = mysql_query($featuredListingSQL) or die(mysql_error());
-	if (mysql_num_rows($featuredListing_rec))
-	{
-	?>
-
-		<strong>Destacados</strong>
-				
-		<?php
-		$rec_featured = mysql_query($query_featured) or die(mysql_error());
-		while($row_featured=mysql_fetch_assoc($rec_featured))
-		{
-			$distance_featured = distance($lat1, $lon1, $row_featured['geolat'],  $row_featured['geolon'], $dunit);
-		?>
-			<tr>
-				<td class="two" style="background:#EFEFEF;">			
-				<strong><?php echo utf8_encode($row_featured['title']); ?></strong><br />
-				<span >
-				<?php echo stripJunk(showBrief(strip_tags(utf8_encode($row_featured['description'])),30)); ?>
-			 	</span><br /> 
-			 	<ul>
-		<?php if ($_REQUEST['bIPhone']=='0'){?>
-					<li><a class="grayplain" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $row_featured[phone]); ?>">llamar</a> |</li>    
-					<?php } else { ?>
-					<li><a class="grayplain" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $row_featured[phone]); ?>">llamar</a> |</li><?php } ?>
-					<li><a class="grayplain" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $row_featured[geolat]; ?>:<?php echo $row_featured[geolon]; ?>')">facturar</a> |</li> 
-					<li><a class="grayplain" href="diningdetails.php?did=<?=$row_featured[loc_id]?>&<?=round($distance_featured,1)?>&lat=<?=$lat1?>&lon=<?=$lon1?>">m&#225;s info</a></li> 
-					<li><a href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $row_featured[geolon]; ?>:<?php echo $row_featured[geolat]; ?>')"></a></li> 
-				</ul>
-				</td>
-				<td class="three" style="background:#EFEFEF;"><?php echo round($distance_featured,1); ?>&nbsp;<?=$dunit?></td>			
-			</tr>
-		<?php
-			}
-		?>
-	<?php
-		}
-	?>
 
 <?php if($_POST['search_rcd']!="Buscar") { ?>
 
