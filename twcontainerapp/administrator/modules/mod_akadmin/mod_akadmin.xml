@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/module-install.dtd">
+<install version="1.5.0" type="module" client="administrator"
+	method="upgrade">
+	<name>Akeeba Backup Notification Module</name>
+	<author>Nicholas K. Dionysopoulos</author>
+	<authorEmail>nicholas@dionysopoulos.me</authorEmail>
+	<authorUrl>http://www.akeebabackup.com</authorUrl>
+	<creationDate>2011-04-09</creationDate>
+	<copyright>Copyright (c)2009-2010 Nicholas K. Dionysopoulos</copyright>
+	<license>GNU GPL v3</license>
+	<version>3.2.6</version>
+	<description><![CDATA[
+	<h1>Akeeba Backup Notification Module</h1>
+	<p>This is a handy  module to display a Akeeba icon on your administrator
+	back-end's Control Panel page. The icon displays a warning site if the last
+	backup is failed, or if you haven't backed up your site for a period of time
+	(user-defined). Clicking it brings you to the Akeeba Backup &quot;Backup Now&quot;
+	page.</p>
+	]]></description>
+	<files>
+		<filename module="mod_akadmin">mod_akadmin.php</filename>
+		<folder>css</folder>
+	</files>
+	<languages folder="translations">
+		<language tag="en-GB">en-GB.mod_akadmin.ini</language>
+		<language tag="en-GB">en-GB.mod_akadmin.sys.ini</language>
+		<language tag="da-DK">da-DK.mod_akadmin.ini</language>
+		<language tag="da-DK">da-DK.mod_akadmin.sys.ini</language>
+		<language tag="de-DE">de-DE.mod_akadmin.ini</language>
+		<language tag="de-DE">de-DE.mod_akadmin.sys.ini</language>
+		<language tag="el-GR">el-GR.mod_akadmin.ini</language>
+		<language tag="el-GR">el-GR.mod_akadmin.sys.ini</language>
+		<language tag="es-ES">es-ES.mod_akadmin.ini</language>
+		<language tag="es-ES">es-ES.mod_akadmin.sys.ini</language>
+		<language tag="fr-FR">fr-FR.mod_akadmin.ini</language>
+		<language tag="fr-FR">fr-FR.mod_akadmin.sys.ini</language>
+		<language tag="it-IT">it-IT.mod_akadmin.ini</language>
+		<language tag="it-IT">it-IT.mod_akadmin.sys.ini</language>
+		<language tag="nb-NO">nb-NO.mod_akadmin.ini</language>
+		<language tag="nb-NO">nb-NO.mod_akadmin.sys.ini</language>
+		<language tag="nl-NL">nl-NL.mod_akadmin.ini</language>
+		<language tag="nl-NL">nl-NL.mod_akadmin.sys.ini</language>
+		<language tag="lt-LT">lt-LT.mod_akadmin.ini</language>
+		<language tag="lt-LT">lt-LT.mod_akadmin.sys.ini</language>
+		<language tag="pl-PL">pl-PL.mod_akadmin.ini</language>
+		<language tag="pl-PL">pl-PL.mod_akadmin.sys.ini</language>
+		<language tag="pt-BR">pt-BR.mod_akadmin.ini</language>
+		<language tag="pt-BR">pt-BR.mod_akadmin.sys.ini</language>
+		<language tag="sv-SE">sv-SE.mod_akadmin.ini</language>
+		<language tag="sv-SE">sv-SE.mod_akadmin.sys.ini</language>
+		<language tag="ru-RU">ru-RU.mod_akadmin.ini</language>
+		<language tag="ru-RU">ru-RU.mod_akadmin.sys.ini</language>
+		<language tag="tr-TR">tr-TR.mod_akadmin.ini</language>
+		<language tag="tr-TR">tr-TR.mod_akadmin.sys.ini</language>
+		<language tag="uk-UA">uk-UA.mod_akadmin.ini</language>
+		<language tag="uk-UA">uk-UA.mod_akadmin.sys.ini</language>
+	</languages>
+	<params>
+		<param name="enablewarning" type="radio" label="LBL_WARNINGS"
+			description="DESC_WARNINGS">
+			<option value="0">LBL_YES</option>
+			<option value="1">LBL_NO</option>
+		</param>
+		<param name="warnfailed" type="radio" label="LBL_WARNFAILED"
+			description="DESC_WARNFAILED">
+			<option value="0">LBL_YES</option>
+			<option value="1">LBL_NO</option>
+		</param>
+		<param name="maxbackupperiod" type="text" label="LBL_PERIOD"
+			description="DESC_PERIOD" size="5" />
+	</params>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="enablewarning" type="radio" label="LBL_WARNINGS"
+					description="DESC_WARNINGS">
+					<option value="0">LBL_YES</option>
+					<option value="1">LBL_NO</option>
+				</field>
+				<field name="warnfailed" type="radio" label="LBL_WARNFAILED"
+					description="DESC_WARNFAILED">
+					<option value="0">LBL_YES</option>
+					<option value="1">LBL_NO</option>
+				</field>
+				<field name="maxbackupperiod" type="text" label="LBL_PERIOD"
+					description="DESC_PERIOD" size="5" />
+			</fieldset>
+		</fields>
+	</config>
+</install>

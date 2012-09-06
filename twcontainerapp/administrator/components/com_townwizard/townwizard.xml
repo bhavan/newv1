@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/component-install.dtd">
+<install type="component" version="1.5" method="upgrade">
+	<name>townwizard</name>
+	<creationDate>2012-05-22</creationDate>
+	<author>MLS</author>
+	<authorEmail>nobody@nobody.com</authorEmail>
+	<authorUrl></authorUrl>
+	<copyright>Copyright © 2012 - All rights reserved.</copyright>
+	<license>GNU/GPL</license>
+	<version>1.2.3</version>
+	<description><![CDATA[Townwizard container]]></description>
+        
+    <files folder="components/com_townwizard">
+        <filename>index.html</filename>
+        <filename>router.php</filename>        
+        <filename>townwizard.php</filename>
+        <filename>controller.php</filename>
+        <folder>controllers</folder>
+        <folder>models</folder>  
+        <folder>views</folder>
+	</files>
+
+    <media destination="com_townwizard">        
+        <filename>images/sections/4f3c200bcb936.png</filename>
+        <filename>images/sections/4f3262d2bd8e1.png</filename>
+        <filename>images/sections/4f291e79c2ab1.jpg</filename>
+        <filename>images/sections/4f3c1e9accf11.png</filename>
+        <filename>images/sections/4f3c1f1404c98.png</filename>
+        <filename>images/sections/4f2bb530c376f.jpeg</filename>
+        <filename>images/sections/4f3c169479081.png</filename>
+        <filename>images/sections/4f3263050bf1d.jpg</filename>
+        <filename>images/sections/4f3292503f3a3.png</filename>
+        <filename>images/sections/4f3bd02587126.png</filename>
+        <filename>images/sections/4f328f9dd4d99.png</filename>
+        <filename>images/sections/4f3c16cbf085e.png</filename>
+        <filename>images/sections/4f42839db7a15.png</filename>
+        <filename>images/sections/4f4263205206a.png</filename>
+        <filename>images/sections/4f2a40c055c14.gif</filename>
+        <filename>images/sections/4f3bcaf42c16c.png</filename>
+        <filename>images/sections/4f3c168a91f4d.png</filename>
+        <filename>images/sections/4f3bcf0b4937a.png</filename>
+        <filename>images/sections/4f3bcee1f1bc1.png</filename>
+        <filename>images/sections/4f3bc3f0ac9e7.png</filename>
+        <filename>images/sections/4f3c1ef508d14.png</filename>
+        <filename>images/sections/4f4262fc970b3.png</filename>
+        <filename>images/sections/4f2a5e5e7be04.jpeg</filename>
+        <filename>images/sections/4f426331a23e1.jpg</filename>
+        <filename>images/sections/4f3262ba2735b.jpg</filename>
+        <filename>images/sections/4f3bce22a95a2.jpg</filename>
+        <filename>images/sections/4f329004ca5e0.png</filename>
+        <filename>images/sections/4f32f0d07bfa7.png</filename>
+        <filename>images/sections/4f3c16bbbd4b0.png</filename>
+        <filename>images/sections/4f329fabe45bb.png</filename>
+        <filename>images/sections/4f3c1ac6e3804.png</filename>
+        <filename>images/sections/4f3bcb5558f1f.png</filename>
+        <filename>images/sections/4f3c1e42d35b7.png</filename>
+        <filename>images/sections/4f32905bc140d.png</filename>
+        <filename>images/sections/4f3c167b94a01.jpg</filename>
+        <filename>images/sections/4f3c1d1c68c1d.png</filename>
+        <filename>images/sections/4f3bcf9db0c68.png</filename>
+        <filename>images/sections/4f425b84f3895.png</filename>
+        <filename>images/sections/4f425b59a8d39.jpg</filename>
+        <filename>images/partners/4f3c23b924513.png</filename>
+        <filename>images/partners/4f354a026e89d.png</filename>
+        <filename>images/partners/4f4269d98332d.png</filename>
+        <filename>images/partners/4f3c1a2cd17e7.png</filename>
+        <filename>images/partners/4f354a0baa7ca.png</filename>
+        <filename>images/partners/4f2bb42ccc638.jpg</filename>
+        <filename>images/partners/4f3bc2f4bedd9.png</filename>
+    </media>
+
+	<uninstallfile>uninstall.townwizard.php</uninstallfile>
+
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+    <uninstall>
+      <sql>
+        <file charset="utf8" driver="mysql">uninstall.mysql.utf8.sql</file>
+      </sql>
+    </uninstall>
+	
+	<administration>
+		<menu>Townwizard</menu>
+        <submenu>
+            <menu link="option=com_townwizard&amp;controller=partner">Partners</menu>
+            <menu link="option=com_townwizard&amp;controller=partnerlocation">Partner Locations</menu>
+            <menu link="option=com_townwizard&amp;controller=partnercategory">Partner Categories</menu>
+            <menu link="option=com_townwizard&amp;controller=section">Sections</menu>
+            <menu link="option=com_townwizard&amp;controller=partnersection">Partner Sections</menu>
+        </submenu>
+
+		<files folder="administrator/components/com_townwizard">		    
+            <filename>admin.townwizard.php</filename>
+            <filename>CHANGELOG.php</filename>
+            <filename>model.php</filename>
+            <filename>uninstall.townwizard.php</filename>
+            <filename>install.mysql.utf8.sql</filename>
+            <filename>uninstall.mysql.utf8.sql</filename>
+            <filename>table.php</filename>
+            <filename>index.html</filename>
+            <filename>controller.php</filename>
+            <folder>assets</folder>
+		    <folder>tables</folder>
+		    <folder>controllers</folder>
+		    <folder>helpers</folder>
+		    <folder>models</folder>
+		    <folder>views</folder>
+		</files>
+	</administration>
+</install>
