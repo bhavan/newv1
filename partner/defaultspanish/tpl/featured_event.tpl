@@ -12,7 +12,7 @@
     </tr>
     <?php if(!strstr($data['timestart'], '00:00')) { ?>
     <tr>
-      <td><strong>Tiempo:</strong></td>
+      <td><strong>Hora:</strong></td>
       <td>
       <?php 
         if($data['noendtime']==1) {
