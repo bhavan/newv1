@@ -5,7 +5,7 @@
 */
 //ini_set("display_errors",0);
 
-require_once("../../configuration.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/configuration.php");
 $jconfig = new JConfig();
 
 /* define(DB_HOST, $jconfig->host);
@@ -146,12 +146,24 @@ text-align: justify;
 margin-bottom: 14px;
 }
 	</style>
-    <?php include("../../ga.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."/ga.php"); ?>
 </head>
 <body>
-  <div class="iphoneads" style=" vertical-align:top">
+  
+<?php
+$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+if(stripos($ua,'android') == true) { ?>
+  <div class="iphoneads" style="vertical-align:bottom;position:fixed;bottom:-4px;z-index:100;">
+    <?php m_show_banner('Android-News-Screen'); ?>
+  </div>
+  <?php } 
+  else {
+  ?>
+  <div class="iphoneads" style="vertical-align:bottom;">
     <?php m_show_banner('iphone-news-screen'); ?>
   </div>
+  <?php } ?>
+  
   <table align="center" width="300">
     <tr>
       <td style="text-align:justify;">

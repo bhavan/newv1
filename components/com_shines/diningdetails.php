@@ -47,8 +47,8 @@ return $cleanedString;
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link href="pics/homescreen.gif" rel="apple-touch-icon" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
-<link href="css/style_new_24oct2011.css" rel="stylesheet" media="screen" type="text/css" />
-<script src="javascript/functions.js" type="text/javascript"></script>
+<link href="/components/com_shines/css/style_new_24oct2011.css" rel="stylesheet" media="screen" type="text/css" />
+<script src="/components/com_shines/javascript/functions.js" type="text/javascript"></script>
 <script language="javascript">
 		function linkClicked(link) { document.location = link; } 
 </script>
@@ -57,14 +57,14 @@ return $cleanedString;
 <!--<link href="pics/startup.png" rel="apple-touch-startup-image" /> -->
 <meta content="destin, vacactions in destin florida, destin, florida, real estate, sandestin resort, beaches, destin fl, maps of florida, hotels, hotels in florida, destin fishing, destin hotels, best florida beaches, florida beach house rentals, destin vacation rentals for destin, destin real estate, best beaches in florida, condo rentals in destin, vacaction rentals, fort walton beach, destin fishing, fl hotels, destin restaurants, florida beach hotels, hotels in destin, beaches in florida, destin, destin fl" name="keywords" />
 <meta content="Destin Florida's FREE iPhone application and website guide to local events, live music, restaurants and attractions" name="description" />
-<?php include("../../ga.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT']."/ga.php"); ?>
 </head>
 
 <body>
 
 <?php
 	/* Code added for iphone_diningdetails.tpl */
-	require("../../partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_diningdetails.tpl");
+	require($_SERVER['DOCUMENT_ROOT']."/partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_diningdetails.tpl");
 	?>
 
 <!-- AddThis Button END -->

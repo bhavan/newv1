@@ -7,7 +7,7 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 	<h1><?=$todaestring?></h1>
 	<form name='events' id='events' action='events.php' method='post'>
 		<input type="text" value="" class="mobiscroll ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-d scroller" id="date1" name="eventdate" style="width:0px;height:0px;border:0px;background:#333333;    position: absolute;top: -100px;">
-		<button data-theme="a" style='background: url("images/calIcon.png") no-repeat center;width:31px;height: 27px;margin-top:0px;border:0px solid blue;margin:0px;padding:0px;' id="show" class="ui-btn-hidden" aria-disabled="false"></button>
+		<button data-theme="a" style='background: url("/components/com_shines/images/calIcon.png") no-repeat center;width:31px;height: 27px;margin-top:0px;border:0px solid blue;margin:0px;padding:0px;' id="show" class="ui-btn-hidden" aria-disabled="false"></button>
 	</form>
 	<a id="calNext" href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>"></a>
 </div> <!-- menu -->
@@ -98,7 +98,7 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 		<a id="calPrev" href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today-1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>"></a>
 		<h1><?=$todaestring?></h1>
 		<form name='events1' id='events' action='events.php' method='post'>
-			<input type="text" value="" class="mobiscroll ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-d scroller" id="date3" name="eventdate1" style='background: url("images/calIcon.png") no-repeat center;width:31px;height: 27px;margin-top:0px;border:0px solid blue;margin:0px;padding:0px;cursor: default; font-size:0px;' >
+			<input type="text" value="" class="mobiscroll ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-d scroller" id="date3" name="eventdate1" style='background: url("/components/com_shines/images/calIcon.png") no-repeat center;width:31px;height: 27px;margin-top:0px;border:0px solid blue;margin:0px;padding:0px;cursor: pointer; font-size:0px;' >
 		</form>
 		<a id="calNext" href="events.php?d=<?=date('d',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&m=<?=date('m',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&Y=<?=date('Y',mktime(0, 0, 0,$tomonth ,$today+1, $toyear));?>&lat=<?=$lat1?>&lon=<?=$lon1?>"></a>
 	</div> <!-- menu -->
