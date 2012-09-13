@@ -66,7 +66,7 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 
       <div style="width:100%;text-align: left;"><div class="gray" style="width:10%;float:left;padding-right:50px;">Fecha:</div><div style="width:100%"><?=$todaestring?></div></div><br />
 
-     <div style="width:100%;text-align: left;"><div class="gray" style="width:10%;float:left;padding-right:50px;">Tiempo:</div><div style="width:100%">
+     <div style="width:100%;text-align: left;"><div class="gray" style="width:10%;float:left;padding-right:50px;">Hora:</div><div style="width:100%">
 
 			<?php
 
