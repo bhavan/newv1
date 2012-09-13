@@ -15,19 +15,30 @@ $rec=mysql_query($query) or die(mysql_error());
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link href="pics/homescreen.gif" rel="apple-touch-icon" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
-<link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />
-<script src="javascript/functions.js" type="text/javascript"></script>
+<link href="/components/com_shines/css/style.css" rel="stylesheet" media="screen" type="text/css" />
+<script src="/components/com_shines/javascript/functions.js" type="text/javascript"></script>
 <title><?=$site_name?></title>
 <!--<link href="pics/startup.png" rel="apple-touch-startup-image" /> -->
 <meta content="destin, vacactions in destin florida, destin, florida, real estate, sandestin resort, beaches, destin fl, maps of florida, hotels, hotels in florida, destin fishing, destin hotels, best florida beaches, florida beach house rentals, destin vacation rentals for destin, destin real estate, best beaches in florida, condo rentals in destin, vacaction rentals, fort walton beach, destin fishing, fl hotels, destin restaurants, florida beach hotels, hotels in destin, beaches in florida, destin, destin fl" name="keywords" />
 <meta content="Destin Florida's FREE iPhone application and website guide to local events, live music, restaurants and attractions" name="description" />
-<?php include("../../ga.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT']."/ga.php"); ?>
 </head>
 
 <body>
-  <div class="iphoneads" style=" vertical-align:top">
+
+ <?php
+$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+if(stripos($ua,'android') == true) { ?>
+  <div class="iphoneads" style="vertical-align:bottom;position:fixed;bottom:-4px;z-index:100;">
+    <?php m_show_banner('Android-Videos-Screen'); ?>
+  </div>
+  <?php } 
+  else {
+  ?>
+  <div class="iphoneads" style="vertical-align:bottom;">
     <?php m_show_banner('iphone-videos-screen'); ?>
   </div>
+  <?php } ?>
 
 <div id="content">
 	<ul class="pageitem">

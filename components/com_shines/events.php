@@ -197,9 +197,9 @@ $rec=mysql_query($query) or die(mysql_error());
 
 <!--<link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />-->
 
-<link href="css/style_new_24oct2011.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="/components/com_shines/css/style_new_24oct2011.css" rel="stylesheet" media="screen" type="text/css" />
 
-<script src="javascript/functions.js" type="text/javascript"></script>
+<script src="/components/com_shines/javascript/functions.js" type="text/javascript"></script>
 
 <title><?=$site_name?></title>
 
@@ -359,7 +359,7 @@ $rec=mysql_query($query) or die(mysql_error());
 
 </script>
 
-    <?php include("../../ga.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT']."/ga.php"); ?>
 
 </head>
 
@@ -367,17 +367,26 @@ $rec=mysql_query($query) or die(mysql_error());
 
 <body>
 
-<div class="iphoneads" style=" vertical-align:top">
+<?php
 
-    <?php m_show_banner('iphone-events-screen'); ?>
-
+$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+if(stripos($ua,'android') == true) { ?>
+  <div class="iphoneads" style="vertical-align:bottom;position:fixed;bottom:-4px;z-index:100;">
+    <?php m_show_banner('Android-Events-Screen'); ?>
   </div>
+  <?php } 
+  else {
+  ?>
+  <div class="iphoneads" style="vertical-align:bottom;">
+    <?php m_show_banner('iphone-events-screen'); ?>
+  </div>
+  <?php } ?>
 
 <?php
 
     /* Code added for iphone_places.tpl */
 
-    require("../../partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_events.tpl");
+    require($_SERVER['DOCUMENT_ROOT']."/partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_events.tpl");
 
     ?>
 

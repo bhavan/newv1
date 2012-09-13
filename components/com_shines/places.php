@@ -14,8 +14,8 @@ ini_set("display_errors",0);
 
 require_once JPATH_BASE.DS.'includes'.DS.'defines.php';
 require_once JPATH_BASE.DS.'includes'.DS.'framework.php';
-include("../../pagination.php");
-require_once("../../configuration.php");
+include($_SERVER['DOCUMENT_ROOT']."/pagination.php");
+require_once($_SERVER['DOCUMENT_ROOT']."/configuration.php");
 include("connection.php");
 include("iadbanner.php");
 $jconfig = new JConfig();
@@ -154,7 +154,7 @@ header( 'Content-Type:text/html;charset=utf-8');
 <title><?=$site_name?></title>
 
 <link href="pics/homescreen.gif" rel="apple-touch-icon" />
-<link href="css/style_new_24oct2011.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="/components/com_shines/css/style_new_24oct2011.css" rel="stylesheet" media="screen" type="text/css" />
 <link href="pics/startup.png" rel="apple-touch-startup-image" />
 
 <style>
@@ -180,7 +180,7 @@ header( 'Content-Type:text/html;charset=utf-8');
     .pageitem { background-color: #FFFFFF;display: block;font-size: 12pt;height: auto;list-style: none outside none;margin: 3px 5px 17px;overflow: hidden;padding: 0;position: relative;width: auto}
 </style>
 
-<script src="javascript/functions.js" type="text/javascript"></script>
+<script src="/components/com_shines/javascript/functions.js" type="text/javascript"></script>
 <script type="text/javascript">
 
 function linkClicked(link) { document.location = link; }
@@ -214,15 +214,27 @@ function divopen(str) {
     }
 }
 </script>
-<?php include("../../ga.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT']."/ga.php"); ?>
 </head>
 <body>
- <div class="iphoneads" style="vertical-align:top">
-    <?php m_show_banner('iphone-restaurants-screen'); ?>
+
+<?php
+$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+if(stripos($ua,'android') == true) { ?>
+  <div class="iphoneads" style="vertical-align:bottom;position:fixed;bottom:-4px;z-index:100;">
+    <?php m_show_banner('Android-Places-Screen'); ?>
   </div>
+  <?php } 
+  else {
+  ?>
+  <div class="iphoneads" style="vertical-align:bottom;">
+    <?php m_show_banner('iphone-places-screen'); ?>
+  </div>
+  <?php } ?>
+  
 <?php
     /* Code added for iphone_restaurants.tpl */
-    require("../../partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_places.tpl");
+    require($_SERVER['DOCUMENT_ROOT']."/partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_places.tpl");
     ?>
 </body>
 </html>
