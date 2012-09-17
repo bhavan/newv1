@@ -51,7 +51,7 @@
 	</ul>
         
 </div> 
-<div id="topbar"><div id="rightnav"><a href="upload.php">Upload</a></div></div>
+<!-- <div id="topbar"><div id="rightnav"><a href="upload.php">Upload</a></div></div> -->
 <div id="footer">
 
 	&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a></div></div>
