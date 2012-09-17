@@ -2,16 +2,16 @@
 <div id="title">Fotos</div>
 <div id="leftnav">
 <!--<a href="/android/photos.php"><img alt="home" src="images/camera.png" /></a>-->
-<a href="/android/photos.php">Casa</a>
+<a href="/android/photos.php">incio</a>
 
     <?php 
          if ($current_page!=0)
 				  			{
 							 $st1=($current_page*$num_rec)-$num_rec;	
 						?>
-    <a href="photos.php?start=<?=$st1?><?=$paginationstr?>">Espalda</a>
+    <a href="photos.php?start=<?=$st1?><?=$paginationstr?>">Anterior</a>
     <?php }else{ ?>
-<a href="galleries.php">Espalda</a>
+<a href="galleries.php">Anterior</a>
    <?php } ?>
 
         </div>
@@ -24,7 +24,7 @@
 				 		 {
 					  $st1=($current_page*$num_rec)+$num_rec;
 					  ?>
-    <a href="photos.php?start=<?=$st1?>">Próximo</a>
+    <a href="photos.php?start=<?=$st1?>">Siguiente</a>
     <?php }?>
     
 </div></div>
@@ -52,7 +52,7 @@
     </li>
   </ul>
 </div>
-<div id="topbar"><div id="rightnav"><a href="upload.php">Subir</a></div></div>
+<!-- <div id="topbar"><div id="rightnav"><a href="upload.php">Subir</a></div></div> -->
 <div id="footer">
 
 	&copy; <?=date('Y');?> <?=$site_name?> | <a href="mailto:<?=$email?>?subject=Feedback">Contacte con nosotros</a></div></div>
