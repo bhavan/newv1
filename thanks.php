@@ -16,7 +16,7 @@
 <body class="towncenter">
 <table width="1000 border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>
-    <td><img src="http://www.townwizard.com/images/town-come-back-logo.png" width="395" height="95" /></td>
+    <td><img src="images/town-come-back-logo.png" width="395" height="95" /></td>
   </tr>
 
   <tr>
