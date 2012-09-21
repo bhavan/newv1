@@ -1,4 +1,4 @@
-<div id="list">
+<div id="list" ontouchstart="touchStart(event,'list');" ontouchend="touchEnd(event);" ontouchmove="touchMove(event);" ontouchcancel="touchCancel(event);">
 	
       <?php 
 	  while($row=mysql_fetch_array($rec))
