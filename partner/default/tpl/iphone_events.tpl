@@ -67,7 +67,14 @@
       			<span class="grayplan"><?=$rowlocdetail['title']?></span><br />
 				<ul>
 				<li><a class="call" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$rowlocdetail['phone'])?>">call</a</li>
+				
+				<?php
+	 					 $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+					 	if(stripos($ua,'android') == true) { ?>
+ 				<?php } else { ?>
 				<li><a class="checkin" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $lat2; ?>:<?php echo $lon2; ?>')">check in</a></li>
+				<?php } ?>
+				
 				<li><a class="info" href="events_details.php?eid=<?=$row['rp_id']?>&d=<?=$today?>&m=<?=$tomonth?>&Y=<?=$toyear?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a></li>
 				</ul> 
 

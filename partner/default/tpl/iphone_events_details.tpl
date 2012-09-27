@@ -94,9 +94,14 @@
 
      <div style="width:100%;text-align: left;"><div class="gray" style="width:10%;float:left;padding-right:50px;">Location:</div><div style="width:100%"><?=$rowlocdetail['title']?></div></div><br />
 
-     <!--<div style="width:100%;text-align: left;"><div class="gray" style="width:10%;float:left;padding-right:50px;">Address:</div><div style="width:100%"><a href="map.php?lat=<?=$lat2?>&long=<?=$lon2?>"><?=$rowlocdetail['street']?></a></div></div><br />-->
-
+	<?php
+	 			$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+				if(stripos($ua,'android') == true) { ?>
+	<div style="width:100%;text-align: left;"><div class="gray" style="width:10%;float:left;padding-right:50px;">Address:</div><div style="width:100%"><a href="map.php?lat=<?=$lat2?>&long=<?=$lon2?>"><?=$rowlocdetail['street']?></a></div></div><br />
+ 				<?php } else { ?>
+     
      <div style="width:100%;text-align: left;"><div class="gray" style="width:10%;float:left;padding-right:50px;">Address:</div><div style="width:100%"><a href="javascript:linkClicked('APP30A:SHOWMAP:<?=$lat2?>:<?=$lon2?>')" ><?=$rowlocdetail['street']?></a></div></div><br />
+	<?php } ?>
 
      <div style="width:100%;text-align: left;"><div class="gray" style="width:10%;float:left;padding-right:50px;">Phone:</div><div style="width:100%"><a href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$rowlocdetail['phone'])?>"><?=$rowlocdetail['phone']?></a></div></div><br />
 
