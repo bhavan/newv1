@@ -76,11 +76,20 @@
                 </span><br /> 
                 <ul>
         <?php if ($_REQUEST['bIPhone']=='0'){?>
-                    <li><a class="call" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $row_featured[phone]); ?>">call</a></li>    
+                    <li><a class="call" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $row_featured[phone]); ?>">llamar</a></li>    
                     <?php } else { ?>
-                    <li><a class="call" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $row_featured[phone]); ?>">call</a></li><?php } ?>
-                    <li><a class="checkin" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $row_featured[geolat]; ?>:<?php echo $row_featured[geolon]; ?>')">check in</a></li> 
-                    <li><a class="info" href="diningdetails.php?did=<?=$row_featured[loc_id]?>&<?=round($distance_featured,1)?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a></li> 
+                    <li><a class="call" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $row_featured[phone]); ?>">llamar</a></li><?php } ?>
+                  
+				    <?php
+	 					 $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+					 	if(stripos($ua,'android') == true) { ?>
+ 					<?php } else { ?>
+					
+						<li><a class="checkin" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $row_featured[geolat]; ?>:<?php echo $row_featured[geolon]; ?>')">facturar</a></li> 
+					
+					<?php } ?>
+					
+                    <li><a class="info" href="diningdetails.php?did=<?=$row_featured[loc_id]?>&<?=round($distance_featured,1)?>&lat=<?=$lat1?>&lon=<?=$lon1?>">m&#225;s info</a></li> 
                     <li><a href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $row_featured[geolon]; ?>:<?php echo $row_featured[geolat]; ?>')"></a></li> 
                 </ul>
                 </td>
@@ -127,7 +136,14 @@
 					<li><a class="grayplain" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $row[phone]); ?>">llamar</a> |</li>   
 					<?php } else { ?>
 					<li><a class="grayplain" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $row[phone]); ?>">llamar</a> |</li><?php } ?>
-					<li><a class="grayplain" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $row[geolat]; ?>:<?php echo $row[geolon]; ?>')">facturar</a> |</li> 
+					
+					<?php
+	 					 $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+					 	if(stripos($ua,'android') == true) { ?>
+ 					<?php } else { ?>
+						<li><a class="grayplain" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $row[geolat]; ?>:<?php echo $row[geolon]; ?>')">facturar</a> |</li> 
+					<?php } ?>
+					
 					<li><a class="grayplain" href="diningdetails.php?did=<?=$row['loc_id']?>&lat=<?=$lat1?>&lon=<?=$lon1?>">m&#225;s info</a></li> 
 					<li><a href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $row[geolon]; ?>:<?php echo $row[geolat]; ?>')"></a></li>
 				</ul>
@@ -175,7 +191,14 @@
 				<?php } else { ?>
 				<li><a class="grayplain" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $data[phone]); ?>">llamar</a> |</li>
 			<?php } ?>
-				<li><a class="grayplain" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $data[geolat]; ?>:<?php echo $data[geolon]; ?>')">facturar</a> |</li>				
+			
+				<?php
+	 					 $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+					 	if(stripos($ua,'android') == true) { ?>
+ 				<?php } else { ?>
+					<li><a class="grayplain" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $data[geolat]; ?>:<?php echo $data[geolon]; ?>')">facturar</a> |</li>
+				<?php } ?>
+								
 				<li><a class="grayplain" href="diningdetails.php?did=<?=$data['loc_id']?>&lat=<?=$lat1?>&lon=<?=$lon1?>">m&#225;s info</a></li>
 				<li><a  href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $data['geolon']; ?>:<?php echo $data['geolat']; ?>')"></a></li> 
 			</ul> 
