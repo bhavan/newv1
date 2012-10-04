@@ -50,7 +50,7 @@ if(stripos($ua,'android') == true) { ?>
 		  $arr2[0]='http://www.youtube.com/watch?v='.$arr2[0];
 	  ?>
       <li class="textbox"  style="padding-bottom:20px;">
-     <a href="<?=$arr2[0]?>"><img src="/partner/<?=$_SESSION['partner_folder_name']?>/images/phocagallery/<?=$row['filename']?>" border="0" align="left" style="padding-right:10px;" /></a><font color="#999999"><strong><a href="<?=$arr2[0]?>"><img src="images/next-videos.gif" align="right" style="padding-top:20px;"  border="0"/></a>
+     <a href="<?=$arr2[0]?>"><img src="/partner/<?=$_SESSION['partner_folder_name']?>/images/phocagallery/<?=$row['filename']?>" border="0" align="left" style="padding-right:10px;width:100px; height:100px;" /></a><font color="#999999"><strong><a href="<?=$arr2[0]?>"><img src="images/next-videos.gif" align="right" style="padding-top:20px;"  border="0"/></a>
      <a href="<?=$arr2[0]?>"><?=$row['title']?></a>
      </strong></font> </li>
 			<?php
