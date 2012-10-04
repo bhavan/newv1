@@ -211,6 +211,53 @@ function globalseting(){
       <?php } ?>
    <td>
   </tr>
+  <tr>
+  	<td width="20%" class="key"><label>TIME ZONE:</label></td>
+	<td width="80%">
+<?php 
+
+	$timezoneTable = array(
+	"-12:00:00" => "(GMT -12:00) Eniwetok, Kwajalein",
+	"-11:00:00" => "(GMT -11:00) Midway Island, Samoa",
+	"-10:00:00" => "(GMT -10:00) Hawaii",
+	"-9:00:00" => "(GMT -9:00) Alaska",
+	"-8:00:00" => "(GMT -8:00) Pacific Time (US &amp; Canada)",
+	"-7:00:00" => "(GMT -7:00) Mountain Time (US &amp; Canada)",
+	"-6:00:00" => "(GMT -6:00) Central Time (US &amp; Canada), Mexico City",
+	"-5:00:00" => "(GMT -5:00) Eastern Time (US &amp; Canada), Bogota, Lima",
+	"-4:00:00" => "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz",
+	"-3:30:00" => "(GMT -3:30) Newfoundland",
+	"-3:00:00" => "(GMT -3:00) Brazil, Buenos Aires, Georgetown",
+	"-2:00:00" => "(GMT -2:00) Mid-Atlantic",
+	"-1:00:00" => "(GMT -1:00 hour) Azores, Cape Verde Islands",
+	"0:00:00" => "(GMT) Western Europe Time, London, Lisbon, Casablanca",
+	"1:00:00" => "(GMT +1:00 hour) Brussels, Copenhagen, Madrid, Paris",
+	"2:00:00" => "(GMT +2:00) Kaliningrad, South Africa",
+	"3:00:00" => "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg",
+	"3:00:00" => "(GMT +3:30) Tehran",
+	"4:00:00" => "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi",
+	"4:30:00" => "(GMT +4:30) Kabul",
+	"5:00:00" => "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent",
+	"5:30:00" => "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi",
+	"6:00:00" => "(GMT +6:00) Almaty, Dhaka, Colombo",
+	"7:00:00" => "(GMT +7:00) Bangkok, Hanoi, Jakarta",
+	"8:00:00" => "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong",
+	"9:00:00" => "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk",
+	"9:30:00" => "(GMT +9:30) Adelaide, Darwin",
+	"10:00:00" => "(GMT +10:00) Eastern Australia, Guam, Vladivostok",
+	"11:00:00" => "(GMT +11:00) Magadan, Solomon Islands, New Caledonia",
+	"12:00:00" => "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
+	);
+?>
+		<select size="1" class="inputbox" id="offset" name="timezone">
+			<?php
+			foreach($timezoneTable as $key => $value){?>
+					 <option <?php echo ($row['time_zone'] == $key)?"selected='selected'":''?> value="<?=$key?>"><?=$value?></option>
+			<?php }?>
+		</select>
+	</td>
+  </tr>
+  
 </table>
 </form>
 <?
@@ -236,7 +283,8 @@ function save(){
 		}	
 	}
 	elseif(isset($_POST['global'])){
-		$query = "UPDATE #__pageglobal SET site_name ='".$_POST['site_name']."', email ='".$_POST['email']."', googgle_map_api_keys ='".addslashes($_POST['googgle_map_api_keys'])."', location_code ='".$_POST['location_code']."', beach ='".$_POST['beach']."', photo_mini_slider_cat ='".$_POST['photo_mini_slider_cat']."', photo_upload_cat ='".$_POST['photo_upload_cat']."', facebook ='".$_POST['facebook']."', iphone ='".$_POST['iphone']."', android ='".$_POST['android']."', distance_unit ='".$_POST['dunit']."', weather_unit ='".$_POST['wunit']."' WHERE id='1'";
+	
+		$query = "UPDATE #__pageglobal SET site_name ='".$_POST['site_name']."', email ='".$_POST['email']."', googgle_map_api_keys ='".addslashes($_POST['googgle_map_api_keys'])."', location_code ='".$_POST['location_code']."', beach ='".$_POST['beach']."', photo_mini_slider_cat ='".$_POST['photo_mini_slider_cat']."', photo_upload_cat ='".$_POST['photo_upload_cat']."', facebook ='".$_POST['facebook']."', iphone ='".$_POST['iphone']."', android ='".$_POST['android']."', distance_unit ='".$_POST['dunit']."', weather_unit ='".$_POST['wunit']."',time_zone ='".$_POST['timezone']."' WHERE id='1'";
 		
 		$db->setQuery( $query );
 		

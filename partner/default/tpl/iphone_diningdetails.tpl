@@ -16,12 +16,13 @@
       <div style="width:100%">
 	  <?php
 	  $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
-if(stripos($ua,'android') == true) { ?>
-  <div style="width:10%;float:left;padding-right:50px;">Address:</div><div style="width:100%"><a href="map.php?lat=<?=$lat2?>&long=<?=$lon2?>"><?=$row['street']?></a></div></div><br />
+if(stripos($ua,'android') == true) { 
+?>
+  <div style="width:10%;float:left;padding-right:50px;">Address:</div><div style="width:100%"><a href="<?php echo $_SERVER['DOCUMENT_ROOT'] ?>map.php?lat=<?=$lat2?>&long=<?=$lon2?>"><?=$row['street']?></a></div></div><br />
   
   <?php } 
   else {
-  ?>
+  ?> <?php echo $_SERVER['DOCUMENT_ROOT'] ?>
      <div style="width:10%;float:left;padding-right:50px;">Address:</div><div style="width:100%"><a href="javascript:linkClicked('APP30A:SHOWMAP:<?=$lat2?>:<?=$lon2?>')"><?=$row['street']?></a></div></div><br />
  
   <?php } ?>

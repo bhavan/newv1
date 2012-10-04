@@ -65,7 +65,7 @@ function load_config() {
   $var->metadesc = isset($pagemeta['metadesc'])?$pagemeta['metadesc']:'';
   $var->keywords = isset($pagemeta['keywords'])?$pagemeta['keywords']:'';
   $var->extra_meta = isset($pagemeta['extra_meta'])?$pagemeta['extra_meta']:'';
-
+  $var->timezone = $pageglobal['time_zone'];
 }
 
 function _gen_country() {
@@ -355,11 +355,19 @@ function m_aside() {
 
 function m_featured_event() {
   global $var;
+//  echo $var->timezone;
+//  echo $tq = "select TIMESTAMP(CURRENT_TIMESTAMP,'$var->timezone')";
+//  $result = mysql_fetch_array(mysql_query($tq));
+//  echo $result[0];
+  
   //$sql = "select *, DATE_FORMAT(FROM_UNIXTIME(dtstart),'%D %b, %Y') as `start`, DATE_FORMAT(FROM_UNIXTIME(dtend),'%D %b, %Y') as `end` from `jos_jevents_vevdetail` where DATE_FORMAT(FROM_UNIXTIME(dtend),'%Y-%m-%d') >= CURDATE() and `priority` = 1 order by `dtstart` limit 1";
-  $sql = "select jjv.*,jjr.rp_id, jjr.startrepeat, DATE_FORMAT(jjr.startrepeat,'%D %b, %Y') _dateF, DATE_FORMAT(jjr.startrepeat,'%h:%i %p') as timestart, DATE_FORMAT(jjr.endrepeat,'%h:%i %p') as timeend, noendtime from `jos_jevents_vevdetail` jjv, `jos_jevents_repetition` jjr, `jos_jev_customfields` jjc where jjv.state = 1 and jjv.evdet_id = jjr.eventdetail_id and jjv.evdet_id = jjc.evdet_id and jjc.value = 1 and jjr.endrepeat >= CURRENT_TIMESTAMP  order by jjr.endrepeat limit 1";
+/*Originaol code
+  $sql = "select jjv.*,jjr.rp_id, jjr.startrepeat, DATE_FORMAT(jjr.startrepeat,'%D %b, %Y') _dateF, DATE_FORMAT(jjr.startrepeat,'%h:%i %p') as timestart, DATE_FORMAT(jjr.endrepeat,'%h:%i %p') as timeend, noendtime from `jos_jevents_vevdetail` jjv, `jos_jevents_repetition` jjr, `jos_jev_customfields` jjc where jjv.state = 1 and jjv.evdet_id = jjr.eventdetail_id and jjv.evdet_id = jjc.evdet_id and jjc.value = 1 and jjr.endrepeat >= TIMESTAMP(CURRENT_TIMESTAMP,'-3:05:00')  order by jjr.endrepeat limit 1";
+*/
+  $sql = "select jjv.*,jjr.rp_id, jjr.startrepeat, DATE_FORMAT(jjr.startrepeat,'%D %b, %Y') _dateF, DATE_FORMAT(jjr.startrepeat,'%h:%i %p') as timestart, DATE_FORMAT(jjr.endrepeat,'%h:%i %p') as timeend, noendtime from `jos_jevents_vevdetail` jjv, `jos_jevents_repetition` jjr, `jos_jev_customfields` jjc where jjv.state = 1 and jjv.evdet_id = jjr.eventdetail_id and jjv.evdet_id = jjc.evdet_id and jjc.value = 1 and jjr.endrepeat >= TIMESTAMP(CURRENT_TIMESTAMP,'$var->timezone') order by jjr.endrepeat limit 1";
   $data = db_fetch($sql);
   if(!$data) {
-    $sql = "select jjv.*,jjr.rp_id, jjr.startrepeat, DATE_FORMAT(jjr.startrepeat,'%D %b, %Y') _dateF, DATE_FORMAT(jjr.startrepeat,'%h:%i %p') as timestart, DATE_FORMAT(jjr.endrepeat,'%h:%i %p') as timeend from `jos_jevents_vevdetail` jjv, `jos_jevents_repetition` jjr where jjv.state=1 and jjv.evdet_id = jjr.eventdetail_id and jjr.endrepeat >= CURRENT_TIMESTAMP order by jjr.endrepeat limit 1";
+    $sql = "select jjv.*,jjr.rp_id, jjr.startrepeat, DATE_FORMAT(jjr.startrepeat,'%D %b, %Y') _dateF, DATE_FORMAT(jjr.startrepeat,'%h:%i %p') as timestart, DATE_FORMAT(jjr.endrepeat,'%h:%i %p') as timeend from `jos_jevents_vevdetail` jjv, `jos_jevents_repetition` jjr where jjv.state=1 and jjv.evdet_id = jjr.eventdetail_id and jjr.endrepeat >= TIMESTAMP(CURRENT_TIMESTAMP,'$var->timezone') order by jjr.endrepeat limit 1";
     $data = db_fetch($sql);
   }
   //fprint($data); _x();
