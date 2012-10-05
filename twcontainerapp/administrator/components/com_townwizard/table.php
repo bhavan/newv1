@@ -279,5 +279,21 @@ class TownwizardTable extends JTable
     {
         return $value===null || $value===array() || $value==='' || is_scalar($value) && trim($value)==='';
     }
+
+    public function validate_in($field, $value, $params=array())
+    {
+        if (!array_key_exists('range', $params) || !is_array($params['range']) || empty($params['range']))
+        {
+            throw new Exception('In validator should obtain range parameter with array of possible values');
+        }
+
+        if (!in_array($value, $params['range']))
+        {
+            $this->setFieldError($field, 'Value must be in specified range ' . implode(', ', $params['range']));
+            return false;
+        }
+
+        return true;
+    }
 }
 ?>

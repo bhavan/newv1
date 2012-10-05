@@ -45,7 +45,7 @@ if ($isNew)  {
 
             <tr>
                 <td width="100" align="right" class="key">
-                    <label for="name">
+                    <label for="url">
                         <?php echo JText::_( 'Url' ); ?>:
                     </label>
                 </td>
@@ -53,6 +53,19 @@ if ($isNew)  {
                     <p>If not specified then default section url will be used</p>
                     <input class="text_area" type="text" name="url" id="url" size="32" maxlength="255" value="<?php echo $this->partnerSection->url;?>" />
                     <?php echo TownwizardHelper::getFieldErrors($this->partnerSection, 'url');?>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="100" align="right" class="key">
+                    <label for="json_api_url">
+                        <?php echo JText::_( 'JSON API Url' ); ?>:
+                    </label>
+                </td>
+                <td>
+                    <p>If not specified then default section JSON API url will be used</p>
+                    <input class="text_area" type="text" name="json_api_url" id="json_api_url" size="32" maxlength="255" value="<?php echo $this->partnerSection->json_api_url;?>" />
+                    <?php echo TownwizardHelper::getFieldErrors($this->partnerSection, 'json_api_url');?>
                 </td>
             </tr>
 
@@ -120,6 +133,21 @@ if ($isNew)  {
                 <td>
                     <?php echo $this->lists['ordering'];?>
                     <?php echo TownwizardHelper::getFieldErrors($this->partnerSection, 'ordering');?>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="key">
+                    <label for="ui_type">
+                        <?php echo JText::_( 'UI Type' ); ?>:
+                    </label>
+                    <p>
+                        WebView by default. Choose any other value if you sure that partner's site support this type of UI.
+                    </p>
+                </td>
+                <td>
+                    <?php echo $this->lists['ui_type'];?>
+                    <?php echo TownwizardHelper::getFieldErrors($this->partnerSection, 'ui_type');?>
                 </td>
             </tr>
         </table>

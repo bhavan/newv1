@@ -82,8 +82,13 @@ CREATE TABLE IF NOT EXISTS `#__townwizard_partner_section` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 
-ALTER TABLE `#__townwizard_section` CHANGE `default_url` `default_url` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '';
-ALTER TABLE `#__townwizard_partner_section` CHANGE `url` `url` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+-- ALTER TABLE `#__townwizard_section` CHANGE `default_url` `default_url` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '';
+-- ALTER TABLE `#__townwizard_partner_section` CHANGE `url` `url` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+
+ALTER TABLE `#__townwizard_partner_section` ADD `ui_type` TINYINT(1) NOT NULL DEFAULT 1;
+ALTER TABLE `#__townwizard_partner_section` ADD `json_api_url` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+
+ALTER TABLE `#__townwizard_section` ADD `default_json_api_url` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
 
 -- ALTER IGNORE TABLE `jos_townwizard_partner` ADD `android_app_id` VARCHAR(120) NOT NULL DEFAULT '' AFTER `itunes_app_id`;
 

@@ -91,6 +91,13 @@ class TownwizardControllerPartnerSection extends TownwizardController
             $lists['ordering'] 			= JHTML::_('list.specificordering',  $partnerSection, '', $query );
         }
 
+        $ui_types = array();
+        foreach (TablePartnerSection::$ui_types as $key => $value)
+        {
+            $ui_types[] = JHTML::_('select.option', $key, $value);
+        }
+        $lists['ui_type'] = JHTML::_('select.genericlist',  $ui_types, 'ui_type', 'class="inputbox" size="1"',
+                                      'value', 'text', $partnerSection->ui_type, 'priority');
 
         $this->assignRef('lists', $lists);
         $this->assignRef('partnerSection', $partnerSection);

@@ -230,7 +230,7 @@ function globalseting(){
 	"-3:00:00" => "(GMT -3:00) Brazil, Buenos Aires, Georgetown",
 	"-2:00:00" => "(GMT -2:00) Mid-Atlantic",
 	"-1:00:00" => "(GMT -1:00 hour) Azores, Cape Verde Islands",
-	"0:00:00" => "(GMT) Western Europe Time, London, Lisbon, Casablanca",
+	"00:00:00" => "(GMT) Western Europe Time, London, Lisbon, Casablanca",
 	"1:00:00" => "(GMT +1:00 hour) Brussels, Copenhagen, Madrid, Paris",
 	"2:00:00" => "(GMT +2:00) Kaliningrad, South Africa",
 	"3:00:00" => "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg",

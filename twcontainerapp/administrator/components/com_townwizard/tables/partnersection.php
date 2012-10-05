@@ -30,19 +30,32 @@ class TablePartnerSection extends TownwizardTable
 
     public $url = null;
 
+    public $json_api_url = null;
+
     public $ordering = null;
 
-    protected $_validationRules = array(
-        array('required', 'section_id, partner_id'),
-        array('maxlength', 'name', array('maxlength' => 120)),
-        array('file', 'image', array('types' => 'jpg,jpeg,png,gif', 'mimes' => 'image/jpeg,image/pjpeg,image/png,image/x-png,image/gif')),
-        array('maxlength', 'url', array('maxlength' => 255))
-    );
+    public $ui_type = null;
+
+    public static $ui_types = array(1 => 'webview', 2 => 'json');
+
+    protected $_validationRules = array();
 
 	public function __construct(&$db)
     {
 		parent::__construct('#__townwizard_partner_section', 'id', $db);
+        $this->_setValidationRules();
 	}
+
+    protected function _setValidationRules()
+    {
+        $this->_validationRules = array(
+            array('required', 'section_id, partner_id'),
+            array('maxlength', 'name', array('maxlength' => 120)),
+            array('file', 'image', array('types' => 'jpg,jpeg,png,gif', 'mimes' => 'image/jpeg,image/pjpeg,image/png,image/x-png,image/gif')),
+            array('maxlength', 'url, json_api_url', array('maxlength' => 255)),
+            array('in', 'ui_type', array('range' => array_keys(self::$ui_types)))
+        );
+    }
 
     public function getReorderCondition()
     {

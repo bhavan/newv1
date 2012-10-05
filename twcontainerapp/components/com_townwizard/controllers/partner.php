@@ -43,6 +43,7 @@ class TownwizardControllerPartner extends JController
             $locations = $db->loadAssocList();
 
             $partner->image = $partner->image ? '/media/com_townwizard/images/partners/' . $partner->image : '';
+            $partner->facebook_app_id = $partner->facebook_app_id ? $partner->facebook_app_id : '346995245338206';
 
             $response['status'] = 1;
             $response['data'] = array_merge(
@@ -187,6 +188,7 @@ class TownwizardControllerPartner extends JController
             foreach ($partners as $partner)
             {
                 $partner['image'] = $partner['image'] ? '/media/com_townwizard/images/partners/' . $partner['image'] : '';
+                $partner['facebook_app_id'] = $partner['facebook_app_id'] ? $partner['facebook_app_id'] : '346995245338206';
                 $partnersList[$partner['id']] = $partner;
                 $partnersIds[] = $partner['id'];
             }
