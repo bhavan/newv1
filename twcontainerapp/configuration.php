@@ -15,8 +15,8 @@ class JConfig {
 	var $gzip = '0';
 	var $error_reporting = '-1';
 	var $xmlrpc_server = '1';
-	var $log_path = '/home/containe/public_html/logs';
-	var $tmp_path = '/home/containe/public_html/tmp';
+	var $log_path = '/home/townwiz/newv1/twcontainerapp/logs';
+	var $tmp_path = '/home/townwiz/newv1/twcontainerapp/tmp';
 	var $live_site = '';
 	var $force_ssl = '0';
 	var $offset = '-12'; 
@@ -32,7 +32,7 @@ class JConfig {
 	var $ftp_root = '';
 	var $dbtype = 'mysql';
 	var $host = 'localhost';
-	var $user = 'root';
+	var $user = 'root1';
 	var $db = 'townwizardcontainerapp';
 	var $dbprefix = 'jos_';
 	var $mailer = 'mail';

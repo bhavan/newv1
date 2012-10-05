@@ -80,18 +80,40 @@ class TownwizardControllerSection extends JController
         $db->setQuery($sql);
         $pSections = $db->loadObjectList();
 
+        $layout = JRequest::getVar('layout', 'default');
+        $apiV = '1.1';
+        if ($layout == 'api2.1')
+        {
+            $apiV = '2.1';
+        }
+
         $partnerSections = array();
         foreach ($pSections as $partnerSection)
         {
+            $ui_type = TablePartnerSection::$ui_types[$partnerSection->ui_type];
+            if ($apiV == '2.1')
+            {
+                $url = $ui_type == 'json' ? $partnerSection->json_api_url : $partnerSection->section_url;
+            }
+            else
+            {
+                $url = $partnerSection->section_url;
+            }
+
             $ps = array(
                 'id' => $partnerSection->id,
                 'display_name' => $partnerSection->display_name,
-                'url' => $partnerSection->section_url,
+                'url' => $url,
                 'image_url' => $partnerSection->image_url ? '/media/com_townwizard/images/sections/' . $partnerSection->image_url : '',
                 'partner_id' => $partnerSection->partner_id,
                 'section_name' => $partnerSection->section_name,
                 'sub_sections' => array()
             );
+            if ($apiV == '2.1')
+            {
+                $ps['ui_type'] = $ui_type;
+            }
+
             if (!$partnerSection->parent_id)
             {
                 $partnerSections[$partnerSection->id] = $ps;

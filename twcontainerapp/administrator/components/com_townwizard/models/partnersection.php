@@ -26,6 +26,7 @@ class TownwizardModelPartnerSection extends TownwizardModel
         $this->_query['fields'][] = "IF (ps.name <> '', ps.name, s.name) as display_name";
         $this->_query['fields'][] = "IF (ps.image <> '', ps.image, s.default_image) as image_url";
         $this->_query['fields'][] = "IF (ps.url <> '', ps.url, s.default_url) as section_url";
+        $this->_query['fields'][] = "IF (ps.json_api_url <> '', ps.json_api_url, s.default_json_api_url) as json_api_url";
         $this->_query['joins'][] = 'INNER JOIN #__townwizard_partner p ON ps.partner_id = p.id';
         $this->_query['fields'][] = 'p.name as partner';
         $this->_query['order'] = 'ps.partner_id, ps.ordering';
@@ -44,5 +45,10 @@ class TownwizardModelPartnerSection extends TownwizardModel
 
         return $children;
     }
+/*
+    public function getUiType()
+    {
+        $this->getTable()->getUiType($this->ui_type);
+    }*/
 }
 ?>

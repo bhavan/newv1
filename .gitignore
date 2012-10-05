@@ -3,3 +3,5 @@ v2.clpprj
 .buildpath
 .project
 error_example1.log
+twcontainerapp/logs/access.log
+twcontainerapp/logs/error.log

@@ -2,6 +2,16 @@
 function TownwizardParseRoute($segments)
 {
     $vars = array();
+
+    // get a menu item based on Itemid or currently active
+    $menu = &JSite::getMenu();
+    if (empty($query['Itemid'])) {
+        $menuItem = &$menu->getActive();
+    } else {
+        $menuItem = &$menu->getItem($query['Itemid']);
+    }
+    $layout = isset($menuItem->query['layout']) ? $menuItem->query['layout'] : '';
+
     switch ($segments[0])
     {
         case 'partner':
@@ -34,6 +44,11 @@ function TownwizardParseRoute($segments)
                     $vars['task'] = 'section';
                 }
             }
+    }
+
+    if ($layout)
+    {
+        $vars['layout'] = $layout;
     }
 
     return $vars;

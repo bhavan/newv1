@@ -41,6 +41,9 @@ JToolBarHelper::addNewX();
             <th class="title">
                 <?php echo JText::_( 'Default URL' ); ?>
             </th>
+            <th class="title">
+                <?php echo JText::_( 'Default JSON API URL' ); ?>
+            </th>
             <th width="5">
                 <?php echo JText::_( 'ID' ); ?>
             </th>
@@ -78,6 +81,9 @@ JToolBarHelper::addNewX();
                     </td>
                     <td>
                         <?php echo $row->default_url; ?>
+                    </td>
+                    <td>
+                        <?php echo $row->default_json_api_url; ?>
                     </td>
                     <td>
                         <a href="<?php echo $link; ?>"><?php echo $row->id; ?></a>
