@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 include("connection.php");
 function distance($lat1, $lon1, $lat2, $lon2, $unit) { 
 
@@ -20,15 +22,23 @@ $unit = strtoupper($unit);
 
 $eid=$_REQUEST['eid'];
 
-if ($_REQUEST['lat']!="")
-	$lat1=$_REQUEST['lat'];
-else
-	$lat1=0;
+if (isset($_REQUEST['lat']) && $_REQUEST['lat'] != "" )
 
-if ($_REQUEST['lon']!="")
-	$lon1=$_REQUEST['lon'];
-else
-	$lon1=0;
+{$_SESSION['lat_device1']=$_REQUEST['lat'];
+
+$lat1=$_SESSION['lat_device1'];
+
+}
+
+
+
+if (isset($_REQUEST['lon']) && $_REQUEST['lon'] != "" )
+
+{$_SESSION['lon_device1']=$_REQUEST['lon'];
+
+$lon1=$_SESSION['lon_device1'];
+
+}
 
 if ($_REQUEST['d']=="")
 	$today=date('d');
