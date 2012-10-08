@@ -105,7 +105,7 @@
 
      <div style="width:100%;text-align: left;"><div class="gray" style="width:10%;float:left;padding-right:50px;">Phone:</div><div style="width:100%"><a href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$rowlocdetail['phone'])?>"><?=$rowlocdetail['phone']?></a></div></div><br />
 
-     <div style="width:100%;text-align: left;"><div class="gray" style="width:10%;float:left;padding-right:50px;">Distance:</div><div style="width:100%"> <?=round(distance($lat1, $lon1, $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></div></div><br />
+     <div style="width:100%;text-align: left;"><div class="gray" style="width:10%;float:left;padding-right:50px;">Distance:</div><div style="width:100%"> <?=round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></div></div><br />
 
 	<?php if(trim($rowlocdetail['url']) != '') { ?>
 
@@ -227,14 +227,6 @@ $egurl = str_replace('%20','%2B',$eurl);
 </div>
 
 <!-- #DD# -->
-
-		
-
-	
-
-
-
-
 
 <!-- <div id="footer">&copy; <?=date('Y');?> <?=$site_name?>, Inc.<!-- | <a href="mailto:<?=$email?>?subject=App Feedback">Contact Us</a></div> -->
 

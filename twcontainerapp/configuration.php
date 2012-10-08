@@ -32,7 +32,7 @@ class JConfig {
 	var $ftp_root = '';
 	var $dbtype = 'mysql';
 	var $host = 'localhost';
-	var $user = 'root1';
+	var $user = 'root';
 	var $db = 'townwizardcontainerapp';
 	var $dbprefix = 'jos_';
 	var $mailer = 'mail';

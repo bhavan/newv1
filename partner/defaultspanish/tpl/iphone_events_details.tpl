@@ -108,7 +108,7 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 	 
      <div style="width:100%;text-align: left;"><div class="gray" style="width:10%;float:left;padding-right:50px;">Tel&#233;fono:</div><div style="width:100%"><a href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$rowlocdetail['phone'])?>"><?=$rowlocdetail['phone']?></a></div></div><br />
 
-     <div style="width:100%;text-align: left;"><div class="gray" style="width:10%;float:left;padding-right:50px;">Distancia:</div><div style="width:100%"> <?=round(distance($lat1, $lon1, $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></div></div><br />
+     <div style="width:100%;text-align: left;"><div class="gray" style="width:10%;float:left;padding-right:50px;">Distancia:</div><div style="width:100%"> <?=round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></div></div><br />
 
 	<?php if(trim($rowlocdetail['url']) != '') { ?>
 
@@ -173,7 +173,59 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 	  }
 
 	  ?>
+	  
+<!-- Added by yogi for Facebook Share feature Begin -->
 
+<?php 
+
+$eddate_array = explode(" ",$rowvevdetail['modified']);
+
+$ev_detail_date = $eddate_array[0];
+
+$ev_detail_title = $rowvevdetail['summary'];
+
+$ev_detail_id = $rowvevdetail['evdet_id'];
+
+$host = $_SERVER[HTTP_HOST];
+
+
+
+$eurl = rawurlencode("http://$host/event_details.php?event_id=$ev_detail_id&title=$ev_detail_title&date=$ev_detail_date&rp_id=$eid");
+
+$egurl = str_replace('%20','%2B',$eurl);
+
+
+
+?>
+
+<!-- Added by yogi for Facebook Share feature End -->
+
+
+
+<!-- #DD# -->
+
+
+<div style="clear:both; overflow:hidden;">
+	 <div style='float:left;padding:3px 3px 3px 8px;'>
+	
+			<a expr:share_url='data:post.url' href='http://www.facebook.com/share.php?u=<?php echo $eurl ?>' name='fb_share' type='box_count'><img src="/components/com_shines/images/facebook_share_icon.png"/></a>
+	
+			<!-- <script src='http://static.ak.fbcdn.net/connect.php/js/FB.Share' type='text/javascript'></script> -->		
+	
+	</div>	
+	
+	
+	<div style='float:left;padding:3px 3px 3px 8px;'>
+	
+		<a href="https://plus.google.com/share?url=<?php echo $egurl ?>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+	
+			<img src="/components/com_shines/images/google-share-button.jpg" alt="Share on Google+"/>
+	
+		</a>
+	
+	</div>
+
+</div>
 
 
 </div>

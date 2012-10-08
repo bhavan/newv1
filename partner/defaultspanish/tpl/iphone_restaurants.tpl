@@ -169,13 +169,10 @@
 			$lat2=$data[geolat];
 			$lon2=$data[geolon];
 
-		if(JRequest::getFloat("needdistance",0)){
-			$lat=JRequest::getFloat("lat",999);
-			$lon=JRequest::getFloat("lon",999);
-			$km=JRequest::getInt("km",0)?1.609344:1;
 		
-		$dist = distance($lat, $lon, lat2, $lon2, $dunit);
-		}
+		
+		$dist = distance($lat1, $lon1, $lat2, $lon2, $dunit);
+		
 	?>
 		<tr>
 			<td class="two">

@@ -39,7 +39,21 @@ if(stripos($ua,'android') == true) { ?>
       <?php
 	  }
 	  ?>
-		
+	<?php
+$host = $_SERVER[HTTP_HOST];
+?>
+<div style="clear:both; overflow:hidden;">		
+<div style='float:left;padding:3px 3px 3px 8px;'>
+		<a expr:share_url='data:post.url' href='http://www.facebook.com/sharer.php?u=http://<?php echo $host; ?>/location_details.php?id=<?php echo $did; ?>' name='fb_share' type='box_count'><img src="/components/com_shines/images/facebook_share_icon.png"/></a>
+		<!-- <script src='http://static.ak.fbcdn.net/connect.php/js/FB.Share' type='text/javascript'></script> -->		
+</div>
+
+<div style='float:left;padding:3px 3px 3px 8px;'>
+<a href="https://plus.google.com/share?url=http://<?php echo $host; ?>/location_details.php?id=<?php echo $did; ?>" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+	<img src="/components/com_shines/images/google-share-button.jpg" alt="Share on Google+"/>
+</a>
+</div>	
+	</div>		
 	
 </div>
 
