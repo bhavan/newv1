@@ -50,8 +50,8 @@ if(isset($_GET['id']) && $_GET['id'] != 0){
 //		$j++;
 		//$row['image_href_url']		=	"album.php?start=".($photoindent+$j)."&backstart=".(int)$_REQUEST[start]."&id=".$CatId;
 		$data[$i]['name']		= $row['title'];
-		$data[$i]['thumb']	= "/partner/".$_SESSION['partner_folder_name']."/images/phocagallery/thumbs/phoca_thumb_s_".$row['filename'];
-		$data[$i]['picture']	= "/partner/".$_SESSION['partner_folder_name']."/images/phocagallery/thumbs/phoca_thumb_l_".$row['filename'];
+		$data[$i]['thumb']		= "http://".$_SERVER['SERVER_NAME']."/partner/".$_SESSION['partner_folder_name']."/images/phocagallery/thumbs/phoca_thumb_s_".$row['filename'];
+		$data[$i]['picture']	= "http://".$_SERVER['SERVER_NAME']."/partner/".$_SESSION['partner_folder_name']."/images/phocagallery/thumbs/phoca_thumb_l_".$row['filename'];
 		++$i;
 	} 
 	$response = array(
@@ -131,14 +131,14 @@ if(isset($_GET['id']) && $_GET['id'] != 0){
 		if(trim($userfolder) == '' && trim($filename) == ''){
 			$data[$k]['thumb'] = '';
 		}else{
-			$data[$k]['thumb'] = '/partner/'.$_SESSION['partner_folder_name'].'/images/phocagallery/'.$userfolder.'thumbs/phoca_thumb_s_'.$filename;
+			$data[$k]['thumb'] = 'http://'.$_SERVER['SERVER_NAME'].'/partner/'.$_SESSION['partner_folder_name'].'/images/phocagallery/'.$userfolder.'thumbs/phoca_thumb_s_'.$filename;
 		}			
 	}
 	/* Jason code for galleries file (Phoca gallery Category listing) */
 	
 	//echo "<pre>";
 	//print_r($data);
-	
+
 	$response = array(
     	'data' => $data,
     	'meta' => array(
