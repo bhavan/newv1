@@ -1,3 +1,11 @@
+<div id="menu">
+
+<h1>Place Info</h1>
+
+<a id="calPrev" href="javascript:history.go(-1)" onMouseOver="self.status=document.referrer;return true" ></a>
+
+</div>
+
 <div id="list" ontouchstart="touchStart(event,'list');" ontouchend="touchEnd(event);" ontouchmove="touchMove(event);" ontouchcancel="touchCancel(event);">
 	
       <?php 
@@ -11,7 +19,7 @@
 			
 	  ?>
       
-      <div style="width:100%"><strong style="font-size:15px;"><?php echo utf8_encode($row['title']);?></strong>
+      <div style="width:100%"><strong style="font-size:15px;"><?php echo $row['title'];?></strong>
       <br /><br />
       <div style="width:100%">
 	  <?php
@@ -22,7 +30,8 @@ if(stripos($ua,'android') == true) {
   
   <?php } 
   else {
-  ?> <div style="width:10%;float:left;padding-right:50px;">Address:</div><div style="width:100%"><a href="javascript:linkClicked('APP30A:SHOWMAP:<?=$lat2?>:<?=$lon2?>')"><?=$row['street']?></a></div></div><br />
+  ?> 
+     <div style="width:10%;float:left;padding-right:50px;">Address:</div><div style="width:100%"><a href="javascript:linkClicked('APP30A:SHOWMAP:<?=$lat2?>:<?=$lon2?>')"><?=$row['street']?></a></div></div><br />
  
   <?php } ?>
 	  

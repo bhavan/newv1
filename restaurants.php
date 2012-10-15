@@ -18,6 +18,12 @@ if($_POST['search_rcd']=="Search Restaurants" || $_POST['search_rcd']=="Buscar R
 <html>
 <head>
 <title><?php echo $var->site_name.' | '.$var->page_title; ?></title>
+<link rel="image_src" href="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png" />  
+<meta property="og:image" content="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png"/>
+<meta property="og:title" content="<?php echo $var->site_name.' | '.$var->page_title; ?>"/>
+<meta property="og:description" content="<?php m_dining_intro(); ?>"/>
+
+
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
@@ -46,7 +52,8 @@ if($_POST['search_rcd']=="Search Restaurants" || $_POST['search_rcd']=="Buscar R
 	</aside> <!-- left Column -->
 	<section>
     <h2><?php echo $var->site_name; ?> <?php echo $var->page_title; ?></h2>
-  	<?php
+  	
+	<?php
 		/* Code added for restaurants.tpl for V2 */
 		require($var->tpl_path."restaurants.tpl");
 	?>

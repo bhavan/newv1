@@ -20,9 +20,16 @@
 <table>
   <tbody>
     <?php 
+	// Time zone related changes
+	$timeZoneArray 	= explode(':',$var->timezone);
+	$totalHours 	= date("H") + $timeZoneArray[0];$totalMinutes = date("i") + $timeZoneArray[1];$totalSeconds = date("s") + $timeZoneArray[2];
+	$timeStamp 		= mktime($totalHours, $totalMinutes, $totalSeconds);
+	$partnerDate	= date("Y-m-d", $timeStamp);
+	
     
     if($DisplaySearchdate=='' || $DisplaySearchdate=='Search Events by Date'){
-			$start_date = date("Y-m-d");
+			//$start_date = date("Y-m-d");
+			$start_date = $partnerDate;
 			$check_date = $start_date;
 			$end_date = date("Y-m-d", strtotime ("+30 day", strtotime($check_date)));
 		}else{
