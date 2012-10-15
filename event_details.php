@@ -29,12 +29,19 @@ if(isset($var->get['event_id'])) {
 <!DOCTYPE HTML>
 <html>
 <head>
-<title><?php echo $var->site_name.' | '.(isset($var->get['title'])?'Event | '.$var->get['title']:'Event Details'); ?></title>
-<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<title><?php echo $var->site_name.' | Event | '.utf8_decode($var->get['title']); ?></title>
+<link rel="image_src" href="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png" />  
+<meta property="og:image" content="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png"/>
+<meta property="og:title" content="<?php echo $var->site_name.' | Event | '.utf8_decode($var->get['title']); ?>"/>
+<meta property="og:description" content="<?php echo $data['description']; ?>"/>
 
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
 <meta name="description" content="<?php echo $var->extra_meta; ?>" />
+
+
+
 
 <script>
   document.createElement('header');
@@ -58,7 +65,7 @@ if(isset($var->get['event_id'])) {
     <?php m_aside(); ?>
 	</aside> <!-- left Column -->
 	<section>
-    
+
      <?php
 	/* Code added for Events_details.tpl */
 	require($var->tpl_path."event_details.tpl");

@@ -64,10 +64,15 @@ $rec=mysql_query($query) or die(mysql_error());
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
+	
+        <link rel="image_src" href="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png" />   	
 		<meta property="og:image" content="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png"/>
+		<meta property="og:title" content="<?php echo $site_name.' | Event';?>"/>
+		
+		
 		<meta content="yes" name="apple-mobile-web-app-capable" />
 		<meta content="index,follow" name="robots" />
-		<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
+		<meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type" />
 		<link href="pics/homescreen.gif" rel="apple-touch-icon" />
 		<meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
 		<!--<link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />-->
@@ -78,7 +83,7 @@ $rec=mysql_query($query) or die(mysql_error());
 			function linkClicked(link) { document.location = link; } 
 		</script>
 		
-		<title><?=$site_name?></title>
+		<title><?php echo $site_name.' | Event';?></title>
 		
 		<script type="text/javascript">
 

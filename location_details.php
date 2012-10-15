@@ -31,7 +31,13 @@ _init();
 <html>
 <head>
 <!-- <title><?php echo $var->site_name.' | '.$var->page_title; ?></title> -->
+
 <title><?php echo $var->site_name.' | '.$var->page_title; ?> | <?php echo $data['title']; ?></title>
+<link rel="image_src" href="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png" />  
+<meta property="og:image" content="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png"/>
+<meta property="og:title" content="<?php echo $var->site_name.' | '.$var->page_title; ?> | <?php echo $data['title']; ?>"/>
+<meta property="og:description" content="<?php echo $data['description']; ?>"/>
+
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
@@ -93,6 +99,7 @@ determine the user's locationKey   -->
     <?php m_aside(); ?>
 	</aside> <!-- left Column -->
 	<section>
+		    
    <?php
 	/* Code added for location_details.tpl */
 	require($var->tpl_path."location_details.tpl");

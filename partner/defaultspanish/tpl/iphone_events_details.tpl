@@ -182,15 +182,14 @@ $eddate_array = explode(" ",$rowvevdetail['modified']);
 
 $ev_detail_date = $eddate_array[0];
 
-$ev_detail_title = $rowvevdetail['summary'];
+$ev_detail_title = $rowvevdetail['summary']; 
+
 
 $ev_detail_id = $rowvevdetail['evdet_id'];
 
 $host = $_SERVER[HTTP_HOST];
 
-
-
-$eurl = rawurlencode("http://$host/event_details.php?event_id=$ev_detail_id&title=$ev_detail_title&date=$ev_detail_date&rp_id=$eid");
+$eurl = utf8_encode("http://$host/event_details.php?event_id=$ev_detail_id%26title=$ev_detail_title%26date=$ev_detail_date%26rp_id=$eid");
 
 $egurl = str_replace('%20','%2B',$eurl);
 
@@ -204,11 +203,11 @@ $egurl = str_replace('%20','%2B',$eurl);
 
 <!-- #DD# -->
 
-
+ 
 <div style="clear:both; overflow:hidden;">
 	 <div style='float:left;padding:3px 3px 3px 8px;'>
 	
-			<a expr:share_url='data:post.url' href='http://www.facebook.com/share.php?u=<?php echo $eurl ?>' name='fb_share' type='box_count'><img src="/components/com_shines/images/facebook_share_icon.png"/></a>
+			<a expr:share_url='data:post.url' href='http://www.facebook.com/sharer.php?u=<?php echo $eurl ?>' name='fb_share' type='box_count'><img src="/components/com_shines/images/facebook_share_icon.png"/></a>
 	
 			<!-- <script src='http://static.ak.fbcdn.net/connect.php/js/FB.Share' type='text/javascript'></script> -->		
 	

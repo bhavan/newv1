@@ -1,3 +1,11 @@
+<div id="menu">
+
+<h1>Lugar Info</h1>
+
+<a id="calPrev" href="javascript:history.go(-1)" onMouseOver="self.status=document.referrer;return true" ></a>
+
+</div>
+
 <div id="list" ontouchstart="touchStart(event,'list');" ontouchend="touchEnd(event);" ontouchmove="touchMove(event);" ontouchcancel="touchCancel(event);">
 	
       <?php 

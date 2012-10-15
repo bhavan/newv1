@@ -12,6 +12,11 @@ _init();
 <html>
 <head>
 <title><?php echo $var->site_name.' | '.$var->page_title; ?></title>
+<link rel="image_src" href="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png" />  
+<meta property="og:image" content="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png"/>
+<meta property="og:title" content="<?php echo $var->site_name.' | '.$var->page_title; ?>"/>
+<meta property="og:description" content="<?php echo $var->metadesc; ?>"/>
+
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
@@ -90,8 +95,11 @@ _init();
     <?php m_aside(); ?>
 	</aside> <!-- left Column -->
 	<section>
+	
     <?php m_event_list_intro(); ?>
-    <?php m_event_list(); ?>
+	<?php m_event_list(); ?>
+	
+	
 	</section> <!-- rightColumn -->
 </div> <!-- wrapper -->
 <footer>
