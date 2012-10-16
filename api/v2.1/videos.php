@@ -1,6 +1,5 @@
 <?php
 include("connection.php");
-include("iadbanner.php");
 
 $query="select title as name, filename, videocode from jos_phocagallery where catid=2 order by id desc";
 $rec=mysql_query($query) or die(mysql_error());
