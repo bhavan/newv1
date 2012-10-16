@@ -3,7 +3,6 @@ ini_set('error_reporting',1);
 ini_set('display_errors',1);
 
 /* HIDE iadbanner -- YOGI */
-//include("iadbanner.php");
 include("class.paggination.php");
 include("connection.php");
 
@@ -117,10 +116,10 @@ if(isset($_GET['id']) && $_GET['id'] != 0){
 		$rec1	=	mysql_query($query1) or die(mysql_error());
 		$totalCatPhotos = mysql_num_rows($rec1);
 
-		if($totalCatPhotos >0){
-			++$num_records;
-			$data[$k]['id'] = intval($v['id']);
-			$data[$k]['name']		= $v['name'];
+		if($totalCatPhotos > 0){
+
+			$data[$num_records]['id'] = intval($v['id']);
+			$data[$num_records]['name']		= $v['name'];
 
 			$v['photos'] = array();
 	
@@ -140,11 +139,12 @@ if(isset($_GET['id']) && $_GET['id'] != 0){
 			unset($tmp_arr);
 			
 			if(trim($userfolder) == '' && trim($filename) == ''){
-				$data[$k]['thumb'] = '';
+				$data[$num_records]['thumb'] = '';
 			}else{
-				$data[$k]['thumb'] = 'http://'.$_SERVER['SERVER_NAME'].'/partner/'.$_SESSION['partner_folder_name'].'/images/phocagallery/'.$userfolder.'thumbs/phoca_thumb_m_'.$filename;
+				$data[$num_records]['thumb'] = 'http://'.$_SERVER['SERVER_NAME'].'/partner/'.$_SESSION['partner_folder_name'].'/images/phocagallery/'.$userfolder.'thumbs/phoca_thumb_m_'.$filename;
 			}
-			$data[$k]['num_photos'] = mysql_num_rows($rec1);
+			$data[$num_records]['num_photos'] = mysql_num_rows($rec1);
+			++$num_records;
 		}			
 	}
 	/* Jason code for galleries file (Phoca gallery Category listing) */
@@ -164,6 +164,5 @@ if(isset($_GET['id']) && $_GET['id'] != 0){
 	//print_r($response);
 	header('Content-type: application/json');
 	echo json_encode($response);
-	
 }
 ?>
