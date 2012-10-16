@@ -47,13 +47,22 @@ if(isset($_GET['id']) && $_GET['id'] != 0){
 	$photoindent	=	$recno-1;
 	$i = 0;
 	while($row	=	mysql_fetch_array($rec)) {
-//		$j++;
+		//		$j++;
 		//$row['image_href_url']		=	"album.php?start=".($photoindent+$j)."&backstart=".(int)$_REQUEST[start]."&id=".$CatId;
+		$filename = $row['filename'];
+		$userfolder = '';
+		$tmp_arr = explode('/', $row['filename']);
+		if(count($tmp_arr) > 1){
+			$userfolder = $tmp_arr[0].'/';
+			$filename = $tmp_arr[1];
+		}
+		
 		$data[$i]['name']		= $row['title'];
-		$data[$i]['thumb']		= "http://".$_SERVER['SERVER_NAME']."/partner/".$_SESSION['partner_folder_name']."/images/phocagallery/thumbs/phoca_thumb_s_".$row['filename'];
-		$data[$i]['picture']	= "http://".$_SERVER['SERVER_NAME']."/partner/".$_SESSION['partner_folder_name']."/images/phocagallery/thumbs/phoca_thumb_l_".$row['filename'];
+		$data[$i]['thumb']		= "http://".$_SERVER['SERVER_NAME']."/partner/".$_SESSION['partner_folder_name']."/images/phocagallery/".$userfolder."thumbs/phoca_thumb_m_".$filename;
+		$data[$i]['picture']	= "http://".$_SERVER['SERVER_NAME']."/partner/".$_SESSION['partner_folder_name']."/images/phocagallery/".$userfolder."thumbs/phoca_thumb_l_".$filename;
 		++$i;
 	} 
+
 	$response = array(
     	'data' => $data,
     	'meta' => array(
@@ -90,10 +99,10 @@ if(isset($_GET['id']) && $_GET['id'] != 0){
 	//$query	=	"select * from jos_phocagallery_categories where id<>2 and published=1 and approved=1 order by ordering";
 	$query	=	"select id,title as name from jos_phocagallery_categories where id<>2 and published=1 and approved=1 order by ordering";
 	$rec	=	mysql_query($query) or die(mysql_error());
-	$num_records = mysql_num_rows($rec);	
-	$data = array();
+	//$num_records = mysql_num_rows($rec);	
+	$catData = array();
 	while($r	=	mysql_fetch_assoc($rec)){
-		$data[] = $r;
+		$catData[] = $r;
 	}
 		//echo "<pre>";
 		//print_r($param);
@@ -101,43 +110,46 @@ if(isset($_GET['id']) && $_GET['id'] != 0){
 		//header('Content-type: application/json');
 		//echo json_encode($param);
 		
-			
-	foreach($data as $k => $v){
+	$num_records = 0;		
+	foreach($catData as $k => $v){
 		
 		$query1 = "select id, filename from `jos_phocagallery` where `published` = 1 and `approved` = 1 and `catid` = ".$v['id'] ." ORDER BY ordering"; 
 		$rec1	=	mysql_query($query1) or die(mysql_error());
-		$data[$k]['num_photos'] = mysql_num_rows($rec1);
-		$albumparam[$k] = 
-		$v['photos'] = array();
-		
-		
-		while($r1	=	mysql_fetch_assoc($rec1)){
-			$v['photos'][] = $r1;
-		}
-		//echo "<pre>"; print_r($v['photos']);
+		$totalCatPhotos = mysql_num_rows($rec1);
+
+		if($totalCatPhotos >0){
+			++$num_records;
+			$data[$k]['id'] = intval($v['id']);
+			$data[$k]['name']		= $v['name'];
+
+			$v['photos'] = array();
+	
+			while($r1	=	mysql_fetch_assoc($rec1)){
+				$v['photos'][] = $r1;
+			}
 					
-		$id = rand(0, (count($v['photos']) - 1));
-		$tmp_arr = explode('/', $v['photos'][$id]['filename']);
-					
-		$userfolder = '';
-		$filename = $v['photos'][$id]['filename'];
+			$id = rand(0, (count($v['photos']) - 1));
+			$tmp_arr = explode('/', $v['photos'][$id]['filename']);
+			$userfolder = '';
+			$filename = $v['photos'][$id]['filename'];
 		
-		if(count($tmp_arr) > 1){
-			$userfolder = $tmp_arr[0].'/';
-			$filename = $tmp_arr[1];
-		}
-		unset($tmp_arr);
-		$data[$k]['id'] = intval($data[$k]['id']);
-		if(trim($userfolder) == '' && trim($filename) == ''){
-			$data[$k]['thumb'] = '';
-		}else{
-			$data[$k]['thumb'] = 'http://'.$_SERVER['SERVER_NAME'].'/partner/'.$_SESSION['partner_folder_name'].'/images/phocagallery/'.$userfolder.'thumbs/phoca_thumb_s_'.$filename;
+			if(count($tmp_arr) > 1){
+				$userfolder = $tmp_arr[0].'/';
+				$filename = $tmp_arr[1];
+			}
+			unset($tmp_arr);
+			
+			if(trim($userfolder) == '' && trim($filename) == ''){
+				$data[$k]['thumb'] = '';
+			}else{
+				$data[$k]['thumb'] = 'http://'.$_SERVER['SERVER_NAME'].'/partner/'.$_SESSION['partner_folder_name'].'/images/phocagallery/'.$userfolder.'thumbs/phoca_thumb_m_'.$filename;
+			}
+			$data[$k]['num_photos'] = mysql_num_rows($rec1);
 		}			
 	}
 	/* Jason code for galleries file (Phoca gallery Category listing) */
 	
-	//echo "<pre>";
-	//print_r($data);
+	//echo "<pre>"; print_r($data);
 
 	$response = array(
     	'data' => $data,
@@ -150,7 +162,6 @@ if(isset($_GET['id']) && $_GET['id'] != 0){
 	
 	//echo "<pre>";
 	//print_r($response);
-	//echo json_encode($data);
 	header('Content-type: application/json');
 	echo json_encode($response);
 	
