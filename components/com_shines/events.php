@@ -55,13 +55,16 @@ $lon1=$_SESSION['lon_device1'];
 
 }
 
-
+$timeZoneArray 	= explode(':',$timezone);
+$totalHours 	= date("H") + $timeZoneArray[0];
+$totalMinutes = date("i") + $timeZoneArray[1];
+$totalSeconds = date("s") + $timeZoneArray[2];
 
 
 
 if ($_REQUEST['d']=="")
 
-$today=date('d');
+$today=date('d', mktime($totalHours, $totalMinutes, $totalSeconds));
 
 else
 
@@ -69,7 +72,7 @@ $today=$_REQUEST['d'];
 
 if ($_REQUEST['m']=="")
 
-$tomonth=date('m');
+$tomonth=date('m',mktime($totalHours, $totalMinutes, $totalSeconds));
 
 else
 
@@ -77,7 +80,7 @@ $tomonth=$_REQUEST['m'];
 
 if ($_REQUEST['Y']=="")
 
-$toyear=date('Y');
+$toyear=date('Y',mktime($totalHours, $totalMinutes, $totalSeconds));
 
 else
 
@@ -115,21 +118,22 @@ $_REQUEST['eventdate1'] = trim($_REQUEST['eventdate1']);
 
 if(!empty($_REQUEST['eventdate1'])){
 
-
-
     $today = date('d',strtotime($_REQUEST['eventdate1']));
 
     $tomonth = date('m',strtotime($_REQUEST['eventdate1']));
 
     $toyear = date('Y',strtotime($_REQUEST['eventdate1']));
 
+	
+
+
 }
 
 
 
 
-
 $todaestring=date('D, M j', mktime(0, 0, 0, $tomonth, $today, $toyear));
+
 
 
 
