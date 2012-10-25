@@ -36,7 +36,7 @@ _init();
 <link rel="image_src" href="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png" />  
 <meta property="og:image" content="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png"/>
 <meta property="og:title" content="<?php echo $var->site_name.' | '.$var->page_title; ?> | <?php echo $data['title']; ?>"/>
-<meta property="og:description" content="<?php echo $data['description']; ?>"/>
+<meta property="og:description" content="Check out <?php echo $data['title'];?>.Check out more local favorites at <?php echo $_SERVER['SERVER_NAME'];?>."/>
 
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />
