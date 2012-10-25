@@ -177,9 +177,11 @@
 
 <?php 
 
-$eddate_array = explode(" ",$rowvevdetail['modified']);
+//$eddate_array = explode(" ",$rowvevdetail['modified']);
 
-$ev_detail_date = $eddate_array[0];
+// $ev_detail_date = $eddate_array[0];
+
+$ev_detail_date = date('Y-m-d', mktime(0, 0, 0, $tomonth, $today, $toyear));
 
 $ev_detail_title = $rowvevdetail['summary']; 
 
@@ -188,7 +190,7 @@ $ev_detail_id = $rowvevdetail['evdet_id'];
 
 $host = $_SERVER[HTTP_HOST];
 
-$eurl = utf8_encode("http://$host/event_details.php?event_id=$ev_detail_id%26title=$ev_detail_title%26date=$ev_detail_date%26rp_id=$eid");
+echo $eurl = utf8_encode("http://$host/event_details.php?event_id=$ev_detail_id%26title=$ev_detail_title%26date=$ev_detail_date%26rp_id=$eid");
 
 $egurl = str_replace('%20','%2B',$eurl);
 

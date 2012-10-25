@@ -31,12 +31,23 @@ preg_match('/https?:\/\/.*\//i', $web_root, $matches);
 $web_root = $matches[0];
 //#DD#
 
+// for facebook description issue.
+$sql = "select jjv.*,jjr.rp_id, jjr.startrepeat, DATE_FORMAT(jjr.startrepeat,'%D %b, %Y') _dateF, DATE_FORMAT(jjr.startrepeat,'%h:%i %p') as timestart, DATE_FORMAT(jjr.endrepeat,'%h:%i %p') as timeend from `jos_jevents_vevdetail` jjv, `jos_jevents_repetition` jjr where jjv.state=1 and jjv.evdet_id = jjr.eventdetail_id and jjr.endrepeat >= TIMESTAMP(CURRENT_TIMESTAMP,'$var->timezone') order by jjr.endrepeat limit 1";
+$data = db_fetch($sql);
+$temp = explode(' ', $data['startrepeat']);
+$data['_date'] = $temp[0];
+
 ?>
 
 <!DOCTYPE HTML>
 <html>
 <head>
 <title><?php echo $var->site_name.' | '.$var->page_title; ?></title>
+<link rel="image_src" href="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png" />  
+<meta property="og:image" content="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png"/>
+<meta property="og:title" content="<?php echo $var->site_name.' | '.$var->page_title.' | '.$data['summary']; ?>"/>
+<meta property="og:description" content="Check out <?php echo $data['summary'];?> on <?php echo $data['_date']; ?>. Check out more local events at <?php echo $_SERVER['SERVER_NAME']?>."/>
+
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
@@ -74,7 +85,12 @@ $web_root = $matches[0];
     	<?php m_aside(); ?>
 	</aside> <!-- left Column -->
 	<section>
-    <?php m_featured_event(); ?> <!-- featuredEvent -->
+	
+    <?php 
+	
+	m_featured_event(); 
+	
+	?> <!-- featuredEvent -->
     <?php m_photos_mini(); ?>  <!-- photos -->
     <br /><br />
     <?php m_events_this_week(); ?>

@@ -33,7 +33,7 @@ if(isset($var->get['event_id'])) {
 <link rel="image_src" href="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png" />  
 <meta property="og:image" content="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png"/>
 <meta property="og:title" content="<?php echo $var->site_name.' | Event | '.utf8_decode($var->get['title']); ?>"/>
-<meta property="og:description" content="<?php echo $data['description']; ?>"/>
+<meta property="og:description" content="Check out <?php echo $data['summary'];?> on <?php echo date("Y-m-d", strtotime($var->get['date']));  ?>. Check out more local events at <?php echo $_SERVER['SERVER_NAME']?>."/>
 
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />

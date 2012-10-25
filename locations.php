@@ -21,7 +21,7 @@ if($_POST['search_rcd']=="Search Places" || $_POST['search_rcd']=="Lugares de la
 <link rel="image_src" href="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png" />  
 <meta property="og:image" content="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png"/>
 <meta property="og:title" content="<?php echo $var->site_name.' | '.$var->page_title; ?>"/>
-<meta property="og:description" content="<?php m_places_intro(); ?>"/>
+<meta property="og:description" content="<?php echo strip_tags(m_places_intro()); ?>"/>
 
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />
@@ -50,6 +50,8 @@ if($_POST['search_rcd']=="Search Places" || $_POST['search_rcd']=="Lugares de la
     <?php m_aside(); ?>
 	</aside> <!-- left Column -->
 	<section>
+	
+	
     <h2><?php echo $var->site_name; ?> <?php echo $var->page_title; ?></h2>
     <?php
 		/* Code added for locations.tpl for V2 */

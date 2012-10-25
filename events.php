@@ -6,6 +6,8 @@ include_once('./inc/var.php');
 include_once($var->inc_path.'base.php');
 _init();
 
+// for facebook description issue.
+$intro = db_fetch("select introtext from `jos_content` where `title` = 'Events Page Introduction'");
 ?>
 
 <!DOCTYPE HTML>
@@ -15,7 +17,7 @@ _init();
 <link rel="image_src" href="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png" />  
 <meta property="og:image" content="http://<?php echo $_SERVER['HTTP_HOST']?>/partner/<?php echo $_SESSION['partner_folder_name']?>/images/logo/logo.png"/>
 <meta property="og:title" content="<?php echo $var->site_name.' | '.$var->page_title; ?>"/>
-<meta property="og:description" content="<?php echo $var->metadesc; ?>"/>
+<meta property="og:description" content="<?php echo strip_tags($intro); ?>"/>
 
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />

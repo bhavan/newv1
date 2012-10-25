@@ -382,8 +382,9 @@ function m_event_list_intro() {
   global $var;
   // $header = "Event Calendar";
   $intro = db_fetch("select introtext from `jos_content` where `title` = 'Events Page Introduction'");
+  
   require($var->tpl_path."event_list_intro.tpl");
-}
+ }
 
 function m_event_list() {
   global $var;
@@ -458,13 +459,15 @@ function m_events_this_week() {
 function m_dining_intro() {
   global $var;
   $text = db_fetch("select `introtext` from `jos_content` where `title` = 'Dining Page Introduction'");
-  echo $text;
+  return $text;
+  //echo $text;
 }
 // Created for Places intro text V2
 function m_places_intro() {
   global $var;
   $text = db_fetch("select `introtext` from `jos_content` where `title` = 'Places Page Introduction'");
-  echo $text;
+  return $text;
+  //echo $text;
 }
 function m_location_list($cat, $featured = true, $searchedText='') {
   global $var;

@@ -8,7 +8,7 @@
     </tr>
     <tr>
       <td><strong>Fecha:</strong></td>
-      <td><?php $datearr=explode('-',$data['_date']);setlocale(LC_TIME,"spanish");echo ucwords(strftime ('%A, %B %d',mktime(0,0,0,$datearr[1],$datearr[2],$datearr[0]))); /*echo date("l, F j ",mktime(0,0,0,$datearr[1],$datearr[2],$datearr[0]));*/ ?></td>
+      <td><?php $datearr=explode('-',$data['_date']);setlocale(LC_TIME,"spanish");echo ucwords(strftime ('%A, %B %d',mktime(0,0,0,$datearr[1],$datearr[2],$datearr[0]))); ?></td>
     </tr>
     <?php if(!strstr($data['timestart'], '00:00')) { ?>
     <tr>
@@ -35,7 +35,8 @@
     </tr>
     <tr>
       <td colspan="2">
-        <a class="button" href="event_details.php?event_id=<?php echo $data['evdet_id']; ?>&title=<?php echo $data['summary']; ?>&date=<?php echo $data['_date']; ?>&rp_id=<?php echo $data['rp_id']; ?>" style="float:left;" >Más Información</a><br /><br /><br /><br /><br />
+	
+        <a class="button" href="event_details.php?event_id=<?php echo $data['evdet_id']; ?>&title=<?php echo utf8_encode($data['summary']); ?>&date=<?php echo $data['_date']; ?>&rp_id=<?php echo $data['rp_id']; ?>" style="float:left;" >Más Información</a><br /><br /><br /><br /><br />
 		<div style="padding-right: 4px; float: left; width: 63px;">
 			<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 			<g:plusone size="medium" width: 65px;></g:plusone>

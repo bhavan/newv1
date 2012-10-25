@@ -178,9 +178,11 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 
 <?php 
 
-$eddate_array = explode(" ",$rowvevdetail['modified']);
+//$eddate_array = explode(" ",$rowvevdetail['modified']);
 
-$ev_detail_date = $eddate_array[0];
+// $ev_detail_date = $eddate_array[0];
+
+$ev_detail_date = date('Y-m-d', mktime(0, 0, 0, $tomonth, $today, $toyear));
 
 $ev_detail_title = $rowvevdetail['summary']; 
 
