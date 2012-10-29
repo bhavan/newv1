@@ -14,7 +14,7 @@ a:hover .arrow{background-position:0 -13px!important}@media screen and (max-widt
 
 #topbar{height:44px}
 
-#title{line-height:44px;height:44px;font-size:16pt}
+#title{line-height:40px;height:44px;font-size:16pt}
 
 #title_u{line-height:44px;height:44px;font-size:16pt}
 
@@ -109,8 +109,7 @@ a:hover .arrow{background-position:0 -13px!important}@media screen and (max-widt
 
 #topbar{position:relative;left:0;top:0;width:auto; height:32px;/*background:-webkit-gradient(linear,0% 0%,0% 100%,from(#cdd5df),color-stop(3%,#b0bccd),color-stop(50%,#889bb3),color-stop(51%,#8195af),color-stop(97%,#6d84a2),to(#2d3642));*/margin-bottom:13px}
 
-#title{position:absolute;font-weight:bold;top:0;left:0;right:0;padding:0 10px;text-align:center;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;color:#333;text-shadow:rgba(0,0,0,0.6)
- 0 -1px 0}
+#title{position:absolute;font-weight:bold;top:0;left:0;right:0;padding:0 10px;text-align:center;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;color:#fff;}
 #title_u {font-weight:bold;text-align:center;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;color:#333;text-shadow:rgba(0,0,0,0.6)
  0 -1px 0}
 
@@ -125,7 +124,7 @@ a,#footer{text-decoration:none;font-size:9pt;color:#4C4C4C;text-shadow:#FFF
 
 
 
-.textbox{padding:5px 4px;position:relative;overflow:hidden;border-top:1px solid #878787; text-align:center;}
+.textbox{padding:7px 4px 5px;position:relative;overflow:hidden;border-top:1px solid #878787; text-align:center;}
 
 #tributton,#duobutton{height:44px;background:-webkit-gradient(linear,0% 
 0%,0% 
@@ -452,6 +451,14 @@ input{width:50%;position:absolute;right:0;height:44px;-webkit-appearance:none;bo
 input{-webkit-border-bottom-right-radius:8px}
 
 /*********NEW CSS*************/
+
+#content .pageitem {
+background: url("../images/groovepaper.png") repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    list-style: none outside none;
+    padding: 0;margin: 5px;
+}
 
 .pageitem{padding:0;list-style:none;}
 
