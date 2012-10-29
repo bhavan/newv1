@@ -1,34 +1,44 @@
-<?php /*?><div id="topbar">
-<div id="title">Fotos</div>
-<div id="leftnav">
-<!--<a href="/android/photos.php"><img alt="home" src="images/camera.png" /></a>-->
-<a href="/components/com_shines/galleries.php">Casa</a>
+<?php
 
-    <?php 
-         if ($current_page!=0)
-				  			{
-							 $st1=($current_page*$num_rec)-$num_rec;	
-						?>
-    <a href="photos.php?start=<?=$st1?><?=$paginationstr?>">Espalda</a>
-    <?php }else{ ?>
-<a href="photos.php" style="margin-left:6px;">Espalda</a>
-   <?php } ?>
+$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+if(stripos($ua,'android') == true) { ?>
+  <div id="menu">
+	<div id="title">Photos</div>
+	<div id="leftnav">
+		<!--<a href="/android/photos.php"><img alt="home" src="images/camera.png" /></a>
+		<a href="/components/com_shines/photos.php">Home</a>-->
+		
+		    <?php 
+		         if ($current_page!=0)
+						  			{
+									 $st1=($current_page*$num_rec)-$num_rec;	
+								?>
+		    <a href="photos.php?start=<?=$st1?><?=$paginationstr?>"></a>
+		    <?php }else{ ?>
+		<a href="galleries.php"></a>
+		   <?php } ?>
 
-        </div>
+    </div>
         
         
-<div id="rightnav">
+	<div id="rightnav">
 
-    <?php
-					  if (($current_page+1)<$num_pages)
-				 		 {
-					  $st1=($current_page*$num_rec)+$num_rec;
-					  ?>
-    <a href="photos.php?start=<?=$st1?>">Próximo</a>
-    <?php }?>
+	    <?php
+						  if (($current_page+1)<$num_pages)
+					 		 {
+						  $st1=($current_page*$num_rec)+$num_rec;
+						  ?>
+	    <a href="photos.php?start=<?=$st1?>"></a>
+	    <?php }?>
     
-</div></div>
-<?php */?>
+	</div>
+</div>
+  <?php } 
+  else {
+  ?>
+  
+  <?php } ?>
+  
 <div id="content" style="text-align:center;">
   <ul class="pageitem">
     <li class="textbox">

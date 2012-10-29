@@ -42,7 +42,7 @@ if($CatId>0){
 <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
 <link href="pics/homescreen.gif" rel="apple-touch-icon" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
-<link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="/components/com_shines/css/style_new_24oct2011.css" rel="stylesheet" media="screen" type="text/css" />
 <script src="javascript/functions.js" type="text/javascript"></script>
 <title><?=$site_name?>
 </title>
@@ -50,33 +50,33 @@ if($CatId>0){
 <meta content="destin, vacactions in destin florida, destin, florida, real estate, sandestin resort, beaches, destin fl, maps of florida, hotels, hotels in florida, destin fishing, destin hotels, best florida beaches, florida beach house rentals, destin vacation rentals for destin, destin real estate, best beaches in florida, condo rentals in destin, vacaction rentals, fort walton beach, destin fishing, fl hotels, destin restaurants, florida beach hotels, hotels in destin, beaches in florida, destin, destin fl" name="keywords" />
 <meta content="Destin Florida's FREE iPhone application and website guide to local events, live music, restaurants and attractions" name="description" />
 <style>
-#leftnav a {
--webkit-border-image: url("images/navleft.png") 0 5 0 13  !important;
-z-index: 3;
-margin-left: -4px;
-border-width: 0 5px 0 13px;
-padding-right: 4px;
--webkit-border-top-left-radius: 16px;
--webkit-border-bottom-left-radius: 16px;
--webkit-border-top-right-radius: 6px;
--webkit-border-bottom-right-radius: 6px;
-float: left;
-}
+
 </style>
 <?php include("../../ga.php"); ?>
 </head>
 
 <body>
+
+<?php
+
+$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+if(stripos($ua,'android') == true) { ?>
+  
+  <?php } 
+  else {
+  ?>
   <div class="iphoneads" style=" vertical-align:top">
     <?php m_show_banner('iphone-photos-screen'); ?>
   </div>
+  <?php } ?>
+  
 <!--Google Adsense -->
 
 
    
 <?php
 	/* Code added for iphone_photos.tpl */
-	require("../../partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_photos.tpl");
+	require($_SERVER['DOCUMENT_ROOT']."/partner/".$_SESSION['tpl_folder_name']."/tpl/iphone_photos.tpl");
 	?>
 
 
