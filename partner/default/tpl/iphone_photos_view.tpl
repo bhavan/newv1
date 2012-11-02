@@ -1,7 +1,4 @@
-<?php
 
-$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
-if(stripos($ua,'android') == true) { ?>
 
 <div id="menu">
 	<div id="title">Photos</div>
@@ -12,9 +9,14 @@ if(stripos($ua,'android') == true) { ?>
 		
 		  <?php 
 			if ($current_page!=0)
-						  			{
-									 $st1=($current_page*$num_rec)-$num_rec;	
-								?> <a href="photos_view.php?start=<?=$st1?><?=$paginationstr?>&backstart=<?=$_REQUEST[backstart]?>&id=<?=$CatId ?>"></a> <?php }?>
+			{
+				 $st1=($current_page*$num_rec)-$num_rec;	
+			?> 
+			<a href="photos_view.php?start=<?=$st1?><?=$paginationstr?>&backstart=<?=$_REQUEST[backstart]?>&id=<?=$CatId ?>"></a> 
+								
+			<?php }	else {?>
+				<a href="galleries.php"></a>
+			 <?php }?>
    	</div>
         
         
@@ -30,11 +32,7 @@ if(stripos($ua,'android') == true) { ?>
 	</div>
 
 </div>
- <?php } 
-  else {
-  ?>
-  
-  <?php } ?>
+ 
   
 <div id="content">
           <!--<div align="center"><a href="photos.php?start=<?=$_REQUEST[backstart]?>" >BACK</a></div> -->

@@ -190,7 +190,7 @@ $ev_detail_id = $rowvevdetail['evdet_id'];
 
 $host = $_SERVER[HTTP_HOST];
 
-echo $eurl = utf8_encode("http://$host/event_details.php?event_id=$ev_detail_id%26title=$ev_detail_title%26date=$ev_detail_date%26rp_id=$eid");
+$eurl = utf8_encode("http://$host/event_details.php?event_id=$ev_detail_id%26title=$ev_detail_title%26date=$ev_detail_date%26rp_id=$eid");
 
 $egurl = str_replace('%20','%2B',$eurl);
 

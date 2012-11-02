@@ -1,9 +1,5 @@
-<?php
-
-$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
-if(stripos($ua,'android') == true) { ?>
   <div id="menu">
-	<div id="title">Photos</div>
+	<div id="title">Fotos</div>
 	<div id="leftnav">
 		<!--<a href="/android/photos.php"><img alt="home" src="images/camera.png" /></a>
 		<a href="/components/com_shines/photos.php">Home</a>-->
@@ -33,11 +29,7 @@ if(stripos($ua,'android') == true) { ?>
     
 	</div>
 </div>
-  <?php } 
-  else {
-  ?>
   
-  <?php } ?>
   
 <div id="content" style="text-align:center;">
   <ul class="pageitem">
