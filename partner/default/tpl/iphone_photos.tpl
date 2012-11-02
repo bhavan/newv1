@@ -1,7 +1,3 @@
-<?php
-
-$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
-if(stripos($ua,'android') == true) { ?>
   <div id="menu">
 	<div id="title">Photos</div>
 	<div id="leftnav">
@@ -33,11 +29,7 @@ if(stripos($ua,'android') == true) { ?>
     
 	</div>
 </div>
-  <?php } 
-  else {
-  ?>
   
-  <?php } ?>
 
 
 <div id="content" style="text-align:center;">
