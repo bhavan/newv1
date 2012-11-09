@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 
 import com.sun.jersey.api.Responses;
 
-import com.townwizard.db.entity.User;
+import com.townwizard.db.model.User;
 
 @Path("/users/{userid}")
 public class UserResource {

@@ -10,7 +10,7 @@ PREPARE stmt FROM @stmt;
 EXECUTE stmt;
 -- ////////////////////////////////////////// --
 
-DROP TABLE user_address;
+DROP TABLE address;
 DROP TABLE user;
 
 -- ////////////////////////////////////////// --
