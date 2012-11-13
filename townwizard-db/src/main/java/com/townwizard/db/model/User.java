@@ -7,12 +7,17 @@ import javax.persistence.OneToOne;
 @Entity
 public class User extends AuditableEntity {    
 
-    private static final long serialVersionUID = -816150315273559541L;
+    private static final long serialVersionUID = 4813140091220351341L;
 
     private String username;
     private String email;
     private String firstName;
     private String lastName;
+    private Integer year;
+    private String gender;
+    private String mobilePhone;
+    private String registrationIp;
+    
     @OneToOne(mappedBy = "user", cascade = {CascadeType.ALL})
     private Address address;
     
@@ -45,5 +50,29 @@ public class User extends AuditableEntity {
     }
     public void setAddress(Address address) {
         this.address = address;
-    }    
+    }
+    public Integer getYear() {
+        return year;
+    }
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+    public String getGender() {
+        return gender;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+    }
+    public String getRegistrationIp() {
+        return registrationIp;
+    }
+    public void setRegistrationIp(String registrationIp) {
+        this.registrationIp = registrationIp;
+    }
 }

@@ -1,9 +1,9 @@
 USE master;
 
-CREATE TABLE migration (
+CREATE TABLE Migration (
   migration integer not null
 );
 
-INSERT INTO migration VALUES (0);
+INSERT INTO Migration VALUES (0);
 
 COMMIT;

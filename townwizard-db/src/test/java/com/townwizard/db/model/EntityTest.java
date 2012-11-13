@@ -83,9 +83,13 @@ public class EntityTest {
         u.setCreated(now);
         u.setUpdated(now);
         u.setUsername("j2vm");
-        u.setEmail("v_mazheru@yahoo.com");
+        u.setEmail("vmazheru@salzinger.com");
         u.setFirstName("Vladimir");
         u.setLastName("Mazheru");
+        u.setYear(1968);
+        u.setGender("M");
+        u.setMobilePhone("917-439-7193");
+        u.setRegistrationIp("192.168.112.231");
         u.setActive(true);
         
         Address a = new Address();

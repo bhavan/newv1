@@ -10,7 +10,7 @@ PREPARE stmt FROM @stmt;
 EXECUTE stmt;
 -- ////////////////////////////////////////// --
 
-CREATE TABLE user(
+CREATE TABLE User(
   id BIGINT NOT NULL AUTO_INCREMENT,
   created DATETIME NOT NULL,
   updated DATETIME NOT NULL,
@@ -18,12 +18,16 @@ CREATE TABLE user(
   username VARCHAR(100) NOT NULL,
   email VARCHAR(255) NOT NULL,
   first_name VARCHAR(100),
-  last_name VARCHAR(100),  
+  last_name VARCHAR(100),
+  year INTEGER,
+  gender CHAR(1),
+  mobile_phone VARCHAR(20),
+  registration_ip VARCHAR(15),
   CONSTRAINT pk_user PRIMARY KEY (id),
   CONSTRAINT unq_user_email UNIQUE(email)
 );
 
-CREATE TABLE address(
+CREATE TABLE Address(
   id BIGINT NOT NULL AUTO_INCREMENT,
   user_id BIGINT NOT NULL,
   created DATETIME NOT NULL,
@@ -41,6 +45,6 @@ CREATE TABLE address(
 
 -- ////////////////////////////////////////// --
 -- update migration
-UPDATE migration SET migration = migration + 1;
+UPDATE Migration SET migration = migration + 1;
 
 COMMIT;
