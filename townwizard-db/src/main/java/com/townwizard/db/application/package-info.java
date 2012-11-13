@@ -1,5 +1,4 @@
 /**
- *  Contains classes for lounching the application either within an embedded jersey server
- *  or as a war file deployed on an application server
+ *  Contains classes for lounching the application within an embedded jersey server
  */
 package com.townwizard.db.application;

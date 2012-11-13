@@ -8,24 +8,35 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.sun.jersey.api.Responses;
-
 import com.townwizard.db.model.User;
+import com.townwizard.db.services.UserService;
 
+@Component
 @Path("/users/{userid}")
 public class UserResource {
+    
+    @Autowired
+    private UserService userService;
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public User getUser(@PathParam("userid") int userId) {
-        if (userId < 1) {
+    public User getUser(@PathParam("userid") long userId) {
+        User u = userService.getUserById(userId);
+        if (u == null) {
             throw new WebApplicationException(Response
                     .status(Responses.NOT_FOUND)
                     .entity(String.format("User %d not found", userId))
                     .type(MediaType.TEXT_PLAIN).build());
         }
-        User u = new User();
-        u.setFirstName("Vladimir3adasdasdads");
-        u.setLastName("Mazheru");
+        
+        if(u.getAddress() != null) {
+            u.getAddress().setUser(null);
+        }
+        
         return u;
     }
 }

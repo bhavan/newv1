@@ -73,7 +73,7 @@ public class EntityTest {
     }
     
     private User getById(Session session, Long id) {
-        Query query = session.createQuery("from User where id = :id").setLong("id", id);
+        Query query = session.createQuery("from User where id = :id and active = true").setLong("id", id);
         return (User)query.uniqueResult();
     }
     
