@@ -1,0 +1,6 @@
+USE master;
+
+DELETE FROM Address;
+DELETE FROM User;
+
+COMMIT;
