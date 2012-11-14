@@ -7,10 +7,11 @@ import javax.persistence.OneToOne;
 @Entity
 public class User extends AuditableEntity {    
 
-    private static final long serialVersionUID = 4813140091220351341L;
-
+    private static final long serialVersionUID = -6562731576094594464L;
+    
     private String username;
     private String email;
+    private String password;
     private String firstName;
     private String lastName;
     private Integer year;
@@ -32,6 +33,12 @@ public class User extends AuditableEntity {
     }
     public void setEmail(String email) {
         this.email = email;
+    }    
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
     public String getFirstName() {
         return firstName;

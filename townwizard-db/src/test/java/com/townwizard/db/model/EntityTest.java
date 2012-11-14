@@ -84,6 +84,7 @@ public class EntityTest {
         u.setUpdated(now);
         u.setUsername("j2vm");
         u.setEmail("vmazheru@salzinger.com");
+        u.setPassword("secret");
         u.setFirstName("Vladimir");
         u.setLastName("Mazheru");
         u.setYear(1968);
