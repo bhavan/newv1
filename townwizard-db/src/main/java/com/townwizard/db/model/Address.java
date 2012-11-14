@@ -14,7 +14,7 @@ public class Address extends AuditableEntity {
     private String city;
     private String state;
     private String postalCode;
-    private String province;
+    private String country;
     @OneToOne @JoinColumn(name = "userId")
     private User user;
     
@@ -48,11 +48,11 @@ public class Address extends AuditableEntity {
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
-    public String getProvince() {
-        return province;
+    public String getCountry() {
+        return country;
     }
-    public void setProvince(String province) {
-        this.province = province;
+    public void setCountry(String country) {
+        this.country = country;
     }
     public User getUser() {
         return user;

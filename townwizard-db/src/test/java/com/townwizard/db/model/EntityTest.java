@@ -102,7 +102,7 @@ public class EntityTest {
         a.setCity("Staten Island");
         a.setPostalCode("10308");
         a.setState("NY");
-        a.setProvince(null);
+        a.setCountry("USA");
         u.setAddress(a);
         a.setUser(u);
         

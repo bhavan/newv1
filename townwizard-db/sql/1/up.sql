@@ -39,7 +39,7 @@ CREATE TABLE Address(
   city VARCHAR(50) NOT NULL,
   state VARCHAR(50) NOT NULL,
   postal_code VARCHAR(30) NOT NULL,
-  province VARCHAR(50),
+  country VARCHAR(50),
   CONSTRAINT pk_address PRIMARY KEY (id),
   CONSTRAINT fk_address_user FOREIGN KEY(user_id) REFERENCES user(id)
 );

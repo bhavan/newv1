@@ -30,7 +30,7 @@ public class AbstractDaoHibernateImpl implements AbstractDao {
     @SuppressWarnings("unchecked")
     public <T extends AbstractEntity> T getById(Class<T> klass, Long id) {
         T entity = (T)getSession().get(klass, id);
-        if (Boolean.TRUE.equals(entity.getActive())) {
+        if (entity != null && Boolean.TRUE.equals(entity.getActive())) {
             return entity;
         }
         return null;
