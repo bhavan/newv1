@@ -4,4 +4,5 @@ import com.townwizard.db.model.User;
 
 public interface UserService {
     User getUserById(Long id);
+    void create(User user);
 }

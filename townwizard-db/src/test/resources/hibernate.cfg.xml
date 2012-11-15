@@ -10,7 +10,7 @@
     <property name="connection.password">bitnami</property>
     <property name="connection.pool_size">1</property>
     <property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>    
-    <property name="show_sql">true</property>    
+    <property name="show_sql">false</property>    
     <property name="cache.use_second_level_cache">false</property>
     <property name="cache.use_query_cache">false</property>
     <property name="cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</property>

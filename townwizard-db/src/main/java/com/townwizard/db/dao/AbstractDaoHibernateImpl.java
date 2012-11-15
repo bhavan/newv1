@@ -35,4 +35,5 @@ public class AbstractDaoHibernateImpl implements AbstractDao {
         }
         return null;
     }
+    
 }

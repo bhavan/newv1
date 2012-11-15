@@ -7,8 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.townwizard.db.dao.UserDao;
 import com.townwizard.db.model.User;
 
-@Transactional
 @Component("userService")
+@Transactional
 public class UserServiceImpl implements UserService {    
     
     @Autowired
@@ -17,5 +17,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(Long id) {
         return userDao.getById(User.class, id);
+    }
+    
+    @Override
+    public void create(User user) {
+        userDao.create(user);
     }
 }

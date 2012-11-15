@@ -26,7 +26,7 @@ CREATE TABLE User(
   registration_ip VARCHAR(15),
   CONSTRAINT pk_user PRIMARY KEY (id),
   CONSTRAINT unq_user_email UNIQUE(email)
-);
+) ENGINE = InnoDB;
 
 CREATE TABLE Address(
   id BIGINT NOT NULL AUTO_INCREMENT,
@@ -42,7 +42,7 @@ CREATE TABLE Address(
   country VARCHAR(50),
   CONSTRAINT pk_address PRIMARY KEY (id),
   CONSTRAINT fk_address_user FOREIGN KEY(user_id) REFERENCES user(id)
-);
+) ENGINE = InnoDB;
 
 -- ////////////////////////////////////////// --
 -- update migration

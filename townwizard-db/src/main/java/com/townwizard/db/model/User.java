@@ -4,6 +4,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
+import com.townwizard.db.util.EmailValidator;
+
 @Entity
 public class User extends AuditableEntity {    
 
@@ -57,6 +59,9 @@ public class User extends AuditableEntity {
     }
     public void setAddress(Address address) {
         this.address = address;
+        if(address != null) {
+            address.setUser(this);
+        }
     }
     public Integer getYear() {
         return year;
@@ -81,5 +86,17 @@ public class User extends AuditableEntity {
     }
     public void setRegistrationIp(String registrationIp) {
         this.registrationIp = registrationIp;
+    }
+    
+    public boolean isValid() {
+        return isEmailValid() && isPasswordValid();
+    }
+    
+    private boolean isEmailValid() {
+        return EmailValidator.isValidEmailAddress(getEmail());
+    }
+    
+    private boolean isPasswordValid() {
+        return (password != null && !password.isEmpty());
     }
 }
