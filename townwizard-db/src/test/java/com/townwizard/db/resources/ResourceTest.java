@@ -9,7 +9,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import com.townwizard.db.test.TestSupport;
 
-public class ResourceTest extends TestSupport {    
+public abstract class ResourceTest extends TestSupport {    
 
     protected StatusLine executePostRequest(String path, String entity, String contentType) {
         StatusLine statusLine = null;

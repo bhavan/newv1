@@ -10,7 +10,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
-public class TestSupport {
+public abstract class TestSupport {
     
     private static Properties properties;
     private static SessionFactory sessionFactory;
