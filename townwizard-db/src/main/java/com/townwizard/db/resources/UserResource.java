@@ -16,7 +16,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import org.codehaus.jackson.JsonProcessingException;
+import org.codehaus.jackson.Version;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.module.SimpleModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +27,7 @@ import com.townwizard.db.model.Address;
 import com.townwizard.db.model.User;
 import com.townwizard.db.services.UserService;
 import com.townwizard.db.util.ExceptionHandler;
+import com.townwizard.db.util.jackson.NullStringDeserializer;
 
 @Component
 @Path("/users")
@@ -32,33 +35,50 @@ public class UserResource {
     
     @Autowired
     private UserService userService;
+    private static ObjectMapper objectMapper = initializeObjectMapper();    
     
     @GET
     @Path("/{userid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public User getUser(@PathParam("userid") long userId) {
-        User u = userService.getUserById(userId);
-        if (u == null) {
+    public User getUser(@PathParam("userid") String userId) {
+        try {
+            User u = null;
+            Long id = null;
+            try { id = Long.parseLong(userId); } catch (NumberFormatException e) {/*nothing*/}            
+            
+            if(id == null) {
+                u = userService.getByEmail(userId);
+            } else {                
+                u = userService.getById(id);
+            }
+            
+            if (u == null) {
+                throw new WebApplicationException(Response
+                        .status(Responses.NOT_FOUND)
+                        .entity(String.format("User %d not found", userId))
+                        .type(MediaType.TEXT_PLAIN).build());
+            }
+            /*
+            if(u.getAddress() != null) {
+                u.getAddress().setUser(null);
+            }
+            */
+            return u;
+        } catch (Exception e) {
+            ExceptionHandler.handle(e);
             throw new WebApplicationException(Response
-                    .status(Responses.NOT_FOUND)
-                    .entity(String.format("User %d not found", userId))
+                    .status(Status.INTERNAL_SERVER_ERROR)
+                    .entity("Server error")
                     .type(MediaType.TEXT_PLAIN).build());
         }
-        
-        if(u.getAddress() != null) {
-            u.getAddress().setUser(null);
-        }
-        
-        return u;
     }
     
     @POST
     @Consumes("application/json")
     public Response createUser(InputStream is) {
-        ObjectMapper m = new ObjectMapper();
         User user = null;        
         try {            
-          user = m.readValue(is, User.class);
+          user = objectMapper.readValue(is, User.class);
         } catch (JsonProcessingException e) {
             ExceptionHandler.handle(e);
             return Response.status(Status.BAD_REQUEST).build();
@@ -96,7 +116,7 @@ public class UserResource {
         u.setLastName(lastName);
         u.setYear(year);
         u.setGender(gender);
-        u.setMobilePhone(mobilePhone);        
+        u.setMobilePhone(mobilePhone);
         
         Address a = new Address();
         a.setAddress1(address1);
@@ -115,6 +135,9 @@ public class UserResource {
             if(!user.isValid()) {              
                 return Response.status(Status.BAD_REQUEST).build();
             }
+            if(user.getAddress() != null && !user.getAddress().isValid()) {
+                user.setAddress(null);
+            }
             userService.create(user);
           } catch (Exception e) {
               ExceptionHandler.handle(e);
@@ -122,4 +145,13 @@ public class UserResource {
           }
           return Response.status(Status.CREATED).build();        
     }
+    
+    private static ObjectMapper initializeObjectMapper() {
+        ObjectMapper m = new ObjectMapper();
+        SimpleModule testModule = new SimpleModule("MyModule", new Version(1, 0, 0, null))
+                     .addDeserializer(String.class, new NullStringDeserializer());
+        m.registerModule(testModule);
+        return m;
+    }    
+    
 }

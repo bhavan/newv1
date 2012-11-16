@@ -1,25 +1,54 @@
 package com.townwizard.db.resources;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
 import com.townwizard.db.test.TestSupport;
 
-public abstract class ResourceTest extends TestSupport {    
+public abstract class ResourceTest extends TestSupport {
+    
+    protected String executeGetRequest(String path) {
+        try {
+            HttpClient c = new DefaultHttpClient();
+            HttpGet get = new HttpGet(getWebServicesUrlBase() + path);
+            HttpResponse response = c.execute(get);
+            String result = copyToString(response.getEntity().getContent());
+            return result;
+        } catch (Throwable e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
-    protected StatusLine executePostRequest(String path, String entity, String contentType) {
+    protected StatusLine executePostRequest(String path, HttpEntity entity, String contentType) {
         StatusLine statusLine = null;
         try {
             HttpClient c = new DefaultHttpClient();
-            HttpPost post = new HttpPost(getWebServicesUrlBase() + "/users");
-            post.setEntity(new StringEntity(entity));
+            HttpPost post = new HttpPost(getWebServicesUrlBase() + path);
+            post.setEntity(entity);
             post.setHeader("Content-Type", contentType);
             HttpResponse response = c.execute(post);
             statusLine = response.getStatusLine();
+            c.getConnectionManager().shutdown();
         } catch(Throwable e) {
             if(statusLine != null) {
                 System.out.println(statusLine);
@@ -30,7 +59,35 @@ public abstract class ResourceTest extends TestSupport {
     }
     
     protected StatusLine executePostJSONRequest(String path, String entity) {
-        return executePostRequest(path, entity, "application/json");
+        try {
+          return executePostRequest(path, new StringEntity(entity), "application/json");
+        } catch (UnsupportedEncodingException e) {
+          e.printStackTrace();
+          return null;
+        }
+    }
+    
+    protected StatusLine executePostFormRequest(String path, Map<String, String> parameters) {
+        try {
+            List<NameValuePair> params = new ArrayList<>();
+            for(Map.Entry<String, String> e : parameters.entrySet()) {
+                params.add(new BasicNameValuePair(e.getKey(), e.getValue()));
+            }
+            return executePostRequest(path, new UrlEncodedFormEntity(params), "application/x-www-form-urlencoded");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    private String copyToString(InputStream is) throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(is));
+        StringWriter out = new StringWriter();
+        String s;
+        while((s = in.readLine()) != null) {
+            out.append(s);
+        }
+        return out.toString();
     }
     
 }

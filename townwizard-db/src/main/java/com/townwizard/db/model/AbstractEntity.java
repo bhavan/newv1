@@ -12,8 +12,8 @@ public abstract class AbstractEntity implements Serializable, Comparable<Abstrac
     
     private static final long serialVersionUID = 1L;
     
-    @Id @GeneratedValue @Column(nullable = false, updatable = false)
-    private Long id;    
+    @Id @GeneratedValue @Column(nullable = false, updatable = false)    
+    private Long id;
     private Boolean active;
     
     public Long getId() {

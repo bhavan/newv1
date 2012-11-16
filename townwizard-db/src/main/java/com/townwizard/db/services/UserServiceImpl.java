@@ -15,9 +15,14 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;    
 
     @Override
-    public User getUserById(Long id) {
+    public User getById(Long id) {
         return userDao.getById(User.class, id);
     }
+    
+    @Override
+    public User getByEmail(String email) {
+        return userDao.getByEmail(email);
+    }    
     
     @Override
     public void create(User user) {

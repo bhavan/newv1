@@ -1,8 +1,13 @@
 package com.townwizard.db.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import com.townwizard.db.util.EmailValidator;
 
@@ -88,8 +93,35 @@ public class User extends AuditableEntity {
         this.registrationIp = registrationIp;
     }
     
+    @JsonIgnore
     public boolean isValid() {
         return isEmailValid() && isPasswordValid();
+    }
+    
+    public Map<String, String> asParametersMap() {
+        Map<String, String> map = new HashMap<>();
+        map.put("email", getEmail());
+        map.put("password", getPassword());
+        if(getUsername() != null) map.put("username", getUsername());
+        if(getFirstName() != null) map.put("first_name", getFirstName());
+        if(getLastName() != null) map.put("last_name", getLastName());
+        if(getYear() != null) map.put("year", getYear().toString());
+        if(getGender() != null) map.put("gender", getGender());
+        if(getMobilePhone() != null) map.put("mobile_phone", getMobilePhone());
+        if(getRegistrationIp() != null) map.put("registration_ip", getRegistrationIp());
+        if(getAddress() != null) {
+            map.putAll(getAddress().asParametersMap());
+        }
+        return map;
+    }
+    
+    @Override
+    public String toString() {
+        return "User [username=" + username + ", email=" + email
+                + ", password=" + password + ", firstName=" + firstName
+                + ", lastName=" + lastName + ", year=" + year + ", gender="
+                + gender + ", mobilePhone=" + mobilePhone + ", registrationIp="
+                + registrationIp + ", address=" + address + "]";
     }
     
     private boolean isEmailValid() {
@@ -97,6 +129,6 @@ public class User extends AuditableEntity {
     }
     
     private boolean isPasswordValid() {
-        return (password != null && !password.isEmpty());
+        return (password != null);
     }
 }
