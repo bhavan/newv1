@@ -58,11 +58,7 @@ public class UserResource {
                         .entity(String.format("User %d not found", userId))
                         .type(MediaType.TEXT_PLAIN).build());
             }
-            /*
-            if(u.getAddress() != null) {
-                u.getAddress().setUser(null);
-            }
-            */
+
             return u;
         } catch (Exception e) {
             ExceptionHandler.handle(e);
