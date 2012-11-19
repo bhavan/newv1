@@ -126,6 +126,27 @@ public class UserResourceTest extends ResourceTest {
         }
     }
     
+    @Test
+    public void testDuplicateEmail() {
+        String email = "dup_email_user@test.com";
+        try {
+            deleteUserByEmail(email);
+            StatusLine statusLine = executePostJSONRequest("/users", getMinimalUserJson(email));
+            int status = statusLine.getStatusCode();
+            Assert.assertEquals(
+                    "HTTP status should be 201 (created) for the minimal user JSON", 201, status);
+            StatusLine statusLine2 = executePostJSONRequest("/users", getMinimalUserJson(email));
+            int status2 = statusLine2.getStatusCode();
+            Assert.assertEquals(
+                    "HTTP status should be 409 (conflict) when email is a duplicate", 409, status2);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.fail(e.getMessage());
+        } finally {
+            deleteUserByEmail(email);
+        }
+    }
+    
     private String getMinimalUserJson(String email) {
         return "{\"email\":\"" + email + "\",\"password\":\"secret\"}";
     }
