@@ -34,8 +34,8 @@ public class UserResource extends ResourceSupport {
     @Path("/{userid}")
     @Produces(MediaType.APPLICATION_JSON)
     public User getUser(@PathParam("userid") String userId) {
+        User u = null;
         try {
-            User u = null;
             Long id = null;
             try { id = Long.parseLong(userId); } catch (NumberFormatException e) {/*nothing*/}            
             
@@ -44,20 +44,18 @@ public class UserResource extends ResourceSupport {
             } else {                
                 u = userService.getById(id);
             }
-            
-            if (u == null) {
-                throw new WebApplicationException(Response
-                        .status(Responses.NOT_FOUND)
-                        .entity(EMPTY_JSON)
-                        .type(MediaType.APPLICATION_JSON_TYPE).build());
-            }
-
-            return u;
         } catch (Exception e) {
             ExceptionHandler.handle(e);
             sendServerError(e);
-            return null;
         }
+        
+        if (u == null) {
+            throw new WebApplicationException(Response
+                    .status(Responses.NOT_FOUND)
+                    .entity(EMPTY_JSON)
+                    .type(MediaType.APPLICATION_JSON_TYPE).build());
+        }
+        return u;
     }
     
     @POST
@@ -130,11 +128,11 @@ public class UserResource extends ResourceSupport {
         }
         if(userService.getByEmail(user.getEmail()) != null) {
             return Response.status(Status.CONFLICT)
-                    .entity(String.format("User with email '%s' already exists", user.getEmail())).build();
+                    .entity(String.format("User with email %s already exists", user.getEmail())).build();
         }
         Long id = userService.create(user);
         if(id != null) {
-            return Response.status(Status.CREATED).entity("User created").build();
+            return Response.status(Status.CREATED).entity(id.toString()).build();
         }
         throw new Exception("Problem creating user: user id is null");
     }
