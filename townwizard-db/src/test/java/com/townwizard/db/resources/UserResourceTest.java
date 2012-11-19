@@ -147,6 +147,28 @@ public class UserResourceTest extends ResourceTest {
         }
     }
     
+    @Test
+    public void testLogin() {
+        String email = "login_test_user@test.com";
+        try {
+            deleteUserByEmail(email);
+            StatusLine statusLine = executePostJSONRequest("/users", getMinimalUserJson(email));
+            int status = statusLine.getStatusCode();
+            Assert.assertEquals("Can't create user for login test.  Expected 201 http status", 201, status);
+            
+            User u = createUserWithAddress(email);
+            StatusLine statusLine2 = executePostFormRequest("/users/login", u.asParametersMap());
+            Assert.assertEquals("HTTP status should be 200 when login in existing user", 
+                    200, statusLine2.getStatusCode());
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.fail(e.getMessage());
+        } finally {
+            deleteUserByEmail(email);
+        }
+
+    }
+    
     private String getMinimalUserJson(String email) {
         return "{\"email\":\"" + email + "\",\"password\":\"secret\"}";
     }

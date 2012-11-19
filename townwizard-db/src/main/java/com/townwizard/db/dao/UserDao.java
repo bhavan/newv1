@@ -4,6 +4,7 @@ import com.townwizard.db.model.User;
 
 public interface UserDao extends AbstractDao {
     
-    public User getByEmail(String email);
+    User getByEmail(String email);
+    User getByEmailAndPassword(String email, String password);
     
 }

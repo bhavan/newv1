@@ -59,6 +59,29 @@ public class UserResource extends ResourceSupport {
     }
     
     @POST
+    @Path("/login")
+    @Produces(MediaType.APPLICATION_JSON)
+    public User login(
+            @FormParam ("email") String email, 
+            @FormParam ("password") String password) {
+        User u = null;
+        try {
+            u = userService.getByEmailAndPassword(email, password);
+        } catch (Exception e) {
+            ExceptionHandler.handle(e);
+            sendServerError(e);
+        }
+        
+        if (u == null) {
+            throw new WebApplicationException(Response
+                    .status(Responses.NOT_FOUND)
+                    .entity(EMPTY_JSON)
+                    .type(MediaType.APPLICATION_JSON_TYPE).build());
+        }
+        return u;
+    }    
+    
+    @POST
     @Consumes("application/json")
     @Produces("text/plain")
     public Response createUser(InputStream is) {

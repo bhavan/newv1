@@ -22,7 +22,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getByEmail(String email) {
         return userDao.getByEmail(email);
-    }    
+    }
+    
+    @Override
+    public User getByEmailAndPassword(String email, String password) {
+        return userDao.getByEmailAndPassword(email, password);
+    }
     
     @Override
     public Long create(User user) {
