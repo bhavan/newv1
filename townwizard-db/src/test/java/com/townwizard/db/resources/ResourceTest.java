@@ -21,10 +21,32 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.glassfish.grizzly.http.server.HttpServer;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 
+import com.townwizard.db.application.Standalone;
 import com.townwizard.db.test.TestSupport;
 
 public abstract class ResourceTest extends TestSupport {
+    
+    private static HttpServer httpServer;
+    
+    @BeforeClass
+    public static void beforeTestsRun() throws Exception {
+        TestSupport.beforeTestsRun();
+        if(!isServiceRunning()) {
+            httpServer = Standalone.startServer();
+        }
+    }
+    
+    @AfterClass
+    public static void afterTestsRun() throws Exception {
+        TestSupport.afterTestsRun();
+        if(httpServer != null) {
+            httpServer.stop();
+        }
+    }
     
     protected String executeGetRequest(String path) {
         try {
@@ -88,6 +110,18 @@ public abstract class ResourceTest extends TestSupport {
             out.append(s);
         }
         return out.toString();
+    }
+    
+    private static boolean isServiceRunning() {
+        try {
+            HttpClient c = new DefaultHttpClient();
+            HttpGet get = new HttpGet(getWebServicesUrlBase());
+            HttpResponse response = c.execute(get);
+            int statusCode = response.getStatusLine().getStatusCode();
+            return (statusCode == 404);
+        } catch (Throwable e) {
+            return false;
+        }        
     }
     
 }

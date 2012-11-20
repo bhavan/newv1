@@ -30,25 +30,10 @@ public class Standalone {
     }
     
     public static void main(String[] args) {
-        startServer();
-    }
-    
-    private static void startServer() {
         HttpServer server = null;
         try {
             Log.info("Starting grizzly...");
-            
-            ResourceConfig rc = new PackagesResourceConfig(RESOURCES_PACKAGE);
-            rc.setPropertiesAndFeatures(RESOURCE_FEATURES);
-            
-            ConfigurableApplicationContext springContext = 
-                    new ClassPathXmlApplicationContext(new String[] {"application.xml"});
-            
-            IoCComponentProviderFactory componentProviderFactory 
-                = new SpringComponentProviderFactory(rc, springContext);
-            
-            server = GrizzlyServerFactory.createHttpServer(BASE_URI, rc, componentProviderFactory);
-            
+            server = startServer();
             Log.info("Press any key to stop the server...");
             System.in.read();
         } catch (Exception e) {
@@ -58,5 +43,18 @@ public class Standalone {
             e.printStackTrace();
             Log.exception(e);  
         }
+    }
+    
+    public static HttpServer startServer() throws Exception {
+        ResourceConfig rc = new PackagesResourceConfig(RESOURCES_PACKAGE);
+        rc.setPropertiesAndFeatures(RESOURCE_FEATURES);
+
+        ConfigurableApplicationContext springContext = new ClassPathXmlApplicationContext(
+                new String[] { "application.xml" });
+
+        IoCComponentProviderFactory componentProviderFactory = 
+                new SpringComponentProviderFactory(rc, springContext);
+
+        return GrizzlyServerFactory.createHttpServer(BASE_URI, rc, componentProviderFactory);
     }
 }

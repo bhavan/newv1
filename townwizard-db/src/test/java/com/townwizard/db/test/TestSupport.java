@@ -29,7 +29,7 @@ public abstract class TestSupport {
         }
     }
     
-    protected String getWebServicesUrlBase() {
+    protected static String getWebServicesUrlBase() {
         return properties.getProperty("web_services_url_base");
     }
     
