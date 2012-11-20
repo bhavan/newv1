@@ -7,6 +7,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.ImprovedNamingStrategy;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import org.jasypt.util.password.PasswordEncryptor;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
@@ -14,12 +16,14 @@ public abstract class TestSupport {
     
     private static Properties properties;
     private static SessionFactory sessionFactory;
+    private static PasswordEncryptor passwordEncryptor;
     
     @BeforeClass
     public static void beforeTestsRun() throws Exception {
         properties = new Properties();
         properties.load(ClassLoader.getSystemResourceAsStream("test.properties"));
         sessionFactory = initSessionFactory();
+        passwordEncryptor = new StrongPasswordEncryptor();
     }
     
     @AfterClass
@@ -35,6 +39,10 @@ public abstract class TestSupport {
     
     protected SessionFactory getSessionFactory() {
         return sessionFactory;
+    }
+    
+    protected PasswordEncryptor getPasswordEncryptor() {
+        return passwordEncryptor;
     }
     
     private static SessionFactory initSessionFactory() {

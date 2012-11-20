@@ -174,7 +174,8 @@ public class UserResourceTest extends ResourceTest {
     }
     
     private String getFullUserJson(String email) {
-        return "{\"username\":\"j2vm\",\"email\":\"" + email + "\",\"password\":\"secret\",\"firstName\":\"Vlad\",\"lastName\":\"Mazheru\",\"year\":1968,\"gender\":\"M\",\"mobilePhone\":\"917-439-7193\",\"registrationIp\":\"127.0.0.1\",\"address\":{\"address1\":\"324 Nelson Ave\",\"address2\":\"Frnt\",\"city\":\"Staten Island\",\"state\":\"NY\",\"postalCode\":\"10308\",\"country\":\"USA\"}}";
+        return "{\"username\":\"j2vm\",\"email\":\"" + email + 
+                "\",\"password\":\"secret\",\"firstName\":\"Vlad\",\"lastName\":\"Mazheru\",\"year\":1968,\"gender\":\"M\",\"mobilePhone\":\"917-439-7193\",\"registrationIp\":\"127.0.0.1\",\"address\":{\"address1\":\"324 Nelson Ave\",\"address2\":\"Frnt\",\"city\":\"Staten Island\",\"state\":\"NY\",\"postalCode\":\"10308\",\"country\":\"USA\"}}";
     }
     
     private void assertUserCreatedCorrectly(String userJson, String email) throws Exception {
@@ -219,17 +220,17 @@ public class UserResourceTest extends ResourceTest {
         }
     }
     
-    private boolean usersEqual(User u1, User u2) {
+    private boolean usersEqual(User fromDb, User original) {
         boolean result = true;
-        result &= u1.getEmail().equals(u2.getEmail());
-        result &= u1.getPassword().equals(u2.getPassword());
-        result &= compareWithNulls(u1.getUsername(), u2.getUsername());
-        result &= compareWithNulls(u1.getFirstName(), u2.getFirstName());
-        result &= compareWithNulls(u1.getLastName(), u2.getLastName());
-        result &= compareWithNulls(u1.getYear(), u2.getYear());
-        result &= compareWithNulls(u1.getGender(), u2.getGender());
-        result &= compareWithNulls(u1.getMobilePhone(), u2.getMobilePhone());
-        result &= addressesEqual(u1.getAddress(), u2.getAddress());
+        result &= fromDb.getEmail().equals(original.getEmail());
+        result &= getPasswordEncryptor().checkPassword(original.getPassword(), fromDb.getPassword());
+        result &= compareWithNulls(fromDb.getUsername(), original.getUsername());
+        result &= compareWithNulls(fromDb.getFirstName(), original.getFirstName());
+        result &= compareWithNulls(fromDb.getLastName(), original.getLastName());
+        result &= compareWithNulls(fromDb.getYear(), original.getYear());
+        result &= compareWithNulls(fromDb.getGender(), original.getGender());
+        result &= compareWithNulls(fromDb.getMobilePhone(), original.getMobilePhone());
+        result &= addressesEqual(fromDb.getAddress(), original.getAddress());
         return result;
     }
     

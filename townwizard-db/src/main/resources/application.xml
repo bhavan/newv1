@@ -49,6 +49,8 @@
   </bean>
   <tx:annotation-driven transaction-manager="transactionManager" />
   
+  <bean id="passwordEncryptor" class="org.jasypt.util.password.StrongPasswordEncryptor" />
+  
   <context:component-scan base-package="com.townwizard.db.resources" />
   <context:component-scan base-package="com.townwizard.db.dao" />
   <context:component-scan base-package="com.townwizard.db.services" />

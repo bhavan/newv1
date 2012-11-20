@@ -14,14 +14,5 @@ public class UserDaoHibernateImpl extends AbstractDaoHibernateImpl implements Us
                 .setString("email", email);
         return (User)q.uniqueResult();
     }
-
-    @Override
-    public User getByEmailAndPassword(String email, String password) {
-        Query q = getSession().createQuery(
-                "from User where email = :email and password = :password and active = true")
-                .setString("email", email)
-                .setString("password", password);
-        return (User)q.uniqueResult();
-    }
     
 }

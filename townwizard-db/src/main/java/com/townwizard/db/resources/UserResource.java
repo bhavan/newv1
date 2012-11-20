@@ -66,7 +66,7 @@ public class UserResource extends ResourceSupport {
             @FormParam ("password") String password) {
         User u = null;
         try {
-            u = userService.getByEmailAndPassword(email, password);
+            u = userService.login(email, password);
         } catch (Exception e) {
             ExceptionHandler.handle(e);
             sendServerError(e);
