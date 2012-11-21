@@ -7,13 +7,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 @MappedSuperclass
+@JsonSerialize (include = JsonSerialize.Inclusion.NON_EMPTY)
 public abstract class AbstractEntity implements Serializable, Comparable<AbstractEntity> {
     
     private static final long serialVersionUID = 1L;
     
-    @Id @GeneratedValue @Column(nullable = false, updatable = false)    
+    @Id @GeneratedValue @Column(nullable = false, updatable = false)
     private Long id;
+    @JsonIgnore
     private Boolean active;
     
     public Long getId() {

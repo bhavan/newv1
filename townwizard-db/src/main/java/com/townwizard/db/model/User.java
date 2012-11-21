@@ -40,7 +40,7 @@ public class User extends AuditableEntity {
     }
     public void setEmail(String email) {
         this.email = email;
-    }    
+    }
     public String getPassword() {
         return password;
     }
@@ -98,6 +98,11 @@ public class User extends AuditableEntity {
         return isEmailValid() && isPasswordValid();
     }
     
+    public User asJsonView() {
+        setPassword(null);
+        return this;
+    }
+    
     public Map<String, String> asParametersMap() {
         Map<String, String> map = new HashMap<>();
         map.put("email", getEmail());
@@ -118,7 +123,7 @@ public class User extends AuditableEntity {
     @Override
     public String toString() {
         return "User [username=" + username + ", email=" + email
-                + ", password=" + password + ", firstName=" + firstName
+                + ", firstName=" + firstName
                 + ", lastName=" + lastName + ", year=" + year + ", gender="
                 + gender + ", mobilePhone=" + mobilePhone + ", registrationIp="
                 + registrationIp + ", address=" + address + "]";

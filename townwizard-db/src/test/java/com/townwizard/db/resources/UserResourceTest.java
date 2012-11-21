@@ -223,7 +223,6 @@ public class UserResourceTest extends ResourceTest {
     private boolean usersEqual(User fromDb, User original) {
         boolean result = true;
         result &= fromDb.getEmail().equals(original.getEmail());
-        result &= getPasswordEncryptor().checkPassword(original.getPassword(), fromDb.getPassword());
         result &= compareWithNulls(fromDb.getUsername(), original.getUsername());
         result &= compareWithNulls(fromDb.getFirstName(), original.getFirstName());
         result &= compareWithNulls(fromDb.getLastName(), original.getLastName());

@@ -55,7 +55,7 @@ public class UserResource extends ResourceSupport {
                     .entity(EMPTY_JSON)
                     .type(MediaType.APPLICATION_JSON_TYPE).build());
         }
-        return u;
+        return u.asJsonView();
     }
     
     @POST
