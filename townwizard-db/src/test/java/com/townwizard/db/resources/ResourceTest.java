@@ -80,7 +80,7 @@ public abstract class ResourceTest extends TestSupport {
         return statusLine;
     }
     
-    protected StatusLine executePostJSONRequest(String path, String entity) {
+    protected StatusLine executePostJsonRequest(String path, String entity) {
         try {
           return executePostRequest(path, new StringEntity(entity), "application/json");
         } catch (UnsupportedEncodingException e) {

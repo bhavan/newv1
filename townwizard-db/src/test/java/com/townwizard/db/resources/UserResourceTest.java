@@ -17,21 +17,21 @@ public class UserResourceTest extends ResourceTest {
     
     @Test
     public void testPostMulformedJson() {
-        StatusLine statusLine = executePostJSONRequest("/users", "Not a JSON string");
+        StatusLine statusLine = executePostJsonRequest("/users", "Not a JSON string");
         int status = statusLine.getStatusCode();
         Assert.assertEquals("HTTP status should be 400 when JSON data is mulformed", 400, status);
     }
     
     @Test
     public void testPostEmptyJson() {
-        StatusLine statusLine = executePostJSONRequest("/users", "{}");
+        StatusLine statusLine = executePostJsonRequest("/users", "{}");
         int status = statusLine.getStatusCode();
         Assert.assertEquals("HTTP status should be 400 when JSON is empty", 400, status);
     }
     
     @Test
     public void testPostJsonWithEmptyStrings() {
-        StatusLine statusLine = executePostJSONRequest("/users", "{\"email\":\"\",\"password\":\"     \",\"username\":null}");
+        StatusLine statusLine = executePostJsonRequest("/users", "{\"email\":\"\",\"password\":\"     \",\"username\":null}");
         int status = statusLine.getStatusCode();
         Assert.assertEquals("HTTP status should be 400 when JSON email or password is empty", 400, status);
     }    
@@ -41,7 +41,7 @@ public class UserResourceTest extends ResourceTest {
         String email = "invalid";
         try {
             deleteUserByEmail(email);
-            StatusLine statusLine = executePostJSONRequest("/users", getMinimalUserJson(email));
+            StatusLine statusLine = executePostJsonRequest("/users", getMinimalUserJson(email));
             int status = statusLine.getStatusCode();
             Assert.assertEquals(
                     "HTTP status should be 400 when email is invalid", 400, status);
@@ -55,7 +55,7 @@ public class UserResourceTest extends ResourceTest {
         String email = "min_user_json@test.com";
         try {
             deleteUserByEmail(email);
-            StatusLine statusLine = executePostJSONRequest("/users", getMinimalUserJson(email));
+            StatusLine statusLine = executePostJsonRequest("/users", getMinimalUserJson(email));
             int status = statusLine.getStatusCode();
             Assert.assertEquals(
                     "HTTP status should be 201 (created) for the minimal user JSON", 201, status);
@@ -73,7 +73,7 @@ public class UserResourceTest extends ResourceTest {
         String email = "full_user_json@test.com";
         try {
             deleteUserByEmail(email);
-            StatusLine statusLine = executePostJSONRequest("/users", getFullUserJson(email));
+            StatusLine statusLine = executePostJsonRequest("/users", getFullUserJson(email));
             int status = statusLine.getStatusCode();
             Assert.assertEquals(
                     "HTTP status should be 201 (created) for the minimal user JSON", 201, status);
@@ -131,11 +131,11 @@ public class UserResourceTest extends ResourceTest {
         String email = "dup_email_user@test.com";
         try {
             deleteUserByEmail(email);
-            StatusLine statusLine = executePostJSONRequest("/users", getMinimalUserJson(email));
+            StatusLine statusLine = executePostJsonRequest("/users", getMinimalUserJson(email));
             int status = statusLine.getStatusCode();
             Assert.assertEquals(
                     "HTTP status should be 201 (created) for the minimal user JSON", 201, status);
-            StatusLine statusLine2 = executePostJSONRequest("/users", getMinimalUserJson(email));
+            StatusLine statusLine2 = executePostJsonRequest("/users", getMinimalUserJson(email));
             int status2 = statusLine2.getStatusCode();
             Assert.assertEquals(
                     "HTTP status should be 409 (conflict) when email is a duplicate", 409, status2);
@@ -152,12 +152,11 @@ public class UserResourceTest extends ResourceTest {
         String email = "login_test_user@test.com";
         try {
             deleteUserByEmail(email);
-            StatusLine statusLine = executePostJSONRequest("/users", getMinimalUserJson(email));
+            StatusLine statusLine = executePostJsonRequest("/users", getMinimalUserJson(email));
             int status = statusLine.getStatusCode();
             Assert.assertEquals("Can't create user for login test.  Expected 201 http status", 201, status);
-            
-            User u = createUserWithAddress(email);
-            StatusLine statusLine2 = executePostFormRequest("/users/login", u.asParametersMap());
+                        
+            StatusLine statusLine2 = executePostJsonRequest("/users/login", getMinimalUserJson(email));
             Assert.assertEquals("HTTP status should be 200 when login in existing user", 
                     200, statusLine2.getStatusCode());
         } catch (Exception e) {

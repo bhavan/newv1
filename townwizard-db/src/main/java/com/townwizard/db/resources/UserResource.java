@@ -17,7 +17,6 @@ import javax.ws.rs.core.Response.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.sun.jersey.api.Responses;
 import com.townwizard.db.model.Address;
 import com.townwizard.db.model.User;
 import com.townwizard.db.services.UserService;
@@ -51,22 +50,22 @@ public class UserResource extends ResourceSupport {
         
         if (u == null) {
             throw new WebApplicationException(Response
-                    .status(Responses.NOT_FOUND)
+                    .status(Status.NOT_FOUND)
                     .entity(EMPTY_JSON)
-                    .type(MediaType.APPLICATION_JSON_TYPE).build());
+                    .type(MediaType.APPLICATION_JSON).build());
         }
         return u.asJsonView();
     }
     
     @POST
     @Path("/login")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public User login(
-            @FormParam ("email") String email, 
-            @FormParam ("password") String password) {
+    public User login(InputStream is) {
         User u = null;
+        User fromJson = parseJson(User.class, is);
         try {
-            u = userService.login(email, password);
+            u = userService.login(fromJson.getEmail(), fromJson.getPassword());
         } catch (Exception e) {
             ExceptionHandler.handle(e);
             sendServerError(e);
@@ -74,30 +73,24 @@ public class UserResource extends ResourceSupport {
         
         if (u == null) {
             throw new WebApplicationException(Response
-                    .status(Responses.NOT_FOUND)
+                    .status(Status.NOT_FOUND)
                     .entity(EMPTY_JSON)
-                    .type(MediaType.APPLICATION_JSON_TYPE).build());
+                    .type(MediaType.APPLICATION_JSON).build());
         }
-        return u;
+        return u.asJsonView();
     }    
     
     @POST
-    @Consumes("application/json")
-    @Produces("text/plain")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createUser(InputStream is) {
         User user = parseJson(User.class, is);
-        try {
-            return createUser(user);
-        } catch (Exception e) {
-            ExceptionHandler.handle(e);
-            sendServerError(e);
-            return null;
-        }
+        return createUser(user);
     }
     
     @POST
-    @Consumes("application/x-www-form-urlencoded")
-    @Produces("text/plain")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response createUser(
             @FormParam ("email") String email, 
             @FormParam ("password") String password,
@@ -113,50 +106,53 @@ public class UserResource extends ResourceSupport {
             @FormParam ("state") String state,
             @FormParam ("postal_code") String postalCode,
             @FormParam ("country") String country) {        
-        try {
-            User u = new User();
-            u.setEmail(email);
-            u.setPassword(password);
-            u.setUsername(username);
-            u.setFirstName(firstName);
-            u.setLastName(lastName);
-            u.setYear(year);
-            u.setGender(gender);
-            u.setMobilePhone(mobilePhone);
             
-            Address a = new Address();
-            a.setAddress1(address1);
-            a.setAddress2(address2);
-            a.setCity(city);
-            a.setState(state);
-            a.setPostalCode(postalCode);
-            a.setCountry(country);        
-            u.setAddress(a);
+        User u = new User();
+        u.setEmail(email);
+        u.setPassword(password);
+        u.setUsername(username);
+        u.setFirstName(firstName);
+        u.setLastName(lastName);
+        u.setYear(year);
+        u.setGender(gender);
+        u.setMobilePhone(mobilePhone);
             
-            return createUser(u);
-        } catch (Exception e) {
-            ExceptionHandler.handle(e);
-            sendServerError(e);
-            return null;
-        }
+        Address a = new Address();
+        a.setAddress1(address1);
+        a.setAddress2(address2);
+        a.setCity(city);
+        a.setState(state);
+        a.setPostalCode(postalCode);
+        a.setCountry(country);        
+        u.setAddress(a);
+            
+        return createUser(u);
     }
     
-    private Response createUser(User user) throws Exception {
+    private Response createUser(User user) {
         if(user == null || !user.isValid()) {
-            return Response.status(Status.BAD_REQUEST).entity(
-                    "Cannot create user: missing or invalid user data").build();
+            throw new WebApplicationException(Response
+                    .status(Status.BAD_REQUEST)
+                    .entity("Cannot create user: missing or invalid user data")
+                    .type(MediaType.TEXT_PLAIN).build());
+        }
+        if(userService.getByEmail(user.getEmail()) != null) {
+            throw new WebApplicationException(Response
+                    .status(Status.CONFLICT)
+                    .entity(String.format("User with email %s already exists", user.getEmail()))
+                    .type(MediaType.TEXT_PLAIN).build());            
         }
         if(user.getAddress() != null && !user.getAddress().isValid()) {
             user.setAddress(null);
         }
-        if(userService.getByEmail(user.getEmail()) != null) {
-            return Response.status(Status.CONFLICT)
-                    .entity(String.format("User with email %s already exists", user.getEmail())).build();
+        try {
+            Long id = userService.create(user);
+            if(id == null) {
+                sendServerError(new Exception("Problem creating user: user id is null"));
+            }
+        } catch(Exception e) {
+            sendServerError(e);
         }
-        Long id = userService.create(user);
-        if(id != null) {
-            return Response.status(Status.CREATED).entity(id.toString()).build();
-        }
-        throw new Exception("Problem creating user: user id is null");
+        return Response.status(Status.CREATED).entity(user).build();
     }
 }
