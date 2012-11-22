@@ -4,6 +4,16 @@
 <div id="banner">
 <?php m_show_banner('Website Top 468x60'); ?>
 </div> <!-- banner -->
+<div style="float:right;">
+    <?php if($_SESSION['tw_user_name']) { ?>
+        <?php echo "Welcome, {$_SESSION['tw_user_name']}!"; ?>
+        <a href="javascript:void(0)" onclick="tw_logout();">Sign out</a>
+    <?php }  else { ?>
+        <a href="javascript:void(0)" onclick="$('#login_dialog').hide();$('#registration_dialog').show();">Register</a> | 
+        <a href="javascript:void(0)" onclick="$('#registration_dialog').hide();$('#login_dialog').show();">Sign in</a>
+    <?php } ?>
+</div>
+<?php require("townwizard-db-api/register.tpl"); ?>
 <nav>
   <ul>
     <li><a href="/">Home</a></li>
