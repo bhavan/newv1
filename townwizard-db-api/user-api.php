@@ -25,6 +25,7 @@ function tw_create_user($post) {
     $parameters["gender"] = $post["gender"];
     $parameters["year"] = $post["year"];
     $parameters["mobilePhone"] = $post["mobilePhone"];
+    $parameters["registrationIp"] = $_SERVER['REMOTE_ADDR'];
 
     $parameters["address"] = array();
     $parameters["address"]["address1"] = $post["address1"];
