@@ -41,7 +41,7 @@ CREATE TABLE Address(
   postal_code VARCHAR(30) NOT NULL,
   country VARCHAR(50),
   CONSTRAINT pk_address PRIMARY KEY (id),
-  CONSTRAINT fk_address_user FOREIGN KEY(user_id) REFERENCES user(id)
+  CONSTRAINT fk_address_user FOREIGN KEY(user_id) REFERENCES User(id)
 ) ENGINE = InnoDB;
 
 -- ////////////////////////////////////////// --
