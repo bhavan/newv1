@@ -16,5 +16,7 @@
     <property name="cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</property>
     <mapping class="com.townwizard.db.model.User"/>
     <mapping class="com.townwizard.db.model.Address"/>
+    <mapping class="com.townwizard.db.model.Content"/>
+    <mapping class="com.townwizard.db.model.Rating"/>   
   </session-factory>
 </hibernate-configuration>

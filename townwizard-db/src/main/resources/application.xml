@@ -26,10 +26,9 @@
     <property name="namingStrategy">
       <bean class="org.hibernate.cfg.ImprovedNamingStrategy" />
     </property>
-    <property name="annotatedClasses">
+    <property name="packagesToScan">
       <list>
-        <value>com.townwizard.db.model.User</value>
-        <value>com.townwizard.db.model.Address</value>
+        <value>com.townwizard.db.model</value>
       </list>
     </property>
     <property name="hibernateProperties">

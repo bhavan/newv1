@@ -10,6 +10,8 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
+import com.townwizard.db.model.EntityInterceptor;
+
 public abstract class TestSupport {
     
     private static Properties properties;
@@ -40,6 +42,7 @@ public abstract class TestSupport {
     private static SessionFactory initSessionFactory() {
         Configuration configuration = new Configuration();
         configuration.configure();
+        configuration.setInterceptor(new EntityInterceptor());
         configuration.setNamingStrategy(ImprovedNamingStrategy.INSTANCE);
         ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().
                 applySettings(configuration.getProperties()).buildServiceRegistry();
