@@ -2,7 +2,7 @@
 include("connection.php");
 include("iadbanner.php");
 
-$query="select * from jos_phocagallery where catid=2 order by id desc";
+$query="select * from jos_phocagallery where catid=2 AND published = 1 order by id desc";
 $rec=mysql_query($query) or die(mysql_error());
 
 ?>

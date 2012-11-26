@@ -119,7 +119,7 @@ if(isset($_GET['id']) && $_GET['id'] != 0){
 		if($totalCatPhotos > 0){
 
 			$data[$num_records]['id'] = intval($v['id']);
-			echo $data[$num_records]['name'] = utf8_encode($v['name']);
+			$data[$num_records]['name'] = utf8_encode($v['name']);
 
 			$v['photos'] = array();
 	
