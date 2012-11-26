@@ -10,7 +10,7 @@ PREPARE stmt FROM @stmt;
 EXECUTE stmt;
 -- ////////////////////////////////////////// --
 
-DROP TABLE Favorite;
+DROP TABLE Rating;
 DROP TABLE Content;
 DROP TABLE ContentType;
 

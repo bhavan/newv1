@@ -29,7 +29,7 @@ CREATE TABLE Content (
   CONSTRAINT unq_content UNIQUE(external_id, site_id, type_id)
 ) ENGINE = InnoDB;
 
-CREATE TABLE Favorite (
+CREATE TABLE Rating (
   id BIGINT NOT NULL AUTO_INCREMENT,
   user_id BIGINT NOT NULL,
   content_id BIGINT NOT NULL,
