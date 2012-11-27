@@ -1,30 +1,33 @@
 <?php
 
-ini_set('error_reporting',1);
-ini_set('display_errors',1);
+ini_set('error_reporting',0);
+ini_set('display_errors',0);
 include("../connection.php");
 
-// Session varialbe set for Latitute to calculate distance
-if(isset($_REQUEST['lat']) && $_REQUEST['lat'] != "" ){
-	$_SESSION['lat_device1']	= $_REQUEST['lat'];
-	$lat1						= $_SESSION['lat_device1'];
-}
-
-/* Session varialbe set for Lontitutde to calculate distance */
-if (isset($_REQUEST['lon']) && $_REQUEST['lon'] != "" ){
-	$_SESSION['lon_device1']	= $_REQUEST['lon'];
-	$lon1						= $_SESSION['lon_device1'];
-}
 
 /* All REQUEST paramter variable  */
 $catId		= isset($_GET['category_id']) ? $_GET['category_id']:0;
 $eventId	= isset($_GET['id']) ? $_GET['id']:0;
-$glat		= isset($_GET['latitude']) ? $_GET['latitude']:0;
-$glon		= isset($_GET['longitude']) ? $_GET['longitude']:0;
+$glat		= isset($_GET['latitude']) ? $_GET['latitude']:'';
+$glon		= isset($_GET['longitude']) ? $_GET['longitude']:'';
 $dfrom		= isset($_GET['from']) ? $_GET['from']:0;
 $dto		= isset($_GET['to']) ? $_GET['to']:0;
 $offset		= isset($_GET['offset']) ? $_GET['offset']:0;
 $limit		= isset($_GET['limit']) ? $_GET['limit']:0;
+
+
+// Session varialbe set for Latitute to calculate distance
+$_SESSION['lat_device1'] = '';
+if(isset($glat) && $glat != '' ){
+	$_SESSION['lat_device1']	= $glat;
+}
+
+/* Session varialbe set for Lontitutde to calculate distance */
+$_SESSION['lon_device1'] = '';
+if (isset($glon) && $glon != 0){
+	$_SESSION['lon_device1']	= $glon;
+}
+
 
 /* 
 CASE: 1
@@ -66,10 +69,12 @@ if(isset($catId) && $catId != 0){
 				$loc_param = 0;
 				$loc_qry = "select * from jos_jev_locations where loc_id=".$ev_raw_data['LOCATION'];		
 				
+				/*
 				if((isset($glat) && $glat != 0) && (isset($glon) && $glon != 0)){
 					$loc_qry .= " AND geolat = $glat AND geolon = $glon";
 					$loc_param = 1;
 				}
+				*/
 				$location_query		= mysql_query($loc_qry);
 				$loc_num_records	= mysql_num_rows($location_query);
 				$rs_loc_tbl			= mysql_fetch_array($location_query);
@@ -91,7 +96,11 @@ if(isset($catId) && $catId != 0){
 				$value['location']['name']		= $rs_loc_tbl['title'];
 				$value['location']['phone']		= $rs_loc_tbl['phone'];
 				$value['location']['website']	= $rs_loc_tbl['url'];
-				$value['location']['distance']	= round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1');
+				if($_SESSION['lat_device1'] != '' && $_SESSION['lon_device1']){
+					$value['location']['distance']	= round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1');
+				}else{
+					$value['location']['distance'] = '';
+				}
 				$value['is_featured_event']		= $ev_raw_data['custom_field4'];
 				$value['description']			= $ev_raw_data['DESCRIPTION'];
 				$value['image_url']				= "";
@@ -169,10 +178,13 @@ if(isset($catId) && $catId != 0){
 			if ((int) ($ev_raw_data['LOCATION'])) {
 				$loc_param = 0;
 				$loc_qry		= "select *  from jos_jev_locations where loc_id=".$ev_raw_data['LOCATION'];
+
+				/*
 				if((isset($glat) && $glat != 0) && (isset($glon) && $glon != 0)){
 					$loc_qry .= " AND geolat = $glat AND geolon = $glon";
 					$loc_param = 1;
 				}
+				*/
 				$location_query	= mysql_query($loc_qry);
 				$loc_num_records= mysql_num_rows($location_query);
 				$rs_loc_tbl		= mysql_fetch_array($location_query);
@@ -196,7 +208,13 @@ if(isset($catId) && $catId != 0){
 				$data['location']['name']		= $rs_loc_tbl['title'];
 				$data['location']['phone']		= $rs_loc_tbl['phone'];
 				$data['location']['website']	= $rs_loc_tbl['url'];
-				$data['location']['distance']	= round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1');
+				
+				if($_SESSION['lat_device1'] != '' && $_SESSION['lon_device1']){
+					$data['location']['distance']	= round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1');
+				}else{
+					$data['location']['distance'] = '';
+				}
+				
 				$data['is_featured_event']		= $ev_raw_data['custom_field4'];
 				$data['description']			= $ev_raw_data['DESCRIPTION'];
 				$data['image_url']				= "";
@@ -253,10 +271,12 @@ if(isset($catId) && $catId != 0){
 				$loc_param = 0;
 				$loc_qry = "select * from jos_jev_locations where loc_id=".$ev_raw_data['LOCATION'];		
 				
+				/*
 				if((isset($glat) && $glat != 0) && (isset($glon) && $glon != 0)){
 					$loc_qry .= " AND geolat = $glat AND geolon = $glon";
 					$loc_param = 1;
 				}
+				*/
 				$location_query		= mysql_query($loc_qry);
 				$loc_num_records	= mysql_num_rows($location_query);
 				$rs_loc_tbl			= mysql_fetch_array($location_query);
@@ -278,7 +298,13 @@ if(isset($catId) && $catId != 0){
 				$value['location']['name']		= $rs_loc_tbl['title'];
 				$value['location']['phone']		= $rs_loc_tbl['phone'];
 				$value['location']['website']	= $rs_loc_tbl['url'];
-				$value['location']['distance']	= round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1');
+				
+				if($_SESSION['lat_device1'] != '' && $_SESSION['lon_device1']){
+					$value['location']['distance']	= round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1');
+				}else{
+					$value['location']['distance'] = '';
+				}
+				
 				$value['is_featured_event']		= $ev_raw_data['custom_field4'];
 				$value['description']			= $ev_raw_data['DESCRIPTION'];
 				$value['image_url']				= "";
