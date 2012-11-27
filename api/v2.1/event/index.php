@@ -45,12 +45,17 @@ if(isset($catId) && $catId != 0){
 		$fda = explode('-',$dfrom); $tda = explode('-',$dto);
 		$select_query .= " AND rpt.startrepeat >= '".$fda[0]."-".$fda[1]."-".$fda[2]." 00:00:00' AND rpt.endrepeat<='".$tda[0]."-".$tda[1]."-".$tda[2]." 23:59:59'";
 	}else{
-		$select_query .= " AND rpt.startrepeat <= '".$toyear."-".$tomonth."-".$today." 23:59:59' AND rpt.endrepeat>='".date('Y')."-".date('m')."-".date('d')." 00:00:00'";
+		$select_query .= " AND rpt.startrepeat >= '".$toyear."-".$tomonth."-".$today." 00:00:00'";
 	}	
 	$select_query .= "AND ev.catid = cat.id AND ev.catid = $catId AND ev.state = 1";
 	
 	/* To check if Limit is given then apply in query */
-	if(isset($limit) && $limit != 0){ $select_query .= " limit $limit";	}
+	if(isset($limit) && $limit != 0){
+		if(isset($offset) && $offset != 0)
+			$select_query .= " limit $offset,$limit";
+		else	
+			$select_query .= " limit $limit";
+	}
 		
 	$result			= mysql_query($select_query);
 	$num_records	= mysql_num_rows($result);
@@ -108,8 +113,8 @@ if(isset($catId) && $catId != 0){
 	    	'data' => $data,
 	    	'meta' => array(
 	        'total' => $num_records,
-	        'limit' => $num_records,
-	        'offset' => 0
+	        'limit' => $limit != 0?$limit:$num_records,
+	        'offset' => $offset != 0?$offset:0
 	    	)
 		);
 		//echo "<pre>";
@@ -225,14 +230,19 @@ if(isset($catId) && $catId != 0){
 	if((isset($dfrom) && $dfrom != 0) && (isset($dto) && $dto != 0)){
 		$fda = explode('-',$dfrom); $tda = explode('-',$dto);
 		$select_query .= " AND rpt.startrepeat >= '".$fda[0]."-".$fda[1]."-".$fda[2]." 00:00:00' AND rpt.endrepeat<='".$tda[0]."-".$tda[1]."-".$tda[2]." 23:59:59'";
-	}
-	
-	/* $select_query .= " AND rpt.startrepeat <= '".$toyear."-".$tomonth."-".$today." 23:59:59' AND rpt.endrepeat>='".date('Y')."-".date('m')."-".date('d')." 00:00:00'"; */
+	}else{
+		$select_query .= " AND rpt.startrepeat >= '".$toyear."-".$tomonth."-".$today." 00:00:00'";
+	}	
 	
 	$select_query .= " AND ev.catid = cat.id AND ev.state = 1";
 	
 	/* To check if Limit is given then apply in query */
-	if(isset($limit) && $limit != 0){ $select_query .= " limit $limit";	}
+	if(isset($limit) && $limit != 0){
+		if(isset($offset) && $offset != 0)
+			$select_query .= " limit $offset,$limit";
+		else	
+			$select_query .= " limit $limit";
+	}
 		
 	$result			= mysql_query($select_query);
 	$num_records	= mysql_num_rows($result);
@@ -292,8 +302,8 @@ if(isset($catId) && $catId != 0){
 	    	'data' => $data,
 	    	'meta' => array(
 	        'total' => $num_records,
-	        'limit' => $num_records,
-	        'offset' => 0
+	        'limit' => $limit != 0?$limit:$num_records,
+			'offset' => $offset != 0?$offset:0
 	    	)
 		);
 		//echo "<pre>";
