@@ -2,6 +2,7 @@
 
 define("TOWNWIZARD_DB_USERS_URL", "http://localhost:8080/tw/users");
 define("TOWNWIZARD_DB_USER_LOGIN_URL", "http://localhost:8080/tw/users/login");
+define("TOWNWIZARD_DB_USER_LOGIN_WITH_URL", "http://localhost:8080/tw/users/loginwith");
 
 /***
     Takes a user registration POST form data, encodes it in JSON and
@@ -81,13 +82,12 @@ function tw_get_user($id) {
       - error message on HTTP status 500 (server error) or when the server is down
 ***/
 function tw_login($post) {
-    $parameters = array();
-    $parameters["email"] = $post["email"];
-    $parameters["password"] = $post["password"];
+    $url = ($post['tw_login'] == 'true') ? 
+        TOWNWIZARD_DB_USER_LOGIN_URL : TOWNWIZARD_DB_USER_LOGIN_WITH_URL;
     
-    $json = json_encode($parameters);
-    
-    list($status, $response_msg) = _tw_post_json(TOWNWIZARD_DB_USER_LOGIN_URL, $json);
+    $json = json_encode($post);
+
+    list($status, $response_msg) = _tw_post_json($url, $json);
 
     if($status == 500) {
         $result = $response_msg; //error

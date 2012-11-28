@@ -21,25 +21,34 @@
 		<tr><td>Address 2:</td><td><input name="address2"/></td></tr>
 		<tr><td>City:</td><td><input name="city"/></td></tr>
 		<tr><td>State:</td><td><input name="state"/></td></tr>
-		<tr><td>Zip:</td><td><input name="postalCode"/></td></tr>
-		<tr><td><input type="button" value="Cancel" onclick="$('#registration_dialog').hide();"/></td><td><input type="button" value="Sign up" onclick="tw_register();"/></td></tr>
+		<tr><td>Zip:</td><td><input name="postalCode"/><input type="hidden" name="tw_login" value="true"/></td></tr>
+		<tr>
+      <td><input type="button" value="Cancel" onclick="$('#registration_dialog').hide();"/></td>
+      <td><input type="button" value="Sign up" onclick="tw_register();"/></td>
+    </tr>
    </table>
 </form>
 </div>
 
-<div id="login_dialog" style="display:none;width:300px;height:300px;position:absolute;top:100px;right:100px;z-index:10000;opacity:1;border:1px solid;background:white">
+<div id="login_dialog" style="display:none;width:300px;height:150px;position:absolute;top:100px;right:100px;z-index:10000;opacity:1;border:1px solid;background:white">
 <div style="padding:10px">Sign in</div>
-<div id="login_error" style="padding:10px;display:none;color:red"></div>
+<div id="login_error" style="padding:10px;display:none;color:red">&nbsp;</div>
 <form id="login_form">
     <table class="registration_form">
         <tr><td>Email: *</td><td><input name="email" /></td></tr>
         <tr><td>Password: *</td><td><input name="password" type="password" /></td></tr>
-        <tr><td><input type="button" value="Cancel" onclick="$('#login_dialog').hide();"/></td><td><input type="button" value="Sign in" onclick="tw_login();"/></td></tr>
+        <tr>
+          <td><input type="button" value="Cancel" onclick="$('#login_dialog').hide();$('#login_error').html('');"/></td>
+          <td><input type="button" value="Sign in" onclick="tw_login();"/></td>
+        </tr>
    </table>
 </form>
+</div>
+
+<div id="fb-root"></div>
+<script src="http://connect.facebook.net/en_US/all.js"></script>
 
 <script>
-
   function tw_register() {
     $.ajax({
         url: "townwizard-db-api/register.php",
@@ -54,6 +63,55 @@
                 $('#registration_error').html('This email is already registered').show();
             } else {
                 $('#login_error').html(response).show();
+            }
+        }
+    });
+  }
+
+  function fb_login() {
+    FB.login(function(response) {
+        if (response.authResponse) {
+            var t = response.authResponse.accessToken;
+            FB.api('/me?fields=first_name,last_name,username,gender,locale,email,birthday&access_token='+t,
+              function(response) {
+                var u = new Object();
+                u.email = response.email;
+                u.firstName = response.first_name;
+                u.lastName = response.last_name;
+                u.username = response.username;
+                if(response.gender) {
+                  u.gender = response.gender.charAt(0).toUpperCase();
+                }
+                tw_login_with(u);
+              }
+            );
+        } else {
+            /*
+            FB.getLoginStatus(function(response) {
+              alert(printJSON(response));
+              if (response.status === 'connected') {
+                fb_login();
+              } else if (response.status === 'not_authorized') {
+                fb_login();
+              } else {
+                fb_login();
+              }
+            });            
+            FB.logout();
+            tw_logout();
+            */
+        }
+    }, {scope:'email,user_birthday'}); 
+  }
+
+  function tw_login_with(user_data) {
+    $.ajax({
+        url: "townwizard-db-api/login.php",
+        type: "post",
+        data: user_data,        
+        success: function(response) {            
+            if(response == 'success') {
+                window.location.href = window.location.href;
             }
         }
     });
@@ -85,5 +143,23 @@
         }
     });
   }
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '389646214446473',
+      channelUrl : '//demo.townwizard.com/channel.html',
+      status     : true,
+      cookie     : true,
+      xfbml      : true
+    });
+  };
+  
+  (function(d){
+    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement('script'); js.id = id; js.async = true;
+    js.src = "//connect.facebook.net/en_US/all.js";
+    ref.parentNode.insertBefore(js, ref);
+  }(document));
+
 </script>
-</div>

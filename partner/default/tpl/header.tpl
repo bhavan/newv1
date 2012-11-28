@@ -10,7 +10,8 @@
         <a href="javascript:void(0)" onclick="tw_logout();">Sign out</a>
     <?php }  else { ?>
         <a href="javascript:void(0)" onclick="$('#login_dialog').hide();$('#registration_dialog').show();">Register</a> | 
-        <a href="javascript:void(0)" onclick="$('#registration_dialog').hide();$('#login_dialog').show();">Sign in</a>
+        <a href="javascript:void(0)" onclick="$('#registration_dialog').hide();$('#login_dialog').show();">Sign in</a><br/>
+        <a href="javascript:void(0)" onclick="fb_login();">Sign in with Facebook</a><br/>
     <?php } ?>
 </div>
 <?php require("townwizard-db-api/register.tpl"); ?>

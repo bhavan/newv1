@@ -78,6 +78,34 @@ public class UserResource extends ResourceSupport {
                     .type(MediaType.APPLICATION_JSON).build());
         }
         return u.asJsonView();
+    }
+    
+    @POST
+    @Path("/loginwith")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public User loginWith(InputStream is) {
+        User u = null;
+        User fromJson = parseJson(User.class, is);
+        try {
+            u = userService.getByEmail(fromJson.getEmail());
+            if(u == null) { //first time login
+                u = fromJson;
+                u.setPassword("facebook" + u.getEmail() + Math.random());
+                createUser(u);
+            }
+        } catch (Exception e) {
+            ExceptionHandler.handle(e);
+            sendServerError(e);
+        }
+        
+        if (u == null) {
+            throw new WebApplicationException(Response
+                    .status(Status.NOT_FOUND)
+                    .entity(EMPTY_JSON)
+                    .type(MediaType.APPLICATION_JSON).build());
+        }
+        return u.asJsonView();
     }    
     
     @POST
