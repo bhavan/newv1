@@ -45,10 +45,10 @@ function about_intro() {
 				<header>
 					<a id="navBack" href="javascript:history.go(-1)">Back</a>
 					<h1>About Us</h1>
-					<div class="fRight">
+					<!-- <div class="fRight">
 						<a class="headerButton" id="nearby">w</a>
 						<a class="headerButton" id="search">s</a>
-					</div>
+					</div> -->
    				</header>
 				
 				<div id="main"><ul class="mainList"><li><?php about_intro(); ?></li></ul></div>

@@ -190,10 +190,10 @@ var iWebkit;if(!iWebkit){iWebkit=window.onload=function(){function fullscreen(){
 				<header>
 					<a id="navBack" href="javascript:history.go(-1)">Back</a>
 					<h1>Place Info</h1>
-					<div class="fRight">
+					<!-- <div class="fRight">
 						<a class="headerButton" id="nearby">w</a>
 						<a class="headerButton" id="search">s</a>
-					</div>
+					</div> -->
    				</header>
 				
 				<?php
