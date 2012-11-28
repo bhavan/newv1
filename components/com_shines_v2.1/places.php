@@ -202,10 +202,10 @@ function divopen(str) {
     <header>
 		<a class="headerButton" id="fav">*</a>
 		<h1>Places</h1>
-		<div class="fRight">
-			<a class="headerButton" id="nearby">w</a>
-			<a class="headerButton" id="search">s</a>
-		</div>
+		<!-- <div class="fRight">
+						<a class="headerButton" id="nearby">w</a>
+						<a class="headerButton" id="search">s</a>
+					</div> -->
     </header>
 <?php
 $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
