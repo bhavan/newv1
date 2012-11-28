@@ -82,10 +82,14 @@ function tw_get_user($id) {
       - error message on HTTP status 500 (server error) or when the server is down
 ***/
 function tw_login($post) {
-    $url = ($post['tw_login'] == 'true') ? 
+    $url = ($post['townwizard_login'] == 'true') ? 
         TOWNWIZARD_DB_USER_LOGIN_URL : TOWNWIZARD_DB_USER_LOGIN_WITH_URL;
+
+    $parameters = Array();
+    $parameters['email'] = $post['email'];
+    $parameters['password'] = $post['password'];
     
-    $json = json_encode($post);
+    $json = json_encode($parameters);
 
     list($status, $response_msg) = _tw_post_json($url, $json);
 
@@ -102,6 +106,10 @@ function tw_login($post) {
             $result = "failure";        
         }
     }
+
+    error_log(".///////////////////");
+    error_log($status);
+    error_log($result);
 
     return $result;
 }

@@ -63,8 +63,8 @@ public class UserResource extends ResourceSupport {
     @Produces(MediaType.APPLICATION_JSON)
     public User login(InputStream is) {
         User u = null;
-        User fromJson = parseJson(User.class, is);
         try {
+            User fromJson = parseJson(User.class, is);
             u = userService.login(fromJson.getEmail(), fromJson.getPassword());
         } catch (Exception e) {
             ExceptionHandler.handle(e);
@@ -85,9 +85,9 @@ public class UserResource extends ResourceSupport {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public User loginWith(InputStream is) {
-        User u = null;
-        User fromJson = parseJson(User.class, is);
+        User u = null;        
         try {
+            User fromJson = parseJson(User.class, is);
             u = userService.getByEmail(fromJson.getEmail());
             if(u == null) { //first time login
                 u = fromJson;

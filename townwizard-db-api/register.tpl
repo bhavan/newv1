@@ -21,7 +21,7 @@
 		<tr><td>Address 2:</td><td><input name="address2"/></td></tr>
 		<tr><td>City:</td><td><input name="city"/></td></tr>
 		<tr><td>State:</td><td><input name="state"/></td></tr>
-		<tr><td>Zip:</td><td><input name="postalCode"/><input type="hidden" name="tw_login" value="true"/></td></tr>
+		<tr><td>Zip:</td><td><input name="postalCode"/></td></tr>
 		<tr>
       <td><input type="button" value="Cancel" onclick="$('#registration_dialog').hide();"/></td>
       <td><input type="button" value="Sign up" onclick="tw_register();"/></td>
@@ -39,7 +39,7 @@
         <tr><td>Password: *</td><td><input name="password" type="password" /></td></tr>
         <tr>
           <td><input type="button" value="Cancel" onclick="$('#login_dialog').hide();$('#login_error').html('');"/></td>
-          <td><input type="button" value="Sign in" onclick="tw_login();"/></td>
+          <td><input type="button" value="Sign in" onclick="tw_login();"/><input type="hidden" name="townwizard_login" value="true"/></td>
         </tr>
    </table>
 </form>
@@ -101,7 +101,7 @@
             tw_logout();
             */
         }
-    }, {scope:'email,user_birthday'}); 
+    }, {scope:'email'}); 
   }
 
   function tw_login_with(user_data) {
