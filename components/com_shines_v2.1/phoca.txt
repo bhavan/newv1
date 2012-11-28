@@ -1,0 +1,310 @@
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '71_1623_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpkZ4OkT',
+  'error' => 0,
+  'size' => 123636,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '72_1691_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpMg26Jf',
+  'error' => 0,
+  'size' => 105904,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '73_6307_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpRk4Pu9',
+  'error' => 0,
+  'size' => 125202,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '74_6336_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpEllmmm',
+  'error' => 0,
+  'size' => 100836,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '75_433_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpoAATAR',
+  'error' => 0,
+  'size' => 54692,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '76_435_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpDoZ8Wp',
+  'error' => 0,
+  'size' => 54692,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '77_659_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpyxQZZC',
+  'error' => 0,
+  'size' => 63388,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '78_740_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpMdABEe',
+  'error' => 0,
+  'size' => 78076,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '79_1087_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpJ45ByB',
+  'error' => 0,
+  'size' => 78994,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '79_1390_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpJoxPly',
+  'error' => 0,
+  'size' => 84176,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '81_1417_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpfF8rRP',
+  'error' => 0,
+  'size' => 121156,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '82_2565_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpqpwUqN',
+  'error' => 0,
+  'size' => 127589,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '83_8025_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/php18DqiP',
+  'error' => 0,
+  'size' => 141727,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '75_9487_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpIQd5zJ',
+  'error' => 0,
+  'size' => 116014,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '85_9546_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpJU0elf',
+  'error' => 0,
+  'size' => 81325,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '86_44_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpzGjgJW',
+  'error' => 0,
+  'size' => 139108,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '94_9186_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpL8ZiYw',
+  'error' => 0,
+  'size' => 86788,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '94_2632_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/php0h2PRw',
+  'error' => 0,
+  'size' => 100659,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '96_2710_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpNqfEZi',
+  'error' => 0,
+  'size' => 137593,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '97_2761_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/php52GdAK',
+  'error' => 0,
+  'size' => 129129,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '98_8778_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpSqxtti',
+  'error' => 0,
+  'size' => 141004,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '98_9225_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpW2Ekm4',
+  'error' => 0,
+  'size' => 113724,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '98_1816_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpvJydgG',
+  'error' => 0,
+  'size' => 182604,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '102_3606_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpDppkEW',
+  'error' => 0,
+  'size' => 99724,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '103_8129_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpy51F6M',
+  'error' => 0,
+  'size' => 147090,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '104_9712_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpV7ZO8q',
+  'error' => 0,
+  'size' => 132270,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '271_6357_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpxWbBz5',
+  'error' => 0,
+  'size' => 377085,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '245_4382_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpUuqSXW',
+  'error' => 0,
+  'size' => 278248,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '247_374_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpp6TU86',
+  'error' => 0,
+  'size' => 495949,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '248_606_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpBtx1yk',
+  'error' => 0,
+  'size' => 218350,
+)
+--------------------------------------------------
+
+PHOCAGALLERY_IMAGE_SAVED
+array (
+  'name' => '248_7382_mainphoto.jpg',
+  'type' => 'application/octet-stream',
+  'tmp_name' => '/tmp/phpNFqNzZ',
+  'error' => 0,
+  'size' => 194105,
+)
+--------------------------------------------------
+
