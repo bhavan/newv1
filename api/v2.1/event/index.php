@@ -73,8 +73,8 @@ if(isset($catId) && $catId != 0){
 			}
 			/* Creating Jason Array variable $data */
 			$value['id'] 					= $rs_ev_tbl['rp_id'];
-			$value['title'] 				= $rs_ev_tbl['summary'];
-			$value['category'] 				= $rs_ev_tbl['title'];
+			$value['title'] 				= utf8_encode($rs_ev_tbl['summary']);
+			$value['category'] 				= utf8_encode($rs_ev_tbl['title']);
 			$value['category_id']			= $rs_ev_tbl['catid'];
 			$value['location']['latitude']	= $lat2;
 			$value['location']['longitude']	= $lon2;
@@ -160,8 +160,8 @@ if(isset($catId) && $catId != 0){
 
 			// Creating Jason Array variable $data	
 			$data['id'] 					= $rs_ev_tbl['rp_id'];
-			$data['title'] 					= $rs_ev_tbl['summary'];
-			$data['category'] 				= $rs_ev_tbl['title'];
+			$data['title'] 					= utf8_encode($rs_ev_tbl['summary']);
+			$data['category'] 				= utf8_encode($rs_ev_tbl['title']);
 			$data['category_id']			= $rs_ev_tbl['catid'];
 			$data['location']['latitude']	= $lat2;
 			$data['location']['longitude']	= $lon2;
@@ -239,8 +239,8 @@ if(isset($catId) && $catId != 0){
 			}
 			/* Creating Jason Array variable $data */
 			$value['id'] 					= $rs_ev_tbl['rp_id'];
-			$value['title'] 				= $rs_ev_tbl['summary'];
-			$value['category'] 				= $rs_ev_tbl['title'];
+			$value['title'] 				= utf8_encode($rs_ev_tbl['summary']);
+			$value['category'] 				= utf8_encode($rs_ev_tbl['title']);
 			$value['category_id']			= $rs_ev_tbl['catid'];
 			$value['location']['latitude']	= $lat2;
 			$value['location']['longitude']	= $lon2;
