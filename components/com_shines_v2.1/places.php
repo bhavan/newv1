@@ -37,8 +37,8 @@ function stripJunk($string) {
 
 function distance($lat1, $lon1, $lat2, $lon2, $unit) { 
 	$theta = $lon1 - $lon2; 
-	$dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta)); 
-	$dist = acos($dist); 
+	$dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+        $dist = acos($dist); 
 	$dist = rad2deg($dist); 
 	$miles = $dist * 60 * 1.1515;
 	$unit = strtoupper($unit);
@@ -199,14 +199,6 @@ function divopen(str) {
 <?php include($_SERVER['DOCUMENT_ROOT']."/ga.php"); ?>
 </head>
 <body>
-    <header>
-		<a class="headerButton" id="fav">*</a>
-		<h1>Places</h1>
-		<!-- <div class="fRight">
-						<a class="headerButton" id="nearby">w</a>
-						<a class="headerButton" id="search">s</a>
-					</div> -->
-    </header>
 <?php
 $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
 if(stripos($ua,'android') == true) { ?>

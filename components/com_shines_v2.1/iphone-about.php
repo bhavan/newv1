@@ -41,16 +41,6 @@ function about_intro() {
 	<?php include($_SERVER['DOCUMENT_ROOT']."/ga.php"); ?>
 	</head>
 	<body>
-				
-				<header>
-					<a id="navBack" href="javascript:history.go(-1)">Back</a>
-					<h1>About Us</h1>
-					<!-- <div class="fRight">
-						<a class="headerButton" id="nearby">w</a>
-						<a class="headerButton" id="search">s</a>
-					</div> -->
-   				</header>
-				
 				<div id="main"><ul class="mainList"><li><?php about_intro(); ?></li></ul></div>
 				<!-- AddThis Button END -->
 				</body>
