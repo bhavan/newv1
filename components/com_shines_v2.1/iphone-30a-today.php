@@ -83,7 +83,7 @@ if (!file_exists($x.DS.'includes'.DS.'defines.php')){
 }
 define( 'JPATH_BASE', $x );
 
-ini_set("display_errors",0);
+@ini_set("display_errors",0);
 
 require_once JPATH_BASE.DS.'includes'.DS.'defines.php';
 require_once JPATH_BASE.DS.'includes'.DS.'framework.php';
@@ -112,14 +112,12 @@ $sql = "select jc.* from `jos_content` jc, `jos_categories` jcs where jcs.title 
 	$c=1;
   if($param) { foreach($param as $v) {
   
-	//#DD#
   preg_match_all ("/(<img.*?>)/i" , $v['introtext'] , $matches);
 	foreach($matches[1] as $m) {
-		$v['introtext']=str_replace($m, "<div style='width:100%;text-align:center;'>$m</div>",$v['introtext']);
+		$v['introtext']=str_replace($m, "<li style='text-align:center;'><div>$m</div>",$v['introtext']);
 	}
-	//#DD#
 
-      $v['introtext'] = ''.$v['introtext'].'<hr>';
+      $v['introtext'] = ''.$v['introtext'].'</li>';
 
     $data .= str_replace("images/", "images/", $v['introtext']);
 		$c++;
@@ -130,56 +128,30 @@ include("connection.php");
 ?>
 <html>
 <head>
-	
-	<title>30A today</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-   	
-	<style>
-		html, body, td {
-			font-family:verdana, Helvetica, sans-serif;
-			font-size:12px;
-			color:#333333;
-			margin:0;
-		}
-		p{
-text-align: justify;
-margin-bottom: 14px;
-}
-	</style>
-    <?php include($_SERVER['DOCUMENT_ROOT']."/ga.php"); ?>
+<link href="/components/com_shines_v2.1/css/style.css" rel="stylesheet" media="screen" type="text/css" />
+<title>News</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+ <?php include($_SERVER['DOCUMENT_ROOT']."/ga.php"); ?>
 </head>
 <body>
-  
-<?php
+ 
+  <div id="main" role="main">
+  <?php
 $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
 if(stripos($ua,'android') == true) { ?>
-  <div class="iphoneads" style="vertical-align:bottom;"></div>
+  <div id="zigzag" style="vertical-align:bottom;"></div>
   <?php } 
   else {
   ?>
-  <div class="iphoneads" style="vertical-align:bottom;">
+  <div id="zigzag" style="vertical-align:bottom;">
     <?php m_show_banner('iphone-news-screen'); ?>
   </div>
   <?php } ?>
-  
-  <table align="center" width="300">
-    <tr>
-      <td style="text-align:justify;">
-<?php
-echo $data ;
-?>
-	</td>
-    </tr>
-  </table>
+	<ul id="placesList" class="mainList">
+		<?php
+		echo $data ;
+		?>
+	</ul>
+  </div>
 </body>
 </html>
-<?php
-/*
-$redirect = "/indexiphone.php?option=com_content&view=article&tmpl=component&id=".);
-
-$redirect .= "&iphoneapp=1";
-
-header( 'HTTP/1.1 303 Temporary Redirect' );
-header( 'Location: ' . $redirect );
-*/
-?>

@@ -344,9 +344,14 @@ td { vertical-align: top; }
 			padding: 10px 10px 15px;
 			background: #fff url(../images/border2.gif) repeat-x bottom;
 		}
+		#main h1, #main #zigzag{
+			margin: 0 0 0 0;text-transform: uppercase; font-weight: normal; font-size: 1em;
+			padding: 10px 0px 22px;
+			background: #fff url(../images/border2.gif) repeat-x bottom;
+		}
 		ul.mainList{
 			margin: 0 0 0 0; list-style: none;padding: 0px;
-			background: url(../images/l/twBg.png) no-repeat bottom right;
+			background: url(../images/l/twBg.png) repeat-y scroll 100% 100%;
 		}
 		#main ul.mainList h1{
 			background: none;text-transform: none;font-weight: bold; font-size: 1.3em;
@@ -392,6 +397,7 @@ td { vertical-align: top; }
 		#main #searchBar {overflow: hidden;text-transform: none;}
 		#main #searchBar form{float: left;margin-bottom: 8px;text-transform: none;}
 		#main #searchBar a{float: right; text-decoration: none;font-size: 2.2em;color: #6abc43;line-height: 1}
+		#main #zigzag a{text-decoration: none;font-size: 2.2em;color: #6abc43;line-height: 1}
 		#searchIcon{font-family: 'ModernPictogramsNormal';}
 		#searchForm{display: none; height: 40px;width: 100%; margin: 0 10px 10px 0;clear:both;}
 		#searchForm input[type="search"]{
