@@ -107,10 +107,6 @@ function tw_login($post) {
         }
     }
 
-    error_log(".///////////////////");
-    error_log($status);
-    error_log($result);
-
     return $result;
 }
 
