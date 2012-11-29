@@ -105,10 +105,10 @@ if(isset($catId) && $catId != 0){
 	        'offset' => $offset != 0?$offset:0
 	    	)
 		);
-		echo "<pre>";
-		print_r($response);
-		//header('Content-type: application/json');
-		//echo json_encode($response);
+		//echo "<pre>";
+		//print_r($response);
+		header('Content-type: application/json');
+		echo json_encode($response);
 	}else{
 		$data["error"] = "Not Found";
 		header('Content-type: application/json');
@@ -187,10 +187,10 @@ if(isset($catId) && $catId != 0){
 	}else{
 		$data["error"] = "Not Found";
 	}	
-	echo "<pre>";
-	print_r($data);
-	//header('Content-type: application/json');
-	//echo json_encode($data);
+	//echo "<pre>";
+	//print_r($data);
+	header('Content-type: application/json');
+	echo json_encode($data);
 /*------------------------------------*/
 
 }else{
@@ -273,10 +273,10 @@ if(isset($catId) && $catId != 0){
 			'offset' => $offset != 0?$offset:0
 	    	)
 		);
-		echo "<pre>";
-		print_r($response);
-		//header('Content-type: application/json');
-		//echo json_encode($response);
+		//echo "<pre>";
+		//print_r($response);
+		header('Content-type: application/json');
+		echo json_encode($response);
 	}else{
 		if($dto < $dfrom){
 			$data["error"] = "Bad Request";
