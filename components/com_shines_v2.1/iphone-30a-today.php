@@ -147,7 +147,7 @@ if(stripos($ua,'android') == true) { ?>
     <?php m_show_banner('iphone-news-screen'); ?>
   </div>
   <?php } ?>
-	<ul id="placesList" class="mainList">
+	<ul id="placesList" class="mainList offer">
 		<?php
 		echo $data ;
 		?>
