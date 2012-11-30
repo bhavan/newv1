@@ -4,7 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToOne;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -12,7 +15,33 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import com.townwizard.db.util.EmailValidator;
 
 @Entity
-public class User extends AuditableEntity {    
+public class User extends AuditableEntity {
+    
+    public static enum LoginType {
+        ZERO(0, "Zero"), //to make sure Java Enum ordinals will start with 1 for hibernate mapping
+        TOWNWIZARD(1, "Townwizard"),
+        FACEBOOK(2, "Facebook"),
+        TWITTER(2, "Twitter");
+        
+        private final int id;
+        private final String name;
+        private LoginType(int id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+        
+        public int getId() {return id;}
+        public String getName() {return name;}
+        
+        public static LoginType byId(int id) {
+            switch(id) {
+            case 1: return TOWNWIZARD;
+            case 2: return FACEBOOK;
+            case 3: return TWITTER;
+            default: return ZERO;
+            }            
+        }
+    }     
 
     private static final long serialVersionUID = -6562731576094594464L;
     
@@ -25,6 +54,10 @@ public class User extends AuditableEntity {
     private String gender;
     private String mobilePhone;
     private String registrationIp;
+    @Column(name="login_type_id")
+    @Enumerated(EnumType.ORDINAL)
+    private LoginType loginType;
+    private Integer externalId;
     
     @OneToOne(mappedBy = "user", cascade = {CascadeType.ALL})
     private Address address;
@@ -91,11 +124,28 @@ public class User extends AuditableEntity {
     }
     public void setRegistrationIp(String registrationIp) {
         this.registrationIp = registrationIp;
+    }    
+    public LoginType getLoginType() {
+        return loginType;
     }
-    
+    public void setLoginType(LoginType loginType) {
+        this.loginType = loginType;
+    }
+    public Integer getExternalId() {
+        return externalId;
+    }
+    public void setExternalId(Integer externalId) {
+        this.externalId = externalId;
+    }
     @JsonIgnore
     public boolean isValid() {
-        return isEmailValid() && isPasswordValid();
+        if(getLoginType() == null) {
+            return false;
+        }        
+        if(getLoginType().equals(LoginType.TOWNWIZARD)) {
+            return isEmailValid() && isPasswordValid();
+        }
+        return true;
     }
     
     public User asJsonView() {
@@ -129,7 +179,7 @@ public class User extends AuditableEntity {
                 + registrationIp + ", address=" + address + "]";
     }
     
-    private boolean isEmailValid() {
+    private boolean isEmailValid() {        
         return EmailValidator.isValidEmailAddress(getEmail());
     }
     

@@ -7,7 +7,7 @@ import javax.persistence.Enumerated;
 
 @Entity
 public class Content extends AbstractEntity {     
-    
+        
     public static enum ContentType {
         ZERO(0, "Zero"), //to make sure Java Enum ordinals will start with 1 for hibernate mapping
         LOCATION(1, "Location"),

@@ -42,8 +42,8 @@ public abstract class TestSupport {
     private static SessionFactory initSessionFactory() {
         Configuration configuration = new Configuration();
         configuration.configure();
-        configuration.setInterceptor(new EntityInterceptor());
         configuration.setNamingStrategy(ImprovedNamingStrategy.INSTANCE);
+        configuration.setInterceptor(new EntityInterceptor());
         ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().
                 applySettings(configuration.getProperties()).buildServiceRegistry();
         return configuration.buildSessionFactory(serviceRegistry);

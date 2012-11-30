@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.townwizard.db.model.Content.ContentType;
+import com.townwizard.db.model.User.LoginType;
 import com.townwizard.db.test.TestSupport;
 
 public class EntityTest extends TestSupport {
@@ -80,12 +81,11 @@ public class EntityTest extends TestSupport {
     
             fromDb.setFirstName("Vlad");
             fromDb.getAddress().setAddress2("Front");
-            session.save(fromDb);        
+            session.save(fromDb);
     
-            fromDb = getUserById(id);
-            
-            assertEquals("Address2 should change", "Front", fromDb.getAddress().getAddress2());
-    
+            fromDb = getUserById(id);           
+            assertEquals("Address2 should change", "Front", fromDb.getAddress().getAddress2());          
+
             session.delete(fromDb);
     
             fromDb = getUserById(id);
@@ -108,6 +108,7 @@ public class EntityTest extends TestSupport {
             r.setUser(u);
             r.setContent(c);
             r.setValue(4.5f);
+            
             session.save(r);
             Long id = r.getId();
             assertNotNull("Rating id should not be null after save()", id);
@@ -161,8 +162,10 @@ public class EntityTest extends TestSupport {
         u.setYear(1968);
         u.setGender("M");
         u.setMobilePhone("917-439-7193");
-        u.setRegistrationIp("192.168.112.231");        
-        
+        u.setRegistrationIp("192.168.112.231");
+        u.setLoginType(LoginType.FACEBOOK);
+        u.setExternalId(123456);        
+                
         Address a = new Address();
         a.setAddress1("324 Nelson Ave");
         a.setAddress2("Frnt");
@@ -171,6 +174,7 @@ public class EntityTest extends TestSupport {
         a.setState("NY");
         a.setCountry("USA");
         u.setAddress(a);
+        
         a.setUser(u);
         
         return u;
@@ -181,6 +185,7 @@ public class EntityTest extends TestSupport {
         c.setSiteId(getSiteIdByName("demo.townwizard.com"));
         c.setExternalId(1L);
         c.setContentType(ContentType.LOCATION);
+        c.setActive(true);
         return c;
     }
     

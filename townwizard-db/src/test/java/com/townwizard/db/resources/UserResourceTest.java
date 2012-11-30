@@ -1,7 +1,7 @@
 package com.townwizard.db.resources;
 
 import java.io.StringReader;
-import java.util.Date;
+import java.util.List;
 
 import org.apache.http.StatusLine;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -51,6 +51,22 @@ public class UserResourceTest extends ResourceTest {
     }
     
     @Test
+    public void testPostUserWithEmptyEmailAndPassword() {
+        try {
+            deleteUserByLastName("UNIQUE_LAST_NAME");
+            
+            String json = "{\"firstName\":\"test\",\"lastName\":\"UNIQUE_LAST_NAME\",\"loginType\":\"FACEBOOK\"}";            
+            StatusLine statusLine = executePostJsonRequest("/users", json);
+            int status = statusLine.getStatusCode();
+            Assert.assertEquals(
+                    "HTTP status should be 400 when trying to create a facebook user with email and password null\n" + 
+                    "For facebook users are create by using 'login' method not 'create' method", 400, status);
+        } finally {
+            deleteUserByLastName("UNIQUE_LAST_NAME");
+        }
+    }
+    
+    @Test
     public void testPostMinimalUserJson() {
         String email = "min_user_json@test.com";
         try {
@@ -84,47 +100,7 @@ public class UserResourceTest extends ResourceTest {
         } finally {
             deleteUserByEmail(email);
         }
-    }
-    
-    @Test
-    public void testPostMinimalUserForm() {
-        String email = "min_user_form@test.com";
-        try {
-            deleteUserByEmail(email);
-            User u = new User();
-            u.setEmail(email);
-            u.setPassword("secret");
-            StatusLine statusLine = executePostFormRequest("/users", u.asParametersMap());
-            int status = statusLine.getStatusCode();
-            Assert.assertEquals(
-                    "HTTP status should be 201 (created) for the minimal user form request", 201, status);
-            assertUserCreatedCorrectly(u, email);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Assert.fail(e.getMessage());
-        } finally {
-            deleteUserByEmail(email);
-        }
-    }
-    
-    @Test
-    public void testPostFullUserForm() {
-        String email = "full_user_form@test.com";
-        try {
-            deleteUserByEmail(email);
-            User u = createUserWithAddress(email);
-            StatusLine statusLine = executePostFormRequest("/users", u.asParametersMap());
-            int status = statusLine.getStatusCode();
-            Assert.assertEquals(
-                    "HTTP status should be 201 (created) for the minimal user form request", 201, status);
-            assertUserCreatedCorrectly(u, email);
-        } catch (Exception e) {
-            e.printStackTrace();
-            Assert.fail(e.getMessage());
-        } finally {
-            deleteUserByEmail(email);
-        }
-    }
+    }    
     
     @Test
     public void testDuplicateEmail() {
@@ -165,8 +141,53 @@ public class UserResourceTest extends ResourceTest {
         } finally {
             deleteUserByEmail(email);
         }
-
     }
+    
+    @Test
+    public void testLoginWith() {
+        try {
+            deleteUserByLastName("UNIQUE_LAST_NAME");
+            String json = "{\"firstName\":\"test\",\"lastName\":\"UNIQUE_LAST_NAME\",\"loginType\":\"FACEBOOK\"}";            
+            StatusLine statusLine = executePostJsonRequest("/users/loginwith", json);
+            int status = statusLine.getStatusCode();
+            Assert.assertEquals(
+                    "HTTP status should be 200 when trying to create a facebook user with email and password null", 200, status);
+            
+            User u = getUserByLastNameFromDB("UNIQUE_LAST_NAME");
+            Assert.assertNotNull("Facebook user with no email and password must be found in the DB", u);
+        } finally {
+            deleteUserByLastName("UNIQUE_LAST_NAME");
+        }
+    }
+    
+    @Test
+    public void testLoginWithFacebookTwice() {
+        try {
+            deleteUserByEmail("test_fb@yahoo.com");
+            String json1 = "{\"email\":\"test_fb@yahoo.com\",\"firstName\":\"test\",\"lastName\":\"UNIQUE_LAST_NAME\",\"loginType\":\"FACEBOOK\",\"externalId\":\"123456\"}";
+            String json2 = "{\"email\":\"test_fb@yahoo.com\",\"firstName\":\"test2\",\"lastName\":\"UNIQUE_LAST_NAME\",\"loginType\":\"FACEBOOK\",\"externalId\":\"123456\"}";
+            
+            StatusLine statusLine = executePostJsonRequest("/users/loginwith", json1);
+            int status = statusLine.getStatusCode();
+            Assert.assertEquals(
+                    "HTTP status should be 200 when trying to login a facebook user for the first time", 200, status);
+            
+            User u = getUserByLastNameFromDB("UNIQUE_LAST_NAME");
+            Assert.assertNotNull("Facebook user with no email and password must be found in the DB", u);
+            Assert.assertEquals("The facebook user name should saved", "test", u.getFirstName());            
+            
+            // post again with different first name:  should not fail and the name should get updated
+            statusLine = executePostJsonRequest("/users/loginwith", json2);
+            status = statusLine.getStatusCode();
+            Assert.assertEquals(
+                    "HTTP status should be 200 when trying to login the same facebook user again", 200, status);
+            u = getUserByLastNameFromDB("UNIQUE_LAST_NAME");
+            Assert.assertEquals("The facebook user name should change", "test2", u.getFirstName());
+        } finally {
+            deleteUserByEmail("test_fb@yahoo.com");
+        }
+    }    
+    
     
     private String getMinimalUserJson(String email) {
         return "{\"email\":\"" + email + "\",\"password\":\"secret\"}";
@@ -174,7 +195,9 @@ public class UserResourceTest extends ResourceTest {
     
     private String getFullUserJson(String email) {
         return "{\"username\":\"j2vm\",\"email\":\"" + email + 
-                "\",\"password\":\"secret\",\"firstName\":\"Vlad\",\"lastName\":\"Mazheru\",\"year\":1968,\"gender\":\"M\",\"mobilePhone\":\"917-439-7193\",\"registrationIp\":\"127.0.0.1\",\"address\":{\"address1\":\"324 Nelson Ave\",\"address2\":\"Frnt\",\"city\":\"Staten Island\",\"state\":\"NY\",\"postalCode\":\"10308\",\"country\":\"USA\"}}";
+                "\",\"password\":\"secret\",\"firstName\":\"Vlad\",\"lastName\":\"Mazheru\",\"year\":1968,\"gender\":\"M\",\"mobilePhone\":\"917-439-7193\",\"registrationIp\":\"127.0.0.1\"," +
+                "\"loginType\":\"TOWNWIZARD\"," + "\"externalId\":\"123456\"," +
+                "\"address\":{\"address1\":\"324 Nelson Ave\",\"address2\":\"Frnt\",\"city\":\"Staten Island\",\"state\":\"NY\",\"postalCode\":\"10308\",\"country\":\"USA\"}}";
     }
     
     private void assertUserCreatedCorrectly(String userJson, String email) throws Exception {
@@ -184,14 +207,8 @@ public class UserResourceTest extends ResourceTest {
                 usersEqual(createdUser, userFromJson));
     }
     
-    private void assertUserCreatedCorrectly(User user, String email) throws Exception {
-        User createdUser = getUserByEmailFromTheService(email);        
-        Assert.assertTrue("User created should have the same properties as user submitted", 
-                usersEqual(createdUser, user));
-    }    
-    
     private User getUserByEmailFromTheService(String email) throws Exception {
-        String response = executeGetRequest("/users/" + email);
+        String response = executeGetRequest("/users/1/" + email);
         return userFromJson(response);
     }
     
@@ -199,7 +216,23 @@ public class UserResourceTest extends ResourceTest {
         ObjectMapper m = new ObjectMapper();
         User u = m.readValue(new StringReader(json), User.class);
         return u;
-    }    
+    }
+    
+    private User getUserByLastNameFromDB(String lastName) {
+        Session session = null;
+        try {
+            session = getSessionFactory().openSession();
+            session.beginTransaction();
+            Query q = session.createQuery("from User where lastName = :last_name").setString("last_name", lastName);
+            User u = (User)q.uniqueResult();
+            session.getTransaction().commit();
+            return u;
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }        
+    }
     
     private void deleteUserByEmail(String email) {
         Session session = null;
@@ -207,8 +240,28 @@ public class UserResourceTest extends ResourceTest {
             session = getSessionFactory().openSession();
             session.beginTransaction();
             Query q = session.createQuery("from User where email = :email").setString("email", email);
-            User u = (User)q.uniqueResult();
-            if(u != null) {
+            @SuppressWarnings("unchecked")
+            List<User> users = q.list();
+            for(User u : users) {
+              session.delete(u);
+            }
+            session.getTransaction().commit();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+    }
+    
+    private void deleteUserByLastName(String lastName) {
+        Session session = null;
+        try {
+            session = getSessionFactory().openSession();
+            session.beginTransaction();
+            Query q = session.createQuery("from User where lastName = :last_name").setString("last_name", lastName);
+            @SuppressWarnings("unchecked")
+            List<User> users = q.list();
+            for(User u : users) {
               session.delete(u);
             }
             session.getTransaction().commit();
@@ -255,36 +308,4 @@ public class UserResourceTest extends ResourceTest {
         if(o1 == null && o2 != null) return false;
         return o1.equals(o2);
     }
-    
-    private User createUserWithAddress(String email) {
-        Date now = new Date();
-        User u = new User();
-        u.setCreated(now);
-        u.setUpdated(now);
-        u.setUsername("j2vm");
-        u.setEmail(email);
-        u.setPassword("secret");
-        u.setFirstName("Vladimir");
-        u.setLastName("Mazheru");
-        u.setYear(1968);
-        u.setGender("M");
-        u.setMobilePhone("917-439-7193");
-        u.setRegistrationIp("192.168.112.231");
-        u.setActive(true);
-        
-        Address a = new Address();
-        a.setActive(true);
-        a.setCreated(now);
-        a.setUpdated(now);
-        a.setAddress1("324 Nelson Ave");
-        a.setAddress2("Frnt");
-        a.setCity("Staten Island");
-        a.setPostalCode("10308");
-        a.setState("NY");
-        a.setCountry("USA");
-        u.setAddress(a);
-        a.setUser(u);
-        
-        return u;
-    }   
 }

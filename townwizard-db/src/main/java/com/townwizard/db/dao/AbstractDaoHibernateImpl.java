@@ -1,10 +1,13 @@
 package com.townwizard.db.dao;
 
+import java.util.Date;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.townwizard.db.model.AbstractEntity;
+import com.townwizard.db.model.AuditableEntity;
 
 public class AbstractDaoHibernateImpl implements AbstractDao {
 
@@ -20,6 +23,10 @@ public class AbstractDaoHibernateImpl implements AbstractDao {
     }
     
     public <T extends AbstractEntity> void update(T entity) {
+        entity.setActive(true);
+        if(entity instanceof AuditableEntity) {
+            ((AuditableEntity) entity).setUpdated(new Date());
+        }
         getSession().update(entity);
     }
     

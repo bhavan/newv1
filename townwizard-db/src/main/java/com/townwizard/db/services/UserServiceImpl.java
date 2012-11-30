@@ -1,13 +1,13 @@
 package com.townwizard.db.services;
 
 import org.jasypt.util.password.PasswordEncryptor;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.townwizard.db.dao.UserDao;
 import com.townwizard.db.model.User;
+import com.townwizard.db.model.User.LoginType;
 
 @Component("userService")
 @Transactional
@@ -24,13 +24,13 @@ public class UserServiceImpl implements UserService {
     }
     
     @Override
-    public User getByEmail(String email) {
-        return userDao.getByEmail(email);
+    public User getByEmailAndLoginType(String email, LoginType loginType) {
+        return userDao.getByEmailAndLoginType(email, loginType);
     }
     
     @Override
     public User login(String email, String password) {
-        User user = userDao.getByEmail(email);
+        User user = userDao.getByEmailAndLoginType(email, LoginType.TOWNWIZARD);
         if(user != null) {
             if(passwordEncryptor.checkPassword(password, user.getPassword())) {
                 return user;

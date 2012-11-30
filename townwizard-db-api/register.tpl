@@ -82,6 +82,8 @@
                 if(response.gender) {
                   u.gender = response.gender.charAt(0).toUpperCase();
                 }
+                u.externalId = response.id;
+                u.loginType = "FACEBOOK";
                 tw_login_with(u);
               }
             );
