@@ -84,11 +84,11 @@ $data['_date'] = $temp[0];
 	   if (firstTime(thisPage())) {
 	      // this code only runs for first visit
 	     if((navigator.userAgent.match(/iphone/i)) || (navigator.userAgent.match(/ipad/i)) || (navigator.userAgent.match(/ipod/i))) {
-	  var r=confirm("Install iphone app on your device: Click ok to Install");
+	  var r=confirm("We have an iPhone app too! Click OK to install the app.");
 	   if (r==true){window.location = "<?php echo $var->iphone?>";}
-	     }
+	     } 
 	     else if (navigator.userAgent.match(/android/i)) {
-	     var r=confirm("Install android app on your device: Click ok to Install");
+	     var r=confirm("We have an Android app too! Click OK to install the app.");
 	     if (r==true){location.href="<?php echo $var->android?>";}
 	 }else {}
 	   }
