@@ -1,3 +1,67 @@
+#leftnav, #leftbutton, #rightnav, #rightbutton, #blueleftbutton, #bluerightbutton {
+    z-index: 5000;
+}
+#leftnav, #leftbutton, #blueleftbutton {
+    font-size: 12px;
+    font-weight: bold;
+    left: 9px;
+    position: absolute;
+}
+#leftnav, #leftbutton, #blueleftbutton {
+    top: 7px;
+}
+
+#leftnav a:first-child {
+    width: auto;
+    z-index: 2;
+}
+#leftnav a {
+    background: url("../images/leftArrow.png") no-repeat scroll 0 0 transparent;
+    color: #000000;
+    float: left;
+    font-size: 25px;
+    height: 37px;
+    margin-left: 2px;
+    padding-right: 4px;
+    width: 37px !important;
+    z-index: 3;
+}
+#leftnav a, #rightnav a, #leftbutton a, #rightbutton a, #blueleftbutton a, #bluerightbutton a {
+    color: #FFFFFF;
+    display: block;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
+}
+#leftnav a, #rightnav a, #leftbutton a, #rightbutton a, #blueleftbutton a, #bluerightbutton a {
+    height: 30px;
+    line-height: 30px;
+}
+
+#rightnav, #rightbutton, #bluerightbutton {
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    right: 9px;
+}
+
+#rightnav, #rightbutton, #bluerightbutton {
+    top: 7px;
+}
+
+#rightnav a:first-child {
+    z-index: 2;
+}
+#rightnav a {
+    background: url("../images/rightArrow.png") no-repeat scroll 0 0 transparent;
+    color: #000000;
+    font-size: 25px;
+    height: 37px;
+    margin-right: 2px;
+    padding-left: 4px;
+    width: 24px !important;
+    z-index: 3;
+}
+
 /*********NEW CSS*************/
 #content .pageitem {background: url("../images/groovepaper.png") repeat scroll 0 0 #FFFFFF;border: 1px solid #FFFFFF;border-radius: 10px;list-style: none outside none;padding: 0;margin: 5px;}
 .pageitem{padding:0;list-style:none;}
@@ -31,7 +95,22 @@ fieldset { border: 0; margin: 0; padding: 0; }
 #q1{cursor:pointer;text-align:center;margin-bottom:10px; clear:both;height: 25px;padding-left: 5px;}
 #q1 input[type="submit"] { background: none repeat scroll 0 0 #D90000; border: 0 none; border-radius: 6px 6px 6px 6px; color: #FFFFFF; float: left; font-family: 'Century Gothic',Arial,sans-serif; font-size: 12px; font-weight: bold; height: 20px; margin-left: 10px; text-transform: uppercase; padding-top: 2px;}
 #show,#date3 {background:url("../images/iphoneimg.png") no-repeat scroll 98% 20% transparent;border: 0 solid blue;height: 27px;margin: 0;padding: 0;width: 31px;cursor: pointer;}
-#title{color: #FFFFFF;display: inline-block;font-family: "Century Gothic",Arial,sans-serif;line-height: 1;margin: 5px 0 0;padding-right: 40px;text-shadow: 0 1px 2px #000000; font-size: 28px;font-weight: bold;}
+#title {
+    font-size: 16pt;
+    height: 44px;
+    line-height: 40px;
+    color: #FFFFFF;
+    font-weight: bold;
+    left: 0;
+    overflow: hidden;
+    padding: 0 10px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-overflow: ellipsis;
+    top: 0;
+    white-space: nowrap;
+}
 .textbox {border-top: 1px solid #878787;overflow: hidden;padding: 7px 4px 5px;position: relative;text-align: center;}
 .pageitem li:first-child, .pageitem li.form:first-child { border-top: 0 none;}
 .facebook{background: url("../images/iphoneimg.png") no-repeat scroll 0 100% transparent;height: 27px;width: 78px;}

@@ -51,7 +51,7 @@ if($CatId>0){
 <style>
 
 </style>
-<?php include("../../ga.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT']."/ga.php"); ?>
 </head>
 
 <body>
