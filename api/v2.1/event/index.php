@@ -72,12 +72,12 @@ if(isset($catId) && $catId != 0){
 				$lon2				= $rs_loc_tbl['geolon'];
 			}
 			/* Creating Jason Array variable $data */
-			$value['id'] 					= $rs_ev_tbl['rp_id'];
+			$value['id'] 					= (int)$rs_ev_tbl['rp_id'];
 			$value['title'] 				= utf8_encode($rs_ev_tbl['summary']);
 			$value['category'] 				= utf8_encode($rs_ev_tbl['title']);
-			$value['category_id']			= $rs_ev_tbl['catid'];
-			$value['location']['latitude']	= $lat2;
-			$value['location']['longitude']	= $lon2;
+			$value['category_id']			= (int)$rs_ev_tbl['catid'];
+			$value['location']['latitude']	= (float)$lat2;
+			$value['location']['longitude']	= (float)$lon2;
 			$value['location']['zip']		= $rs_loc_tbl['postcode'];
 			$value['location']['address']	= $rs_loc_tbl['street'];
 			$value['location']['name']		= $rs_loc_tbl['title'];
@@ -88,7 +88,7 @@ if(isset($catId) && $catId != 0){
 			}else{
 				$value['location']['distance'] = '';
 			}
-			$value['is_featured_event']		= $rs_ev_tbl['value'];
+			$value['is_featured_event']		= (int)$rs_ev_tbl['value'];
 			$value['description']			= $rs_ev_tbl['description'];
 			$value['image_url']				= "";
 			$value['start_time']			= $rs_ev_tbl['startrepeat'];
@@ -101,8 +101,8 @@ if(isset($catId) && $catId != 0){
 	    	'data' => $data,
 	    	'meta' => array(
 	        'total' => $num_records,
-	        'limit' => $limit != 0?$limit:$num_records,
-	        'offset' => $offset != 0?$offset:0
+	        'limit' => $limit != 0?(int)$limit:(int)$num_records,
+	        'offset' => $offset != 0?(int)$offset:(int)0
 	    	)
 		);
 		//echo "<pre>";
@@ -159,12 +159,12 @@ if(isset($catId) && $catId != 0){
 			}
 
 			// Creating Jason Array variable $data	
-			$data['id'] 					= $rs_ev_tbl['rp_id'];
+			$data['id'] 					= (int)$rs_ev_tbl['rp_id'];
 			$data['title'] 					= utf8_encode($rs_ev_tbl['summary']);
 			$data['category'] 				= utf8_encode($rs_ev_tbl['title']);
-			$data['category_id']			= $rs_ev_tbl['catid'];
-			$data['location']['latitude']	= $lat2;
-			$data['location']['longitude']	= $lon2;
+			$data['category_id']			= (int)$rs_ev_tbl['catid'];
+			$data['location']['latitude']	= (float)$lat2;
+			$data['location']['longitude']	= (float)$lon2;
 			$data['location']['zip']		= $rs_loc_tbl['postcode'];
 			$data['location']['address']	= $rs_loc_tbl['street'];
 			$data['location']['name']		= $rs_loc_tbl['title'];
@@ -177,7 +177,7 @@ if(isset($catId) && $catId != 0){
 				$data['location']['distance'] = '';
 			}
 			
-			$data['is_featured_event']		= $rs_ev_tbl['value'];
+			$data['is_featured_event']		= (int)$rs_ev_tbl['value'];
 			$data['description']			= $rs_ev_tbl['description'];
 			$data['image_url']				= "";
 			$data['start_time']				= $rs_ev_tbl['startrepeat'];
@@ -238,12 +238,12 @@ if(isset($catId) && $catId != 0){
 				$lon2				= $rs_loc_tbl['geolon'];
 			}
 			/* Creating Jason Array variable $data */
-			$value['id'] 					= $rs_ev_tbl['rp_id'];
+			$value['id'] 					= (int)$rs_ev_tbl['rp_id'];
 			$value['title'] 				= utf8_encode($rs_ev_tbl['summary']);
 			$value['category'] 				= utf8_encode($rs_ev_tbl['title']);
-			$value['category_id']			= $rs_ev_tbl['catid'];
-			$value['location']['latitude']	= $lat2;
-			$value['location']['longitude']	= $lon2;
+			$value['category_id']			= (int)$rs_ev_tbl['catid'];
+			$value['location']['latitude']	= (float)$lat2;
+			$value['location']['longitude']	= (float)$lon2;
 			$value['location']['zip']		= $rs_loc_tbl['postcode'];
 			$value['location']['address']	= $rs_loc_tbl['street'];
 			$value['location']['name']		= $rs_loc_tbl['title'];
@@ -254,9 +254,12 @@ if(isset($catId) && $catId != 0){
 				$value['location']['distance']	= round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1');
 			}else{
 				$value['location']['distance'] = '';
+				/* For Bhavan to set distanc as N/A */
+				// $value['location']['distance'] = "N/A";
 			}
 			
-			$value['is_featured_event']		= $rs_ev_tbl['value'];
+			
+			$value['is_featured_event']		= (int)$rs_ev_tbl['value'];
 			$value['description']			= $rs_ev_tbl['description'];
 			$value['image_url']				= "";
 			$value['start_time']			= $rs_ev_tbl['startrepeat'];
@@ -269,8 +272,8 @@ if(isset($catId) && $catId != 0){
 	    	'data' => $data,
 	    	'meta' => array(
 	        'total' => $num_records,
-	        'limit' => $limit != 0?$limit:$num_records,
-			'offset' => $offset != 0?$offset:0
+	        'limit' => $limit != 0?(int)$limit:(int)$num_records,
+			'offset' => $offset != 0?(int)$offset:(int)0
 	    	)
 		);
 		//echo "<pre>";
