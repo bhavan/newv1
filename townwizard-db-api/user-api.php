@@ -4,6 +4,7 @@ define("TOWNWIZARD_DB_USERS_URL", "http://tw-db.com/users");
 define("TOWNWIZARD_DB_USER_LOGIN_URL", "http://tw-db.com/users/login");
 define("TOWNWIZARD_DB_USER_LOGIN_WITH_URL", "http://tw-db.com/users/loginwith");
 define("TOWNWIZARD_DB_FB_LOGIN_URL", "http://tw-db.com/login/fb");
+define("TOWNWIZARD_DB_RATINGS_URL", "http://tw-db.com/ratings");
 
 /***
     Takes a user registration POST form data, encodes it in JSON and
@@ -55,6 +56,61 @@ function tw_create_user($post) {
     }
 
     return $result;
+}
+
+/***
+    Takes POST form data for rating (value, site id, user id, content id, and content type)
+    and sends JSON to the service.
+
+    Return:
+      - "success" on HTTP code 201 (created)
+      - "failure" on HTTP status 400 (bad request)
+      - error message on HTTP status (500) or when the service is down
+***/
+function tw_create_rating($post) {
+    $parameters = array();
+    $parameters['userId'] = $_SESSION['tw_user']->id;
+    $parameters['siteId'] = $_SESSION['c_db_id'];
+    $parameters['contentId'] = $post['contentId'];
+    $parameters['contentType'] = $post['contentType'];
+    $parameters['value'] = $post['value'];
+
+    $json = json_encode($parameters);
+
+    list($status, $response_msg) = _tw_post_json(TOWNWIZARD_DB_RATINGS_URL, $json);
+    
+    if($status == 500) {
+        $result = $response_msg; //error
+    } else if ($status == 0) {
+        $result = "Server down";
+    } else if ($status == 400) {
+        $result = "failure";
+    } else {
+        $result = "success";
+    }
+
+    return $result;
+}
+
+/***
+    Get rating for content id and content type
+
+    Return:
+     - rating object on  HTTP status 200
+     - NULL in other cases
+***/
+function tw_get_rating($content_id, $content_type) {
+    $user_id = $_SESSION['tw_user']->id;
+    $site_id = $_SESSION['c_db_id'];
+    $id = $content_type.'/'.$site_id.'/'.$user_id.'/'.$content_id;    
+    list($status, $response_msg) = _tw_get_json(TOWNWIZARD_DB_RATINGS_URL, $id);
+    if($status == 200) {
+        $ratings = json_decode($response_msg);
+        if(!empty($ratings)) {
+            return $ratings[0]->value;
+        }
+    }
+    return NULL;
 }
 
 /***

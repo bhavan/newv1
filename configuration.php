@@ -80,6 +80,7 @@ class JConfig {
 			
 			// Assigning the Slave DB information to PHP SESSION variable 	
 	
+			$_SESSION['c_db_id']       = $row['mid'];
 			$_SESSION['c_db_name']     = $row['db_name'];
 			$_SESSION['c_db_user']     = $row['db_user'];
 			$_SESSION['c_db_password'] = $row['db_password'];

@@ -59,7 +59,7 @@
             } else if(response == 'conflict') {
                 $('#registration_error').html('This email is already registered').show();
             } else {
-                $('#login_error').html(response).show();
+                $('#registration_error').html(response).show();
             }
         }
     });
