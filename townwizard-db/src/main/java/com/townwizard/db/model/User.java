@@ -56,7 +56,7 @@ public class User extends AuditableEntity {
     @Column(name="login_type_id")
     @Enumerated(EnumType.ORDINAL)
     private LoginType loginType;
-    private Integer externalId;
+    private Long externalId;
     
     @OneToOne(mappedBy = "user", cascade = {CascadeType.ALL})
     private Address address;
@@ -130,10 +130,10 @@ public class User extends AuditableEntity {
     public void setLoginType(LoginType loginType) {
         this.loginType = loginType;
     }
-    public Integer getExternalId() {
+    public Long getExternalId() {
         return externalId;
     }
-    public void setExternalId(Integer externalId) {
+    public void setExternalId(Long externalId) {
         this.externalId = externalId;
     }
     @JsonIgnore
@@ -161,7 +161,7 @@ public class User extends AuditableEntity {
         //"updated_time":"2012-11-27T20:05:07+0000"}
         
         User u = new User();
-        u.setExternalId(new Integer((String)fbUser.get("id")));
+        u.setExternalId(new Long((String)fbUser.get("id")));
         u.setEmail((String)fbUser.get("email"));
         u.setFirstName((String)fbUser.get("first_name"));
         u.setLastName((String)fbUser.get("last_name"));
