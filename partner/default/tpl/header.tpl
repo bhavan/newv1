@@ -6,7 +6,11 @@
 </div> <!-- banner -->
 <div style="float:right;">
     <?php if($_SESSION['tw_user_name']) { ?>
-        <?php echo "Welcome, {$_SESSION['tw_user_name']}!"; ?>
+        <?php echo "Welcome, {$_SESSION['tw_user_name']}!"; ?><br/>
+        <?php $user = $_SESSION['tw_user']; ?>
+        <a href="<?php echo 'http://www.facebook.com/'.$user->externalId; ?>">
+            <img src="<?php echo 'http://graph.facebook.com/'.$user->externalId.'/picture'; ?>"/>
+        </a><br/>
         <a href="javascript:void(0)" onclick="tw_logout();">Sign out</a>
     <?php }  else { ?>
         <a href="javascript:void(0)" onclick="$('#login_dialog').hide();$('#registration_dialog').show();">Register</a> | 

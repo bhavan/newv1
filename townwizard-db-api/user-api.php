@@ -127,6 +127,7 @@ function tw_login($post) {
 ***/
 function tw_logout() {
     unset($_SESSION['tw_user_name']);
+    unset($_SESSION['tw_user']);
     return "success";
 }
 
@@ -141,6 +142,7 @@ function _tw_login($user) {
         $user_name = substr($user -> email, 0, strpos($user -> email, '@'));
     }
     $_SESSION['tw_user_name'] = $user_name;
+    $_SESSION['tw_user'] = $user;
 }
 
 
