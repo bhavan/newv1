@@ -16,7 +16,6 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.module.SimpleModule;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.townwizard.db.model.AbstractEntity;
 import com.townwizard.db.services.UserService;
 import com.townwizard.db.util.ExceptionHandler;
 import com.townwizard.db.util.jackson.NullStringDeserializer;
@@ -46,7 +45,7 @@ public abstract class ResourceSupport {
         }
     } 
     
-    protected <T extends AbstractEntity> T parseJson(Class<T> entityClass, InputStream is) {
+    protected <T> T parseJson(Class<T> entityClass, InputStream is) {
         T entity = null;
         try {
             entity = objectMapper.readValue(is, entityClass);

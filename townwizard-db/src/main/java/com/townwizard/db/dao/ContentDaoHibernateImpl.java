@@ -14,8 +14,8 @@ public class ContentDaoHibernateImpl extends AbstractDaoHibernateImpl implements
                 "from Content where " + 
                 "externalId = :external_id and siteId = :site_id and contentType = :type and active = true")
                 .setLong("external_id", externalContentId)
-                .setInteger("siate_id", siteId)
-                .setEntity("type", contentType).uniqueResult();        
+                .setInteger("site_id", siteId)
+                .setInteger("type", contentType.getId()).uniqueResult();        
     }
     
 }

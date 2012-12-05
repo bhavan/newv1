@@ -1,10 +1,8 @@
 package com.townwizard.db.resources;
 
-import java.io.StringReader;
 import java.util.List;
 
 import org.apache.http.StatusLine;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.junit.Assert;
@@ -207,17 +205,6 @@ public class UserResourceTest extends ResourceTest {
                 usersEqual(createdUser, userFromJson));
     }
     
-    private User getUserByEmailFromTheService(String email) throws Exception {
-        String response = executeGetRequest("/users/1/" + email);
-        return userFromJson(response);
-    }
-    
-    private User userFromJson(String json) throws Exception {
-        ObjectMapper m = new ObjectMapper();
-        User u = m.readValue(new StringReader(json), User.class);
-        return u;
-    }
-    
     private User getUserByLastNameFromDB(String lastName) {
         Session session = null;
         try {
@@ -232,25 +219,6 @@ public class UserResourceTest extends ResourceTest {
                 session.close();
             }
         }        
-    }
-    
-    private void deleteUserByEmail(String email) {
-        Session session = null;
-        try {
-            session = getSessionFactory().openSession();
-            session.beginTransaction();
-            Query q = session.createQuery("from User where email = :email").setString("email", email);
-            @SuppressWarnings("unchecked")
-            List<User> users = q.list();
-            for(User u : users) {
-              session.delete(u);
-            }
-            session.getTransaction().commit();
-        } finally {
-            if(session != null) {
-                session.close();
-            }
-        }
     }
     
     private void deleteUserByLastName(String lastName) {

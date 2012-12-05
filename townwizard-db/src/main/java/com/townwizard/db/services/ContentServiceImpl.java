@@ -21,7 +21,7 @@ public class ContentServiceImpl implements ContentService {
     private RatingDao ratingDao;
 
     @Override
-    public void saveUserRating(Long userId, Integer siteId,
+    public Long saveUserRating(Long userId, Integer siteId,
             ContentType contentType, Long externalContentId, Float value) {
         Content c = contentDao.getContent(siteId, contentType, externalContentId);
         if(c == null) {
@@ -32,11 +32,13 @@ public class ContentServiceImpl implements ContentService {
         u.setId(userId);
         Rating r = ratingDao.getRating(u, c);
         if(r == null) {
-            ratingDao.create(createRating(u, c, value));
+            r = createRating(u, c, value);
+            ratingDao.create(r);
         } else {
             r.setValue(new Float(value));
             ratingDao.update(r);
         }
+        return r == null ? null : r.getId();
     }
     
     @Override
@@ -54,6 +56,16 @@ public class ContentServiceImpl implements ContentService {
         }
         return rating;
     }
+    
+    @Override
+    public Float[] getUserRatings(Long userId, Integer siteId,
+            ContentType contentType, Long[] externalContentIds) {
+        Float[] retVal = new Float[externalContentIds.length];
+        for(int i = 0; i < externalContentIds.length; i++) {
+            retVal[i] = getUserRating(userId, siteId, contentType, externalContentIds[i]);
+        }
+        return retVal;
+    } 
 
     @Override
     public Float getAverageRating(Integer siteId, ContentType contentType,
@@ -81,5 +93,5 @@ public class ContentServiceImpl implements ContentService {
         r.setValue(value);
         return r;
     }
-
+    
 }

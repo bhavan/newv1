@@ -34,4 +34,5 @@ public class Rating extends AuditableEntity {
     public void setValue(Float value) {
         this.value = value;
     }
+
 }

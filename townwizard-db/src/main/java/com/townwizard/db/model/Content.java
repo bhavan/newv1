@@ -21,7 +21,7 @@ public class Content extends AbstractEntity {
         }
         
         public int getId() {return id;}
-        public String getName() {return name;}
+        public String getName() {return name;}        
     }    
     
     private static final long serialVersionUID = -5577386542915432817L;

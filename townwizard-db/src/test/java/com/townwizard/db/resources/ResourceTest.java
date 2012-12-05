@@ -1,5 +1,6 @@
 package com.townwizard.db.resources;
 
+import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +17,15 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.glassfish.grizzly.http.server.HttpServer;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
 import com.townwizard.db.application.Standalone;
+import com.townwizard.db.model.User;
 import com.townwizard.db.test.TestSupport;
 import com.townwizard.db.util.HttpUtils;
 
@@ -88,6 +93,36 @@ public abstract class ResourceTest extends TestSupport {
             return null;
         }
     }
+    
+    protected User getUserByEmailFromTheService(String email) throws Exception {
+        String response = executeGetRequest("/users/1/" + email);
+        return userFromJson(response);
+    }
+    
+    protected User userFromJson(String json) throws Exception {
+        ObjectMapper m = new ObjectMapper();
+        User u = m.readValue(new StringReader(json), User.class);
+        return u;
+    }
+    
+    protected void deleteUserByEmail(String email) {
+        Session session = null;
+        try {
+            session = getSessionFactory().openSession();
+            session.beginTransaction();
+            Query q = session.createQuery("from User where email = :email").setString("email", email);
+            @SuppressWarnings("unchecked")
+            List<User> users = q.list();
+            for(User u : users) {
+              session.delete(u);
+            }
+            session.getTransaction().commit();
+        } finally {
+            if(session != null) {
+                session.close();
+            }
+        }
+    }    
     
     private static boolean isServiceRunning() {
         try {
