@@ -1,6 +1,5 @@
 package com.townwizard.db.model;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.CascadeType;
@@ -153,23 +152,32 @@ public class User extends AuditableEntity {
         return this;
     }
     
-    public Map<String, String> asParametersMap() {
-        Map<String, String> map = new HashMap<>();
-        map.put("email", getEmail());
-        map.put("password", getPassword());
-        if(getUsername() != null) map.put("username", getUsername());
-        if(getFirstName() != null) map.put("first_name", getFirstName());
-        if(getLastName() != null) map.put("last_name", getLastName());
-        if(getYear() != null) map.put("year", getYear().toString());
-        if(getGender() != null) map.put("gender", getGender());
-        if(getMobilePhone() != null) map.put("mobile_phone", getMobilePhone());
-        if(getRegistrationIp() != null) map.put("registration_ip", getRegistrationIp());
-        if(getAddress() != null) {
-            map.putAll(getAddress().asParametersMap());
+    public static User fromFbUser(Map<String, Object> fbUser) throws NumberFormatException {
+        //fbUser represents the following JSON
+        
+        //{"id":"1205619426","name":"Vladimir Mazheru","first_name":"Vladimir","last_name":"Mazheru",
+        //"link":"http:\/\/www.facebook.com\/vmazheru","username":"vmazheru","gender":"male",
+        //"email":"v_mazheru\u0040yahoo.com","timezone":-5,"locale":"en_US","verified":true,
+        //"updated_time":"2012-11-27T20:05:07+0000"}
+        
+        User u = new User();
+        u.setExternalId(new Integer((String)fbUser.get("id")));
+        u.setEmail((String)fbUser.get("email"));
+        u.setFirstName((String)fbUser.get("first_name"));
+        u.setLastName((String)fbUser.get("last_name"));
+        u.setUsername((String)fbUser.get("username"));
+        String gender = (String)fbUser.get("gender");
+        if(gender != null && !gender.isEmpty()) {
+            switch(gender.charAt(0)) {
+            case 'm': u.setGender("M"); break;
+            case 'f': u.setGender("F"); break;
+            }
         }
-        return map;
+        u.setLoginType(LoginType.FACEBOOK);
+        
+        return u;
     }
-    
+
     @Override
     public String toString() {
         return "User [username=" + username + ", email=" + email

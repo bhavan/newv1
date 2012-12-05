@@ -1,8 +1,9 @@
 <?php
 
-define("TOWNWIZARD_DB_USERS_URL", "http://localhost:8080/tw/users");
-define("TOWNWIZARD_DB_USER_LOGIN_URL", "http://localhost:8080/tw/users/login");
-define("TOWNWIZARD_DB_USER_LOGIN_WITH_URL", "http://localhost:8080/tw/users/loginwith");
+define("TOWNWIZARD_DB_USERS_URL", "http://tw-db.com/users");
+define("TOWNWIZARD_DB_USER_LOGIN_URL", "http://tw-db.com/users/login");
+define("TOWNWIZARD_DB_USER_LOGIN_WITH_URL", "http://tw-db.com/users/loginwith");
+define("TOWNWIZARD_DB_FB_LOGIN_URL", "http://tw-db.com/login/fb");
 
 /***
     Takes a user registration POST form data, encodes it in JSON and
@@ -70,6 +71,14 @@ function tw_get_user($id) {
         return $user;
     }
     return NULL;
+}
+
+/***
+    Gets a user from the service by id, and put the users' name to the session.
+***/
+function tw_login_with_id($id) {
+    $user = tw_get_user($id);
+    _tw_login($user);
 }
 
 /***

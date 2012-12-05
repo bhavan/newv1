@@ -132,7 +132,6 @@
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpclient</artifactId>
       <version>4.2.2</version>
-      <scope>test</scope>
     </dependency>     
     <dependency>
       <groupId>mysql</groupId>

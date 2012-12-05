@@ -2,6 +2,8 @@ package com.townwizard.db.resources;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
@@ -35,6 +37,15 @@ public abstract class ResourceSupport {
                 .type(MediaType.TEXT_PLAIN).build());
     }
     
+    protected void handleGenericException(Exception e) {
+        if(!(e instanceof WebApplicationException)) {
+            ExceptionHandler.handle(e);
+            sendServerError(e);
+        } else {
+            throw (WebApplicationException)e;
+        }
+    } 
+    
     protected <T extends AbstractEntity> T parseJson(Class<T> entityClass, InputStream is) {
         T entity = null;
         try {
@@ -50,6 +61,11 @@ public abstract class ResourceSupport {
               return null;
           }
         return entity;
+    }
+    
+    @SuppressWarnings("unchecked")
+    protected Map<String, Object> parseJson(String json) throws IOException, JsonProcessingException {      
+        return objectMapper.readValue(json, HashMap.class);
     }
     
     private static ObjectMapper initializeObjectMapper() {

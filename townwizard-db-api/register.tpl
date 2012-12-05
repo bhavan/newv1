@@ -45,9 +45,6 @@
 </form>
 </div>
 
-<div id="fb-root"></div>
-<script src="http://connect.facebook.net/en_US/all.js"></script>
-
 <script>
   function tw_register() {
     $.ajax({
@@ -69,41 +66,7 @@
   }
 
   function fb_login() {
-    FB.login(function(response) {
-        if (response.authResponse) {
-            var t = response.authResponse.accessToken;
-            FB.api('/me?fields=first_name,last_name,username,gender,locale,email,birthday&access_token='+t,
-              function(response) {
-                var u = new Object();
-                u.email = response.email;
-                u.firstName = response.first_name;
-                u.lastName = response.last_name;
-                u.username = response.username;
-                if(response.gender) {
-                  u.gender = response.gender.charAt(0).toUpperCase();
-                }
-                u.externalId = response.id;
-                u.loginType = "FACEBOOK";
-                tw_login_with(u);
-              }
-            );
-        } else {
-            /*
-            FB.getLoginStatus(function(response) {
-              alert(printJSON(response));
-              if (response.status === 'connected') {
-                fb_login();
-              } else if (response.status === 'not_authorized') {
-                fb_login();
-              } else {
-                fb_login();
-              }
-            });            
-            FB.logout();
-            tw_logout();
-            */
-        }
-    }, {scope:'email'}); 
+    window.open("/townwizard-db-api/fb-login.php", "_blank", "height=200,width=400,status=no,toolbar=no,menubar=no");
   }
 
   function tw_login_with(user_data) {
@@ -145,23 +108,5 @@
         }
     });
   }
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '389646214446473',
-      channelUrl : '//demo.townwizard.com/channel.html',
-      status     : true,
-      cookie     : true,
-      xfbml      : true
-    });
-  };
   
-  (function(d){
-    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement('script'); js.id = id; js.async = true;
-    js.src = "//connect.facebook.net/en_US/all.js";
-    ref.parentNode.insertBefore(js, ref);
-  }(document));
-
 </script>

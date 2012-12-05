@@ -1,10 +1,5 @@
 package com.townwizard.db.resources;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +22,7 @@ import org.junit.BeforeClass;
 
 import com.townwizard.db.application.Standalone;
 import com.townwizard.db.test.TestSupport;
+import com.townwizard.db.util.HttpUtils;
 
 public abstract class ResourceTest extends TestSupport {
     
@@ -49,16 +45,7 @@ public abstract class ResourceTest extends TestSupport {
     }
     
     protected String executeGetRequest(String path) {
-        try {
-            HttpClient c = new DefaultHttpClient();
-            HttpGet get = new HttpGet(getWebServicesUrlBase() + path);
-            HttpResponse response = c.execute(get);
-            String result = copyToString(response.getEntity().getContent());
-            return result;
-        } catch (Throwable e) {
-            e.printStackTrace();
-            return null;
-        }
+        return HttpUtils.executeGetRequest(getWebServicesUrlBase() + path);
     }
 
     protected StatusLine executePostRequest(String path, HttpEntity entity, String contentType) {
@@ -100,16 +87,6 @@ public abstract class ResourceTest extends TestSupport {
             e.printStackTrace();
             return null;
         }
-    }
-    
-    private String copyToString(InputStream is) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(is));
-        StringWriter out = new StringWriter();
-        String s;
-        while((s = in.readLine()) != null) {
-            out.append(s);
-        }
-        return out.toString();
     }
     
     private static boolean isServiceRunning() {

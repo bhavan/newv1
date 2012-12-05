@@ -19,7 +19,6 @@ import org.springframework.stereotype.Component;
 import com.townwizard.db.model.User;
 import com.townwizard.db.model.User.LoginType;
 import com.townwizard.db.services.UserService;
-import com.townwizard.db.util.ExceptionHandler;
 
 @Component
 @Path("/users")
@@ -99,16 +98,8 @@ public class UserResource extends ResourceSupport {
     public User loginWith(InputStream is) {
         User u = null;        
         try {
-            u = parseJson(User.class, is); 
-            User fromDb = userService.getByEmailAndLoginType(u.getEmail(), u.getLoginType()); 
-            if(fromDb != null) {
-                u.setId(fromDb.getId());
-                u.setCreated(fromDb.getCreated());
-                u.setActive(fromDb.getActive());
-                userService.update(u);
-            } else {
-                userService.create(u);
-            }
+            u = parseJson(User.class, is);
+            createOrUpdateExternalUser(u);
         } catch (Exception e) {
             handleGenericException(e);
         }
@@ -121,7 +112,7 @@ public class UserResource extends ResourceSupport {
         }
         
         return u.asJsonView();
-    }    
+    }
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -163,15 +154,17 @@ public class UserResource extends ResourceSupport {
         
         return Response.status(Status.CREATED).entity(user).build();
     }
-
     
-    private void handleGenericException(Exception e) {
-        if(!(e instanceof WebApplicationException)) {
-            ExceptionHandler.handle(e);
-            sendServerError(e);
+    
+    protected void createOrUpdateExternalUser(User u) {
+        User fromDb = userService.getByEmailAndLoginType(u.getEmail(), u.getLoginType()); 
+        if(fromDb != null) {
+            u.setId(fromDb.getId());
+            u.setCreated(fromDb.getCreated());
+            u.setActive(fromDb.getActive());
+            userService.update(u);
         } else {
-            throw (WebApplicationException)e;
+            userService.create(u);
         }
     }
-
 }
