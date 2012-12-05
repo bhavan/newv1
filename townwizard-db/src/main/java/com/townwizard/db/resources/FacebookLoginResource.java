@@ -156,6 +156,9 @@ public class FacebookLoginResource extends UserResource {
     }
     
 
+    
+    //TODO: implement login request caching with DB table instead of hashmap
+    //in order to remove state handling from the application
     private static final Map<String, LoginRequest> LOGIN_REQUEST_CACHE= new HashMap<>();
     private static final long LOGIN_REQUEST_CACHE_TTL = 30 * 60 * 1000; //30 minutes
     private static final long LOGIN_REQUEST_CACHE_MAX_SIZE = 1000; //30 minutes
