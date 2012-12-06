@@ -102,9 +102,9 @@
   function tw_logout() {
     $.ajax({
         url: "townwizard-db-api/logout.php",
-        type: "get",                
-        success: function() {            
-            window.location.href = window.location.href;
+        type: "get",
+        complete: function() {
+          window.location.reload();
         }
     });
   }

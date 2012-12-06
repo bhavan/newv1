@@ -181,7 +181,7 @@ function tw_login($post) {
 /***
     Remove user name from the session, and return "success".
 ***/
-function tw_logout() {
+function tw_logout() {    
     unset($_SESSION['tw_user_name']);
     unset($_SESSION['tw_user']);
     return "success";
