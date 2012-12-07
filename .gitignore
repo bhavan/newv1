@@ -1,9 +1,5 @@
 v2.clpprj
-.settings/
 .buildpath
-.project
-.classpath
-target/
 .DS_Store
 error_example1.log
 twcontainerapp/logs/access.log
