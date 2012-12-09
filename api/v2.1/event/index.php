@@ -208,10 +208,10 @@ if(isset($catId) && $catId != 0){
 	}else{
 		$data["error"] = "Not Found";
 	}	
-	echo "<pre>";
-	print_r($data);
-	//header('Content-type: application/json');
-	//echo json_encode($data);
+	//echo "<pre>";
+	//print_r($data);
+	header('Content-type: application/json');
+	echo json_encode($data);
 /*------------------------------------*/
 
 }else{
