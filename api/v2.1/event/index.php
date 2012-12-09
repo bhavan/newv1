@@ -63,6 +63,21 @@ if(isset($catId) && $catId != 0){
 		/* Looping for Event Data */
 		while($rs_ev_tbl = mysql_fetch_array($result)){
 		
+			//Creating Image array from Event description
+			$imgArray = explode('<img src="',$rs_ev_tbl['description']);
+			$evImageArray = array();
+			$singleImage = '';
+			
+			for($i=0;$i<count($imgArray);$i++){
+				if(strstr($imgArray[$i],'" />',true) != ''){
+					if($singleImage == '')
+						$singleImage 	= strstr($imgArray[$i],'" />',true); // As of PHP 5.3.0
+					else
+						$evImageArray[] = strstr($imgArray[$i],'" />',true); // As of PHP 5.3.0	
+						
+				}	
+			}
+			
 			/* Location table */
 			if ((int) ($rs_ev_tbl['location'])) {
 				$loc_qry = "select * from jos_jev_locations where loc_id=".$rs_ev_tbl['location'];		
@@ -90,7 +105,7 @@ if(isset($catId) && $catId != 0){
 			}
 			$value['is_featured_event']		= (int)$rs_ev_tbl['value'];
 			$value['description']			= $rs_ev_tbl['description'];
-			$value['image_url']				= "";
+			$value['image_url']				= $singleImage;
 			$value['start_time']			= $rs_ev_tbl['startrepeat'];
 			$value['end_time']				= $rs_ev_tbl['endrepeat'];
 			
@@ -143,10 +158,16 @@ if(isset($catId) && $catId != 0){
 			//Creating Image array from Event description
 			$imgArray = explode('<img src="',$rs_ev_tbl['description']);
 			$evImageArray = array();
+			$singleImage = '';
 			
 			for($i=0;$i<count($imgArray);$i++){
-				if(strstr($imgArray[$i],'" />',true) != '')
-					$evImageArray[] = strstr($imgArray[$i],'" />',true); // As of PHP 5.3.0
+				if(strstr($imgArray[$i],'" />',true) != ''){
+					if($singleImage == '')
+						$singleImage 	= strstr($imgArray[$i],'" />',true); // As of PHP 5.3.0
+					else
+						$evImageArray[] = strstr($imgArray[$i],'" />',true); // As of PHP 5.3.0	
+						
+				}	
 			}	
 				
 			// Location table
@@ -179,7 +200,7 @@ if(isset($catId) && $catId != 0){
 			
 			$data['is_featured_event']		= (int)$rs_ev_tbl['value'];
 			$data['description']			= $rs_ev_tbl['description'];
-			$data['image_url']				= "";
+			$data['image_url']				= $singleImage;
 			$data['start_time']				= $rs_ev_tbl['startrepeat'];
 			$data['end_time']				= $rs_ev_tbl['endrepeat'];
 			$data['images']					= $evImageArray;
@@ -187,10 +208,10 @@ if(isset($catId) && $catId != 0){
 	}else{
 		$data["error"] = "Not Found";
 	}	
-	//echo "<pre>";
-	//print_r($data);
-	header('Content-type: application/json');
-	echo json_encode($data);
+	echo "<pre>";
+	print_r($data);
+	//header('Content-type: application/json');
+	//echo json_encode($data);
 /*------------------------------------*/
 
 }else{
@@ -229,6 +250,21 @@ if(isset($catId) && $catId != 0){
 		/* Looping for Event Data */
 		while($rs_ev_tbl = mysql_fetch_array($result)){
 			
+			//Creating Image array from Event description
+			$imgArray = explode('<img src="',$rs_ev_tbl['description']);
+			$evImageArray = array();
+			$singleImage = '';
+			
+			for($i=0;$i<count($imgArray);$i++){
+				if(strstr($imgArray[$i],'" />',true) != ''){
+					if($singleImage == '')
+						$singleImage 	= strstr($imgArray[$i],'" />',true); // As of PHP 5.3.0
+					else
+						$evImageArray[] = strstr($imgArray[$i],'" />',true); // As of PHP 5.3.0	
+						
+				}	
+			}
+			
 			/* Location table */
 			if ((int) ($rs_ev_tbl['location'])) {
 				$loc_qry = "select * from jos_jev_locations where loc_id=".$rs_ev_tbl['location'];		
@@ -261,7 +297,7 @@ if(isset($catId) && $catId != 0){
 			
 			$value['is_featured_event']		= (int)$rs_ev_tbl['value'];
 			$value['description']			= $rs_ev_tbl['description'];
-			$value['image_url']				= "";
+			$value['image_url']				= $singleImage;
 			$value['start_time']			= $rs_ev_tbl['startrepeat'];
 			$value['end_time']				= $rs_ev_tbl['endrepeat'];
 			
