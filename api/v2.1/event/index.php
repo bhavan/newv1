@@ -104,7 +104,7 @@ if(isset($catId) && $catId != 0){
 				$value['location']['distance'] = '';
 			}
 			$value['is_featured_event']		= (int)$rs_ev_tbl['value'];
-			$value['description']			= $rs_ev_tbl['description'];
+			$value['description']			= utf8_encode($rs_ev_tbl['description']);
 			$value['image_url']				= $singleImage;
 			$value['start_time']			= $rs_ev_tbl['startrepeat'];
 			$value['end_time']				= $rs_ev_tbl['endrepeat'];
@@ -199,7 +199,7 @@ if(isset($catId) && $catId != 0){
 			}
 			
 			$data['is_featured_event']		= (int)$rs_ev_tbl['value'];
-			$data['description']			= $rs_ev_tbl['description'];
+			$data['description']			= utf8_encode($rs_ev_tbl['description']);
 			$data['image_url']				= $singleImage;
 			$data['start_time']				= $rs_ev_tbl['startrepeat'];
 			$data['end_time']				= $rs_ev_tbl['endrepeat'];
@@ -296,7 +296,7 @@ if(isset($catId) && $catId != 0){
 			
 			
 			$value['is_featured_event']		= (int)$rs_ev_tbl['value'];
-			$value['description']			= $rs_ev_tbl['description'];
+			$value['description']			= utf8_encode($rs_ev_tbl['description']);
 			$value['image_url']				= $singleImage;
 			$value['start_time']			= $rs_ev_tbl['startrepeat'];
 			$value['end_time']				= $rs_ev_tbl['endrepeat'];
