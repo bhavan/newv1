@@ -5,6 +5,7 @@ define("TOWNWIZARD_DB_USER_LOGIN_URL", "http://tw-db.com/users/login");
 define("TOWNWIZARD_DB_USER_LOGIN_WITH_URL", "http://tw-db.com/users/loginwith");
 define("TOWNWIZARD_DB_FB_LOGIN_URL", "http://tw-db.com/login/fb");
 define("TOWNWIZARD_DB_RATINGS_URL", "http://tw-db.com/ratings");
+define("TOWNWIZARD_DB_RSVPS_URL", "http://tw-db.com/rsvps");
 
 /***
     Takes a user registration POST form data, encodes it in JSON and
@@ -80,7 +81,7 @@ function tw_create_rating($post) {
     list($status, $response_msg) = _tw_post_json(TOWNWIZARD_DB_RATINGS_URL, $json);
     
     if($status == 500) {
-        $result = $response_msg; //error
+        $result = $response_msg;
     } else if ($status == 0) {
         $result = "Server down";
     } else if ($status == 400) {
@@ -110,6 +111,98 @@ function tw_get_rating($content_id, $content_type) {
             return $ratings[0]->value;
         }
     }
+    return NULL;
+}
+
+/***
+    Takes POST form data for rsvp (value, site id, user id, and event id)
+    and sends JSON to the service.
+
+    Return:
+      - "success" on HTTP code 201 (created)
+      - "failure" on HTTP status 400 (bad request)
+      - error message on HTTP status (500) or when the service is down
+***/
+function tw_create_rsvp($post) {
+    $parameters = array();
+    $parameters['userId'] = $_SESSION['tw_user']->id;
+    $parameters['siteId'] = $_SESSION['c_db_id'];
+    $parameters['eventId'] = $post['eventId'];
+    $parameters['value'] = $post['value'];
+    $event_date = $post['eventDate'];
+    if(!empty($eventDate)) {
+        $parameters['eventDate'] = $eventDate * 1000;
+    }
+
+    $json = json_encode($parameters);
+
+    list($status, $response_msg) = _tw_post_json(TOWNWIZARD_DB_RSVPS_URL, $json);
+    
+    if($status == 500) {
+        $result = $response_msg;
+    } else if ($status == 0) {
+        $result = "Server down";
+    } else if ($status == 400) {
+        $result = "failure";
+    } else {
+        $result = "success";
+    }
+
+    return $result;
+}
+
+/***
+    Get rsvps for a current logged in user
+
+    Takes from and to (dates in seconds) parameters to narrow the search.
+    If events don't have dates on the townwizard db side, the events will be included, too.
+
+    Return:
+     - array of RSVP objects on  HTTP status 200
+     - NULL in other cases
+***/
+function tw_get_rsvps_by_user($from = NULL, $to = NULL) {
+    $user_id = $_SESSION['tw_user']->id;
+    $id = $user_id;
+
+    if(!empty($from) || !empty($to)) {
+        $id = $id.'?from='.$from.'&to='.$to;
+    }
+
+    list($status, $response_msg) = _tw_get_json(TOWNWIZARD_DB_RSVPS_URL, $id);
+    if($status == 200) {
+        $rsvps = json_decode($response_msg);
+        return $rsvps;
+    }
+    
+    return NULL;
+}
+
+/***
+    Get rsvps for an event
+
+    Takes event id and optionally event date as parameters.
+    If event date is available it's recommended to pass it for 
+    townwizard db to update/create event with the date.
+
+    Return:
+     - array of RSVP objects on  HTTP status 200
+     - NULL in other cases
+***/
+function tw_get_rsvps_by_event($event_id, $event_date = NULL) {
+    $site_id = $_SESSION['c_db_id'];
+    
+    $id = $site_id . "/" . $event_id;
+    if(!empty($event_date)) {
+        $id = $id.'?d='.$event_date;
+    }
+
+    list($status, $response_msg) = _tw_get_json(TOWNWIZARD_DB_RSVPS_URL, $id);
+    if($status == 200) {
+        $rsvps = json_decode($response_msg);
+        return $rsvps;
+    }
+    
     return NULL;
 }
 
