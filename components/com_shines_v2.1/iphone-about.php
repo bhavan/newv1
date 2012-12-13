@@ -6,7 +6,7 @@ include("connection.php");
 
 function about_intro() {
   global $var;
-  $text = mysql_query("select `introtext` from `jos_content` where `title` = 'New_About_us'");
+  $text = mysql_query("select `introtext` from `jos_content` where `title` = 'App About Us'");
   $res=mysql_fetch_array($text);
   $text=$res[introtext];
   echo $text;

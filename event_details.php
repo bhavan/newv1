@@ -7,16 +7,29 @@ include_once($var->inc_path.'base.php');
 _init();
 //date_default_timezone_set("Asia/Calcutta");
 
-if(isset($var->get['event_id'])) {
-  $data = db_fetch("select jjv.*, DATE_FORMAT(jjr.startrepeat,'%h:%i %p') as timestart, DATE_FORMAT(jjr.endrepeat,'%h:%i %p') as timeend from `jos_jevents_vevdetail` jjv, `jos_jevents_repetition` jjr where jjv.evdet_id = jjr.eventdetail_id and jjv.evdet_id = ".$var->get['event_id']." and jjr.rp_id = ".$var->get['rp_id']);
+$script = $_SERVER['REQUEST_URI'];
+$urlparts = parse_url($_SERVER['REQUEST_URI']);
+$parts = $urlparts["query"];
+$rp_id = str_replace ('title=Testing&rp_id=','',$parts); 
+
+
+if(isset($rp_id)) {
+   $data = db_fetch("SELECT rpt.rp_id,ev.catid,cat.title,DATE_FORMAT(rpt.startrepeat,'%h:%i %p') as timestart,DATE_FORMAT(rpt.endrepeat,'%h:%i %p') as timeend,evd.description,evd.location,evd.summary,cf.value FROM jos_jevents_vevent AS ev,jos_jevents_repetition AS rpt,jos_categories AS cat,jos_jevents_vevdetail
+ AS evd, jos_jev_customfields AS cf	WHERE ev.ev_id= rpt.eventid AND ev.catid=cat.id AND rpt.eventdetail_id = evd.evdet_id AND rpt.eventdetail_id = cf.evdet_id AND rpt.rp_id =".$var->get['rp_id']." AND ev.state=1");
+ // echo "<pre>";
+ //print_r($data);
+
 	#DD#
 	$notExists = false;
 	if(!is_array($data)){
 		$notExists = true;
 	}
 	#DD#
+//$r=mysql_fetch_array($data);
+	
 
 	$data['location'] = db_fetch("select title, street, postcode, city, state, phone, geozoom, geolon, geolat, url from `jos_jev_locations` where `loc_id` = ".$data['location']);
+	
   $data['q'] = str_replace(' ', '+', ($data['location']['title'].' '.$data['location']['street'].' '.$data['location']['city'].' '.$data['location']['state'].' '.$data['location']['postcode']));
 } else {
   redirect($var->http_referer);

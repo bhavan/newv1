@@ -5,7 +5,7 @@ if (substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')) ob_start("ob_gzhandl
 include("connection.php");
 function help_intro() {
   global $var;
-  $text = mysql_query("select `introtext` from `jos_content` where `title` = 'Help & Support'");
+  $text = mysql_query("select `introtext` from `jos_content` where `title` = 'App Help & Support'");
   $res=mysql_fetch_array($text);
   $text=$res[introtext];
   echo $text;
