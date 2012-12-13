@@ -1,7 +1,15 @@
 <?php
+
 ini_set('error_reporting',1);
 ini_set('display_errors',1);
+
 include("../connection.php");
+include("../iadbanner.php");
+
+/* Code for iPhone Banner Begin */
+$banner_code =  m_show_banner('iphone-events-screen');
+/* Code for iPhone Banner End */
+
 
 /* All REQUEST paramter variable  */
 $catId		= isset($_GET['category_id']) ? $_GET['category_id']:0;
@@ -114,6 +122,7 @@ if(isset($catId) && $catId != 0){
 		}	
 		$response = array(
 	    	'data' => $data,
+			'ad' => $banner_code,
 	    	'meta' => array(
 	        'total' => $num_records,
 	        'limit' => $limit != 0?(int)$limit:(int)$num_records,
@@ -306,7 +315,8 @@ if(isset($catId) && $catId != 0){
 		}	
 		$response = array(
 	    	'data' => $data,
-	    	'meta' => array(
+	    	'ad' => $banner_code,
+			'meta' => array(
 	        'total' => $num_records,
 	        'limit' => $limit != 0?(int)$limit:(int)$num_records,
 			'offset' => $offset != 0?(int)$offset:(int)0
@@ -326,8 +336,6 @@ if(isset($catId) && $catId != 0){
 		echo json_encode($data);
 	}
 }	
-
-
 
 
 /* ************************************************************ */
