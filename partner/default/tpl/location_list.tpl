@@ -23,6 +23,8 @@
         </form>
       </div>
       <div id="rating_error_<?php echo $v['loc_id']; ?>" style="display:none"></div>
+      <?php } else { ?>
+      <div id="rating_msg_<?php echo $v['loc_id']; ?>"></div>
       <?php } ?>
       <!-- Rating form -->
 
@@ -45,8 +47,9 @@
 <?php } ?>
 
 
-<?php if(!empty($_SESSION['tw_user'])) { ?>
 <script>
+  <?php if(!empty($_SESSION['tw_user'])) { ?>
+
   function showRatingForm(contentId) {
     $('#rating_msg_' + contentId).hide();
     $('#rating_error_' + contentId).html('').hide();
@@ -71,43 +74,52 @@
         type: "post",
         data: $('#rating_form_' + contentId).serialize(),        
         success: function(response) {            
-            if(response == 'success') {              
+            if(response.indexOf('failure') == -1) {
+              var r = eval('[' + response + ']')[0];
               showRating(contentId);
-              tw_get_rating($('#rating_msg_'+contentId));                              
+              var html = 'Your rating: <a href="#" onclick="showRatingForm(' + r.contentId + ');">' + r.value + '</a>';
+              $('#rating_msg_' + contentId).html(html);
+              showRating(contentId);
             } else {
-              showRatingError(contentId, "An error happen: " + response);
+              showRatingError(contentId, response);
             }
         }
     });
   }
+  <?php } ?>
 
-  function tw_get_rating(div) {
-    var divId = div.attr('id');
-    var lastDash = divId.lastIndexOf('_');
-    var contentId = divId.substring(lastDash+1, divId.length);
-        
+  function tw_get_ratings() {
+    var contentIds = '';
+
+    $('div[id^="rating_msg_"]').each(function(i, d){
+      var div = $(d);
+      var divId = div.attr('id');
+      var lastDash = divId.lastIndexOf('_');
+      var contentId = divId.substring(lastDash+1, divId.length);
+      contentIds += (contentId + ',');
+    });
+
+    contentIds = contentIds.substring(0, contentIds.length-1);    
+    
     $.ajax({
-      url: "townwizard-db-api/ratings.php?contentId="+contentId+"&contentType=LOCATION",
+      url: "townwizard-db-api/ratings.php?contentIds="+contentIds+"&contentType=LOCATION",
       type: "get",                
       success: function(response) {
-        if(response) {        
-          var html = 'Your rating: <a href="#" onclick="showRatingForm(' + contentId + ');">' + response + '</a>';
-          div.html(html);
+        if(response) {
+          var ratings = eval(response);
+          for (i = 0; i < ratings.length; i++) { 
+            var r = ratings[i];
+            <?php if(!empty($_SESSION['tw_user'])) { ?>
+            var html = 'Your rating: <a href="#" onclick="showRatingForm(' + r.contentId + ');">' + r.value + '</a>';
+            <?php } else { ?>
+            var html = 'Average rating: ' + r.value;
+            <?php } ?>
+            $('#rating_msg_' + r.contentId).html(html);
+          }
         }
       }
     });
   }
 
-  function tw_get_ratings() {
-    $('div[id^="rating_msg_"]').each(function(i, d){
-      var div = $(d);
-      tw_get_rating(div);
-    });
-  }
-
-  $(document).ready(function() {
-    tw_get_ratings();
-  });
 
 </script>
-<?php } ?>

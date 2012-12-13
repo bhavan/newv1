@@ -64,11 +64,11 @@ function tw_create_user($post) {
     and sends JSON to the service.
 
     Return:
-      - "success" on HTTP code 201 (created)
+      - rating object or rating json depending on the value of $return_json on HTTP code 201 (created)
       - "failure" on HTTP status 400 (bad request)
-      - error message on HTTP status (500) or when the service is down
+      - "failure :" plus error message on HTTP status (500) or when the service is down
 ***/
-function tw_create_rating($post) {
+function tw_create_rating($post, $return_json = false) {
     $parameters = array();
     $parameters['userId'] = $_SESSION['tw_user']->id;
     $parameters['siteId'] = $_SESSION['c_db_id'];
@@ -81,35 +81,57 @@ function tw_create_rating($post) {
     list($status, $response_msg) = _tw_post_json(TOWNWIZARD_DB_RATINGS_URL, $json);
     
     if($status == 500) {
-        $result = $response_msg;
+        $result = "failure: " . $response_msg;
     } else if ($status == 0) {
         $result = "Server down";
     } else if ($status == 400) {
         $result = "failure";
     } else {
-        $result = "success";
+        $result = $response_msg;
     }
 
     return $result;
 }
 
 /***
-    Get rating for content id and content type
+    Takes a comma-separated list of content ids and a content type, and 
+    get the ratings for these ids and the content type (same for all content ids)    
 
     Return:
-     - rating object on  HTTP status 200
+     - array of rating objects on  HTTP status 200 or json received from the server
+       if $return_json is set to true
      - NULL in other cases
 ***/
-function tw_get_rating($content_id, $content_type) {
+function tw_get_ratings($content_ids, $content_type, $return_json = false) {
     $user_id = $_SESSION['tw_user']->id;
     $site_id = $_SESSION['c_db_id'];
-    $id = $content_type.'/'.$site_id.'/'.$user_id.'/'.$content_id;    
+
+    $id = $content_type.'/'.$site_id.'/'.$user_id.'/'. $content_ids;    
     list($status, $response_msg) = _tw_get_json(TOWNWIZARD_DB_RATINGS_URL, $id);
     if($status == 200) {
-        $ratings = json_decode($response_msg);
-        if(!empty($ratings)) {
-            return $ratings[0]->value;
-        }
+        if($return_json) return $response_msg;
+        else return json_decode($response_msg);
+    }
+    return NULL;
+}
+
+/***
+    Takes a comma-separated list of content ids and a content type, and 
+    get average ratings for these ids and the content type (same for all content ids)    
+
+    Return:
+     - array of rating objects on  HTTP status 200 or json received from the server
+       if $return_json is set to true
+     - NULL in other cases
+***/
+function tw_get_avg_ratings($content_ids, $content_type, $return_json = false) {
+    $site_id = $_SESSION['c_db_id'];
+
+    $id = $content_type.'/'.$site_id.'/'. $content_ids;    
+    list($status, $response_msg) = _tw_get_json(TOWNWIZARD_DB_RATINGS_URL, $id);
+    if($status == 200) {
+        if($return_json) return $response_msg;
+        else return json_decode($response_msg);
     }
     return NULL;
 }

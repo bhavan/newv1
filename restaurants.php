@@ -101,5 +101,13 @@ if($_POST['search_rcd']=="Search Restaurants" || $_POST['search_rcd']=="Buscar R
 	<?php m_footer(); ?> <!-- footer -->
 </footer>
 
+<script>
+
+  $(document).ready(function() {
+    tw_get_ratings();
+  });
+
+</script>
+
 </body>
 </html>
