@@ -6,7 +6,7 @@ include("connection.php");
 
 function advertise_intro() {
   global $var;
-  $text = mysql_query("select `introtext` from `jos_content` where `title` = 'New_Advertise with Us'");
+  $text = mysql_query("select `introtext` from `jos_content` where `title` = 'App Advertise with Us'");
   $res=mysql_fetch_array($text);
   $text=$res[introtext];
   echo $text;
