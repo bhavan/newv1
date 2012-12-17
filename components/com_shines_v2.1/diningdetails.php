@@ -187,9 +187,9 @@ var iWebkit;if(!iWebkit){iWebkit=window.onload=function(){function fullscreen(){
 				</head>
 				<body>
 				
-				<header>
+				<!--<header>
 					<a id="navBack" href="javascript:history.go(-1)">Back</a>
-   				</header>
+   				</header>-->
 				
 				<?php
 				/* Code added for iphone_diningdetails.tpl */
