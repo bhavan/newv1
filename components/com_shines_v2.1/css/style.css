@@ -576,6 +576,10 @@ textarea[contenteditable] {-webkit-appearance: none;}
   h2, h3 { page-break-after: avoid; }
 }
 
+#rightnav a {background: url("../images/rightArrow.png") no-repeat scroll 0 0 transparent;color: #000000;font-size: 25px;height: 37px;margin-right: 2px;padding-left: 24px;width: 24px !important;z-index: 3;}
+#rightnav{position: absolute;right: 15px;z-index: 100;top:71px;}
+#leftnav a {background: url("../images/leftArrow.png") no-repeat scroll 0 0 transparent;color: #000000;font-size: 25px;height: 37px;margin-right: 2px;padding-left: 24px;width: 24px !important;z-index: 3;}
+#leftnav{position: relative;}
 
 
 
