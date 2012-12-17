@@ -15,7 +15,7 @@ $rec=mysql_query($query) or die(mysql_error());
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link href="pics/homescreen.gif" rel="apple-touch-icon" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" name="viewport" />
-<link href="/components/com_shines/css/style.css" rel="stylesheet" media="screen" type="text/css" />
+<link href="/components/com_shines_v2.1/css/style.css" rel="stylesheet" media="screen" type="text/css" />
 <script src="/components/com_shines/javascript/functions.js" type="text/javascript"></script>
 <title><?=$site_name?></title>
 <!--<link href="pics/startup.png" rel="apple-touch-startup-image" /> -->
@@ -37,9 +37,10 @@ if(stripos($ua,'android') == true) { ?>
     <?php m_show_banner('iphone-videos-screen'); ?>
   </div>
   <?php } ?>
-
+<div id="main" role="main">  
+<div id="zigzag" style="vertical-align:bottom;"> </div>
 <div id="content">
-	<ul class="pageitem">
+	<ul class="mainList" id="placesList">
 		
       <?php 
 	  while($row=mysql_fetch_array($rec))
@@ -60,8 +61,7 @@ if(stripos($ua,'android') == true) { ?>
 	</ul>
 </div>
 
-<!-- <div id="footer">
-	<a href="http://www.destinshines.com">&copy; 2010 Destin Shines, Inc.</a> | <a href="mailto:info@destinshines.com?subject=Attractions Feedback">Contact Us</a>  &nbsp;&nbsp;&nbsp; <a href="<?=$pageglobal['facebook']?>"><img src="images/icon_facebook_16x16.gif" alt="facebook_icon" width="16" height="16" /></a> &nbsp;&nbsp;&nbsp; </div> -->
+</div>
 <div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
 </body>
 
