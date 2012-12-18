@@ -105,14 +105,14 @@
       url: "townwizard-db-api/ratings.php?contentIds="+contentIds+"&contentType=LOCATION",
       type: "get",                
       success: function(response) {
-        if(response) {
+        if(response) {          
           var ratings = eval(response);
           for (i = 0; i < ratings.length; i++) { 
             var r = ratings[i];
             <?php if(!empty($_SESSION['tw_user'])) { ?>
             var html = 'Your rating: <a href="#" onclick="showRatingForm(' + r.contentId + ');">' + r.value + '</a>';
             <?php } else { ?>
-            var html = 'Average rating: ' + r.value;
+            var html = 'Average rating: ' + r.value + ' (' + r.count + ')';
             <?php } ?>
             $('#rating_msg_' + r.contentId).html(html);
           }
