@@ -41,7 +41,7 @@ if($_POST['search_rcd']=="Search Restaurants" || $_POST['search_rcd']=="Buscar R
 <!--[if IE 7]><link rel="stylesheet" type="text/css" href="common/templatecolor/<?php echo $_SESSION['style_folder_name'];?>/css/ie7.css" media="screen" /><![endif]-->
 <?php include("ga.php"); ?>
 
-<script type="text/javascript" src="http://demo.townwizard.com/common/js/jquery.min.js"></script>
+<script type="text/javascript" src="common/js/jquery.min.js"></script>
 </head>
 
 <body>
