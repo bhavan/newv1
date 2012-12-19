@@ -15,11 +15,24 @@
       <td><strong>Hora:</strong></td>
       <td>
       <?php 
-        if($data['noendtime']==1) {
+	  	/* Coded By Rinkal */
+				$displayTime = '';
+				if($data['timestart']=='12:00 AM' && $data['timeend']=='11:59 PM')
+	            {    echo 'Todo el día ';}
+				else{
+					$displayTime.= ltrim($data['timestart'], "0");
+					if($data['noendtime']==0){
+						$displayTime.='-'.ltrim($data['timeend'], "0");
+					}
+					echo $displayTime;
+					}
+	 	 		 /* End By Rinkal */
+	  
+       /* if($data['noendtime']==1) {
           echo $data['timestart'];
         } else {
           echo $data['timestart'].' - '.$data['timeend'];
-        }
+        }*/ 
       ?>
       </td>
     </tr>
