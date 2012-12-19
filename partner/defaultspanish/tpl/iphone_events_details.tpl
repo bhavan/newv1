@@ -71,10 +71,22 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 			<?php
 
 				//#DD#
+				/* Coded By Rinkal */
+				$displayTime = '';
+				if($row[timestart]=='12:00 AM' && $row[timeend]=='11:59PM')
+	            {    echo 'Todo el día';}
+				else{
+					$displayTime.= ltrim($row[timestart], "0");
+					if($rowvevdetail['noendtime']==0){
+						$displayTime.='-'.ltrim($row[timeend], "0");
+					}
+					echo $displayTime;
+					}
+	 	 		 /* End By Rinkal */
+		  
+				/* if($evrawdata['allDayEvent']=='on'){
 
-				if($evrawdata['allDayEvent']=='on'){
-
-					echo 'All Day Event';
+					echo 'Todo el día';
 
 				}else{
 
@@ -88,8 +100,7 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 
 						echo $displayTime;
 
-				}
-
+				} */
 				//#DD#
 
 			?>      	

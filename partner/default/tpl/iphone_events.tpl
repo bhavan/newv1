@@ -19,17 +19,20 @@
 		<tbody>
 			<?php 
 			$n = 0;
+			
 			while($row=mysql_fetch_array($rec)){
 			//#DD#
 			$ev=mysql_query("select *  from jos_jevents_vevent where ev_id=".$row['eventid']) or die(mysql_error());
 			$evDetails=mysql_fetch_array($ev);
+			
 			$evrawdata = unserialize($evDetails['rawdata']);
 			//#DD#	
 			//$queryvevdetail="select *  from jos_jevents_vevdetail where evdet_id=".$row['eventid'];
 			$queryvevdetail="select *  from jos_jevents_vevdetail where evdet_id=".$row['eventdetail_id'];
 			$recvevdetail=mysql_query($queryvevdetail) or die(mysql_error());
 			$rowvevdetail=mysql_fetch_array($recvevdetail);
-
+           //echo "<pre>";
+			//print_r($rowvevdetail);
 			if ((int) ($rowvevdetail['location'])){
 				$querylocdetail="select *  from jos_jev_locations where loc_id=".$rowvevdetail['location'];
 				$reclocdetail=mysql_query($querylocdetail) or die(mysql_error());
@@ -40,14 +43,30 @@
 
 			#DD#
 			$displayTime = '';
-			if($evrawdata['allDayEvent']=='on'){
+			/* Coded By Rinkal */
+			
+			if($row[timestart]=='12:00 AM' && $row[timeend]=='11:59PM')
+            {    $displayTime.='All Day Event';}
+			else{
+				$displayTime.= ltrim($row[timestart], "0");
+				
+				if($rowvevdetail['noendtime']==0){
+					$displayTime.='-'.ltrim($row[timeend], "0");
+				}
+			}
+			/* End By Rinkal */
+				
+			/* if($evrawdata['allDayEvent']=='on'){
+			
 				$displayTime.='All Day Event';
 			}else{
 				$displayTime.= ltrim($row[timestart], "0");
+				
 				if($evrawdata['NOENDTIME']!=1){
-					$displayTime.='-'.ltrim($row[timeend], "0");
+					//echo $evrawdata['NOENDTIME']."hi";
+					$displayTime.='-'.($row[timeend]);
 				}
-			}	
+			}	*/
 			#DD#
 	  ?>
 		<tr>

@@ -16,12 +16,16 @@
           <td valign="top">
             <?php
 			
-              if(strstr($data['timestart'], '12:00 AM') && strstr($data['timeend'], '11:59 PM'))
+			 /* Coded By Rinkal */
+			 
+              if($data['timestart']=='12:00 AM' && $data['timeend']=='11:59 PM')
                 echo 'All Day Event';
               else if ($data['noendtime']==1)
-			  echo $data['timestart'];
-			  else
-                echo $data['timestart'].' - '.$data['timeend'];
+			 			 echo $data['timestart'];
+				   else
+                 		 echo $data['timestart'].' - '.$data['timeend'];
+						 
+			 /* End By Rinkal */
             ?>
           </td>
         </tr>
