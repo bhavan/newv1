@@ -9,14 +9,8 @@ _init();
 
 /* code for SEF URL using rp_id by rinkal */
 
-$script = $_SERVER['REQUEST_URI'];
-$urlparts = parse_url($_SERVER['REQUEST_URI']);
-$parts = $urlparts["query"];
-$rp_id = str_replace ('title=Testing&rp_id=','',$parts); 
-
-
-if(isset($rp_id)) {
-   $data = db_fetch("SELECT evd.*,rpt.rp_id,ev.catid,cat.title,DATE_FORMAT(rpt.startrepeat,'%h:%i %p') as timestart,DATE_FORMAT(rpt.endrepeat,'%h:%i %p') as timeend,evd.description,evd.location,evd.summary,cf.value FROM jos_jevents_vevent AS ev,jos_jevents_repetition AS rpt,jos_categories AS cat,jos_jevents_vevdetail
+if(isset($var->get['rp_id'])) {
+   $data = db_fetch("SELECT evd.*,rpt.rp_id,rpt.startrepeat,ev.catid,cat.title,DATE_FORMAT(rpt.startrepeat,'%h:%i %p') as timestart,DATE_FORMAT(rpt.endrepeat,'%h:%i %p') as timeend,evd.description,evd.location,evd.summary,cf.value FROM jos_jevents_vevent AS ev,jos_jevents_repetition AS rpt,jos_categories AS cat,jos_jevents_vevdetail
  AS evd, jos_jev_customfields AS cf	WHERE ev.ev_id= rpt.eventid AND ev.catid=cat.id AND rpt.eventdetail_id = evd.evdet_id AND rpt.eventdetail_id = cf.evdet_id AND rpt.rp_id =".$var->get['rp_id']." AND ev.state=1");
  
 /* code end for SEF URL using rp_id by rinkal */ 

@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# rewrite _T files to thumbnails folder!
+# Bhavan - few changes are made for V2
+#       (1) redirecting to partner specific phocagallery/image_uploader/thumbs
+#       (2) Override is allowed in apache vhost file 
+#RewriteRule ^(.*)_t\.(.*)$ /images/phocagallery/image_uploader/thumbs/phoca_thumb_s_$1.$2 [L]
+RewriteRule ^(.*)_t\.(.*)$ /partner/masterdefault/images/phocagallery/image_uploader/thumbs/phoca_thumb_s_$1.$2 [L]
+
+RewriteCond %{HTTP_USER_AGENT} thumbs! [NC]
+RewriteCond  %{REQUEST_URI} !thumbs\/phoca_thumb_[slm]_(.*)
+RewriteRule ^(.*)$ thumbs/phoca_thumb_l_$1 [L]

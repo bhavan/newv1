@@ -59,7 +59,7 @@
              All Day Event
             </td>
             
-            <td><a href="event_details.php?title=<?php echo $event['_title']; ?>&rp_id=<?php echo $event['_rp_id']; ?>"><?php echo utf8_decode($event['_title']); ?></a>
+            <td><a href="event_details.php?title=<?php echo $event['_title']; ?>&date=<?php echo $check_date; ?>&rp_id=<?php echo $event['_rp_id']; ?>"><?php echo utf8_decode($event['_title']); ?></a>
             <?php if(!strstr($var->request_uri, 'leach.php')) { ?>&nbsp;&nbsp;@&nbsp;&nbsp;<font color="#999999"><?php echo utf8_decode($event['_location']); ?></font><?php } ?>
             <br /></td>
           </tr>
@@ -102,7 +102,7 @@
             <?php } else { ?>
             <td width="120"><?php if($event['_hup'] > $event['_hdn']) echo $time_start; else echo $time_start ?></td>
             <?php } ?>
-            <td><a href="event_details.php?title=<?php echo $event['_title']; ?>&rp_id=<?php echo $event['_rp_id']; ?>"><?php echo utf8_decode($event['_title']); ?></a>
+            <td><a href="event_details.php?title=<?php echo $event['_title']; ?>&date=<?php echo $check_date; ?>&rp_id=<?php echo $event['_rp_id']; ?>"><?php echo utf8_decode($event['_title']); ?></a>
             <?php if(!strstr($var->request_uri, 'leach.php')) { ?>&nbsp;&nbsp;@&nbsp;&nbsp;<font color="#999999"><?php echo utf8_decode($event['_location']); ?></font><?php } ?>
             <br /></td>
           </tr>
