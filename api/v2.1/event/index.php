@@ -20,6 +20,10 @@ $dfrom		= isset($_GET['from']) ? $_GET['from']:0;
 $dto		= isset($_GET['to']) ? $_GET['to']:0;
 $offset		= isset($_GET['offset']) ? $_GET['offset']:0;
 $limit		= isset($_GET['limit']) ? $_GET['limit']:0;
+$fda = explode('-',$dfrom);
+$tda = explode('-',$dto);
+$today_date = date('Y-m-d');
+$td_array =  explode('-',$today_date);
 
 
 // Session varialbe set for Latitute to calculate distance
@@ -48,7 +52,6 @@ if(isset($catId) && $catId != 0){
 	$select_query	= "SELECT rpt.rp_id,rpt.startrepeat,rpt.endrepeat,ev.catid,cat.title,evd.description,evd.location,evd.summary,cf.value FROM jos_jevents_vevent AS ev,jos_jevents_vevdetail AS evd, jos_categories AS cat,jos_jevents_repetition AS rpt,jos_jev_customfields AS cf WHERE rpt.eventid = ev.ev_id AND rpt.eventdetail_id = evd.evdet_id AND rpt.eventdetail_id = cf.evdet_id";
 	
 	if((isset($dfrom) && $dfrom != 0) && (isset($dto) && $dto != 0)){
-		$fda = explode('-',$dfrom); $tda = explode('-',$dto);
 		$select_query .= " AND rpt.startrepeat >= '".$fda[0]."-".$fda[1]."-".$fda[2]." 00:00:00' AND rpt.endrepeat<='".$tda[0]."-".$tda[1]."-".$tda[2]." 23:59:59'";
 	}else{
 		$select_query .= " AND rpt.startrepeat >= '".$toyear."-".$tomonth."-".$today." 00:00:00'";
@@ -152,7 +155,6 @@ if(isset($catId) && $catId != 0){
  AS evd, jos_jev_customfields AS cf	WHERE ev.ev_id= rpt.eventid AND ev.catid=cat.id AND rpt.eventdetail_id = evd.evdet_id AND rpt.eventdetail_id = cf.evdet_id AND rpt.rp_id = $eventId AND ev.state=1";
 	
 	if((isset($dfrom) && $dfrom != 0) && (isset($dto) && $dto != 0)){
-		$fda = explode('-',$dfrom); $tda = explode('-',$dto);
 		$select_query .= " AND rpt.startrepeat >= '".$fda[0]."-".$fda[1]."-".$fda[2]." 00:00:00' AND rpt.endrepeat<='".$tda[0]."-".$tda[1]."-".$tda[2]." 23:59:59'";
 	}	
 
@@ -233,12 +235,19 @@ if(isset($catId) && $catId != 0){
 	*/
 	$today = date('d'); $tomonth = date('m'); $toyear = date('Y');
 	$select_query	= "SELECT rpt.rp_id,rpt.startrepeat,rpt.endrepeat,ev.ev_id,ev.catid,cat.title,evd.description,evd.location,evd.summary,cf.value FROM jos_jevents_vevent AS ev,jos_jevents_vevdetail AS evd, jos_categories AS cat,jos_jevents_repetition AS rpt,jos_jev_customfields AS cf WHERE rpt.eventid = ev.ev_id AND rpt.eventdetail_id = evd.evdet_id AND rpt.eventdetail_id = cf.evdet_id";
-	
+
+	/* When Start Date & End Date provided */
 	if((isset($dfrom) && $dfrom != 0) && (isset($dto) && $dto != 0)){
-		$fda = explode('-',$dfrom); $tda = explode('-',$dto);
-		$select_query .= " AND rpt.startrepeat >= '".$fda[0]."-".$fda[1]."-".$fda[2]." 00:00:00' AND rpt.endrepeat<='".$tda[0]."-".$tda[1]."-".$tda[2]." 23:59:59'";
+		$select_query .= " AND rpt.endrepeat >= '".$fda[0]."-".$fda[1]."-".$fda[2]." 00:00:00' AND rpt.startrepeat <='".$tda[0]."-".$tda[1]."-".$tda[2]." 23:59:59'";
+		/* When Start Date provided */
+	}elseif((isset($dfrom) && $dfrom != 0)){
+		$select_query .= " AND rpt.endrepeat >= '".$fda[0]."-".$fda[1]."-".$fda[2]." 00:00:00'";
+	/* When End Date provided */
+	}elseif((isset($dto) && $dto != 0)){
+		$select_query .= " AND rpt.startrepeat <='".$tda[0]."-".$tda[1]."-".$tda[2]." 23:59:59' AND rpt.endrepeat >= '".$td_array[0]."-".$td_array[1]."-".$td_array[2]." 00:00:00'";
 	}else{
-		$select_query .= " AND rpt.startrepeat >= '".$toyear."-".$tomonth."-".$today." 00:00:00'";
+	/* No date is provided */
+		$select_query .= " AND rpt.endrepeat >= '".$toyear."-".$tomonth."-".$today." 00:00:00'";
 	}	
 	
 	$select_query .= " AND ev.catid = cat.id AND ev.state = 1";
@@ -322,10 +331,10 @@ if(isset($catId) && $catId != 0){
 			'offset' => $offset != 0?(int)$offset:(int)0
 	    	)
 		);
-		//echo "<pre>";
-		//print_r($response);
-		header('Content-type: application/json');
-		echo json_encode($response);
+		echo "<pre>";
+		print_r($response);
+		//header('Content-type: application/json');
+		//echo json_encode($response);
 	}else{
 		if($dto < $dfrom){
 			$data["error"] = "Bad Request";
