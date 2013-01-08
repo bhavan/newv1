@@ -112,6 +112,7 @@ fieldset { border: 0; margin: 0; padding: 0; }
     white-space: nowrap;
 }
 .textbox {border-top: 1px solid #878787;overflow: hidden;padding: 7px 4px 5px;position: relative;text-align: center;}
+li.textbox a img{max-width:100%;}
 .pageitem li:first-child, .pageitem li.form:first-child { border-top: 0 none;}
 .facebook{background: url("../images/iphoneimg.png") no-repeat scroll 0 100% transparent;height: 27px;width: 78px;}
 .google{background: url("../images/iphoneimg.png") no-repeat scroll 0 76% transparent;height: 27px;width: 78px;}

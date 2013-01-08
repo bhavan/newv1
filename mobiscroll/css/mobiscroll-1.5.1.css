@@ -191,7 +191,7 @@
     box-shadow:0 1px 3px rgba(0,0,0,0.5);
     -moz-box-shadow:0 1px 3px rgba(0,0,0,0.5);
     -webkit-box-shadow:0 1px 3px rgba(0,0,0,0.5);
-    color: #fff;
+    color: #ffffff !important;
     background: #000;
     background: -webkit-gradient(linear,left bottom,left top,color-stop(0.5, #000),color-stop(0.5, #6e6e6e));
     background: -moz-linear-gradient(center bottom,#000 50%,#6e6e6e 50%);

@@ -57,7 +57,7 @@
 */
 // The language array - change these values to your language to better fit your needs!
 g_l = [];
-g_l["MONTHS"] = ["Janaury","February","March","April","May","June","July","August","September","October","November","December"];
+g_l["MONTHS"] = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 g_l["DAYS_3"] = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 g_l["MONTH_FWD"] = "Move a month forward";
 g_l["MONTH_BCK"] = "Move a month backward";

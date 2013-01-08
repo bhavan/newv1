@@ -122,7 +122,7 @@ font-size: 22px;
 
 #download{
 display: block;
-width: 385px;
+width: 420px;
 height: 41px;
 position: absolute;
 bottom: 18px;
@@ -357,7 +357,7 @@ height: 230px;
 background: transparent url(../images/footerBg.png) no-repeat center;
 }
 #footerWrap{
-width: 810px;
+width: 855px;
 padding-top: 16px;
 margin: 0 auto;
 color: #6f69af;
@@ -385,3 +385,5 @@ margin: -15px 0 20px 10px;
 }
 
 .tablesorter th{background:none !important;}
+.map_container{margin-left: 21px !important;margin-bottom: 10px;}
+#map_canvas{margin-left: auto !important;margin-bottom: 10px !important;}

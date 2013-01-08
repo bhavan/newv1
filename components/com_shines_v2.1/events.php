@@ -61,7 +61,6 @@ if(!empty($_REQUEST['eventdate'])){
 }
 //#DD#
 
-
 $todaestring=date('l, j M', mktime(0, 0, 0, $tomonth, $today, $toyear));
 
 $query_cat="SELECT c.id FROM jos_categories AS c LEFT JOIN jos_categories AS p ON p.id=c.parent_id LEFT JOIN jos_categories AS gp ON gp.id=p.parent_id LEFT JOIN jos_categories AS ggp ON ggp.id=gp.parent_id WHERE c.access <= 2 AND c.published = 1 AND c.section = 'com_jevents'";
@@ -78,16 +77,12 @@ $rec_filter=mysql_query($query_filter);
 while($row_filter=mysql_fetch_array($rec_filter)){
     $arr_rr_id[]=$row_filter['rp_id'];
 }
-
 if (count($arr_rr_id))
 	$strchk=implode(',',$arr_rr_id);
 else
 	$strchk=0;
-	
 	$query="select *,DATE_FORMAT(`startrepeat`,'%h:%i %p') as timestart, DATE_FORMAT(`endrepeat`,'%h:%i%p') as timeend from jos_jevents_repetition where rp_id in ($strchk) ORDER BY  DATE_FORMAT(`startrepeat`,'%H%i') ASC ";
-	
 	$rec=mysql_query($query) or die(mysql_error());
-	$rec1=mysql_query($query) or die(mysql_error());
 ?>
 
 
@@ -106,7 +101,7 @@ else
 <meta content="Destin Florida's FREE iPhone application and website guide to local events, live music, restaurants and attractions" name="description" />
 <link href="/components/com_shines_v2.1/css/style.css" rel="stylesheet" media="screen" type="text/css" />
 <link href="../../mobiscroll/css/mobiscroll-1.5.1.css" rel="stylesheet" type="text/css" />
-<script src="../../mobiscroll/js/mobiscroll-1.5.1.js" type="text/javascript"></script>
+
 <script type="text/javascript" src="/components/com_shines_v2.1/javascript/mobileswipe.js"></script>
 <script type="text/javascript">
 var iWebkit;if(!iWebkit){iWebkit=window.onload=function(){function fullscreen(){var a=document.getElementsByTagName("a");for(var i=0;i<a.length;i++){if(a[i].className.match("noeffect")){}else{a[i].onclick=function(){window.location=this.getAttribute("href");return false}}}}function hideURLbar(){window.scrollTo(0,0.9)}iWebkit.init=function(){fullscreen();hideURLbar()};iWebkit.init()}}
@@ -115,10 +110,9 @@ var iWebkit;if(!iWebkit){iWebkit=window.onload=function(){function fullscreen(){
     function linkClicked(link) { document.location = link; }
 </script>
 <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
-
+<script src="../../mobiscroll/js/mobiscroll-1.5.1.js" type="text/javascript"></script>
 <script type="text/javascript">
             function submitForm() {
-               
                     document.events.submit(); //#DD#
 }
     $(document).ready(function () {
