@@ -1,7 +1,7 @@
-    <div id="featuredEvents">
+<div id="featuredEvents">
 	    <div class="flexslider-container">
 			<div class="flexslider">
-		    <ul class="1slides">
+		    <ul class="slides">
 			<?php 
 			
 			$datacount = 0 ;
@@ -24,19 +24,11 @@
 			$bottomdata[] = $rowvevdetail;
 			
 			//Creating Image array from Event description
-			$imgArray = explode('src="',$rowvevdetail['description']);		
-			$evImageArray = array();
-			$singleImage = array();
-			$FirstImage = array();
-			for($i=0;$i<count($imgArray);$i++){
-				if(strstr($imgArray[$i],'" />',true) != ''){
-					if($singleImage == '')
-						$singleImage 	= strstr($imgArray[$i],'" />',true); // As of PHP 5.3.0
-					else
-						$evImageArray[] = strstr($imgArray[$i],'" />',true); // As of PHP 5.3.0	
-						
-				}	
-			}
+			##Image FEtched for slide show##
+				$imageurl= strstr($rowvevdetail['description'],'http');
+				$singleimagearray = explode('"',$imageurl);
+			##end##
+			
 			if ((int) ($rowvevdetail['location'])){
 				$querylocdetail="select *  from jos_jev_locations where loc_id=".$rowvevdetail['location'];
 				$reclocdetail=mysql_query($querylocdetail) or die(mysql_error());
@@ -59,9 +51,12 @@
 			}	
 			$bottomdata[$datacount]['displaytime'] = $displayTime ;
 			$Event_rpid[] = $row['rp_id'] ;
-			?>		
+			
+
+			?>	
+				
 		    	<li>
-		    		<img src="<?=$singleImage[$i]?>" />
+		    		<img src="<?=$singleimagearray[0]?>" />
 					<!--<img src="<?php $singleImage[0];?>" />-->
 		    		<div class="flex-caption">
 		    			<h1><?=$rowvevdetail['summary']?></h1>
@@ -80,19 +75,13 @@
 	 	</div>
 	</div> <!-- featured events -->
 <div class="section">
-		<div class="fLeft">
-			<h2>View Calendar for:</h2>
-			<a href="" class="button">Check Event by Day</a>
-		</div>
-		<div class="fRight">
-			<h2>Types of Events:</h2>
-			<a href="" class="button">All Events</a>
-		</div>
-	</div>
+
 	<form name='events' id='events' action='events.php' method='post'>
-		<input type="text" value="" class="mobiscroll ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-d scroller" id="date1" name="eventdate" style="width:0px;height:0px;border:0px;background:#333333;    position: absolute;top: -100px;">
-		<button data-theme="a" id="show" class="ui-btn-hidden" aria-disabled="false"></button>
+		<input type="text" value="" class="mobiscroll ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-d scroller" id="date1" name="eventdate" style="width:0px;height:0px;border:0px;background:#333333;position: absolute;top: -100px;">
+		<button data-theme="a" id="show" class="ui-btn-hidden button" aria-disabled="false" style="width:100%;">Check Events By Day</button>
 	</form>
+	</div>
+
 <div id="main" role="main">
 
 	<h1><?=$todaestring?></h1>
@@ -131,8 +120,7 @@ for($i=0;$i<count($bottomdata);$i++){?>
 <div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
 
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+
 
 <!-- scripts for sliders -->
 	<script type="text/javascript" src="/components/com_shines_v2.1/javascript/sliders.js"></script>

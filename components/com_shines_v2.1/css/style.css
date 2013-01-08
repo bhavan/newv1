@@ -346,7 +346,7 @@ td { vertical-align: top; }
 		}
 		#main h1, #main #zigzag{
 			margin: 0 0 0 0;text-transform: uppercase; font-weight: normal; font-size: 1em;
-			padding: 0px 0px 22px;
+			padding: 8px 12px 18px;
 			background: #fff url(../images/border2.gif) repeat-x bottom;
 		}
 		ul.mainList{
@@ -358,7 +358,7 @@ td { vertical-align: top; }
 			padding: 0px;
 		}
 		#main ul.mainList h2, #main ul.mainList h3{font-weight: normal; font-size: 1em;margin: 0px;}
-		#main ul.mainList h3{padding: 10px 0 0;}
+		#main ul.mainList h3{padding: 10px 0 0;font-size: 12px;}
 		#main ul.mainList h3.hasRSVP{
 			float: left; height: 28px;padding-right: 24px;
 			background: url(../images/l/check.png) no-repeat right 9px;
@@ -366,7 +366,7 @@ td { vertical-align: top; }
 		#main ul.mainList li:first-child{border-top: none;}
 		#main ul.mainList li{
 			position: relative;
-			border-bottom: 1px solid #fff;padding: 10px 30px 10px 10px;
+			border-bottom: 1px solid #fff;padding: 10px 10px 10px 10px;
 			border-top: 1px solid #d6d6d6;
 			background: url(../images/l/listArrow.png) no-repeat 98% 8px;
 		}
@@ -577,11 +577,10 @@ textarea[contenteditable] {-webkit-appearance: none;}
 }
 
 #rightnav a {background: url("../images/rightArrow.png") no-repeat scroll 0 0 transparent;color: #000000;font-size: 25px;height: 37px;margin-right: 2px;padding-left: 24px;width: 24px !important;z-index: 3;}
-#rightnav{position: absolute;right: 15px;z-index: 100;top:71px;}
+#rightnav{float: right;}
 #leftnav a {background: url("../images/leftArrow.png") no-repeat scroll 0 0 transparent;color: #000000;font-size: 25px;height: 37px;margin-right: 2px;padding-left: 24px;width: 24px !important;z-index: 3;}
-#leftnav{position: relative;}
-
-
+#leftnav{float: left;}
+li.textbox a img{max-width:100%;}
 
 
 
