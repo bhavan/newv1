@@ -54,17 +54,16 @@
 			
 
 			?>	
-				
+			<?php if($singleimagearray[0] != ""){?>	
 		    	<li>
-		    		<img src="<?=$singleimagearray[0]?>" />
-					<!--<img src="<?php $singleImage[0];?>" />-->
+		    		<img style="height:300px; width:320px;" src="<?=$singleimagearray[0]?>" />
 		    		<div class="flex-caption">
 		    			<h1><?=$rowvevdetail['summary']?></h1>
 		    			<h2><?=$rowlocdetail['title']?></h2>
 		    			<h3><?=$displayTime?></h3>
 		    		</div> <!-- caption -->
 		    	</li>
-
+			<?php } ?>
       <?php
 	  //++$imagecounter;
 	  ++$datacount;
