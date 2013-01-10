@@ -83,7 +83,7 @@ if(isset($catId) && $catId != 0){
 		while($rs_ev_tbl = mysql_fetch_array($result)){
 		
 			//Creating Image array from Event description
-			$imgArray = explode('<img src="',$rs_ev_tbl['description']);
+			$imgArray = explode('src="',$rs_ev_tbl['description']);
 			$evImageArray = array();
 			$singleImage = '';
 			
@@ -170,7 +170,7 @@ API Request	: /event/?id=1
 		while($rs_ev_tbl = mysql_fetch_array($result)){
 
 			//Creating Image array from Event description
-			$imgArray = explode('<img src="',$rs_ev_tbl['description']);
+			$imgArray = explode('src="',$rs_ev_tbl['description']);
 			$evImageArray = array();
 			$singleImage = '';
 			
@@ -271,7 +271,7 @@ API Request	: /event/
 		while($rs_ev_tbl = mysql_fetch_array($result)){
 			
 			//Creating Image array from Event description
-			$imgArray = explode('<img src="',$rs_ev_tbl['description']);
+			$imgArray = explode('src="',$rs_ev_tbl['description']);
 			$evImageArray = array();
 			$singleImage = '';
 			
