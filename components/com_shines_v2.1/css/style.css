@@ -582,6 +582,8 @@ textarea[contenteditable] {-webkit-appearance: none;}
 #leftnav{float: left;}
 li.textbox a img{max-width:100%;}
 
+#placesList img{max-width:100%;}
+
 
 
 

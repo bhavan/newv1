@@ -117,3 +117,5 @@ li.textbox a img{max-width:100%;}
 .facebook{background: url("../images/iphoneimg.png") no-repeat scroll 0 100% transparent;height: 27px;width: 78px;}
 .google{background: url("../images/iphoneimg.png") no-repeat scroll 0 76% transparent;height: 27px;width: 78px;}
 .iphoneads img {box-shadow: 0 2px 8px #000000;margin: 0 auto;}
+
+#list img{max-width:100%;}

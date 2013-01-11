@@ -387,3 +387,9 @@ margin: -15px 0 20px 10px;
 .tablesorter th{background:none !important;}
 .map_container{margin-left: 21px !important;margin-bottom: 10px;}
 #map_canvas{margin-left: auto !important;margin-bottom: 10px !important;}
+
+.detail_info{ width:350px;float:left;margin-right:15px;}
+
+.detail_info img{max-width:350px;}
+
+.infoBox img{max-width:345px;}

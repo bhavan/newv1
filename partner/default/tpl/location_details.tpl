@@ -1,8 +1,8 @@
 <h2>Place Details</h2>
-    <table valign="top" width="100%" cellpadding="0" cellspacing="0" style="width:350px;float:left;">
+    <table valign="top" width="100%" cellpadding="0" cellspacing="0" class="detail_info">
       <tbody>
       	<tr>
-        	<td colspan="2" valign="top" style="font-size:18px;color:#666666;font-weight:bold;line-height:20px;"><?php echo $data['title'] ?><br /><br /></td>
+        	<td colspan="2" valign="top"  style="font-size:18px;color:#666666;font-weight:bold;line-height:20px;"><?php echo $data['title'] ?><br /><br /></td>
         </tr>
         <tr height="40">
         	<td valign="top"><font color="#666666"><strong>Address:</strong></font>&nbsp;</td>
