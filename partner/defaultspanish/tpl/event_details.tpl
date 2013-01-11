@@ -2,7 +2,7 @@
 
 <?php if(!$notExists) { ?>
 
-    <table valign="top" style="width:350px;float:left;margin-right:15px;" cellpadding="0" cellspacing="0">
+    <table valign="top" class="detail_info" cellpadding="0" cellspacing="0">
       <tbody>
       	<tr>
         	<td colspan="2" valign="top" style="font-size:18px;color:#666666;font-weight:bold;line-height:20px;"><?php echo stripslashes(urldecode($data['summary'])) ?><br /><br /></td>

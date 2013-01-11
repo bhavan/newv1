@@ -822,3 +822,9 @@ background-position: top;
 .fb-share-button{float: left; padding-right: 2px;}
 .twitter-share-button{width: 84px !important;}
 /****END SOCIAL SHARING CSS****/
+
+.detail_info{ width:350px;float:left;margin-right:15px;}
+
+.detail_info img{max-width:350px;}
+
+.infoBox img{max-width:345px;}
