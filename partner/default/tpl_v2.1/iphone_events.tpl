@@ -111,15 +111,15 @@ for($i=0;$i<count($bottomdata);$i++){?>
 		<h2><?php echo $bottomloc[$i]['title']?></h2>
 		<h3>
 		<? echo $bottomdata[$i]['displaytime'] ?> &bull;
-		<?php echo $categoryname[$i]; ?> &bull;
-		<a class="call" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$rowlocdetail['phone'])?>">Call</a> &bull;
+		<?php echo $categoryname[$i]; ?> 
+		<ul class="btnList"><li><a class="button small" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$rowlocdetail['phone'])?>">Call</a></li>
 		<?php
 		$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
 	 	if(stripos($ua,'android') == true) { ?>
 		<?php } else { ?>
-		<a class="checkin" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $lat2; ?>:<?php echo $lon2; ?>')">Check in</a> &bull;
+		<li><a class="button small" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $lat2; ?>:<?php echo $lon2; ?>')">Check in</a></li>
 		<?php } ?>
-		<a class="info" href="events_details.php?eid=<?=$Event_rpid[$i]?>&d=<?=$today?>&m=<?=$tomonth?>&Y=<?=$toyear?>&lat=<?=$lat1?>&lon=<?=$lon1?>">More info</a>
+		<li><a class="button small" href="events_details.php?eid=<?=$Event_rpid[$i]?>&d=<?=$today?>&m=<?=$tomonth?>&Y=<?=$toyear?>&lat=<?=$lat1?>&lon=<?=$lon1?>">More info</a></li></ul>
 		</h3> 
 	<!--<?=round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?> Away-->
   	</li>
