@@ -443,6 +443,11 @@ margin: -15px 0 20px 10px;
 /****END SOCIAL SHARING CSS****/
 
 
+#map_canvas {
+    margin-bottom: 10px !important;
+    margin-right: 33px !important;
+	}
+
 .detail_info{ width:350px;float:left;margin-right:15px;}
 
 .detail_info img{max-width:350px;}

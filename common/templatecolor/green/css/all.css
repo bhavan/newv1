@@ -455,6 +455,11 @@ width:315px;
 .twitter-share-button{width: 84px !important;}
 /****END SOCIAL SHARING CSS****/
 
+#map_canvas {
+    margin-bottom: 10px !important;
+    margin-right: 33px !important;
+	}
+
 .detail_info{ width:350px;float:left;margin-right:15px;}
 
 .detail_info img{max-width:350px;}
