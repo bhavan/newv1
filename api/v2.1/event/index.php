@@ -19,6 +19,7 @@ $dfrom		= isset($_GET['from']) ? $_GET['from']:0;
 $dto		= isset($_GET['to']) ? $_GET['to']:0;
 $offset		= isset($_GET['offset']) ? $_GET['offset']:0;
 $limit		= isset($_GET['limit']) ? $_GET['limit']:0;
+$featured	= isset($_GET['featured']) ? $_GET['featured']:0;
 $fda		= explode('-',$dfrom);
 $tda		= explode('-',$dto);
 $today_date = date('Y-m-d');
@@ -63,7 +64,11 @@ if(isset($catId) && $catId != 0){
 	/* No date is provided */
 		$select_query .= " AND rpt.endrepeat >= '".$toyear."-".$tomonth."-".$today." 00:00:00'";
 	}	
-
+	
+	/* Query for Featured parameter */
+	if(isset($featured) && $featured != 0){
+		$select_query .= " AND cf.value = 1";
+	}	
 	$select_query .= "AND ev.catid = cat.id AND ev.catid = $catId AND ev.state = 1";
 	
 	/* To check if Limit is given then apply in query */
@@ -234,7 +239,9 @@ Parameter	: N/A
 API Request	: /event/
 */
 }else{
-	
+
+
+//featured = 1	
 	$today = date('d'); $tomonth = date('m'); $toyear = date('Y');
 	$select_query	= "SELECT rpt.rp_id,rpt.startrepeat,rpt.endrepeat,ev.ev_id,ev.catid,cat.title,evd.description,evd.location,evd.summary,cf.value FROM jos_jevents_vevent AS ev,jos_jevents_vevdetail AS evd, jos_categories AS cat,jos_jevents_repetition AS rpt,jos_jev_customfields AS cf WHERE rpt.eventid = ev.ev_id AND rpt.eventdetail_id = evd.evdet_id AND rpt.eventdetail_id = cf.evdet_id";
 
@@ -251,6 +258,11 @@ API Request	: /event/
 	/* No date is provided */
 		$select_query .= " AND rpt.endrepeat >= '".$toyear."-".$tomonth."-".$today." 00:00:00'";
 	}	
+
+	/* Query for Featured parameter */
+	if(isset($featured) && $featured != 0){
+		$select_query .= " AND cf.value = 1";
+	}
 	
 	$select_query .= " AND ev.catid = cat.id AND ev.state = 1";
 	
