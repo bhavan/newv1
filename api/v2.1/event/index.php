@@ -386,8 +386,8 @@ API Request	: /event/
 		);
 		//echo "<pre>";
 		//print_r($response);
-		//header('Content-type: application/json');
-		//echo json_encode($response);
+		header('Content-type: application/json');
+		echo json_encode($response);
 	}else{
 		if($dto < $dfrom){
 			$data["error"] = "Bad Request";
