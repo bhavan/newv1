@@ -65,12 +65,12 @@ if(isset($catId) && $catId != 0){
 		$select_query .= " AND rpt.endrepeat >= '".$toyear."-".$tomonth."-".$today." 00:00:00'";
 	}	
 	
-	/* Query for Featured parameter */
-	if(isset($featured) && $featured != 0){
-		$select_query .= " AND cf.value = 1";
-	}	
 	$select_query .= "AND ev.catid = cat.id AND ev.catid = $catId AND ev.state = 1";
-	
+
+	/* Query for Featured parameter if featured = 1 in URL */
+	if(isset($featured) && $featured != 0){
+		$select_query .= " AND cf.value = 1 GROUP BY rpt.eventid,rpt.startrepeat ORDER BY rpt.startrepeat";
+	}	
 	/* To check if Limit is given then apply in query */
 	if(isset($limit) && $limit != 0){
 		if(isset($offset) && $offset != 0)
@@ -78,14 +78,33 @@ if(isset($catId) && $catId != 0){
 		else	
 			$select_query .= " limit $limit";
 	}
-		
+	
+	// Creaeating data set variable from Mysql query	
 	$result			= mysql_query($select_query);
 	$num_records	= mysql_num_rows($result);
+
+	/* Logic for Featured event */	
+	// if we need to remove duplicate events for featured event
+	$dup_eid_logic = 0;
+	
+	//Assigning dup_eid_logic varialble = 1 if featured & limit will be provided in URL 
+	if(isset($featured) && $featured != 0 && $limit != 0)
+		$dup_eid_logic = 1;
 	
 	if($num_records > 0){
 	
 		/* Looping for Event Data */
 		while($rs_ev_tbl = mysql_fetch_array($result)){
+
+			/* Checking condition for duplicate featured event id */
+			if($dup_eid_logic == 1){
+				if(in_array($rs_ev_tbl['ev_id'],$f_event_array))
+				{
+					break;
+				}else{
+					$f_event_array[] = $rs_ev_tbl['ev_id'];
+				}	
+			}
 		
 			//Creating Image array from Event description
 			$imgArray = explode('src="',$rs_ev_tbl['description']);
@@ -259,12 +278,14 @@ API Request	: /event/
 		$select_query .= " AND rpt.endrepeat >= '".$toyear."-".$tomonth."-".$today." 00:00:00'";
 	}	
 
-	/* Query for Featured parameter */
-	if(isset($featured) && $featured != 0){
-		$select_query .= " AND cf.value = 1";
-	}
-	
 	$select_query .= " AND ev.catid = cat.id AND ev.state = 1";
+
+	/* Query for Featured parameter if featured = 1 in URL */
+	if(isset($featured) && $featured != 0){
+		$select_query .= " AND cf.value = 1 GROUP BY rpt.eventid,rpt.startrepeat ORDER BY rpt.startrepeat";
+	}
+
+
 	
 	/* To check if Limit is given then apply in query */
 	if(isset($limit) && $limit != 0){
@@ -273,14 +294,32 @@ API Request	: /event/
 		else	
 			$select_query .= " limit $limit";
 	}
-		
+	// Creaeating data set variable from Mysql query
 	$result			= mysql_query($select_query);
 	$num_records	= mysql_num_rows($result);
+
+	/* Logic for Featured event */	
+	// if we need to remove duplicate events for featured event
+	$dup_eid_logic = 0;
 	
+	//Assigning dup_eid_logic varialble = 1 if featured & limit will be provided in URL 
+	if(isset($featured) && $featured != 0 && $limit != 0)
+		$dup_eid_logic = 1;
+		
 	if($num_records > 0){
 	
 		/* Looping for Event Data */
 		while($rs_ev_tbl = mysql_fetch_array($result)){
+			
+			/* Checking condition for duplicate featured event id */
+			if($dup_eid_logic == 1){
+				if(in_array($rs_ev_tbl['ev_id'],$f_event_array))
+				{
+					break;
+				}else{
+					$f_event_array[] = $rs_ev_tbl['ev_id'];
+				}	
+			}
 			
 			//Creating Image array from Event description
 			$imgArray = explode('src="',$rs_ev_tbl['description']);
@@ -347,8 +386,8 @@ API Request	: /event/
 		);
 		//echo "<pre>";
 		//print_r($response);
-		header('Content-type: application/json');
-		echo json_encode($response);
+		//header('Content-type: application/json');
+		//echo json_encode($response);
 	}else{
 		if($dto < $dfrom){
 			$data["error"] = "Bad Request";
