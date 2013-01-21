@@ -1,0 +1,1039 @@
+
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+
+a, abbr, acronym, address, big, cite, code,
+
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+
+small, strike, strong, sub, sup, tt, var,
+
+dl, dt, dd, ol, ul, li,
+
+fieldset, form, label, legend,
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+
+	margin: 0;
+
+	padding: 0;
+
+	border: 0;
+
+	outline: 0;
+
+	font-weight: inherit;
+
+	font-style: inherit;
+
+	font-size: 100%;
+
+	vertical-align: baseline;
+
+}
+
+
+
+body{
+
+font-family: arial, sans-serif;
+
+font-size: 12px;
+
+color: #444;
+
+background: #fff url(../images/bg.jpg) no-repeat center top;
+
+}
+
+@font-face {
+
+	font-family: 'Museo700';
+
+	src: url('../fonts/museo700-regular-webfont.eot');
+
+	src: local('Ã¢ÂÂº'), url('../fonts/museo700-regular-webfont.woff') format('woff'), url('../fonts/museo700-regular-webfont.ttf') format('truetype'), url('../fonts/museo700-regular-webfont.svg#webfontMiBMgcUL') format('svg');
+
+	font-weight: normal;
+
+	font-style: normal;
+
+}
+
+a{color: #19b9a7;}
+
+a:visited{color: #19b9a7}
+
+a:hover{text-decoration: none;}
+
+
+
+strong{font-weight: bold}
+
+strong{font-: italic}
+
+
+
+header, section, footer, aside{display:block;}
+
+
+
+header{
+
+width: 980px;
+
+height: 230px;
+
+margin: 0 auto;
+
+position: relative;
+
+}
+
+header h1 a{
+
+position: absolute;
+
+display: block;
+
+text-indent: -999em;
+
+width: 245px;
+
+height: 150px;
+
+top: 15px;
+
+}
+
+header #banner{
+
+top: 0px;
+
+right: 118px;
+
+width: 485px;
+
+height: 77px;
+
+padding: 9px 0 0 17px;
+
+background: url(../images/bannerBg.png) no-repeat;
+
+position: absolute;
+
+}
+
+nav{
+
+position: absolute;
+
+bottom: 56px;
+
+right: 32px;
+
+width: 700px;
+
+text-align: center;
+
+font-family: 'Museo700', arial, sans-serif;
+
+}
+
+nav ul{margin: 0 auto;}
+
+nav ul li{
+
+list-style: none;
+
+display: inline-block;
+
+zoom: 1;
+
+*display: inline;
+
+}
+
+nav ul li a, nav ul li a:visited{
+
+display: block;
+
+padding: 12px 10px 9px;
+
+margin-left: 10px;
+
+font-size: 18px;
+
+text-transform: uppercase;
+
+color: #046e80;
+
+text-decoration: none;
+
+text-shadow: 1px 1px 0px #fff9d1;
+
+border-top: 1px solid #fff8ad;
+
+border-right: 1px solid #fff8ad; 
+
+-moz-box-shadow: 0px 0px 3px #0a6d93;
+
+-webkit-box-shadow: 0px 0px 3px #0a6d93;
+
+box-shadow: 0px 0px 3px #0a6d93;
+
+background: #ffdb2e url(../images/navBg.png) repeat-x 0 top;
+
+}
+
+nav ul li a:hover{
+
+text-shadow: 1px 1px 0px #046e80;
+
+border-top: 1px solid #b7ebe1;
+
+border-right: 1px solid #b7ebe1; 
+
+-moz-box-shadow: 0px 0px 3px #0a6d93;
+
+-webkit-box-shadow: 0px 0px 3px #0a6d93;
+
+box-shadow: 0px 0px 3px #0a6d93;
+
+color: #ffe52e;
+
+background-position: bottom;
+
+}
+
+#flags{
+
+position: absolute;
+
+right: 0px;
+
+top: 131px;
+
+width: 42px;
+
+}
+
+#facebook{
+
+position: absolute;
+
+bottom: 18px;
+
+left: 108px;
+
+display: block;
+
+width: 136px;
+
+height: 30px;
+
+text-indent: -999em;
+
+background: url(../images/facebook_solo.png) no-repeat;
+
+}
+
+#facebook:hover{background-position: 0 bottom;}
+
+#weather{
+
+position: absolute;
+
+bottom: 18px;
+
+left: 11px;
+
+color: #035968;
+
+font-family: 'Museo700', arial, sans-serif;
+
+font-size: 22px;
+
+text-shadow: 1px 1px 0px #b6e3e1;
+
+}
+
+#weather img{position: relative; top: 4px;}
+
+
+
+#download{
+
+display: block;
+
+width: 336px;
+
+height: 41px;
+
+position: absolute;
+
+bottom: 13px;
+
+right: 0px;
+
+color: #e7d337;
+
+font-family: 'Museo700', arial, sans-serif;
+
+font-size: 14px;
+
+}
+
+#download p{float: left;padding: 14px 10px 0 0;}
+
+#iPhone, #android{
+
+display: block;float:left;
+
+text-indent: -999em;
+
+width:48px;height:41px;
+
+background: url(../images/apps.png)
+
+}
+
+#android{width:55px;background-position: right 0;}
+
+#android:hover{background-position: right bottom;}
+
+#iPhone:hover{background-position: 0 bottom}
+
+
+
+#wrapper{
+
+width: 992px;
+
+margin: 0 auto;
+
+}
+
+aside{
+
+float: left;
+
+width: 265px;
+
+font-size: 12px;
+
+text-align: center;
+
+margin-top: -67px;
+
+}
+
+#topLeftContent{
+
+padding: 80px 0 28px 0;
+
+background: url(../images/leftColBg.png) no-repeat;
+
+}
+
+aside h3{
+
+color: #035968;
+
+font-family: 'Museo700', arial, sans-serif;
+
+font-size: 20px;
+
+max-width:250px;
+
+padding-left:5px;
+
+}
+
+#leftColContent{
+
+padding: 15px 0 15px 5px;
+
+background: url(../images/leftColBgRepeat.png) repeat-y 1px;
+
+}
+
+aside img{margin-left: -5px;}
+
+aside p{
+
+width: 226px;
+
+text-align: justify;
+
+line-height: 1.5;
+
+letter-spacing: -.03em;
+
+margin: 5px 0 20px 3px;
+
+padding: 0 14px 20px 13px;
+
+/*border-bottom: 1px solid #ebebeb;*/
+
+}
+
+aside hr{
+
+border: 1px solid #ebebeb;
+
+width: 95%;
+
+}
+
+aside p:last-child{
+
+border-bottom: 0px;
+
+display: none;
+
+}
+
+#leftFooter{
+
+height: 15px;
+
+background: url(../images/leftColFooter.png) 1px;
+
+}
+
+
+
+section{
+
+float: left;
+
+width: 702px;
+
+line-height: 1.6;
+
+margin-bottom: 30px;
+
+padding: 30px 0 0 20px;
+
+}
+
+section h2{
+
+height: 46px;
+
+font-family: 'Museo700', arial, sans-serif;
+
+font-size: 26px;
+
+line-height: 1.4;
+
+padding: 0px 0 0 20px;
+
+margin: 0 0 0px -6px;
+
+color: #fff200;
+
+text-shadow: 1px 1px 0px #148f81;
+
+background: url(../images/headingBg.png) no-repeat left top;
+
+}
+
+section h3{
+
+color: #19b9a7;
+
+font-weight: bold;
+
+font-size: 17px;
+
+}
+
+dl{margin-bottom: 10px;}
+
+dt{
+
+font-weight: bold;
+
+float: left;
+
+width: 50px;
+
+}
+
+.adThreeHunderd{
+
+width: 307px;
+
+height: 257px;
+
+float: right;
+
+margin-left: 20px;
+
+padding: 7px 0 0 7px;
+
+background: url(../images/300x250bg.png) no-repeat;
+
+}
+
+.button, .button:visited{
+
+display: block;
+
+float: right;
+
+padding: 6px 10px 2px;
+
+font-size: 18px;
+
+text-transform: uppercase;
+
+zoom:1;
+
+font-family: 'Museo700', arial, sans-serif;
+
+color: #046e80;
+
+text-decoration: none;
+
+text-shadow: 1px 1px 0px #fff9d1;
+
+border-bottom: 1px solid #d0a604;
+
+border-right: 1px solid #d0a604;
+
+background: #ffdb2e url(../images/buttonBg.png) repeat-x;
+
+}
+
+.button:hover{
+
+color: #ffe52e;
+
+text-shadow: 1px 1px 0px #046e80;
+
+border-bottom: 1px solid #16957d;
+
+border-right: 1px solid #16957d; 
+
+background-position: bottom;
+
+}
+
+.infoBox{
+
+float: left;
+
+margin-bottom: 30px;
+
+}
+
+.infoBox p{
+
+text-align: justify;
+
+margin-bottom: 14px;
+
+}
+
+#photos{
+
+clear: both;
+
+position: relative;
+
+width: 712px;
+
+margin-left: -10px;
+
+height: 386px;
+
+zoom: 1;
+
+background: url(../images/photosBg.jpg);
+
+}
+
+#photo{
+
+position: absolute;
+
+top: 21px;
+
+left: 20px;
+
+width: 312px;
+
+background: #fff;
+
+border: 10px solid #fff;
+
+text-align: center;
+
+line-height: 1;
+
+-moz-box-shadow: 0px 0px 5px #000;
+
+-webkit-box-shadow: 0px 0px 5px #000;
+
+box-shadow: 0px 0px 5px #000;
+
+}
+
+#photo img{border: 1px solid #000;margin-bottom: 7px;}
+
+#photo strong{color: #0173a0; display: block;margin-bottom: 4px;}
+
+#photos h3{
+
+position: absolute; 
+
+left: 375px;
+
+top: 28px;
+
+color: #fff;
+
+font-size: 23px;
+
+font-weight: normal;
+
+text-shadow: 1px 1px 0px #048577;
+
+font-family: 'Museo700', arial, sans-serif;
+
+}
+
+#photos h4{
+
+position: absolute; 
+
+left: 375px;
+
+top: 58px;
+
+color: #fff;
+
+font-size: 20px;
+
+font-weight: normal;
+
+text-shadow: 1px 1px 0px #048577;
+
+font-family: 'Museo700', arial, sans-serif;
+
+}
+
+#photos p{
+
+position: absolute;
+
+left: 375px;
+
+top: 86px;
+
+text-align: justify;
+
+width: 310px;
+
+color: #fff;
+
+font-size: 13px;
+
+font-weight: bold;
+
+}
+
+#photos a{color: #fff;}
+
+#prevPhoto, #nextPhoto, #randomPhoto{
+
+display: block;
+
+height: 32px;
+
+width: 87px;
+
+position: absolute;
+
+top: 180px;
+
+left: 375px;
+
+text-indent: -999em;
+
+background: url(../images/photoNav.png);
+
+}
+
+#prevPhoto:hover{background-position: 0 bottom;}
+
+#randomPhoto{
+
+left: 477px;
+
+width: 107px;
+
+background-position: -87px 0;
+
+}
+
+#randomPhoto:hover{background-position: -87px bottom;}
+
+#nextPhoto{
+
+left: 600px;
+
+width: 87px;
+
+background-position: -194px 0;
+
+}
+
+#nextPhoto:hover{background-position: -194px bottom;}
+
+.adTwoThirtyFour, .adTwoThirtyFourSecond{
+
+width: 241px;
+
+height: 67px;
+
+overflow: hidden;
+
+position: absolute;
+
+left: 410px;
+
+top: 225px;
+
+padding: 7px 0 0 7px; 
+
+background: url(../images/photoAdBg.png) no-repeat;
+
+}
+
+.adTwoThirtyFourSecond{top: 300px;}
+
+
+
+footer{
+
+clear: both;
+
+height: 230px;
+
+background: #047082 url(../images/footerBg.png) repeat-x;
+
+}
+
+#footerWrap{
+
+width: 810px;
+
+padding-top: 16px;
+
+margin: 0 auto;
+
+color: #64b0bd;
+
+}
+
+#footerWrap li{
+
+list-style: none;
+
+float: left;
+
+}
+
+#footerAds{margin-left: -30px;}
+
+#footerAds li{
+
+margin-left: 30px;
+
+}
+
+#leftLinks a, #rightLinks a{color: #64b0bd;text-decoration: none;}
+
+#leftLinks a:hover, #rightLinks a:hover{text-decoration: underline;}
+
+#leftLinks{float:left}
+
+#rightLinks{float:right}
+
+#leftLinks li, #rightLinks li{margin-top: 20px;padding-right: 3px;}
+
+#rightLinks #partner a{
+
+display: block;
+
+width: 109px;
+
+height: 36px;
+
+text-indent: -999em;
+
+background: url(../images/townWizPartner.png) no-repeat;
+
+margin: -15px 0 20px 10px;
+
+}
+
+.photo_container{
+
+-moz-border-radius:3px 3px 3px 3px;
+
+background-color:#EFEFEF;
+
+border:1px solid #778899;
+
+margin:3px;
+
+padding:6px;
+
+width:180px;
+
+}
+
+.map_container{
+
+-moz-border-radius:3px 3px 3px 3px;
+
+background-color:#FEFEFE;
+
+border:1px solid #666666;
+
+margin:3px;
+
+padding:6px;
+
+}
+
+
+
+.img_container{
+
+height:285px;
+
+width:315px;
+
+display:block;
+
+overflow:hidden;
+
+}
+
+
+
+.img_container img{
+
+
+
+	width: 315px;
+
+}
+
+
+
+.active, .active:visited{
+
+padding: 6px 10px 2px;
+
+font-size: 18px;
+
+text-transform: uppercase;
+
+zoom:1;
+
+font-family: 'Museo700', arial, sans-serif;
+
+color: #046e80;
+
+text-decoration: none;
+
+text-shadow: 1px 1px 0px #fff9d1;
+
+border-bottom: 1px solid #d0a604;
+
+border-right: 1px solid #d0a604;
+
+background: #ffdb2e url(../images/buttonBg.png) repeat-x;
+
+margin-right:5px;
+
+}
+
+.active:hover{
+
+color: #ffe52e;
+
+text-shadow: 1px 1px 0px #046e80;
+
+border-bottom: 1px solid #16957d;
+
+border-right: 1px solid #16957d; 
+
+background-position: bottom;
+
+}
+
+.inactive{
+
+padding: 6px 10px 2px;
+
+font-size: 18px;
+
+zoom:1;
+
+font-family: 'Museo700', arial, sans-serif;
+
+color: #666666;
+
+text-decoration: none;
+
+}
+
+
+
+#rightSideWrap {
+
+    color: #FAE6C5;
+
+    margin: 0 auto;
+
+    padding-top: 20px;
+
+    width: 180px;
+
+	float: right;
+
+}
+
+
+
+#rightSideWrap li {
+
+    list-style: none outside none;
+
+}
+
+
+
+#rightSideAds {
+
+    margin: 0px;
+
+}
+
+
+
+#rightSideAds li {
+
+    margin: 0px;
+
+}
+
+
+
+#google_plus2{
+
+position: absolute;
+
+bottom: 12px;
+
+left: 170px;
+
+display: block;
+
+width: 34px;
+
+height: 30px;
+
+text-indent: -999em;
+
+background: url(../images/google_plus2.png) no-repeat;
+
+}
+
+#google_plus2:hover{background-position: 0 bottom;}
+
+/**********SLIDER CSS***********/
+
+	#slider_thanks {
+
+    -moz-border-bottom-colors: none;
+
+    -moz-border-image: none;
+
+    -moz-border-left-colors: none;
+
+    -moz-border-right-colors: none;
+
+    -moz-border-top-colors: none;
+
+    background: url("http://www.destinshines.com/images/destin-slider.png") no-repeat scroll 390px 50% #FFFFFF;
+
+    border-color: #4A3C31 -moz-use-text-color -moz-use-text-color #B5AB97;
+
+    border-style: solid none none solid;
+
+    border-width: 4px medium medium 2px;
+
+    box-shadow: -3px 3px 4px #BFBFBF;
+
+    font-size: 0.9em;
+
+    height: 70px;
+
+    margin-bottom: 0;
+
+    padding: 8px;
+
+}
+
+#sliderbox {
+
+    bottom: 0;
+
+    position: fixed;
+
+    right: -510px;
+
+    width: 500px;
+
+    z-index: 1;
+
+}
+
+#sliderbox a {color:#666666; text-decoration:none}
+
+#slider_thanks .tta_plus1 {
+
+    float: left;
+
+    margin: 7px 0 0 10px;
+
+}
+
+#slider_thanks .tta_text {
+
+    font-size: 1.5em;
+
+    padding: 10px 0 0 80px; 
+
+}
+
+#slider_thanks .tta_text p {margin:0px;}
+
+a#slider_close_button {
+
+    float: right;
+
+}
+
+/****SOCIAL SHARING CSS****/
+.fb-share-button{float: left; padding-right: 2px;}
+.twitter-share-button{width: 84px !important;padding-left: 4px;}
+/****END SOCIAL SHARING CSS****/
