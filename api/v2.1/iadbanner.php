@@ -43,7 +43,9 @@ function m_show_banner($cat) {
 		$sql = 'UPDATE jos_banner SET impmade = impmade + 1 WHERE bid =' .$d['bid'];
 		db_update($sql); 
 	}else{
-		$ad = "";	
+		$ad['type'] = ""; 
+		$ad['url'] = ""; 
+		$ad['banner'] = ""; 
 	} 
 	return $ad;
 }
