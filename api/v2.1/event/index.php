@@ -73,7 +73,10 @@ if(isset($catId) && $catId != 0){
 	}	
 	/* To check if Limit is given then apply in query */
 	if(isset($limit) && $limit != 0){
-		if(isset($offset) && $offset != 0)
+		/* If featured event and limit is provided then unset limit */ 
+		if(isset($featured) && $featured != 0)
+			$select_query .= "";
+		elseif(isset($offset) && $offset != 0)
 			$select_query .= " limit $offset,$limit";
 		else	
 			$select_query .= " limit $limit";
@@ -90,17 +93,24 @@ if(isset($catId) && $catId != 0){
 	//Assigning dup_eid_logic varialble = 1 if featured & limit will be provided in URL 
 	if(isset($featured) && $featured != 0 && $limit != 0)
 		$dup_eid_logic = 1;
+		
+	// Creating aray varialble to check unique ID for featured event	
+	$f_event_array = array();
 	
 	if($num_records > 0){
 	
 		/* Looping for Event Data */
 		while($rs_ev_tbl = mysql_fetch_array($result)){
-
+			
+			/* Checking condition for duplicate featured event id */
+			if(count($f_event_array) == $limit)
+				break;
+			
 			/* Checking condition for duplicate featured event id */
 			if($dup_eid_logic == 1){
 				if(in_array($rs_ev_tbl['ev_id'],$f_event_array))
 				{
-					break;
+					continue;
 				}else{
 					$f_event_array[] = $rs_ev_tbl['ev_id'];
 				}	
@@ -282,40 +292,48 @@ API Request	: /event/
 
 	/* Query for Featured parameter if featured = 1 in URL */
 	if(isset($featured) && $featured != 0){
-		$select_query .= " AND cf.value = 1 GROUP BY rpt.eventid,rpt.startrepeat ORDER BY rpt.startrepeat";
+		$select_query .= " AND cf.value = 1 GROUP BY ev.ev_id,rpt.startrepeat ORDER BY rpt.startrepeat";
 	}
 
-
-	
 	/* To check if Limit is given then apply in query */
 	if(isset($limit) && $limit != 0){
-		if(isset($offset) && $offset != 0)
+		/* If featured event and limit is provided then unset limit */ 
+		if(isset($featured) && $featured != 0)
+			$select_query .= "";
+		elseif(isset($offset) && $offset != 0)
 			$select_query .= " limit $offset,$limit";
 		else	
 			$select_query .= " limit $limit";
 	}
+	
 	// Creaeating data set variable from Mysql query
 	$result			= mysql_query($select_query);
 	$num_records	= mysql_num_rows($result);
 
 	/* Logic for Featured event */	
-	// if we need to remove duplicate events for featured event
+	// To remove duplicate events for featured event
 	$dup_eid_logic = 0;
 	
 	//Assigning dup_eid_logic varialble = 1 if featured & limit will be provided in URL 
 	if(isset($featured) && $featured != 0 && $limit != 0)
 		$dup_eid_logic = 1;
 		
+	// Creating aray varialble to check unique ID for featured event	
+	$f_event_array = array();
+	
 	if($num_records > 0){
 	
 		/* Looping for Event Data */
 		while($rs_ev_tbl = mysql_fetch_array($result)){
 			
 			/* Checking condition for duplicate featured event id */
+			if(count($f_event_array) == $limit)
+				break;
+				
 			if($dup_eid_logic == 1){
 				if(in_array($rs_ev_tbl['ev_id'],$f_event_array))
 				{
-					break;
+					continue;
 				}else{
 					$f_event_array[] = $rs_ev_tbl['ev_id'];
 				}	
@@ -384,10 +402,10 @@ API Request	: /event/
 			'offset' => $offset != 0?(int)$offset:(int)0
 	    	)
 		);
-		//echo "<pre>";
-		//print_r($response);
-		header('Content-type: application/json');
-		echo json_encode($response);
+		echo "<pre>";
+		print_r($response);
+		//header('Content-type: application/json');
+		//echo json_encode($response);
 	}else{
 		if($dto < $dfrom){
 			$data["error"] = "Bad Request";
