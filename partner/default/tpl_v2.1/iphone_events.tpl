@@ -29,6 +29,8 @@
 			##Image FEtched for slide show##
 				$imageurl= strstr($featureevdetail['description'],'http');
 				$singleimagearray = explode('"',$imageurl);
+				if($singleimagearray[0] == ""){
+					$singleimagearray[0] = "/components/com_shines_v2.1/images/nofe_image.png"; }
 			##end##
 
 			if ((int) ($featureevdetail['location'])){
@@ -57,7 +59,7 @@
 			}else{
 			if($featureevent[$f] == 1 && $imagecount<5){?> 
 		    	<li>
-					<img style="height:300px;" src="<?=$singleimagearray[0]?>" />
+					<img style="height:200px;" src="<?=$singleimagearray[0]?>" />
 		    		<div class="flex-caption">
 		    			<h1><?=$featureevdetail['summary']?></h1>
 		    			<h2><?=$rowfealocdetail['title']?></h2>
