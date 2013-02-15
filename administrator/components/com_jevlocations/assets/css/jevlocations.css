@@ -18,3 +18,31 @@ input#jevsearch {
 	width:150px;
 	margin-bottom:3px;
 }
+
+#search {
+    float: none !important;
+    height: 15px !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    overflow: visible !important;
+    text-align: left !important;
+    width: 145px !important;
+	border:1px solid #999 !important;
+}
+#filter_loccat{
+    width: 145px;
+	border:1px solid #999 !important;
+}
+#rt-main-surround .inputbox {
+    background: none !important;
+    border:1px solid #999 !important;
+	color : #000 !important;
+}
+/* overriding edit event header logo */
+div#toolbar-box div.header.icon-48-jevents {
+  background-image: none!important;
+  padding-left:1px!important;
+  color:#666;
+  line-height:48px;
+  background-color: #FFF;
+}
