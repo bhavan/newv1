@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors',0);
+ini_set('display_errors',1);
 
 include("../connection.php");
 include("../iadbanner.php");
@@ -410,8 +410,8 @@ API Request	: /event/
 		);
 		//echo "<pre>";
 		//print_r($response);
-		//header('Content-type: application/json');
-		//echo json_encode($response);
+		header('Content-type: application/json');
+		echo json_encode($response);
 	}else{
 		if($dto < $dfrom){
 			$data["error"] = "Bad Request";
