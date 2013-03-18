@@ -90,7 +90,10 @@ if($CatId>0){
 
 <script src="javascript/functions.js" type="text/javascript"></script>
 
-<title><?=$site_name?></title>
+<title>
+<?php echo $site_name.' | ';
+echo ($_SESSION['tpl_folder_name'] == 'defaultspanish')?'Ver foto':'Photo view';?>
+</title>
 
 <!--<link href="pics/startup.png" rel="apple-touch-startup-image" /> -->
 

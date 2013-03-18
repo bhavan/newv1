@@ -129,7 +129,12 @@ include("connection.php");
 <html>
 <head>
 <link href="/components/com_shines_v2.1/css/style.css" rel="stylesheet" media="screen" type="text/css" />
-<title>News</title>
+
+<title>
+<?php echo $site_name.' | ';
+echo ($_SESSION['tpl_folder_name'] == 'defaultspanish')?'Noticias':'News';?>
+</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
  <?php include($_SERVER['DOCUMENT_ROOT']."/ga.php"); ?>
 </head>

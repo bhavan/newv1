@@ -90,7 +90,11 @@ if($CatId>0){
 
 <script src="javascript/functions.js" type="text/javascript"></script>
 
-<title><?=$site_name?>
+<title>
+	<?php echo $site_name.' | ';
+	echo ($_SESSION['tpl_folder_name'] == 'defaultspanish')?'Fotos':'Photos';?>
+</title>
+
 
 </title>
 
