@@ -64,7 +64,12 @@ var iWebkit;if(!iWebkit){iWebkit=window.onload=function(){function fullscreen(){
 	<script language="javascript">
 	function linkClicked(link) { document.location = link; } 
 	</script>
-	<title><?php echo utf8_encode($site_name).' | Places';?></title>
+	
+	<title>
+		<?php echo $site_name.' | ';
+		echo ($_SESSION['tpl_folder_name'] == 'defaultspanish')?'Lugares detalle':'Places Detail';?>
+	</title>
+	
 	<script type="text/javascript">
 	// TOUCH-EVENTS SINGLE-FINGER SWIPE-SENSING JAVASCRIPT
 	// this script can be used with one or more page elements to perform actions based on them being swiped with a single finger

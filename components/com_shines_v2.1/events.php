@@ -105,11 +105,13 @@ else
 ?>
 
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title><?=$site_name?></title>
+<title>
+<?php echo $site_name.' | ';
+echo ($_SESSION['tpl_folder_name'] == 'defaultspanish')?'Evento':'Event';?>
+</title>
 <meta content="yes" name="apple-mobile-web-app-capable" />
 <meta content="index,follow" name="robots" />
 <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />

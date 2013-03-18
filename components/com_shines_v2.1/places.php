@@ -135,7 +135,12 @@ header( 'Content-Type:text/html;charset=utf-8');
 <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
 <meta name="description" content="<?php echo $var->extra_meta; ?>" />
-<title><?=$site_name?></title>
+
+<title>
+<?php echo $site_name.' | ';
+echo ($_SESSION['tpl_folder_name'] == 'defaultspanish')?'Lugares':'Places';?>
+</title>
+
 <link href="pics/homescreen.gif" rel="apple-touch-icon" />
 <link href="/components/com_shines_v2.1/css/style.css" rel="stylesheet" media="screen" type="text/css" />
  <link rel="shortcut icon" href="images/l/apple-touch-icon.png">

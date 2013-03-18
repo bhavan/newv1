@@ -5,12 +5,17 @@ include_once('./inc/var.php');
 include_once($var->inc_path.'base.php');
 _init();
 
+# Query to get photos Category name
+$param['album'] = db_fetch("select * from `jos_phocagallery_categories` where `id` = ".$var->get['album_id']);
+
 ?>
+
+
 
 <!DOCTYPE HTML>
 <html>
 <head>
-<title><?php echo $var->site_name.' | Photos'; ?></title>
+<title><?php echo $var->site_name.' | Photos | ' .$param['album']['title']; ?></title>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <meta name="keywords" content="<?php echo $var->keywords; ?>" />
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
