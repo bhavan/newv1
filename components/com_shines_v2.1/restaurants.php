@@ -166,7 +166,7 @@ ddsmoothmenu.init({
 	
 function redirecturl(val)
 {
-	url="<?php echo $_SERVER['PHP_SELF']; ?>?option=com_jevlocations&task=locations.listlocations&tmpl=component&needdistance=1&sortdistance=1&lat=<?=$_REQUEST['lat']?>&lon=<?=$_REQUEST['lon']?>&bIPhone=<?=$_REQUEST['bIPhone']?>&iphoneapp=1&search=<?=$_REQUEST['search']?>&limit=0&jlpriority_fv=0&filter_loccat="+val + "&filter_order=<?=$filter_order?>&filter_order_Dir=<?=$filter_order_Dir?>";
+	url="<?php echo $_SERVER['PHP_SELF']; ?>?option=com_jevlocations&task=locations.listlocations&tmpl=component&needdistance=1&sortdistance=1&lat=<?php echo $_REQUEST['lat']?>&lon=<?php echo $_REQUEST['lon']?>&bIPhone=<?php echo $_REQUEST['bIPhone']?>&iphoneapp=1&search=<?php echo $_REQUEST['search']?>&limit=0&jlpriority_fv=0&filter_loccat="+val + "&filter_order=<?php echo $filter_order?>&filter_order_Dir=<?php echo $filter_order_Dir?>";
 	window.location=url;
 }
 
@@ -207,7 +207,9 @@ function divopen(str) {
 <?php
 $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
 if(stripos($ua,'android') == true) { ?>
-	<div class="iphoneads" style="vertical-align:bottom;"></div>
+	<div class="iphoneads" style="vertical-align:bottom;">
+		m_show_banner('android-restaurants-screen');
+	</div>
 	<?php } 
 else {
 	?>

@@ -18,7 +18,7 @@
 					$reccount = mysql_query($querycount) or die(mysql_error());
 					if(mysql_num_rows($reccount)){
 						if(($_REQUEST['filter_loccat']!='alp') || ($_REQUEST['filter_loccat']!='0')){?>
-							<option value="<?=$rowsub['id'];?>" <?php if ($_REQUEST['filter_loccat']==$rowsub['id']) {?> selected <?php }?>><?=$rowsub['title'];?></option>
+							<option value="<?php echo $rowsub['id'];?>" <?php if ($_REQUEST['filter_loccat']==$rowsub['id']) {?> selected <?php }?>><?php echo $rowsub['title'];?></option>
 				<?php }}
 				}?>
 			</select>
@@ -57,9 +57,9 @@
 			while($row=mysql_fetch_assoc($rec)){
 				$distance = distance($lat1, $lon1, $row[geolat],  $row[geolon], $dunit);?>
 				<li>
-					<h1><?=utf8_encode($row['title'])?></h1>
+					<h1><?php echo utf8_encode($row['title'])?></h1>
 					<p><?php echo stripJunk(showBrief(strip_tags(utf8_encode($row['description'])),30)); ?></p>
-					<p class="distance"><?php echo round($distance,1); ?>&nbsp;<?=$dunit?> Away</p>
+					<p class="distance"><?php echo round($distance,1); ?>&nbsp;<?php echo $dunit?> Away</p>
 					<ul class="btnList">
 						<?php if ($_REQUEST['bIPhone']=='0'){?>
 									<li><a class="button small" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $row[phone]); ?>">call</a></li>
@@ -68,7 +68,7 @@
 						<?php } ?>
 
 						<li><a class="button small" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $row[geolat]; ?>:<?php echo $row[geolon]; ?>')">check in</a></li>
-						<li><a class="button small" href="diningdetails.php?did=<?=$row['loc_id']?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a></li>
+						<li><a class="button small" href="diningdetails.php?did=<?php echo $row['loc_id']?>&lat=<?php echo $lat1?>&lon=<?php echo $lon1?>">more info</a></li>
 						<li><a href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $row[geolon]; ?>:<?php echo $row[geolat]; ?>')"></a></li>
 					</ul>
 				</li>
@@ -96,9 +96,9 @@
 				
 				$dist = distance($lat1, $lon1, $lat2, $lon2, $dunit);?>
 				<li>
-					<h1><?=utf8_encode($data['title'])?></h1>
+					<h1><?php echo utf8_encode($data['title'])?></h1>
 					<p><?php echo stripJunk(showBrief(strip_tags(utf8_encode($data['description'])),30)); ?></p>
-					<p class="distance"><?php echo round($dist,1); ?>&nbsp;<?=$dunit?> Away</p>
+					<p class="distance"><?php echo round($dist,1); ?>&nbsp;<?php echo $dunit?> Away</p>
 					<ul class="btnList">
 						<?php if ($_REQUEST['bIPhone'] == '0'){?>
 						   			<li><a class="button small" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '', $data[phone]); ?>">call</a></li>
@@ -107,7 +107,7 @@
 						<?php } ?>
 						
 						<li><a class="button small" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $data[geolat]; ?>:<?php echo $data[geolon]; ?>')">check in</a></li>
-						<li><a class="button small" href="diningdetails.php?did=<?=$data['loc_id']?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a></li>
+						<li><a class="button small" href="diningdetails.php?did=<?php echo $data['loc_id']?>&lat=<?php echo $lat1?>&lon=<?php echo $lon1?>">more info</a></li>
 						<li><a  href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $data['geolon']; ?>:<?php echo $data['geolat']; ?>')"></a></li>
 					</ul><?php
 			} 

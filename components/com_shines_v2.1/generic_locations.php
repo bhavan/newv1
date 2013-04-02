@@ -141,7 +141,7 @@ header( 'Content-Type:text/html;charset=utf-8');
 <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type" />
 <meta name="description" content="<?php echo $var->metadesc; ?>" />
 <meta name="description" content="<?php echo $var->extra_meta; ?>" />
-<title><?=$site_name?></title>
+<title><?php echo $site_name?></title>
 <link href="pics/homescreen.gif" rel="apple-touch-icon" />
 <link href="/components/com_shines_v2.1/css/style.css" rel="stylesheet" media="screen" type="text/css" />
  <link rel="shortcut icon" href="images/l/apple-touch-icon.png">
@@ -168,7 +168,7 @@ ddsmoothmenu.init({
 	function redirecturl(val)
 {
 	
-	url="<?php echo $_SERVER['PHP_SELF']; ?>?category_id=<?=$category_id?>&option=com_jevlocations&task=locations.listlocations&tmpl=component&needdistance=1&sortdistance=1&lat=<?=$_REQUEST['lat']?>&lon=<?=$_REQUEST['lon']?>&bIPhone=<?=$_REQUEST['bIPhone']?>&iphoneapp=1&search=<?=$_REQUEST['search']?>&limit=0&jlpriority_fv=0&filter_loccat="+val + "&filter_order=<?=$filter_order?>&filter_order_Dir=<?=$filter_order_Dir?>";
+	url="<?php echo $_SERVER['PHP_SELF']; ?>?category_id=<?php echo $category_id?>&option=com_jevlocations&task=locations.listlocations&tmpl=component&needdistance=1&sortdistance=1&lat=<?=$_REQUEST['lat']?>&lon=<?php echo $_REQUEST['lon']?>&bIPhone=<?php echo $_REQUEST['bIPhone']?>&iphoneapp=1&search=<?php echo $_REQUEST['search']?>&limit=0&jlpriority_fv=0&filter_loccat="+val + "&filter_order=<?php echo $filter_order?>&filter_order_Dir=<?php echo $filter_order_Dir?>";
 	window.location=url;
 }
 

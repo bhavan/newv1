@@ -14,7 +14,7 @@
 
 			?> 
 
-			<a href="photos_view.php?start=<?=$st1?><?=$paginationstr?>&backstart=<?=$_REQUEST[backstart]?>&id=<?=$CatId ?>"></a> 
+	<a href="photos_view.php?start=<?php echo $st1?><?php echo $paginationstr?>&backstart=<?php echo $_REQUEST[backstart]?>&id=<?php echo $CatId ?>"></a> 
 
 								
 
@@ -38,7 +38,7 @@
 
 					  ?>
 
-                    	<a href="photos_view.php?start=<?=$st1?><?=$paginationstr?>&backstart=<?=$_REQUEST[backstart]?>&id=<?=$CatId ?>"></a><?php }?>
+                    	<a href="photos_view.php?start=<?php echo $st1?><?php echo $paginationstr?>&backstart=<?php echo $_REQUEST[backstart]?>&id=<?php echo $CatId ?>"></a><?php }?>
 
 
 
@@ -49,7 +49,7 @@
 
 <div id="content">
 
-          <!--<div align="center"><a href="photos.php?start=<?=$_REQUEST[backstart]?>" >BACK</a></div> -->
+          <!--<div align="center"><a href="photos.php?start=<?php echo $_REQUEST[backstart]?>" >BACK</a></div> -->
 
 	<ul class="mainList" id="placesList">
 
@@ -69,7 +69,7 @@
 
 			?>
 
-     <a href="photos_view.php?start=<?=$photoindent+$j?>"><img src="/partner/<?=$_SESSION['partner_folder_name']?>/images/phocagallery/<?=$file[0]?>/thumbs/phoca_thumb_l_<?=$file[1]?>"  border="0" /></a>
+     <a href="photos_view.php?start=<?php echo $photoindent+$j?>"><img src="/partner/<?php echo $_SESSION['partner_folder_name']?>/images/phocagallery/<?php echo $file[0]?>/thumbs/phoca_thumb_l_<?php echo $file[1]?>"  border="0" /></a>
 
       <?php }
 
@@ -77,7 +77,7 @@
 
 			?>
 
-      <a href="photos_view.php?start=<?=$photoindent+$j?>"><img src="/partner/<?=$_SESSION['partner_folder_name']?>/images/phocagallery/thumbs/phoca_thumb_l_<?=$row['filename']?>"  border="0"/></a>
+      <a href="photos_view.php?start=<?php echo $photoindent+$j?>"><img src="/partner/<?php echo $_SESSION['partner_folder_name']?>/images/phocagallery/thumbs/phoca_thumb_l_<?php echo $row['filename']?>"  border="0"/></a>
 
       <?php
 

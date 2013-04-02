@@ -199,6 +199,8 @@ echo ($_SESSION['tpl_folder_name'] == 'defaultspanish')?'Detalle de evento':'Eve
 <?php include($_SERVER['DOCUMENT_ROOT']."/ga.php"); ?>
 	</head>
 	<body>
+
+
 	<!--Google Adsense -->
 	<?php
 		/* Code added for iphone_places.tpl */

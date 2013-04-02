@@ -8,14 +8,14 @@
 				<h1><?php echo $row['title'];?></h1>
 				
 				<p>
-					<strong>Address:</strong>&nbsp;&nbsp<a href="javascript:linkClicked('APP30A:SHOWMAP:<?=$lat2?>:<?=$lon2?>')"><?=$row['street']?></a>
+					<strong>Address:</strong>&nbsp;&nbsp<a href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $lat2?>:<?php echo $lon2?>')"><?php echo $row['street']?></a>
 				</p>
 			
 				<p>
-					<strong>Phone:</strong>&nbsp;&nbsp;<a href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$row[phone])?>"><?=$row[phone]?></a>
+					<strong>Phone:</strong>&nbsp;&nbsp;<a href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$row[phone])?>"><?php echo $row[phone]?></a>
 				</p>
 				
-				<p><strong>Distance:</strong>&nbsp;&nbsp;<?=round(distance($lat1, $lon1, $lat2, $lon2,$dunit),'1')?><?=$dunit?></p>
+				<p><strong>Distance:</strong>&nbsp;&nbsp;<?php echo round(distance($lat1, $lon1, $lat2, $lon2,$dunit),'1')?><?php echo $dunit?></p>
 				
 				<?php if($row['url'] != ''){ ?>
 						<p>

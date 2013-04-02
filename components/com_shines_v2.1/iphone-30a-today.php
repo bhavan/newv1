@@ -144,7 +144,9 @@ echo ($_SESSION['tpl_folder_name'] == 'defaultspanish')?'Noticias':'News';?>
   <?php
 $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
 if(stripos($ua,'android') == true) { ?>
-  <div id="zigzag" style="vertical-align:bottom;"></div>
+	<div id="zigzag" style="vertical-align:bottom;">
+		<?php m_show_banner('android-news-screen'); ?>
+	</div>
   <?php } 
   else {
   ?>
