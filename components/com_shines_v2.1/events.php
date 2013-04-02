@@ -178,7 +178,9 @@ var iWebkit;if(!iWebkit){iWebkit=window.onload=function(){function fullscreen(){
 <?php
 $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
 if(stripos($ua,'android') == true) { ?>
-  <div class="iphoneads" style="vertical-align:bottom;"></div>
+  <div class="iphoneads" style="vertical-align:bottom;">
+	<?php m_show_banner('android-events-screen'); ?>
+  </div>
   <?php } 
   else {
   ?>
@@ -188,10 +190,12 @@ if(stripos($ua,'android') == true) { ?>
   <?php } ?>
 <?php
     /* Code added for iphone_places.tpl */
-    require($_SERVER['DOCUMENT_ROOT']."/partner/".$_SESSION['tpl_folder_name']."/tpl_v2.1/iphone_events.tpl");
-    ?>
+	
+	require($_SERVER['DOCUMENT_ROOT']."/partner/".$_SESSION['tpl_folder_name']."/tpl_v2.1/iphone_events.tpl");
+    
+	?>
 <!--
-<div id="footer">&copy; <?=date('Y');?> <?=$site_name?>, Inc. | <a href="mailto:<?=$email?>?subject=Feedback">Contact Us</a> &nbsp;&nbsp;&nbsp; <a href="<?=$pageglobal['facebook']?>"><img src="images/icon_facebook_16x16.gif" alt="facebook_icon" width="16" height="16" /></a> &nbsp;&nbsp;&nbsp; </div>
+<div id="footer">&copy; <?php echo date('Y');?> <?php echo $site_name?>, Inc. | <a href="mailto:<?php echo $email?>?subject=Feedback">Contact Us</a> &nbsp;&nbsp;&nbsp; <a href="<?php echo $pageglobal['facebook']?>"><img src="images/icon_facebook_16x16.gif" alt="facebook_icon" width="16" height="16" /></a> &nbsp;&nbsp;&nbsp; </div>
 <div style='display:none;'><?php echo $pageglobal['googgle_map_api_keys']; ?></div>
 -->
 </body>

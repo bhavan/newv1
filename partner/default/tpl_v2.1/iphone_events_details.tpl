@@ -21,9 +21,9 @@
 		$lon2=$rowlocdetail['geolon'];
 		}
 		?>
-		<H1><?=$rowvevdetail['summary']?></h1>
+		<H1><?php echo $rowvevdetail['summary']?></h1>
 
-		<p><strong>Date:</strong><?=$todaestring?></p>
+		<p><strong>Date:</strong><?php echo $todaestring?></p>
 		<p><strong>Time:</strong>
 		<?php
 		//#DD#
@@ -54,14 +54,14 @@
 		?>
 
 		</p>
-		<p><strong>Location:</strong><?=$rowlocdetail['title']?></p>
-		<p><strong>Address:</strong><a href="javascript:linkClicked('APP30A:SHOWMAP:<?=$lat2?>:<?=$lon2?>')" ><?=$rowlocdetail['street']?></a></p>
-		<p><strong>Phone:</strong><a href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$rowlocdetail['phone'])?>"><?=$rowlocdetail['phone']?></a></p>
-		<p><strong>Distance:</strong><?=round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></p>
+		<p><strong>Location:</strong><?php echo $rowlocdetail['title']?></p>
+		<p><strong>Address:</strong><a href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $lat2?>:<?php echo $lon2?>')" ><?php echo $rowlocdetail['street']?></a></p>
+		<p><strong>Phone:</strong><a href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$rowlocdetail['phone'])?>"><?php echo $rowlocdetail['phone']?></a></p>
+		<p><strong>Distance:</strong><?php echo round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1')?>&nbsp;<?php echo $dunit?></p>
 		<?php if(trim($rowlocdetail['url']) != '') { ?>
 		<p><strong>Website:</strong><a href="http://<?php echo str_replace('http://','',$rowlocdetail['url']); ?>" target="_blank"><?php echo str_replace('http://','',$rowlocdetail['url']); ?></a></p>
 			<?php } ?>
-	<p><strong>Description:</strong><?=$rowvevdetail['description']?></p>
+	<p><strong>Description:</strong><?php echo $rowvevdetail['description']?></p>
 		<?php
 		//#DD#
 		$mailContent.= "

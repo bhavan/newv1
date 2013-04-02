@@ -83,7 +83,9 @@ echo ($_SESSION['tpl_folder_name'] == 'defaultspanish')?'Galerías':'Galleries';
 
 $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
 if(stripos($ua,'android') == true) { ?>
-  
+	<div class="iphoneads" style="vertical-align:bottom;">
+	<?php m_show_banner('android-photos-screen'); ?>
+  </div>
   <?php } 
   else {
   ?>
