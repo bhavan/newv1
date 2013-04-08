@@ -27,7 +27,8 @@
 
 			//Creating Image array from Event description
 			##Image FEtched for slide show##
-				$imageurl= strstr($featureevdetail['description'],'http');
+				$fetchimg = strstr($featureevdetail['description'],'src=');
+				$imageurl = strstr($fetchimg,'http');
 				$singleimagearray = explode('"',$imageurl);
 				if($singleimagearray[0] == ""){
 					$singleimagearray[0] = "/components/com_shines_v2.1/images/nofe_image.png"; }
@@ -59,11 +60,11 @@
 			}else{
 			if($featureevent[$f] == 1 && $imagecount<5){?> 
 		    	<li>
-					<img style="height:200px;" src="<?php echo $singleimagearray[0]?>" />
+					<img style="height:200px;" src="<?=$singleimagearray[0]?>" />
 		    		<div class="flex-caption">
-		    			<h1><?php echo $featureevdetail['summary']?></h1>
-		    			<h2><?php echo $rowfealocdetail['title']?></h2>
-		    			<h3><?php echo $displayTime?></h3>
+		    			<h1><?=$featureevdetail['summary']?></h1>
+		    			<h2><?=$rowfealocdetail['title']?></h2>
+		    			<h3><?=$displayTime?></h3>
 		    		</div> <!-- caption -->
 		    	</li>
 			<?php
@@ -90,7 +91,7 @@
 </div>
 <div id="main" role="main">
 
-<h1><?php echo $todaestring?></h1>
+<h1><?=$todaestring?></h1>
 
 <ul id="eventList" class="mainList" ontouchstart="touchStart(event,'eventList');" ontouchend="touchEnd(event);" ontouchmove="touchMove(event);" ontouchcancel="touchCancel(event);">
 
@@ -139,10 +140,10 @@
 
 	  
 	<li>
-		<h1><?php echo $rowvevdetail['summary']?></h1>
-      	<h2><?php echo $rowlocdetail['title']?></h2>
+		<h1><?=$rowvevdetail['summary']?></h1>
+      	<h2><?=$rowlocdetail['title']?></h2>
 		<h3>
-			<?php echo $displayTime?> &bull;
+			<?=$displayTime?> &bull;
 			<?php echo $categoryname[$n]; ?>
 			<ul class="btnList"><li><a class="button small" href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$rowlocdetail['phone'])?>">call</a</li>
 				
@@ -152,7 +153,7 @@
  			<?php } else { ?>
 			<li><a class="button small" href="javascript:linkClicked('APP30A:FBCHECKIN:<?php echo $lat2; ?>:<?php echo $lon2; ?>')">check in</a></li>
 				<?php } ?>
-			<li><a class="button small" href="events_details.php?eid=<?php echo $row['rp_id']?>&d=<?php echo $today?>&m=<?php echo $tomonth?>&Y=<?php echo $toyear?>&lat=<?php echo $lat1?>&lon=<?php echo $lon1?>">more info</a></li></ul>
+			<li><a class="button small" href="events_details.php?eid=<?=$row['rp_id']?>&d=<?=$today?>&m=<?=$tomonth?>&Y=<?=$toyear?>&lat=<?=$lat1?>&lon=<?=$lon1?>">more info</a></li></ul>
 		</h3> 
 				<!--<?=round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></td> Away -->
     </li>
