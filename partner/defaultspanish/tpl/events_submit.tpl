@@ -154,7 +154,7 @@ if($msg!='') {?>
 	<tr>
 		<td style="vertical-align:top" align="left">Descripci&#243;n</td>
 		<td colspan="3">
-			<div id='jeveditor' style="width:457px"><textarea id="jevcontent" name="jevcontent" cols="70" rows="10" style="width:100%;height:230px;" class="mceEditor"><?php echo $postValues['jevcontent']?></textarea>
+			<div id='jeveditor' style="width:457px"><textarea id="jevcontent" name="jevcontent" cols="70" rows="10" style="width:100%;height:230px;"><?php echo $postValues['jevcontent']?></textarea>
 			</div>       	
 		</td>
 	</tr>

@@ -208,7 +208,7 @@ function divopen(str) {
 $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
 if(stripos($ua,'android') == true) { ?>
 	<div class="iphoneads" style="vertical-align:bottom;">
-		m_show_banner('android-restaurants-screen');
+		<?php echo m_show_banner('android-restaurants-screen'); ?>
 	</div>
 	<?php } 
 else {
