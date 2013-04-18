@@ -60,11 +60,13 @@
 			}else{
 			if($featureevent[$f] == 1 && $imagecount<5){?> 
 		    	<li>
-					<img style="height:200px;" src="<?=$singleimagearray[0]?>" />
+					<div style="overflow:hidden;clear:both;">
+						<img src="<?php echo $singleimagearray[0] ?>" />
+					</div>
 		    		<div class="flex-caption">
-		    			<h1><?=$featureevdetail['summary']?></h1>
-		    			<h2><?=$rowfealocdetail['title']?></h2>
-		    			<h3><?=$displayTime?></h3>
+		    			<h1><?php echo $featureevdetail['summary']?></h1>
+		    			<h2><?php echo $rowfealocdetail['title']?></h2>
+		    			<h3><?php echo $displayTime ?></h3>
 		    		</div> <!-- caption -->
 		    	</li>
 			<?php
