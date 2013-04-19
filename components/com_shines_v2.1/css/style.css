@@ -251,7 +251,7 @@ td { vertical-align: top; }
 		*********************************/ 
 		.flexslider {width: 100%; margin: 0; padding: 0;border-top: 1px solid #595959;}
 		.flexslider .slides li {display: none;} /* Hide the slides before the JS is loaded. Avoids image jumping */
-		.flexslider .slides img {width: 100%; display: block;}
+		.flexslider .slides img {width: 100%; display: block; height:120px;}
 		
 		
 		/* FlexSlider Default Theme
