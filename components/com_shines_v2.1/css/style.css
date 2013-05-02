@@ -285,7 +285,7 @@ td { vertical-align: top; }
 		.flex-caption h3{text-transform: uppercase;}
 		
 		/* Control Nav */
-		.flex-control-nav {margin-left: -81px; position: absolute; bottom: -3px; left: 50%;} /* set negative margin-left equal to half the width on the control-nav for perfect centering */
+		.flex-control-nav {margin-left: -61px; position: absolute; bottom: -3px; left: 49%;} /* set negative margin-left equal to half the width on the control-nav for perfect centering */
 		.flex-control-nav li {margin: 0 0 0 10px; float: left;list-style: none;}
 		.flex-control-nav li:first-child {margin: 0;}
 		.flex-control-nav li a {
