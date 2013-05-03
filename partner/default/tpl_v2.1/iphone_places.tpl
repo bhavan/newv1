@@ -77,7 +77,7 @@
 		}
 		
 		if($_POST['search_rcd']=="Search"){
-			$searchdata=$_POST['searchvalue'];
+			$searchdata = addslashes($_POST['searchvalue']);
 			
 			if(($filter_loccat==0) || ($_REQUEST['filter_loccat']=='alp') && ($_POST['search_rcd']=="Search")){
 				$search_query1="select * from `jos_jev_locations` where loccat IN (".implode(',',$allCatIds).") AND published=1 and title like '%$searchdata%' or description like '%$searchdata%' ORDER BY title ASC LIMIT " .$start_at.','.$entries_per_page;
