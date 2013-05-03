@@ -347,7 +347,7 @@ td { vertical-align: top; }
 		}
 		#main h1, #main #zigzag{
 			margin: 0 0 0 0;text-transform: uppercase; font-weight: normal; font-size: 1em;
-			padding: 0 0 22px;
+			padding: 5px 12px 17px;
 			background: #fff url(../images/border2.gif) repeat-x bottom;
 		}
 		ul.mainList{
@@ -372,15 +372,17 @@ td { vertical-align: top; }
 			background: url(../images/l/listArrow.png) no-repeat 98% 8px;
 		}
 		#main ul.mainList li span{
+		/*
 			display: block; width:35px; height: 27px;
 			text-indent: -999em;position: absolute;right: 10px;bottom: 10px;
-			background: url(../images/l/offerTag.png) no-repeat bottom right;
+			background: url(../images/l/offerTag.png) no-repeat bottom right; */
 		}
 		
 		#main ul.mainList.offer li span{
+		/*
 			display: block; width:35px; height: 27px;
 			text-indent: -999em;position: absolute;right: 10px;bottom: 10px;
-			background:none;
+			background:none; */
 		}
 
 		/* ========= PLACES & RESTAURANTS STYLES ============= */
