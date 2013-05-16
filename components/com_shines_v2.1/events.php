@@ -178,7 +178,9 @@ var iWebkit;if(!iWebkit){iWebkit=window.onload=function(){function fullscreen(){
 <?php
 $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
 if(stripos($ua,'android') == true) { ?>
-  <div class="iphoneads" style="vertical-align:bottom;"></div>
+  <div class="iphoneads" style="vertical-align:bottom;">
+  <?php m_show_banner('android-events-screen'); ?>
+  </div>
   <?php } 
   else {
   ?>
