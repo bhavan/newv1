@@ -285,8 +285,17 @@ td { vertical-align: top; }
 		.flex-caption h3{text-transform: uppercase;}
 		
 		/* Control Nav */
-		.flex-control-nav {margin-left: -61px; position: absolute; bottom: -3px; left: 49%;} /* set negative margin-left equal to half the width on the control-nav for perfect centering */
-		.flex-control-nav li {margin: 0 0 0 10px; float: left;list-style: none;}
+		/* .flex-control-nav {margin-left: -61px; position: absolute; bottom: -3px; left: 49%;} */ /* set negative margin-left equal to half the width on the control-nav for perfect centering */
+		.flex-control-nav {
+		     margin: -20px auto auto;
+		    overflow: hidden;
+		    padding-left: 0;
+		    position: relative;
+		    text-align: center;
+		    width: 185px;
+		}
+		/*.flex-control-nav li {margin: 0 0 0 10px; float: left;list-style: none;}*/
+		.flex-control-nav li {margin: 0 0 0 10px; display: inline-block; list-style: none;}
 		.flex-control-nav li:first-child {margin: 0;}
 		.flex-control-nav li a {
 			width: 10px; height: 10px; display: block; 
@@ -345,13 +354,22 @@ td { vertical-align: top; }
 			padding: 10px 10px 15px;
 			background: #fff url(../images/border2.gif) repeat-x bottom;
 		}
-		#main h1, #main #zigzag{
-			margin: 0 0 0 0;text-transform: uppercase; font-weight: normal; font-size: 1em;
-			padding: 5px 12px 17px;
-			background: #fff url(../images/border2.gif) repeat-x bottom;
+		
+		/* Css for Banner vs date header on app event page - Akash */
+		#main h1{
+		   margin: 0 0 0 0;text-transform: uppercase; font-weight: normal; font-size: 1em;
+		   padding: 5px 12px 17px;
+		   background: #fff url(../images/border2.gif) repeat-x bottom;
 		}
+		  
+		#main #zigzag{
+		   margin: 0 0 0 0;text-transform: uppercase; font-weight: normal; font-size: 1em;
+		   padding: 0px 0px 17px;
+		   background: #fff url(../images/border2.gif) repeat-x bottom;
+		}
+		/* End */
 		ul.mainList{
-			margin: 0 0 0 0; list-style: none;padding: 0px;
+			margin: 0 0 10px 0; list-style: none;padding: 0px;
 			background: url(../images/l/twBg.png) repeat-y scroll 100% 100%;
 		}
 		#main ul.mainList h1{
@@ -367,8 +385,8 @@ td { vertical-align: top; }
 		#main ul.mainList li:first-child{border-top: none;}
 		#main ul.mainList li{
 			position: relative;
-			border-bottom: 1px solid #fff;padding: 10px 10px 10px 10px;
-			border-top: 1px solid #d6d6d6;
+			padding: 10px 10px 10px 10px;
+			border-bottom: 1px solid #d6d6d6;
 			background: url(../images/l/listArrow.png) no-repeat 98% 8px;
 		}
 		#main ul.mainList li span{
@@ -379,8 +397,7 @@ td { vertical-align: top; }
 		}
 		
 		#main ul.mainList.offer li span{
-		/*
-			display: block; width:35px; height: 27px;
+			/* display: block; width:35px; height: 27px;
 			text-indent: -999em;position: absolute;right: 10px;bottom: 10px;
 			background:none; */
 		}
@@ -587,7 +604,17 @@ li.textbox a img{max-width:100%;}
 
 #placesList img{max-width:100%;}
 
-
+.contentheading {
+    color: #0B121F;
+    font-family: arial;
+    font-size: 15px;
+    font-weight:900;
+    line-height: 20px;
+    padding: 5px 0;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: top;
+}
 
 
 
