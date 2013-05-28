@@ -7,59 +7,44 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 		<div class="flexslider">
 		    <ul class="slides">
 			<?php
-			
 			$f=0;
 			$imagecount = 0;
 			$tempeventid;
-			while($fearow=mysql_fetch_array($fea_rec)){
-			
-			$feaev=mysql_query("select *  from jos_jevents_vevent where ev_id=".$fearow['eventid']) or die(mysql_error());
-			$feaevDetails=mysql_fetch_array($feaev);
-			
-			$featuredevedetail = mysql_query("select detail_id from jos_jevents_vevent where ev_id=".$fearow['eventid']) or die(mysql_error());
-			$featured_evedetail=mysql_fetch_array($featuredevedetail);
-						
-			/*TO check Weather Event is featured or not(value = 0/1)*/
-			$featuredeve = mysql_query("select value from jos_jev_customfields where evdet_id=".$featured_evedetail['detail_id']) or die(mysql_error());
-			$featured_eve=mysql_fetch_object($featuredeve);
-			$featureevent[] = $featured_eve->value;
-			/*Edited By Akash End*/
-			
-			$feaevdetail="select *  from jos_jevents_vevdetail where evdet_id=".$feaevDetails['detail_id'];
-			$recfeaevdetail=mysql_query($feaevdetail) or die(mysql_error());
-			$featureevdetail=mysql_fetch_array($recfeaevdetail);		
+			$homeslider1;
+			$k=0;
 
-			//Creating Image array from Event description
-			##Image FEtched for slide show##
-				$imageurl= strstr($featureevdetail['description'],'http');
+			while($fearow=mysql_fetch_array($featured_filter)){
+			
+			$finalDescription="";
+			##Image Fetched for slide show##
+			    $imagesrc= strstr($fearow['description'],'src=');
+				$imageurl= strstr($imagesrc,'http');
 				$singleimagearray = explode('"',$imageurl);
+				if($singleimagearray[0] == ""){
+				$singleimagearray[0] = "/partner/".$_SESSION['partner_folder_name']."/images/stories/nofe_image.png"; }
 			##end##
-
-			if ((int) ($featureevdetail['location'])){
-				$fealocdetail="select *  from jos_jev_locations where loc_id=".$featureevdetail['location'];
-				$recfealocdetail=mysql_query($fealocdetail) or die(mysql_error());
-				$rowfealocdetail=mysql_fetch_array($recfealocdetail);
-				$lat2=$rowfealocdetail[geolat];
-				$lon2=$rowfealocdetail[geolon];
-			}
 			$displayTime = '';
-
-			if($fearow[timestart]=='12:00 AM' && $fearow[timeend]=='11:59PM')
-            {    $displayTime.='Todo el día';}
+			
+			if($fearow[timestart]=='12:00 AM' && $fearow[timeend]=='11:59PM'){   
+				$displayTime.='All Day Event';
+			}
 			else{
-				$displayTime.= ltrim($fearow[timestart], "0");
-				
-				if($featureevdetail['noendtime']==0){
-					$displayTime.='-'.ltrim($fearow[timeend], "0");
+				$displayTime.= $fearow[timestart];
+				if ($fearow[timeend] != '11:59PM'){
+					$displayTime.="-".$fearow[timeend];
 				}
-			}			
-			?>
-			<!--Edited By Akash-->
-			<!--This code is for slider part-->
-			<?php
-			if(in_array($fearow['eventid'], $tempeventid)){
+			}
+			$homeslider1[$k]['eve_id'] = $fearow['ev_id'];
+			$homeslider1[$k]['summary'] = $fearow['summary'];
+			$homeslider1[$k]['Date'] = $fearow['Date'];
+			$homeslider1[$k]['title'] = $fearow['title'];
+			$homeslider1[$k]['time'] = $displayTime;
+
+			if(in_array($fearow['ev_id'], $tempeventid)){
 			}else{
-			if($featureevent[$f] == 1 && $imagecount<5){?> 
+			if($imagecount<5){
+			
+			?> 
 		    	<li>
 					<div style="overflow:hidden;clear:both;">
 						<img src="<?php echo $singleimagearray[0] ?>" />
@@ -72,12 +57,10 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 		    	</li>
 			<?php
 			++$imagecount;/*5 featured event counter */
-			$tempeventid[] = $fearow['eventid'];
+			$tempeventid[] = $fearow['ev_id'];
 			}}
-			?>
-			<?php
-			++$datacount;
 			++$f;
+			++$k;
 			}
 			?>
 			</ul>
@@ -92,6 +75,22 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 	</form>
 	
 </div>
+
+<?php
+$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+if(stripos($ua,'android') == true) { ?>
+  <div class="iphoneads" style="vertical-align:bottom;">
+	<?php m_show_banner('android-events-screen'); ?>
+  </div>
+  <?php } 
+  else {
+  ?>
+  <div class="iphoneads" style="vertical-align:bottom;">
+    <?php m_show_banner('iphone-events-screen'); ?>
+  </div>
+  <?php } ?>
+
+
 <div id="main" role="main">
 
 <h1><?=$todaestring?></h1>
