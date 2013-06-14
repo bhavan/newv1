@@ -9,6 +9,9 @@ var jevweeks= 'weeks';
 var jevdays= 'days';
  // end JEvents Language Srings
 
+//Varialble for current host url - Yogi
+var currentHostUrl = window.location.host;
+
 window.addEvent('domready', function(){ var JTooltips = new Tips($$('.hasTip'), { maxTitleChars: 50, fixed: false}); });
 window.addEvent('domready', function() {
 
@@ -130,7 +133,8 @@ JevrRequiredFields.fields.push({'name':'custom_field4', 'default' :'0' ,'reqmsg'
       theme: "none",
       invalid_elements: "table,li,ul,h1,h2,span,div,strong,applet,iframe,script,style",
       plugins: "contextmenu,browser,inlinepopups,media,safari,spellchecker,code,cleanup,tabfocus,paste",
-      document_base_url: "http://tapdestin.com/",
+      //document_base_url: "http://tapdestin.com/",
+      document_base_url: "http://"+currentHostUrl+"/",
       site_url: "/",
       theme_advanced_toolbar_location: "top",
       theme_advanced_path: true,
@@ -334,9 +338,12 @@ window.addEvent((window.webkit) ? 'load' : 'domready', function() {
     'advsearch': ' Advanced search',
     'page': ' Page',
     'page_of': ' of',
-    'searchlink': 'http://tapdestin.com/index.php?option=com_search&amp;view=search&amp;tmpl=component',
-    'advsearchlink': 'http://tapdestin.com/index.php?option=com_search&amp;view=search',
-    'uribase': 'http://tapdestin.com/',
+    //'searchlink': 'http://tapdestin.com/index.php?option=com_search&amp;view=search&amp;tmpl=component',
+    'searchlink': 'http://'+currentHostUrl+'/index.php?option=com_search&amp;view=search&amp;tmpl=component',
+    //'advsearchlink': 'http://tapdestin.com/index.php?option=com_search&amp;view=search',
+    'advsearchlink': 'http://'+currentHostUrl+'/index.php?option=com_search&amp;view=search',
+    //'uribase': 'http://tapdestin.com/',
+    'uribase': 'http://'+currentHostUrl+'/',
     'limit': '10',
     'perpage': '3',
     'ordering': 'newest',
@@ -353,7 +360,8 @@ window.addEvent((window.webkit) ? 'load' : 'domready', function() {
   });
 });
 
-var jax_live_site = 'http://tapdestin.com/index.php';
+//var jax_live_site = 'http://tapdestin.com/index.php';
+var jax_live_site = 'http://'+currentHostUrl+'/index.php';
 var jax_site_type = '1.5';
 
 function submitbutton(pressbutton) {
