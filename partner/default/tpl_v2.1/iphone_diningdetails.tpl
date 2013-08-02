@@ -8,7 +8,7 @@
 				<h1><?php echo $row['title'];?></h1>
 				
 				<p>
-					<strong>Address:</strong>&nbsp;&nbsp<a href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $lat2?>:<?php echo $lon2?>')"><?php echo $row['street']?></a>
+					<strong>Address:</strong>&nbsp;<a href="javascript:linkClicked('APP30A:SHOWMAP:<?php echo $lat2?>:<?php echo $lon2?>')"><?php echo $row['street']?></a>
 				</p>
 			
 				<p>
