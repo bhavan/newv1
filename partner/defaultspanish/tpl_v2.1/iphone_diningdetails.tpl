@@ -11,17 +11,7 @@
 	
 		<h1><?php echo $row['title'];?></h1>
 		<p>
-			<?php
-			$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
-			if(stripos($ua,'android') == true) { 
-			?>
-			<strong>Direcci&#243;n:</strong>&nbsp;&nbsp<a href="map.php?lat=<?=$lat2?>&long=<?=$lon2?>">;<?=$row['street']?></a>
-			<br />
-			<?php } 
-			else {
-			?>
 			<strong>Direcci&#243;n:</strong>&nbsp;&nbsp<a href="javascript:linkClicked('APP30A:SHOWMAP:<?=$lat2?>:<?=$lon2?>')"><?=$row['street']?></a>
-			<?php } ?>
 		</p>
 	
 		
