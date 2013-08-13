@@ -59,13 +59,7 @@ $todaestring=ucwords(strftime ('%a, %b %d',mktime(0, 0, 0, $tomonth, $today, $to
 
 		</p>
 		<p><strong>Ubicaci&#243;n:</strong><?=$rowlocdetail['title']?></p>
-		<?php
-		$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
-		if(stripos($ua,'android') == true) { ?>
-		<p><strong>Direcci&#243;n:</strong><a href="map.php?lat=<?=$lat2?>&long=<?=$lon2?>"><?=$rowlocdetail['street']?></a></p>
-			<?php } else { ?>
 		<p><strong>Direcci&#243;n:</strong><a href="javascript:linkClicked('APP30A:SHOWMAP:<?=$lat2?>:<?=$lon2?>')" ><?=$rowlocdetail['street']?></a></p>
-			<?php } ?>
 		<p><strong>Tel&#233;fono:</strong><a href="tel:<?php echo str_replace(array(' ','(',')','-','.'), '',$rowlocdetail['phone'])?>"><?=$rowlocdetail['phone']?></a></p>
 		<p><strong>Distancia:</strong><?=round(distance($_SESSION['lat_device1'], $_SESSION['lon_device1'], $lat2, $lon2,$dunit),'1')?>&nbsp;<?=$dunit?></p>
 		<?php if(trim($rowlocdetail['url']) != '') { ?>
