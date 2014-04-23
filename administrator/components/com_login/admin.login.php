@@ -51,6 +51,9 @@ class LoginController
 
 	function login()
 	{
+		# Yogi: Code for Login page hack solutions,direct form post without going through login page
+		include($_SERVER['DOCUMENT_ROOT'].'/iplog/iplog_session_login_check.php');
+		
 		global $mainframe;
 
 		// Check for request forgeries
@@ -65,6 +68,9 @@ class LoginController
 
 		if (!JError::isError($result)) {
 			$mainframe->redirect('index.php');
+		}else{
+			# Yogi: Code for Login page hack solutions, when Came via login page
+			include($_SERVER['DOCUMENT_ROOT'].'/iplog/iplog_handle_failed_login.php');
 		}
 
 		LoginController::display();
